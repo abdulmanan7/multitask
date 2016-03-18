@@ -8,9 +8,25 @@ class Reports extends CI_Controller {
 		$data = $this->get_data();
 		$this->load->view('welcome_message', $data);
 	}
-	public function get($state = "D") {
+	public function get($state = "I") {
+		// echo "<pre>";
+		// print_r($this->input->post());die;
 		//load the view and saved it into $html variable
-		$data = $this->get_data();
+		// $data = $this->get_data();
+		$data = $this->input->post();
+		$images = $data['image'];
+		$count = 0;
+		$tr = '';
+		$index = 0;
+		foreach ($images as $key => $val) {
+			if (count($tr[$index]) == 2) {
+				$index++;
+			}
+			$tr[$index][] = $val;
+			$count++;
+		}
+		print_r($tr);die;
+		$data['images'] = $tr;
 		$html = $this->load->view('pdf/pdf_mail', $data, true);
 
 		//this the the PDF filename that user will get to download
@@ -18,7 +34,8 @@ class Reports extends CI_Controller {
 
 		include_once APPPATH . '/third_party/mpdf/mpdf.php';
 		$m_pdf = new mPDF();
-		$m_pdf->SetHTMLHeader('<div style="text-align: right;"><img style="margin-bottom:100px" src=' . $data['logo'] . '></div>');
+		$m_pdf->setAutoTopMargin = "stretch";
+		$m_pdf->SetHTMLHeader('<div style="padding-left:500px;text-align: right; width:200px"><img src=' . base_url('assets/img/logo.jpg') . '></div>');
 		$m_pdf->SetHTMLFooter('<p style="text-align:center;color:gray">Digitale Ortsbegehnung vom <Datum> - Seite 1 von x
 </p>');
 
@@ -61,7 +78,7 @@ class Reports extends CI_Controller {
 				),
 
 			),
-			"logo" => base_url('assets/img/logo.png'),
+			"logo" => base_url('assets/img/logo.jpg'),
 			"Pagina" => 12,
 			"Sitio" => "www.mundo.com",
 			"Facebook" => "facebook.com/mundo.com",

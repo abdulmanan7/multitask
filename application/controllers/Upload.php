@@ -14,8 +14,8 @@ class Upload extends CI_Controller {
 	public function index() {
 		$this->load->view('upload', array('error' => ''));
 	}
-
 	public function do_upload() {
+		$files = "";
 		$upload_path_url = base_url() . 'uploads/';
 
 		$config['upload_path'] = FCPATH . 'uploads/';
@@ -47,7 +47,10 @@ class Upload extends CI_Controller {
 					$f++;
 				}
 			}
-			$this->output
+			// echo "<pre>";
+			// print_r($foundFiles);die;
+			// echo "</pre>";
+			$files = $this->output
 				->set_content_type('application/json')
 				->set_output(json_encode(array('files' => $foundFiles)));
 		} else {
@@ -106,9 +109,6 @@ class Upload extends CI_Controller {
 				// so that this will still work if javascript is not enabled
 			} else {
 				$file_data['upload_data'] = $this->upload->data();
-				echo "<pre>";
-				print_r($file_data);die;
-				echo "</pre>";
 				$this->load->view('upload/upload_success', $file_data);
 			}
 		}
