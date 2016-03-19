@@ -66,7 +66,7 @@ td{
 	overflow: hidden;
 }
 table{border-collapse:separate;
-border-spacing:0.7em;}
+border-spacing:0.5em;}
 </style>
 </head>
 <table class="mar50" cellspacing="3">
@@ -78,7 +78,7 @@ border-spacing:0.7em;}
 		<td align="right"><span class="text-right"><code><Datum></code></span> </td>
 	</tr>
 </table>
-<table id="items" width="100%" cellspacing="5">
+<table id="items" width="100%">
 	<tr class="item-row">
 		<td class="item-head">Vorname:</td>
 		<!-- <td class="item-name"><input name="vorname" value="<?=$vorname?>" type="text" class="form-control input-md"></input></td> -->
@@ -164,17 +164,17 @@ border-spacing:0.7em;}
 </table>
 <pagebreak />
 <table cellpadding ="5" cellpadding="10">
+
 <?php foreach ($images as $image): ?>
 
 	<tr>
  <?php foreach ($image as $val): ?>
+<?php if ($val != ""): ?>
 		<td style="border:2px solid black; text-align:center;" width="100%" >
 			<img src="<?=$val?>" width="350" height="250" style="border-right:5px solid #fff;" />
 		</td>
+<?php endif?>
  <?php endforeach?>
-		<!-- <td style="border:2px solid black; text-align:center;" width="100%" >
-			<img src="<?=$val[1]?>" width="350" height="250" style="border-right:5px solid #fff;" />
-		</td> -->
 	</tr>
 <?php endforeach?>
 </table>
