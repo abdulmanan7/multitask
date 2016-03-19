@@ -8,20 +8,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style type="text/css">
 		::selection { background-color: #E13300; color: white; }
 		::-moz-selection { background-color: #E13300; color: white; }
-		.table-head{
+		/*.table-head{
 			font-size: 26px;
-		}
+		}*/
 
-		* { margin: 0; padding: 0; }
-		/*table { border-collapse: collapse; }*/
-		/*table td, table th { border: 1px solid black; padding: 5px; }*/
+		/** { margin: 0; padding: 0; }*/
+		/*table { border-collapse: collapse; font-weight: bold;}*/
+		/*table td, table th { border: 1px solid black;}*/
 
-	#items { clear: both; width: 100%; margin: 30px 0 0 0; /*border: 1px solid black;*/ }
-#items th { background: #DDD; /*border: 1px solid black;*/}
+	/*#items { clear: both; width: 100%; margin: 30px 0 0 0; /*border: 1px solid black; }*/
+/*#items th { background: #DDD; /*border: 1px solid black;}*/
 /*#items td {border: 1px solid black;}*/
-#items tr.item-row td { border: 0; vertical-align: top; }
-#question td.item-head { width: 70%; }
-#items td.item-name { text-align: right;}
+/*#items tr.item-row td { border: 0; vertical-align: top; }*/
+#question td.item-head { width: 75%; }
+/*#question td.item-name { text-align: right;width: 30%}*/
 .input-md { width: 40%;}
 .input-xs { width: 20%; }
 .input-sm { width: 30%; }
@@ -36,16 +36,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }*/
 .form-control{
 	background-color: #FFFFAB;
+	padding: 4px 6px;
+	border: 1px solid #656565;
 }
 .bg-yellow
 {
 	background-color: #FFFFAB;
 	padding: 5px 2px;
 	border:thin solid gray;
-}
-input{
-	background: #FFFFAB;
-
 }
 .subheading{
 	text-decoration: underline;
@@ -64,6 +62,9 @@ input{
 .text-right{
 	text-align: right;
 }
+tr{
+	margin: 10px 0;
+}
 </style>
 </head>
 <table class="mar50" cellspacing="3">
@@ -75,32 +76,37 @@ input{
 		<td align="right"><span class="text-right"><code><Datum></code></span> </td>
 	</tr>
 </table>
-<table id="items" border="0" cellspacing="5">
+<table id="items" width="100%" cellspacing="5">
 	<tr class="item-row">
 		<td class="item-head">Vorname:</td>
-		<td class="item-name"><input name="vorname" value="<?=$vorname?>" type="text" class="form-control input-md"></input></td>
-		<td class="item-head">Nachname:</td>
-		<td class="item-name"><input name="nachname" value="<?=$nachname?>" type="text" class="input-md form-control"></input></td>
+		<!-- <td class="item-name"><input name="vorname" value="<?=$vorname?>" type="text" class="form-control input-md"></input></td> -->
+		 <td class="item-name form-control input-md"><?=$vorname?></td>
+				<td class="item-head">Nachname:</td>
+		<td class="item-name input-md form-control"><?=$nachname?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Straße + Nr.:</td>
-		<td class="item-name" colspan="3"><input name="strabe" value="<?=$strabe?>" type="text" style="width: 94%;" class="bg-yellow"></input></td>
+		<td class="item-name form-control" colspan="3"><?=$strabe?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">PLZ:</td>
-		<td class="item-name"><input name="plz" value="<?=$plz?>" type="text" class="form-control input-md"></input></td>
+		<td class="item-name form-control"><?=$plz?></td>
 		<td class="item-head">Ort:</td>
-		<td class="item-name"><input name="ort" value="<?=$ort?>" type="text" class="form-control input-md"></input></td>
+		<td class="item-name form-control"><?=$ort?></td>
+	</tr>
+	<tr class="item-row">
+		<td class="item-head">Land:</td>
+		<td class="item-name form-control" colspan="3"><?=$country?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Bauobjektadresse:(falls abweichend)</td>
-		<td class="item-name" colspan="3"><textarea name="adresse" style="width: 95%;" rows="2">value="<?=$addresse?>"</textarea></td>
+		<td class="item-name form-control" colspan="3"><?=$adresse?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Telefon:</td>
-		<td class="item-name"><input name="phone" value="<?=$phone?>" type="text" class="form-control input-md"></input></td>
+		<td class="item-name form-control"><?=$phone?></td>
 		<td class="item-head">eMail:</td>
-		<td class="item-name"><input name="email" value="<?=$email?>" type="text" class="form-control input-md"></input></td>
+		<td class="item-name form-control"><?=$email?></td>
 	</tr>
 </table>
 <table class="table-col-12">
@@ -111,58 +117,60 @@ input{
 <table id="question" border="0" width="100%" class="question" cellpadding ="1">
 	<tr class="item-row">
 		<td class="item-head">Baujahr von Ihrem Haus? </td>
-		<td class="item-name"><input name="question1" value="<?=$question1?>" type="text" class="input-sm"></input></td>
+		<td class="item-name form-control"><?=$question1?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Baujahr Ihrer aktuellen Heizung? </td>
-		<td class="item-name"><input name="question2"  value="<?=$question2?>" type="text" class="input-sm"></input></td>
+		<td class="item-name form-control"><?=$question2?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Womit heizen Sie derzeit? </td>
-		<td class="item-name"><input name="question3" value="<?=$question3?>" type="text" class="input-sm"></input></td>
+		<td class="item-name form-control"><?=$question3?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie hoch ist durchschnittlich Ihr Heizenergieverbrauch ca. pro Jahr?</td>
-		<td class="item-name"><input name="question4" value="<?=$question4?>" style="width: 17.4%" type="text"><input name="question_part2" value="<?=$question_part2?>" type="text"></input></td>
+		<td class="item-name form-control"><?=$question4?><input name="question_part2" value="<?=$question_part2?>" type="text"></input></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </td>
-		<td class="item-name"><input name="question5" value="<?=$question5?>" type="text" class="input-xsm"></input></td>
+		<td class="item-name form-control"><?=$question5?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head"><u>Beheizte Wohnfläche</u> in qm? </td>
-		<td class="item-name"><input name="question6" value="<?=$question6?>" type="text" class="input-xsm"></input></td>
+		<td class="item-name form-control"><?=$question6?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie viel Personen leben in Ihrem Haus? </td>
-		<td class="item-name"><input name="question7" value="<?=$question7?>" type="text" class="input-xsm"></input></td>
+		<td class="item-name form-control"><?=$question7?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wird Ihr Haus wärmegedämmt oder wann ist das ggf. geplant? </td>
-		<td class="item-name"><input name="question8" value="<?=$question8?>" type="text" class="input-sm"></input></td>
+		<td class="item-name form-control"><?=$question8?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie wird der neue gesamte Wärmebedarf nach der Dämmmaßnahme sein:</td>
-		<td class="item-name"><input name="question9" value="<?=$question9?>" type="text" style="width: 15%"><span style="padding-left: 10px;">          kWh / Jahr</span></td>
+		<td class="item-name"><div class="form-control" style="width: 200px; display:inline;"><?=$question9?></div><p style="padding-left: 1px;">kWh / Jahr</p></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head" colspan="2">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</td>
 	</tr>
 	<tr class="item-row">
-		<td class="item-name" colspan="2"><textarea name="description" class="input-lg" rows="8"><?=description?></textarea></td>
+		<td class="item-name form-control" colspan="2"><?=$description?></td>
 	</tr>
 </table>
 <pagebreak />
 <table cellpadding ="5" cellpadding="10">
-<?php foreach ($images as $val): ?>
+<?php foreach ($images as $image): ?>
 
 	<tr>
+ <?php foreach ($image as $val): ?>
 		<td style="border:2px solid black; text-align:center;" width="100%" >
-			<img src="<?=$val[0]?>" width="350" height="250" style="border-right:5px solid #fff;" />
+			<img src="<?=$val?>" width="350" height="250" style="border-right:5px solid #fff;" />
 		</td>
-		<td style="border:2px solid black; text-align:center;" width="100%" >
+ <?php endforeach?>
+		<!-- <td style="border:2px solid black; text-align:center;" width="100%" >
 			<img src="<?=$val[1]?>" width="350" height="250" style="border-right:5px solid #fff;" />
-		</td>
+		</td> -->
 	</tr>
 <?php endforeach?>
 </table>

@@ -55,26 +55,6 @@ class Upload extends CI_Controller {
 				->set_output(json_encode(array('files' => $foundFiles)));
 		} else {
 			$data = $this->upload->data();
-			/*
-			 * Array
-			(
-			[file_name] => png1.jpg
-			[file_type] => image/jpeg
-			[file_path] => /home/ipresupu/public_html/uploads/
-			[full_path] => /home/ipresupu/public_html/uploads/png1.jpg
-			[raw_name] => png1
-			[orig_name] => png.jpg
-			[client_name] => png.jpg
-			[file_ext] => .jpg
-			[file_size] => 456.93
-			[is_image] => 1
-			[image_width] => 1198
-			[image_height] => 1166
-			[image_type] => jpeg
-			[image_size_str] => width="1198" height="1166"
-			)
-			 */
-			// to re-size for thumbnail images un-comment and set path here and in json array
 			$config = array();
 			$config['image_library'] = 'gd2';
 			$config['source_image'] = $data['full_path'];
@@ -101,7 +81,7 @@ class Upload extends CI_Controller {
 
 			$files[] = $info;
 			//this is why we put this in the constants to pass only json data
-			if (IS_AJAX) {
+			if ($this->input->is_ajax_request()) {
 				echo json_encode(array("files" => $files));
 				//this has to be the only data returned or you will get an error.
 				//if you don't give this a json array it will give you a Empty file upload result error

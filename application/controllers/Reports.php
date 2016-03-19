@@ -11,7 +11,7 @@ class Reports extends CI_Controller {
 	public function get($state = "I") {
 		// echo "<pre>";
 		// print_r($this->input->post());die;
-		//load the view and saved it into $html variable
+		// load the view and saved it into $html variable
 		// $data = $this->get_data();
 		$data = $this->input->post();
 		$images = $data['image'];
@@ -25,7 +25,7 @@ class Reports extends CI_Controller {
 			$tr[$index][] = $val;
 			$count++;
 		}
-		print_r($tr);die;
+		// print_r($tr);die;
 		$data['images'] = $tr;
 		$html = $this->load->view('pdf/pdf_mail', $data, true);
 
@@ -45,39 +45,6 @@ class Reports extends CI_Controller {
 	}
 	public function get_data($value = '') {
 		return $data = array(
-			'heading' => array(
-				'Condiciones' => array(
-					'direction' => "right",
-					'Canon_de_Arriendo' => "xnsa",
-					'Mes_de_Garantía' => "right",
-					'Moneda' => "right",
-					'Fecha_inicio' => "right",
-					'Fecha_fin' => "right",
-				),
-				'Reajuste' => array(
-					'Linea_I' => "right",
-					'Linea_II' => "xnsa",
-				),
-				'Comisión' => array(
-					'Linea_I' => "right",
-					'Linea_II' => "xnsa",
-				),
-				'Multas' => array(
-					'Linea_I' => "right",
-					'Linea_II' => "xnsa",
-				),
-				'Arrendatario' => array(
-					'Nombre' => "right",
-					'Evaluación_de_Riesgos' => "xnsa",
-					'Coordinación_visita' => "xnsa",
-				),
-				'Propietario' => array(
-					'Nombre' => "right",
-					'Evaluación_de_Riesgos' => "xnsa",
-					'Coordinación_visita' => "xnsa",
-				),
-
-			),
 			"logo" => base_url('assets/img/logo.jpg'),
 			"Pagina" => 12,
 			"Sitio" => "www.mundo.com",

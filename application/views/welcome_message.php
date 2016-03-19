@@ -2,7 +2,7 @@
 <h1>Welcome !</h1>
 <div id="body">
 	<!-- The file upload form used as target for the file upload widget -->
-	<form id="fileupload" action="<?=base_url('upload/do_upload')?>" method="POST" enctype="multipart/form-data">
+	<form id="fileupload" action="<?=base_url('reports/get/I')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="row fileupload-buttonbar">
 			<div class="col-lg-7">
@@ -38,6 +38,10 @@
 							<input name="ort" type="text" class="form-control"></input>
 						</div>
 					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label item-name">Land:</label>
+					<input name="country" type="text" class="form-control"></input>
 				</div>
 				<div class="form-group">
 					<label class="control-label item-name">Bauobjektadresse:(falls abweichend)</label>
@@ -163,6 +167,7 @@
 	</div>
 	<!-- The table listing the files available for upload/download -->
 	<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+	<!-- The container for the uploaded files -->
 	<button type="submit" id="submit" class="btn btn-default">Process</button>
 </form>
 <!-- The blueimp Gallery widget -->
@@ -179,87 +184,7 @@
 </div>
 <?php $this->load->view('template/footer');?>
 <script>
-/*
-* jQuery File Upload Plugin JS Example 8.9.1
-* https://github.com/blueimp/jQuery-File-Upload
-*
-* Copyright 2010, Sebastian Tschan
-* https://blueimp.net
-*
-* Licensed under the MIT license:
-* http://www.opensource.org/licenses/MIT
-*/
-/* global $, window */
-$(function () {
-	'use strict';
-// Initialize the jQuery File Upload widget:
-$('#fileupload').fileupload({
-// Uncomment the following to send cross-domain cookies:
-//xhrFields: {withCredentials: true},
-// url: 'upload/do_upload'
-});
-// Enable iframe cross-domain access via redirect option:
-$('#fileupload').fileupload(
-	'option',
-	'redirect',
-	window.location.href.replace(
-		/\/[^\/]*$/,
-		'/cors/result.html?%s'
-		)
-	);
-if (window.location.hostname === 'blueimp.github.io') {
-// Demo settings:
-$('#fileupload').fileupload('option', {
-	url: '//jquery-file-upload.appspot.com/',
-// Enable image resizing, except for Android and Opera,
-// which actually support image resizing, but fail to
-// send Blob objects via XHR requests:
-disableImageResize: /Android(?!.*Chrome)|Opera/
-.test(window.navigator.userAgent),
-maxFileSize: 5000000,
-acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-});
-// Upload server status check for browsers with CORS support:
-if ($.support.cors) {
-	$.ajax({
-		url: 'upload/do_upload',
-		type: 'HEAD'
-	}).fail(function () {
-		$('<div class="alert alert-danger"/>')
-		.text('Upload server currently unavailable - ' +
-			new Date())
-		.appendTo('#fileupload');
-	});
-}
-} else {
-// Load existing files:
-$('#fileupload').addClass('fileupload-processing');
-$.ajax({
-// Uncomment the following to send cross-domain cookies:
-//xhrFields: {withCredentials: true},
-url: $('#fileupload').fileupload('option', 'url'),
-dataType: 'json',
-context: $('#fileupload')[0]
-}).always(function () {
-	$(this).removeClass('fileupload-processing');
-}).done(function (result) {
-	var files = result.files;
-	for (var i = files.length - 1; i >= 0; i--) {
-		var url = files[i].url;
-		$('<input>',{
-			name:"image[]",
-			type:"hidden",
-			value:url
-		}).appendTo('#fileupload');
-	}
-	$(this).fileupload('option', 'done')
-	.call(this, $.Event('done'), {result: result});
-});
-}
-});
 $(document).on('click', '#submit', function(event) {
-	// event.preventDefault();
-	/* Act on the event */
 	$('#fileupload').attr('action', "<?=base_url('reports/get/I')?>");
 	$('#fileupload').submit();
 
