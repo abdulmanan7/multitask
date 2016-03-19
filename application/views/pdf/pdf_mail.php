@@ -62,9 +62,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 .text-right{
 	text-align: right;
 }
-tr{
-	margin: 10px 0;
+td{
+	overflow: hidden;
 }
+table{border-collapse:separate;
+border-spacing:0.7em;}
 </style>
 </head>
 <table class="mar50" cellspacing="3">
@@ -114,48 +116,50 @@ tr{
 		<td align="left" class="subheading">Erfassung Ihrer Objektdaten:</td>
 	</tr>
 </table>
-<table id="question" border="0" width="100%" class="question" cellpadding ="1">
+<table id="question" border="0" width="100%" class="question">
 	<tr class="item-row">
 		<td class="item-head">Baujahr von Ihrem Haus? </td>
-		<td class="item-name form-control"><?=$question1?></td>
+		<td class="item-name form-control" colspan="2"><?=$question1?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Baujahr Ihrer aktuellen Heizung? </td>
-		<td class="item-name form-control"><?=$question2?></td>
+		<td class="item-name form-control" colspan="2"><?=$question2?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Womit heizen Sie derzeit? </td>
-		<td class="item-name form-control"><?=$question3?></td>
+		<td class="item-name form-control" colspan="2"><?=$question3?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie hoch ist durchschnittlich Ihr Heizenergieverbrauch ca. pro Jahr?</td>
-		<td class="item-name form-control"><?=$question4?><input name="question_part2" value="<?=$question_part2?>" type="text"></input></td>
+		<td class="item-name form-control"><?=$question4?></td>
+		<td class="item-name form-control"><?=$question_part2?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </td>
-		<td class="item-name form-control"><?=$question5?></td>
+		<td class="item-name form-control" colspan="2"><?=$question5?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head"><u>Beheizte Wohnfläche</u> in qm? </td>
-		<td class="item-name form-control"><?=$question6?></td>
+		<td class="item-name form-control" colspan="2"><?=$question6?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie viel Personen leben in Ihrem Haus? </td>
-		<td class="item-name form-control"><?=$question7?></td>
+		<td class="item-name form-control" colspan="2"><?=$question7?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wird Ihr Haus wärmegedämmt oder wann ist das ggf. geplant? </td>
-		<td class="item-name form-control"><?=$question8?></td>
+		<td class="item-name form-control" colspan="2"><?=$question8?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wie wird der neue gesamte Wärmebedarf nach der Dämmmaßnahme sein:</td>
-		<td class="item-name"><div class="form-control" style="width: 200px; display:inline;"><?=$question9?></div><p style="padding-left: 1px;">kWh / Jahr</p></td>
+		<td class="item-name form-control" valign="top"><?=$question9?></td>
+		<td class="item-name ">kWh / Jahr</td>
 	</tr>
 	<tr class="item-row">
-		<td class="item-head" colspan="2">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</td>
+		<td class="item-head" colspan="3">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</td>
 	</tr>
 	<tr class="item-row">
-		<td class="item-name form-control" colspan="2"><?=$description?></td>
+		<td class="item-name form-control" height="100" valign="top" colspan="3"><?=$description?></td>
 	</tr>
 </table>
 <pagebreak />
