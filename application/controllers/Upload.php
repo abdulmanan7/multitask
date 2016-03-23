@@ -75,6 +75,7 @@ class Upload extends CI_Controller {
 			$info->url = $upload_path_url . $data['file_name'];
 			// I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
 			$info->thumbnailUrl = $upload_path_url . 'thumbs/' . $data['file_name'];
+			$info->pdfUrl = $upload_path_url . 'pdf/' . $data['file_name'];
 			$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 			$info->deleteType = 'DELETE';
 			$info->error = null;

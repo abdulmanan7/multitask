@@ -4,8 +4,8 @@
 	<!-- The file upload form used as target for the file upload widget -->
 	<form id="fileupload" action="<?=base_url('reports/get/I')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-		<div class="row fileupload-buttonbar">
-			<div class="col-lg-7">
+		<div class="row fileupload-buttonbar ">
+			<div class="col-lg-8 question-box effect7 col-lg-offset-2">
 				<table id="main" cellspacing="10" border="0" cellpadding="3">
 					<tr>
 						<td valign="right">
@@ -60,7 +60,7 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Baujahr von Ihrem Haus?</label>
 						<div class="col-sm-6">
-							<input name="question1" type="text" class="form-control"></input>
+							<input name="baujahr_hous" type="text" class="form-control"></input>
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung?</label>
 						<div class="col-sm-6">
-							<input name="question2" type="text" class="form-control"></input>
+							<input name="baujahr_alte" type="text" class="form-control"></input>
 						</div>
 					</div>
 				</div>
@@ -133,6 +133,8 @@
 					<p class="item-name">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</p>
 					<textarea name="description" class="form-control" rows="8"></textarea>
 				</div>
+				</div>
+		<div class="col-lg-8 question-box effect7 col-lg-offset-2">
 			<!-- The fileinput-button span is used to style the file input field as button -->
 			<span class="btn btn-success fileinput-button">
 				<i class="glyphicon glyphicon-plus"></i>
@@ -151,10 +153,9 @@
 				<i class="glyphicon glyphicon-trash"></i>
 				<span>Delete</span>
 			</button>
-			<input type="checkbox" class="toggle">
+			<!-- <input type="checkbox" class="toggle"> -->
 			<!-- The global file processing state -->
 			<span class="fileupload-process"></span>
-		</div>
 		<!-- The global progress state -->
 		<div class="col-lg-5 fileupload-progress fade">
 			<!-- The global progress bar -->
@@ -164,11 +165,16 @@
 			<!-- The extended global progress state -->
 			<div class="progress-extended">&nbsp;</div>
 		</div>
+	<div class="clearfix"></div>
+	<div class="col-lg-12">
+
+	<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
+	</div>
+	<div class="clearfix"></div>
+	<button type="submit" id="submit" class="btn btn-default">Process</button>
 	</div>
 	<!-- The table listing the files available for upload/download -->
-	<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 	<!-- The container for the uploaded files -->
-	<button type="submit" id="submit" class="btn btn-default">Process</button>
 </form>
 <!-- The blueimp Gallery widget -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
@@ -179,7 +185,6 @@
 	<a class="close">×</a>
 	<a class="play-pause"></a>
 	<ol class="indicator"></ol>
-</div>
 </div>
 </div>
 <?php $this->load->view('template/footer');?>

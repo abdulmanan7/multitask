@@ -15,6 +15,7 @@ $(function () {
         // previewMaxHeight: 100,
         // previewCrop: true
     }).on('fileuploaddone', function (e, data) {
+        console.log(data);
         $.each(data.result.files, function (index, file) {
             if (file.url) {
                 $('<input>',{
