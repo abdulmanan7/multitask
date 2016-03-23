@@ -66,7 +66,8 @@ class Reports extends CI_Controller {
 
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
-		$pdf->Output($pdfFilePath, $state);
+		$pdf->Output($pdfFilePath, "D");
+		redirect('welcome/listing', 'refresh');
 	}
 	public function get_data($value = '') {
 		return $data = array(
