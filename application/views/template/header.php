@@ -5,7 +5,7 @@
 <head>
 <?php $class = $this->router->fetch_class();?>
     <meta charset="utf-8">
-    <title>Welcome to CodeIgniter</title>
+    <title>Welcome</title>
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- Generic page styles -->

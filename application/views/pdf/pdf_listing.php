@@ -32,6 +32,11 @@
 <h1>Atteachments list</h1>
 <div id="body">
 <div id="grid"></div>
+<script type="text/x-kendo-template" id="atteachment">
+<div class="detailDiv">
+<img src="#:path#" alt="">
+</div>
+</script>
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
     <div class="pull-left">
@@ -217,30 +222,26 @@ detailInit: listAtteachments
 ]
 });
 });
-    function courseWise(e) {
+    function listAtteachments(e) {
     var detailRow = e.detailRow;
-    var courseUrl = "<?=base_url('examination/result/course_wise');?>/";
-    var exam_id=e.data.exam_id;
+    var detailUrl = "<?=base_url('welcome/get_detail');?>/";
+    var att_id=e.data.att_id;
 // var course_id=e.data.course_id;
 var classResult = new kendo.data.DataSource({
   transport: {
     read: {
       async: true,
-      url: courseUrl+exam_id+"/"+getRandomInt(),
+      url: detailUrl+att_id,
       dataType: "json"
     }
   },
 // schema: { data: "data", total: "total" }
 });
-detailRow.find(".courseWise").kendoGrid({
+detailRow.find(".detailDiv").kendoGrid({
   dataSource: classResult,
   columns: [
-  {hidden: true, field: "course_id" },
-  {hidden: true, field: "exam_id" },
-  {hidden: true, field: "exam_taken_id" },
-// {field: "course_id", title: "course"},
-{field: "name", title: "Courses"},
-{template:kendo.template($("#tplCactions").html()), title: "Actions",width:160},
+{field: "path", title: "Atteachments"}
+// {template:kendo.template($("#tplCactions").html()), title: "Actions",width:160},
 ],mobile: true,
 detailExpand: function(e) {
   this.collapseRow(this.tbody.find('tr.k-master-row').not(e.masterRow));

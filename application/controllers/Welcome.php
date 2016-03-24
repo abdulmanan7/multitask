@@ -54,6 +54,35 @@ class Welcome extends CI_Controller {
 			$this->load->view('pdf/pdf_listing');
 		}
 	}
+	public function get_detail($id) {
+		if ($this->input->is_ajax_request()) {
+
+			// $options = array('limit' => $take, 'offset' => $skip, 'term' => $search_option);
+			$this->load->model('att_email_model', "att_email");
+			$data = $this->att_email->get_detail($id);
+			if ($data):
+				header("Content-type: application/json");
+				$total = sizeof($data);
+				// if ($total != 0) {
+				// 	$total = $this->att_email->count_all();
+				// }
+				$response = array(
+					// "pageSize" => $pageSize,
+					// "page" => $page,
+					"total" => $total,
+					"data" => $data,
+				);
+				echo json_encode($response);
+				die;
+			else:
+				// send server error
+				header("HTTP/1.1 500 Internal Server Error");
+				echo "Failed to read data!";
+			endif;
+		} else {
+			$this->load->view('pdf/pdf_listing');
+		}
+	}
 	public function reports() {
 		$data = array('title' => 'reports');
 		//load the view and saved it into $html variable

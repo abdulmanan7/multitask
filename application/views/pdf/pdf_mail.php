@@ -119,11 +119,11 @@ border-spacing:0.5em;}
 <table id="question" border="0" width="100%" class="question">
 	<tr class="item-row">
 		<td class="item-head">Baujahr von Ihrem Haus? </td>
-		<td class="item-name form-control" colspan="2"><?=$question1?></td>
+		<td class="item-name form-control" colspan="2"><?=$baujahr_hous?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Baujahr Ihrer aktuellen Heizung? </td>
-		<td class="item-name form-control" colspan="2"><?=$question2?></td>
+		<td class="item-name form-control" colspan="2"><?=$baujahr_alte?></td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Womit heizen Sie derzeit? </td>
@@ -171,7 +171,7 @@ border-spacing:0.5em;}
  <?php foreach ($image as $val): ?>
 <?php if ($val != ""): ?>
 		<td style="border:2px solid black; text-align:center;" width="100%" >
-			<img src="<?=$val?>" width="350" height="250" style="border-right:5px solid #fff;" />
+			<img src="<?=$val?>" width="350" style="border-right:5px solid #fff;" />
 		</td>
 <?php endif?>
  <?php endforeach?>

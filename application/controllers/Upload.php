@@ -15,12 +15,16 @@ class Upload extends CI_Controller {
 		$this->load->view('upload', array('error' => ''));
 	}
 	public function do_upload() {
+		if ($_FILES['userfile']['size'] > 500000) {
+
+		}
 		$files = "";
 		$upload_path_url = base_url() . 'uploads/';
 
 		$config['upload_path'] = FCPATH . 'uploads/';
 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
-		$config['max_size'] = '30000';
+		$config['file_name'] = time();
+		// $config['max_size'] = '30000';
 
 		$this->load->library('upload', $config);
 
@@ -66,6 +70,16 @@ class Upload extends CI_Controller {
 			$config['height'] = 50;
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
+			$configer = array(
+				'image_library' => 'gd2',
+				'source_image' => $data['full_path'],
+				'maintain_ratio' => TRUE,
+				'width' => 350,
+				'new_image' => $data['file_path'] . "pdf/",
+			);
+			$this->image_lib->clear();
+			$this->image_lib->initialize($configer);
+			$this->image_lib->resize();
 
 			//set the data for the json array
 			$info = new StdClass;
@@ -106,7 +120,6 @@ class Upload extends CI_Controller {
 		$info->file = is_file(FCPATH . 'uploads/' . $file);
 
 		if (IS_AJAX) {
-			//I don't think it matters if this is set but good for error checking in the console/firebug
 			echo json_encode(array($info));
 		} else {
 			//here you will need to decide what you want to show for a successful delete

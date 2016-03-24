@@ -21,6 +21,13 @@ class Att_email_model extends CI_Model {
 		}
 		return $this->db->get()->result_array();
 	}
+	function get_detail($id) {
+		// $term = ($seach_option['term'] == "aends") ? NULL : $seach_option['term'];
+		$this->db->select();
+		$this->db->from('att_email_detail');
+		$this->db->where('att_id', $id);
+		return $this->db->get()->result_array();
+	}
 	function count_all() {
 		$this->db->select()->from('email_att');
 		return $this->db->count_all_results();

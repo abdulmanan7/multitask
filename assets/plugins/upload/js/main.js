@@ -21,7 +21,7 @@ $(function () {
                 $('<input>',{
                    name:"image[]",
                    type:"hidden",
-                   value:file.url
+                   value:file.pdfUrl
                }).appendTo('#fileupload');
             } 
         });
