@@ -53,7 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'eckool.com') ? 'production' : 'development');
+define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
 // define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*

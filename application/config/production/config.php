@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
  */
-$config['base_url'] = 'http://eckool.com';
+$config['base_url'] = 'http://sajidshah.com/proof/abdulmanan/mail_pdf';
 
 /*
 |--------------------------------------------------------------------------
