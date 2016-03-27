@@ -55,7 +55,7 @@ class Reports extends CI_Controller {
 				$count++;
 				$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 			}
-			$this->send($pdata['email']);
+			$this->send($pdata['email'], $att_id);
 		}
 		//this the the PDF filename that user will get to download
 		redirect('welcome/listing', 'refresh');
@@ -90,7 +90,7 @@ class Reports extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		if ($save) {
-			$savePath = FCPATH . "/upload/" . time() . ".pdf";
+			$savePath = FCPATH . "/uploads/" . time() . ".pdf";
 			$pdf->Output($savePath, "F");
 			return $savePath;
 		} else {
