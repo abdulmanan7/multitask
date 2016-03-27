@@ -90,7 +90,7 @@ class Reports extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		if ($save) {
-			$savePath = FCPATH . "/uploads/" . time() . ".pdf";
+			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . $att_id . ".pdf";
 			$pdf->Output($savePath, "F");
 			return $savePath;
 		} else {
