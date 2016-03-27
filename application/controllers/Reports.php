@@ -60,7 +60,7 @@ class Reports extends CI_Controller {
 		//this the the PDF filename that user will get to download
 		redirect('welcome/listing', 'refresh');
 	}
-	public function get($att_id = '') {
+	public function get($att_id = '', $save = FALSE) {
 		$data = $this->att_email->get($att_id);
 		$images = $this->att_email->get_detail($att_id);
 		$count = 0;
@@ -89,9 +89,16 @@ class Reports extends CI_Controller {
 
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
-		$pdf->Output($pdfFilePath, "I");
+		if ($save) {
+			$savePath = FCPATH . "/upload/" . time() . ".pdf";
+			$pdf->Output($savePath, "F");
+			return $savePath;
+		} else {
+			$pdf->Output($pdfFilePath, "I");
+		}
 	}
-	function send($email) {
+	function send($email, $att_id) {
+		$att_path = $this->get($att_id, true);
 		$this->load->library('email');
 
 		$this->email->from('unterlagen@fotobegehung.de', 'SOLARvent');
@@ -99,11 +106,15 @@ class Reports extends CI_Controller {
 		$this->email->cc('unterlagen@fotobegehung.de');
 
 		$this->email->subject('Fotobegehung');
+		$this->email->atteach($att_path);
 		$this->email->message('you have just submit Fotobegehung at SOLARvent');
 
-		$this->email->send();
+		if ($this->email->send()) {
+			echo 'Email send.';
+		} else {
+			show_error($this->email->print_debugger());
+		}
 
-		echo $this->email->print_debugger();
 	}
 	function delete($att_id = '') {
 		is_valid_id($att_id);
