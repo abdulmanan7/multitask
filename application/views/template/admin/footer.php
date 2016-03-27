@@ -2,7 +2,7 @@
         <!-- Dashboard Wrapper End -->
 
         <footer>
-          <p>© Eckool 2015-16</p>
+          <p>© SOLARvent 2015-16</p>
         </footer>
 
       </div>
@@ -137,7 +137,10 @@ pageable: {
 
  //  widths();
  //  });
-
+ jQuery(document).ready(function($) {
+   $('#loader').css('display','hide');
+   $('#ajaxLoader').css('display','none');
+ });
 </script>
   </body>
 

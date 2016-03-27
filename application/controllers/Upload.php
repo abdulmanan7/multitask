@@ -8,7 +8,14 @@ class Upload extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->helper(array('form', 'url', 'file'));
+		if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login');
+		} else {
+			$this->comp_id = $this->session->userdata('company_id');
+			$this->comp_id = $this->session->userdata('user_id');
+			$this->load->helper(array('form', 'url', 'file'));
+
+		}
 	}
 
 	public function index() {

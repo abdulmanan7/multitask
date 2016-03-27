@@ -19,7 +19,8 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		// $this->load->view('welcome_message',$data['logo'="assets/img/logo.jpg"]);
+		$data['page'] = "pdf/pdf_listing";
+		$this->load->view('template', $data);
 	}
 	public function listing($search_option = 'aends') {
 		if ($this->input->is_ajax_request()) {
@@ -51,7 +52,8 @@ class Welcome extends CI_Controller {
 				echo "Failed to read data!";
 			endif;
 		} else {
-			$this->load->view('pdf/pdf_listing');
+			$data['page'] = "pdf/pdf_listing";
+			$this->load->view('template', $data);
 		}
 	}
 	public function get_detail($id) {

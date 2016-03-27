@@ -85,6 +85,12 @@ defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automaticall
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 /**
- * customs
+ * Custom constant
  */
-define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+define('LIMIT', 10); // highest automatically-assigned error code
+define('TRANS_TYPE', '1');
+define('ACCOUNT_ID', '3');
+define('PAID', 1);
+define('PARTIALY_PAID', 2);
+define('PENDING', 3);
+define('SYSTEM', '0');

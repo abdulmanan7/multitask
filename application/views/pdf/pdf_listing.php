@@ -1,49 +1,12 @@
-<?php $this->load->view('template/header');?>
-<style type="text/css">
-  #grid > .k-grid-header {
-    padding-right: 0px !important;
-  }
-  #grid > .k-grid-content {
-    height: auto !important;
-  }
-  #grid > .k-grouping-header {
-    display: none;
-  }
-  #userSearch {
-    height:40px ;
-    width: 270px !important;
-  }
-  #searchclear {
-    min-height: 34px;
-    padding-top: 2px;
-  }
-  #grid .k-grid-content table tbody tr td{
-    cursor:pointer;
-  }
-  .btn {
-    display: inline-block;
-    padding: 9px 10px;
-     margin-bottom: 0;
-  }
-  .k-pager-wrap .k-icon{
-    margin-top: 6px;
-  }
-</style>
-<h1>Atteachments list</h1>
-<div id="body">
+
 <div id="grid"></div>
-<script type="text/x-kendo-template" id="atteachment">
-<div class="detailDiv">
-<img src="#:path#" alt="">
-</div>
-</script>
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
     <div class="pull-left">
-      <a data-toggle="modal" href="<?=base_url('reports')?>" type="button" class="btn btn-primary pull-right" target="_black">Add New</a>
+      <a data-toggle="modal" href="<?=base_url('reports')?>" type="button" class="btn btn-warning pull-right" target="_black">Add Neu</a>
     </div>
     <div id="example" class="srach_clear pull-right" >
-      <div class="input-group " style="width:100%;" id="ext-gen3">
+      <div class="input-group" style="width:100%;" id="ext-gen3">
         <div class="x-form-field-wrap x-form-field-trigger-wrap x-trigger-wrap-focus" id="ext-gen4">
           <input autocomplete="off" type="text" id="userSearch" name="userSearch" class="form-control x-form-text x-form-field x-form-focus searching" placeholder="Search username...">
         </div>
@@ -75,23 +38,16 @@
         groupable: true,
         sortable: true,
         toolbar: kendo.template($("#Searchtemplate").html()),
-  // toolbar: [
-  //         {
-  //            name: "Add",
-  //            text: "Send Email",
-  //            click: function(e){alert('Send Emails'); return false;}
-  //         }
-  //        ],
   pageable: {
     refresh: true,
     pageSizes: [10 ,50 ,100,250],
     buttonCount: 5
   },
-  columns: [{hidden: true, field: "id",menu:false
+  columns: [{hidden: true, field: "att_id",menu:false
 },{
   field: "anfragedatum",
   title: "Anfragedatum",
-  width:80,
+  width:120,
 },{
   field: "vorname",
   title: "Vorname",
@@ -101,8 +57,8 @@
   title: "Nachname",
   width:50,
 },{
-  field: "Strasse",
-  title: "strabe_nr",
+  field: "strabe_nr",
+  title: "Straße",
   width:50,
 },{
   field: "PLZ",
@@ -121,31 +77,21 @@
   title:"eMail",
   width:100,
 },{
+  field: "bauobjektadress",
+  title:"Objektadresse",
+  template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+  width:100,
+},{
   field: "telefon",
   title:"Telefon",
   width:80,
-}/*,
+},
 {
   title: "Operation",
   width:120,
-  template:'<a class="updateStatus btn btn-warning" id="btnEdit"><i class="fa fa-edit"></i> Update</a><a class="btn btn-info" href=<?=base_url()?>/users/with_details/#=id#/><i class="fa fa-eye"></i>Full Detail</a><a class="btn btn-success" id="btnPost"><i class="fa fa-plus"></i> Add Post</a><a class="btn btn-danger" id="btnDeactivate"><i class="fa fa-plus"></i> Deactivate</a>',
-}*/
+  template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+}
 ],
-detailTemplate: kendo.template($("#atteachment").html()),
-detailInit: listAtteachments
-// dataBound: function(res) {
-//   $("#grid .k-grid-content table tbody tr").each(function(index, element) {
-//     var status = $(this).find('td:first').next().html();
-//     if(status == 1)
-//     {
-//       $(this).css({
-//         color: '#fff',
-//         background: '#8D8E8B'
-//       });
-//     }
-//   });
-//   this.expandRow(this.tbody.find("tr.k-master-row").first());
-// }
 });
     }
     $(document).on("keyup", "#grid .k-header .toolbar .searching", function(){
@@ -176,31 +122,31 @@ detailInit: listAtteachments
     pageSizes: [10 ,50 ,100,250],
     buttonCount: 5
   },
-   columns: [{hidden: true, field: "id",menu:false
+   columns: [{hidden: true, field: "att_id",menu:false
 },{
   field: "anfragedatum",
   title: "Anfragedatum",
-  width:100,
+  width:120,
 },{
   field: "vorname",
   title: "Vorname",
-  width:100,
+  width:60,
 },{
   field: "nachname",
   title: "Nachname",
   width:50,
 },{
-  field: "Strasse",
-  title: "strabe_nr",
-  width:40,
+  field: "strabe_nr",
+  title: "Straße",
+  width:50,
 },{
   field: "PLZ",
   title:"PLZ",
-  width:20,
+  width:40,
 },{
   field: "ort",
   title:"Ort",
-  width:20,
+  width:40,
 },{
   field: "land",
   title:"Land",
@@ -210,45 +156,21 @@ detailInit: listAtteachments
   title:"eMail",
   width:100,
 },{
+  field: "bauobjektadress",
+  title:"Objektadresse",
+  template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+  width:100,
+},{
   field: "telefon",
   title:"Telefon",
-  width:100,
-}/*,
+  width:80,
+},
 {
   title: "Operation",
   width:120,
-  template:'<a class="updateStatus btn btn-warning" id="btnEdit"><i class="fa fa-edit"></i> Update</a><a class="btn btn-info" href=<?=base_url()?>/users/with_details/#=id#/><i class="fa fa-eye"></i>Full Detail</a><a class="btn btn-success" id="btnPost"><i class="fa fa-plus"></i> Add Post</a><a class="btn btn-danger" id="btnDeactivate"><i class="fa fa-plus"></i> Deactivate</a>',
-}*/
-]
-});
-});
-    function listAtteachments(e) {
-    var detailRow = e.detailRow;
-    var detailUrl = "<?=base_url('welcome/get_detail');?>/";
-    var att_id=e.data.att_id;
-// var course_id=e.data.course_id;
-var classResult = new kendo.data.DataSource({
-  transport: {
-    read: {
-      async: true,
-      url: detailUrl+att_id,
-      dataType: "json"
-    }
-  },
-// schema: { data: "data", total: "total" }
-});
-detailRow.find(".detailDiv").kendoGrid({
-  dataSource: classResult,
-  columns: [
-{field: "path", title: "Atteachments"}
-// {template:kendo.template($("#tplCactions").html()), title: "Actions",width:160},
-],mobile: true,
-detailExpand: function(e) {
-  this.collapseRow(this.tbody.find('tr.k-master-row').not(e.masterRow));
-},
-});
+  template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
 }
-  </script>
-  </div>
-</body>
-</html>
+],
+});
+});
+</script>

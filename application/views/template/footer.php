@@ -1,111 +1,148 @@
-    <!-- The template to display files available for upload -->
-    <script id="template-upload" type="text/x-tmpl">
-        {% for (var i=0, file; file=o.files[i]; i++) { %}
-        <tr class="template-upload fade">
-            <td>
-                <span class="preview"></span>
-            </td>
-            <td>
-                <p class="name">{%=file.name%}</p>
-                <strong class="error text-danger"></strong>
-            </td>
-            <td>
-                <p class="size">Processing...</p>
-                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
-            </td>
-            <td>
-                {% if (!i && !o.options.autoUpload) { %}
-                <button class="btn btn-primary start" disabled>
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
-                </button>
-                {% } %}
-                {% if (!i) { %}
-                <button class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-                {% } %}
-            </td>
-        </tr>
-        {% } %}
-    </script>
-    <!-- The template to display files available for download -->
-    <script id="template-download" type="text/x-tmpl">
-        {% for (var i=0, file; file=o.files[i]; i++) { %}
-        <tr class="template-download fade">
-            <td>
-                <span class="preview">
-                    {% if (file.thumbnailUrl) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
-                    {% } %}
-                </span>
-            </td>
-            <td>
-                <p class="name">
-                    {% if (file.url) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
-                    {% } else { %}
-                    <span>{%=file.name%}</span>
-                    {% } %}
-                </p>
-                {% if (file.error) { %}
-                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
-                {% } %}
-            </td>
-            <td>
-                <span class="size">{%=o.formatFileSize(file.size)%}</span>
-            </td>
-            <td>
-                {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                    <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
-                </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
-                {% } else { %}
-                <button class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-                {% } %}
-            </td>
-        </tr>
-        {% } %}
-    </script>
-    <script src="assets/plugins/upload/js/jquery.js"></script>
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-    <script src="assets/plugins/upload/js/vendor/jquery.ui.widget.js"></script>
-    <!-- The Templates plugin is included to render the upload/download listings -->
-    <script src="assets/plugins/upload/js/blueimg/tmpl.min.js"></script>
-    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-    <script src="assets/plugins/upload/js/blueimg/load-image.all.min.js"></script>
-    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-    <script src="assets/plugins/upload/js/blueimg/canvas-to-blob.min.js"></script>
-    <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <!-- blueimp Gallery script -->
-    <script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-    <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-    <script src="assets/plugins/upload/js/jquery.iframe-transport.js"></script>
-    <!-- The basic File Upload plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload.js"></script>
-    <!-- The File Upload processing plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-process.js"></script>
-    <!-- The File Upload image preview & resize plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-image.js"></script>
-    <!-- The File Upload audio preview plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-audio.js"></script>
-    <!-- The File Upload video preview plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-video.js"></script>
-    <!-- The File Upload validation plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-validate.js"></script>
-    <!-- The File Upload user interface plugin -->
-    <script src="assets/plugins/upload/js/jquery.fileupload-ui.js"></script>
-    <!-- The main application script -->
-    <script src="assets/plugins/upload/js/main.js"></script>
-    <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
-<!--[if (gte IE 8)&(lt IE 10)]>
-<script src="assets/plugins/upload/js/cors/jquery.xdr-transport.js"></script>
-<![endif]-->
+ </div>
+        <!-- Dashboard Wrapper End -->
+
+        <footer>
+          <p>© SOLARvent 2015-16</p>
+        </footer>
+
+      </div>
+    </div>
+    <!-- Main Container end -->
+
+<script type="text/javascript" src="<?php echo load_js('jquery-ui-v1.10.3.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/jquery.scrollUp.js')?>"></script>
+
+
+<?php if ($page_title == "Dashboard"): ?>
+
+     <script src="<?php echo load_js('justgage/justgage.js')?>"></script>
+    <script src="<?php echo load_js('justgage/raphael.2.1.0.min.js')?>"></script>
+
+    <!-- Flot Charts -->
+    <script src="<?php echo load_js('flot/jquery.flot.js')?>"></script>
+    <script src="<?php echo load_js('flot/jquery.flot.orderBar.min.js')?>"></script>
+    <script src="<?php echo load_js('flot/jquery.flot.stack.min.js')?>"></script>
+    <script src="<?php echo load_js('flot/jquery.flot.pie.min.js')?>"></script>
+    <script src="<?php echo load_js('flot/jquery.flot.tooltip.min.js')?>"></script>
+    <script src="<?php echo load_js('flot/jquery.flot.resize.min.js')?>"></script>
+     <script src="<?php echo load_js('flot/custom/area.js')?>"></script>
+        <!-- Sparkline graphs -->
+    <script src="<?php echo load_js('sparkline.js')?>"></script>
+    <script src="<?php echo load_js('dashboard.js')?>"></script>
+<?php endif?>
+
+
+    <!-- Tiny Scrollbar JS -->
+    <script src="<?php echo base_url('assets/js/tiny-scrollbar.js')?>"></script>
+    <!-- <script src="<?php //echo base_url('assets/plugins/kendo/ext-base.js')?>"></script> -->
+    <!-- <script src="<?php //echo base_url('assets/plugins/kendo/ext-all.js')?>"></script> -->
+
+    <!-- Custom JS -->
+    <script src="<?php echo base_url('assets/js/modernizr.js')?>"></script>
+    <script src="<?php echo base_url('assets/js/menu.js')?>"></script>
+    <?php if (isset($page_title) && $page_title == 'Extras'): ?>
+    <script src="<?php echo base_url('assets/js/pricing.js')?>"></script>
+    <?php endif?>
+  <script type="text/javascript" src="<?php echo load_js('bootstrap-datepicker.js')?>"></script>
+  <script type="text/javascript" src="<?php echo load_js('alertify.min.js');?>"></script>
+    <!-- PNotify -->
+    <script type="text/javascript" src="<?=load_plugin('notify/pnotify.core.js')?>"></script>
+  <!-- <script type="text/javascript" src="<?php //echo load_plugin('parsley/parsley.min.js');?>"></script> -->
+  <?php $this->load->view('template/script');?>
+  <?php $this->load->view('template/ajax_script');?>
+  <script type="text/javascript" src="<?php echo load_js('custom.js')?>"></script>
+
+    <?php if (isset($dtable_required) && $dtable_required == true): ?>
+          <!-- <script type="text/javascript" src="<?php echo load_js('jquery.dataTables.js')?>"></script> -->
+          <script type="text/javascript">
+            jQuery(document).ready(function($) {
+               $('.dtable').kendoGrid({
+  // groupable:true,
+pageable: {
+        refresh: true,
+        pageSize: 6,
+        pageSizes:true,
+        buttonCount:5
+                },
+  title:"Listing"
+  // searchable:true
+
+ });
+ });
+                            //Data Tables
+                          //   $('.dtable').dataTable({
+                          //     "sPaginationType": "full_numbers",
+                          //     'iDisplayLength': 10
+                          //   });
+                          //   var records=$('.paginate_active').html();
+                          //   if (parseInt(records)<10 || records=="undefined") {
+                          //     $('.paginate_active').css('display', 'none');
+                          //     $('#data-table_filter').css('display', 'none');
+                          //   };
+                          // });
+          </script>
+    <?php endif?>
+<script type="text/javascript">
+// jQuery(document).ready(function($) {
+//   ajaxHelper.init({
+//     url:"<?php echo base_url('ajax/add_fee');?>",
+//   });
+// });
+ // Ext.onReady(function(){
+ //    var searchData = new Ext.data.JsonStore({
+ //    paramsAsHash: true,
+ //    // root: "data",
+ //    url: "<?php echo base_url('studnets/search');?>",
+ //    idProperty: "student_id",
+ //    totalProperty: "totalCount",
+ //    //paramOrder: ["start", "limit", "query", "cus_id"],
+ //    fields: ["first_name","last_name","course","section"]
+ //    });
+
+ //    var pref = new Ext.form.ComboBox({
+ //      store: searchData,
+ //      displayField: "first_name",
+ //      valueField: "student_id",
+ //      typeAhead: false,
+ //      name: "first_name",
+ //      fieldLabel: "Studnet ID #",
+ //      loadingText: "Searching...",
+ //      allowSearchMinChars: 3,
+ //      selectOnFocus: false,
+ //      forceSelection: false,
+ //      validateOnBlur: false,
+ //      anchor: "100%",
+ //      pageSize: 7,
+ //      minChars: 3,
+ //      width:260,
+ //      itemSelector: "div.search-item",
+ //      hideTrigger: true,
+
+ //       tpl: new Ext.XTemplate('<tpl for="."><div class="search-item">',  "<B>Name #: </B>{first_name} {last_name} <B> Course # : </B> {course}<br/>", "<B>section : </B>{section}<br/></tpl>"),
+ //      applyTo: 'gSearch', //input field ID
+ //      onSelect: function(fields){
+ //      // override default onSelect to do redirect
+ //          // if(fields.data.UNIT_PREFERRED_NUMBER == 'null' || fields.data.UNIT_PREFERRED_NUMBER == null)
+ //          //  $("#gSearch").val(fields.data.RTMI_NUMBER);
+ //          // else
+ //          //  $("#gSearch").val(fields.data.UNIT_PREFERRED_NUMBER);
+ //          // $("#rtmi_number").val(fields.data.RTMI_NUMBER);
+ //          // $("#masagr_id").val(fields.data.MASAGR_ID);
+ //          // $("#agrsta_id").val(fields.data.AGRSTA_ID);
+ //          // update_rtmi();
+ //          // this.collapse();
+ //        }
+ //    });
+
+ //  widths();
+ //  });
+ jQuery(document).ready(function($) {
+   $('#loader').css('display','hide');
+   $('#ajaxLoader').css('display','none');
+ });
+</script>
+  </body>
+
+<!-- Mirrored from iamsrinu.com/bluemoon-admin-theme7/default.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Sep 2015 06:54:23 GMT -->
+</html>
