@@ -106,7 +106,7 @@ class Reports extends CI_Controller {
 		$this->email->cc('unterlagen@fotobegehung.de');
 
 		$this->email->subject('Fotobegehung');
-		$this->email->atteach($att_path);
+		$this->email->attach($att_path);
 		$this->email->message('you have just submit Fotobegehung at SOLARvent');
 
 		if ($this->email->send()) {
