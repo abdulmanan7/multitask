@@ -41,18 +41,21 @@ class Reports extends CI_Controller {
 			"warmebedarf_neu" => $this->input->post('question9'),
 			"beschreibung" => $this->input->post('description'));
 		$att_id = $this->att_email->save($pdata);
-		$data = $this->input->post();
-		$images = $data['image'];
-		$count = 0;
-		$tr = '';
-		$index = 0;
-		foreach ($images as $key => $val) {
-			if (count($tr[$index]) == 2) {
-				$index++;
+		if ($att_id > 0) {
+			$data = $this->input->post();
+			$images = $data['image'];
+			$count = 0;
+			$tr = '';
+			$index = 0;
+			foreach ($images as $key => $val) {
+				if (count($tr[$index]) == 2) {
+					$index++;
+				}
+				$tr[$index][] = $val;
+				$count++;
+				$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 			}
-			$tr[$index][] = $val;
-			$count++;
-			$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
+			$this->send($pdata['email']);
 		}
 		//this the the PDF filename that user will get to download
 		redirect('welcome/listing', 'refresh');
@@ -87,6 +90,20 @@ class Reports extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		$pdf->Output($pdfFilePath, "I");
+	}
+	function send($email) {
+		$this->load->library('email');
+
+		$this->email->from('unterlagen@fotobegehung.de', 'SOLARvent');
+		$this->email->to($email);
+		$this->email->cc('unterlagen@fotobegehung.de');
+
+		$this->email->subject('Fotobegehung');
+		$this->email->message('you have just submit Fotobegehung at SOLARvent');
+
+		$this->email->send();
+
+		echo $this->email->print_debugger();
 	}
 	function delete($att_id = '') {
 		is_valid_id($att_id);
