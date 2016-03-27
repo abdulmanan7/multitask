@@ -19,7 +19,6 @@
     });
     $(document).on('click','.clear', function(){
       $('.searching').val('');
-      // var url="<?php echo base_url('users')?>";
       list();
     });
     function list(){
@@ -38,69 +37,68 @@
         groupable: true,
         sortable: true,
         toolbar: kendo.template($("#Searchtemplate").html()),
-  pageable: {
-    refresh: true,
-    pageSizes: [10 ,50 ,100,250],
-    buttonCount: 5
-  },
-  columns: [{hidden: true, field: "att_id",menu:false
-},{
-  field: "anfragedatum",
-  title: "Anfragedatum",
-  width:120,
-},{
-  field: "vorname",
-  title: "Vorname",
-  width:60,
-},{
-  field: "nachname",
-  title: "Nachname",
-  width:50,
-},{
-  field: "strabe_nr",
-  title: "Straße",
-  width:50,
-},{
-  field: "PLZ",
-  title:"PLZ",
-  width:40,
-},{
-  field: "ort",
-  title:"Ort",
-  width:40,
-},{
-  field: "land",
-  title:"Land",
-  width:50,
-},{
-  field: "email",
-  title:"eMail",
-  width:100,
-},{
-  field: "bauobjektadress",
-  title:"Objektadresse",
-  template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-  width:100,
-},{
-  field: "telefon",
-  title:"Telefon",
-  width:80,
-},
-{
-  title: "Operation",
-  width:120,
-  template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
-}
-],
-});
+        pageable: {
+          refresh: true,
+          pageSizes: [10 ,50 ,100,250],
+          buttonCount: 5
+        },
+        columns: [{hidden: true, field: "att_id",menu:false
+      },{
+        field: "anfragedatum",
+        title: "Anfragedatum",
+        width:110,
+      },{
+        field: "vorname",
+        title: "Vorname",
+        width:60,
+      },{
+        field: "nachname",
+        title: "Nachname",
+        width:50,
+      },{
+        field: "strabe_nr",
+        title: "Straße",
+        width:50,
+      },{
+        field: "PLZ",
+        title:"PLZ",
+        width:40,
+      },{
+        field: "ort",
+        title:"Ort",
+        width:40,
+      },{
+        field: "land",
+        title:"Land",
+        width:50,
+      },{
+        field: "email",
+        title:"eMail",
+        width:110,
+      },{
+        field: "bauobjektadress",
+        title:"Objektadresse",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+        width:180,
+      },{
+        field: "telefon",
+        title:"Telefon",
+        width:80,
+      },
+      {
+        title: "Operation",
+        width:100,
+        template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+      }
+      ],
+    });
     }
-    $(document).on("keyup", "#grid .k-header .toolbar .searching", function(){
-
-      var selecteditem =  $.trim($(this).val()).toUpperCase();
+$(document).on("keyup", "#grid .k-header .toolbar .searching",function(){
+  var selecteditem =  $.trim($(this).val());
   var kgrid =   $('#grid').data("kendoGrid");//$(this).closest('.orders1').html("");
-  selecteditem = selecteditem.toUpperCase(); //;console.log(selecteditem);
   if(selecteditem=="")
     selecteditem="aends";
+  delay(function(){
   $('#grid').data("kendoGrid").destroy();
   var currentdate = new Date();
   $("#grid").kendoGrid({
@@ -112,65 +110,66 @@
         },
       },
       schema: { data: "data", total: "total" },
-          pageSize: 10
-        },
-        groupable: true,
-        sortable: true,
-        toolbar: kendo.template($("#Searchtemplate").html()),
-  pageable: {
-    refresh: true,
-    pageSizes: [10 ,50 ,100,250],
-    buttonCount: 5
+      pageSize: 10
+    },
+    groupable: true,
+    sortable: true,
+    toolbar: kendo.template($("#Searchtemplate").html()),
+    pageable: {
+      refresh: true,
+      pageSizes: [10 ,50 ,100,250],
+      buttonCount: 5
+    },
+    columns: [{hidden: true, field: "att_id",menu:false
+  },{
+    field: "anfragedatum",
+    title: "Anfragedatum",
+    width:110,
+  },{
+    field: "vorname",
+    title: "Vorname",
+    width:60,
+  },{
+    field: "nachname",
+    title: "Nachname",
+    width:50,
+  },{
+    field: "strabe_nr",
+    title: "Straße",
+    width:50,
+  },{
+    field: "PLZ",
+    title:"PLZ",
+    width:40,
+  },{
+    field: "ort",
+    title:"Ort",
+    width:40,
+  },{
+    field: "land",
+    title:"Land",
+    width:50,
+  },{
+    field: "email",
+    title:"eMail",
+    width:110,
+  },{
+    field: "bauobjektadress",
+    title:"Objektadresse",
+    template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+    width:180,
+  },{
+    field: "telefon",
+    title:"Telefon",
+    width:80,
   },
-   columns: [{hidden: true, field: "att_id",menu:false
-},{
-  field: "anfragedatum",
-  title: "Anfragedatum",
-  width:120,
-},{
-  field: "vorname",
-  title: "Vorname",
-  width:60,
-},{
-  field: "nachname",
-  title: "Nachname",
-  width:50,
-},{
-  field: "strabe_nr",
-  title: "Straße",
-  width:50,
-},{
-  field: "PLZ",
-  title:"PLZ",
-  width:40,
-},{
-  field: "ort",
-  title:"Ort",
-  width:40,
-},{
-  field: "land",
-  title:"Land",
-  width:50,
-},{
-  field: "email",
-  title:"eMail",
-  width:100,
-},{
-  field: "bauobjektadress",
-  title:"Objektadresse",
-  template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-  width:100,
-},{
-  field: "telefon",
-  title:"Telefon",
-  width:80,
-},
-{
-  title: "Operation",
-  width:120,
-  template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
-}
-],
+  {
+    title: "Operation",
+    width:80,
+    template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+  }
+  ],
 });
+    }, 400 );
 });
-</script>
+  </script>

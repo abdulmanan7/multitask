@@ -110,9 +110,12 @@ class Reports extends CI_Controller {
 		$this->email->message('you have just submit Fotobegehung at SOLARvent');
 
 		if ($this->email->send()) {
-			echo 'Email send.';
+			set_flash('Data save and email has been send', 'success');
+			redirect('welcome/listing', 'refresh');
 		} else {
-			show_error($this->email->print_debugger());
+			set_flash('Error while sending email', 'error');
+			redirect('welcome/listing', 'refresh');
+			// show_error($this->email->print_debugger());
 		}
 
 	}
