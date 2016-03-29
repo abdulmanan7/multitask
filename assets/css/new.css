@@ -2232,7 +2232,7 @@ footer {
     background-image: linear-gradient(#f2f2f2, #ebebeb 85%, #cccccc);
     background-repeat: no-repeat;
     border-radius: 3px 3px 0 0;
-    width: 102px;
+    width: 168px !important;
     text-align: center;
     margin-right: 1px;
     border-radius: 3px 3px 0 0; }
@@ -3449,6 +3449,11 @@ html > body > .ui-pnotify {
 }
 .error{
   color:#F83131;
+}
+.k-grid td  {
+  height: auto !important;
+  overflow: visible !important;
+  white-space: normal !important;
 }
 /* *********  /notifications  **************************** */
 /* *********  profile/social  **************************** */

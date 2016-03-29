@@ -121,25 +121,16 @@ if (!function_exists('load_sub_nav')) {
 		switch ($page) {
 		case 'Dashboard':
 			$sub_nav_html = '<div class="sub-nav hidden-sm hidden-xs"><ul>';
-			$sub_nav_html .= '<li><a href="#" class="heading">Dashboard</a></li></ul>';
-			$sub_nav_html .= '<div class="custom-search hidden-sm hidden-xs">
-					            <input type="text" class="search-query" placeholder="Search here ...">
-					            <i class="fa fa-search"></i></div></div>';
+			$sub_nav_html .= '<li><a href="#" class="heading">Dashboard</a></li></ul></div>';
 			break;
 		case 'welcome':
 			$sub_nav_html = '<div class="sub-nav hidden-sm hidden-xs"><ul>';
-			$sub_nav_html .= '<li><h4 class="selected">Alle Angebote</h4></li></ul>';
-			$sub_nav_html .= '<div class="custom-search hidden-sm hidden-xs">
-					            <input type="text" class="search-query" placeholder="Search here ...">
-					            <i class="fa fa-search"></i></div></div>';
+			$sub_nav_html .= '<li><h4 class="selected">Alle Planungsunterlagen</h4></li></ul></div>';
 			break;
 
 		default:
 			$sub_nav_html = '<div class="sub-nav hidden-sm hidden-xs"><ul>';
-			$sub_nav_html .= '<li><a href="#" class="heading">Willkommen</a></li></ul>';
-			$sub_nav_html .= '<div class="custom-search hidden-sm hidden-xs">
-					            <input type="text" id="gSearch" class="search-query" placeholder="Search here ...">
-					            <i class="fa fa-search"></i></div></div>';
+			$sub_nav_html .= '<li><a href="#" class="heading">Willkommen</a></li></ul></div>';
 			break;
 		}
 		echo $sub_nav_html;

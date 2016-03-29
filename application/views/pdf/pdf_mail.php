@@ -153,8 +153,9 @@ border-spacing:0.5em;}
 	<tr>
  <?php foreach ($image as $val): ?>
 <?php if ($val != ""): ?>
+	<?php $path = str_replace("/pdf/", "/", $val)?>
 		<td style="border:2px solid black; text-align:center;" width="100%" >
-			<img src="<?=$val?>" width="350" style="border-right:5px solid #fff;" />
+			<a href="<?=$path?>"><img src="<?=$val?>" width="350" style="border-right:5px solid #fff;" /></a>
 		</td>
 <?php endif?>
  <?php endforeach?>

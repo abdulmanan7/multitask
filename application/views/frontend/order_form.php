@@ -13,7 +13,7 @@
 						</td>
 					</tr>
 				</table>
-				<h4 class="table-head" style="padding-bottom:0;">Unterlagen Ihrer „Digitalen Ortsbegehung“</h4>
+				<h4 class="table-head" style="padding-bottom:0;">Ihre persönliche Fotobegehung</h4>
 				<span align="left" class="subheading">Erfassung Ihrer Kundendaten</span>
 				<div class="form-group">
 					<label class="control-label item-name">Vorname:</label>

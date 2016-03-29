@@ -10,7 +10,7 @@
             <li <?php echo ($page_title == 'welcome') ? 'class="active"' : ''?>>
               <a href='<?php echo base_url('welcome/listing');?>'>
                 <i class="fa fa-book"></i>
-                Angebote
+                Planungsunterlagen
               </a>
             </li>
              <li <?php echo ($page_title == 'Settings') ? 'class="active"' : ''?>>

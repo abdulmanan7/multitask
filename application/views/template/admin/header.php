@@ -38,6 +38,7 @@
   <link href="<?php echo load_css('style.css')?>" rel="stylesheet">
   <script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
   <script type="text/javascript" src="<?php echo load_plugin('kendo/kendo.all.min.js')?>"></script>
+  <script type="text/javascript" src="<?php echo load_plugin('kendo/default/kendo.de-DE.js')?>"></script>
   <script>
   var module="<?php echo $this->router->fetch_class()?>";
   var method="<?php echo $this->router->fetch_method()?>";
