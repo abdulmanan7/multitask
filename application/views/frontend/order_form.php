@@ -11,7 +11,7 @@
 							<img style="float: right;"  src="<?=$logo?>" />
 						</div>
 						<div class="heading pull-left">
-							<h4 class="table-head" style="padding-bottom:0;">Ihre persönliche Fotobegehung</h4>
+							<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 						<option value="Schweiz">Schweiz</option>
 						<option value="Spanien">Spanien</option>
 						<option value="Schweden">Schweden</option>
-						<option value="other">Other (define your's)</option>
+						<option value="other">Neues Land hinzufügen</option>
 					</select>
 				</div>
 				<div class="form-group">
@@ -226,7 +226,7 @@
 2) Schornstein (Außenansicht Wand mit Putztürchen, Foto damit man ggf. das Innenrohrmaterial erkennen kann - messen Sie bei dieser Gelegenheit den Innendurchmesser und teilen Sie diesen mit)
 					</li>
 					<li>
-						
+
 3) Brennstofflager (z.B. Heizöltankraum, gibt es Rohrleitungen an der Decke, wo sind ggf. Fenster)
 					</li>
 <li>4) Einbringhindernisse (Wo muss der Kessel, Pufferspeicher ggf. durch bzw. welche Treppen müssen überwunden werden. Teilen Sie uns jeweils das engste Durchgangsmaß mit sowie die Anzahl der Treppenstufen)</li>
@@ -302,7 +302,7 @@
 	 		required:"required"
 	 	}).appendTo(self.parent('div'));
 	 	self.remove();
-	 } 
+	 }
 	});
 	</script>
 </body>

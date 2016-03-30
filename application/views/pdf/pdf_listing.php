@@ -67,7 +67,7 @@
         field: "PLZ",
         title:"PLZ",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
-        width:100,
+        width:90,
       },{
         field: "ort",
         title:"Ort",
@@ -80,7 +80,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:130,
+        width:135,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
@@ -155,7 +155,7 @@
         field: "PLZ",
         title:"PLZ",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
-        width:100,
+        width:90,
       },{
         field: "ort",
         title:"Ort",
@@ -168,7 +168,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:130,
+        width:135,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
