@@ -204,7 +204,7 @@
 								<div class="col-xs-9">
 									<input name="question9" type="text" class="form-control"></input>
 								</div>
-								<div class="col-xs-2 text-right" style="line-height: 2.9">
+								<div class="col-xs-3 text-right" style="line-height: 2.9">
 									kWh / Jahr
 								</div>
 							</div>
