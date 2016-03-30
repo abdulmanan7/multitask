@@ -5,7 +5,8 @@ if (!defined('BASEPATH')) {
 }
 
 class Upload extends CI_Controller {
-
+	private $uploadDir;
+	private $new_path;
 	public function __construct() {
 		parent::__construct();
 		if (!$this->ion_auth->logged_in()) {
@@ -14,6 +15,8 @@ class Upload extends CI_Controller {
 			$this->comp_id = $this->session->userdata('company_id');
 			$this->comp_id = $this->session->userdata('user_id');
 			$this->load->helper(array('form', 'url', 'file'));
+			$this->uploadDir = FCPATH . 'uploads/';
+			$this->new_path = FCPATH . 'uploads/full_size/';
 
 		}
 	}
@@ -56,8 +59,8 @@ class Upload extends CI_Controller {
 				}
 			}
 			$files = $this->output
-			->set_content_type('application/json')
-			->set_output(json_encode(array('files' => $foundFiles)));
+				->set_content_type('application/json')
+				->set_output(json_encode(array('files' => $foundFiles)));
 		} else {
 			$data = $this->upload->data();
 			$config = array();
@@ -78,7 +81,7 @@ class Upload extends CI_Controller {
 				'width' => 350,
 				'height' => 200,
 				'new_image' => $data['file_path'] . "pdf/",
-				);
+			);
 			$this->image_lib->clear();
 			$this->image_lib->initialize($configer);
 			$this->image_lib->resize();
@@ -96,8 +99,10 @@ class Upload extends CI_Controller {
 			$info->deleteType = 'DELETE';
 			$info->error = null;
 			if ($_FILES['userfile']['size'] > 500000) {
-				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $upload_path_url."full_size/", 90);
+				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 70);
 				unlink($data['full_path']);
+			} else {
+				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 98);
 			}
 			$files[] = $info;
 			//this is why we put this in the constants to pass only json data
@@ -120,7 +125,7 @@ class Upload extends CI_Controller {
 	// 	{
 	// 		print('No file was chosen');
 	// 		return FALSE;
-	// 	} 
+	// 	}
 	// 	if($_FILES[$control]['error'] !== UPLOAD_ERR_OK)
 	// 	{
 	// 		print('Upload failed. Error code: '.$_FILES[$control]['error']);
@@ -148,8 +153,7 @@ class Upload extends CI_Controller {
 	// 	$old_width      = imagesx($image);
 	// 	$old_height     = imagesy($image);
 
-
- //    //Create tn version
+	//    //Create tn version
 	// 	if($sizes=='tn' || $sizes=='all')
 	// 	{
 	// 		$max_width = 100;
@@ -173,7 +177,7 @@ class Upload extends CI_Controller {
 	// 			case 'image/png':
 	// 			imagealphablending($new, false);
 	// 			imagecopyresampled($new, $image,0, 0, 0, 0,$new_width, $new_height, $old_width, $old_height);
-	// 			imagesavealpha($new, true); 
+	// 			imagesavealpha($new, true);
 	// 			imagepng($new, $path.'tn_'.$imageName, 0);
 	// 			break;
 	// 			case 'image/gif':

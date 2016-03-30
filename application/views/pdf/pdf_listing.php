@@ -49,7 +49,7 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:100,
+        width:90,
       },{
         field: "vorname",
         title: "Vorname",
@@ -61,15 +61,18 @@
       },{
         field: "strabe_nr",
         title: "Straße",
-        width:80,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
+        width:100,
       },{
         field: "PLZ",
         title:"PLZ",
-        width:50,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
+        width:100,
       },{
         field: "ort",
         title:"Ort",
-        width:60,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
+        width:100,
       },{
         field: "land",
         title:"Land",
@@ -77,12 +80,12 @@
       },{
         field: "email",
         title:"eMail",
-        width:125,
+        width:130,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-        width:140,
+        width:100,
       },{
         field: "telefon",
         title:"Telefon",
@@ -134,7 +137,7 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:100,
+        width:90,
       },{
         field: "vorname",
         title: "Vorname",
@@ -146,15 +149,18 @@
       },{
         field: "strabe_nr",
         title: "Straße",
-        width:80,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
+        width:100,
       },{
         field: "PLZ",
         title:"PLZ",
-        width:50,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
+        width:100,
       },{
         field: "ort",
         title:"Ort",
-        width:60,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
+        width:100,
       },{
         field: "land",
         title:"Land",
@@ -162,12 +168,12 @@
       },{
         field: "email",
         title:"eMail",
-        width:125,
+        width:130,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-        width:140,
+        width:100,
       },{
         field: "telefon",
         title:"Telefon",
