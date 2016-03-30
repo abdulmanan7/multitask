@@ -84,7 +84,7 @@ border-spacing:0.5em;}
 		<td class="item-name form-control" colspan="3"><?=$land?></td>
 	</tr>
 	<tr class="item-row">
-		<td class="item-head">Bauobjektadresse:(falls abweichend)</td>
+		<td class="item-head">Bauobjektadresse: (falls abweichend)</td>
 		<td class="item-name form-control" colspan="3"><?=$bauobjektadress?></td>
 	</tr>
 	<tr class="item-row">
@@ -134,7 +134,7 @@ border-spacing:0.5em;}
 		<td class="item-name form-control" colspan="2"><?=$warmedammung?></td>
 	</tr>
 	<tr class="item-row">
-		<td class="item-head">Wie wird der neue gesamte Wärmebedarf nach der Dämmmaßnahme sein:</td>
+		<td class="item-head">Wärmebedarf nach der Dämmmaßnahme:</td>
 		<td class="item-name form-control" valign="top"><?=$warmebedarf_neu?></td>
 		<td class="item-name ">kWh / Jahr</td>
 	</tr>
@@ -155,7 +155,7 @@ border-spacing:0.5em;}
 <?php if ($val != ""): ?>
 	<?php $path = str_replace("/pdf/", "/", $val)?>
 		<td style="border:2px solid black; text-align:center;" width="100%" >
-			<a href="<?=$path?>"><img src="<?=$val?>" width="350" height="250" style="border-right:5px solid #fff;" /></a>
+			<a href="<?=$path?>"><img src="<?=$val?>" width="350" style="border-right:5px solid #fff;" /></a>
 		</td>
 <?php endif?>
  <?php endforeach?>

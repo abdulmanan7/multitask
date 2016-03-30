@@ -22,9 +22,6 @@ class Upload extends CI_Controller {
 		$this->load->view('upload', array('error' => ''));
 	}
 	public function do_upload() {
-		if ($_FILES['userfile']['size'] > 500000) {
-
-		}
 		$files = "";
 		$upload_path_url = base_url() . 'uploads/';
 
@@ -45,7 +42,7 @@ class Upload extends CI_Controller {
 			$f = 0;
 			foreach ($existingFiles as $fileName => $info) {
 				if ($fileName != 'thumbs') {
-//Skip over thumbs directory
+					//Skip over thumbs directory
 					//set the data for the json array
 					$foundFiles[$f]['name'] = $fileName;
 					$foundFiles[$f]['size'] = $info['size'];
@@ -58,12 +55,9 @@ class Upload extends CI_Controller {
 					$f++;
 				}
 			}
-			// echo "<pre>";
-			// print_r($foundFiles);die;
-			// echo "</pre>";
 			$files = $this->output
-				->set_content_type('application/json')
-				->set_output(json_encode(array('files' => $foundFiles)));
+			->set_content_type('application/json')
+			->set_output(json_encode(array('files' => $foundFiles)));
 		} else {
 			$data = $this->upload->data();
 			$config = array();
@@ -84,7 +78,7 @@ class Upload extends CI_Controller {
 				'width' => 350,
 				'height' => 200,
 				'new_image' => $data['file_path'] . "pdf/",
-			);
+				);
 			$this->image_lib->clear();
 			$this->image_lib->initialize($configer);
 			$this->image_lib->resize();
@@ -101,7 +95,10 @@ class Upload extends CI_Controller {
 			$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 			$info->deleteType = 'DELETE';
 			$info->error = null;
-
+			if ($_FILES['userfile']['size'] > 500000) {
+				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $upload_path_url."full_size/", 90);
+				unlink($data['full_path']);
+			}
 			$files[] = $info;
 			//this is why we put this in the constants to pass only json data
 			if ($this->input->is_ajax_request()) {
@@ -116,7 +113,80 @@ class Upload extends CI_Controller {
 			}
 		}
 	}
+	// function doUpload($control="userfile", $path=NULL, $imageName, $sizes)
+	// {
+	// 	$path = $path?$path:FCPATH.'uploads/full_size/';
+	// 	if( ! isset($_FILES[$control]) || ! is_uploaded_file($_FILES[$control]['tmp_name']))
+	// 	{
+	// 		print('No file was chosen');
+	// 		return FALSE;
+	// 	} 
+	// 	if($_FILES[$control]['error'] !== UPLOAD_ERR_OK)
+	// 	{
+	// 		print('Upload failed. Error code: '.$_FILES[$control]['error']);
+	// 		Return FALSE;
+	// 	}
+	// 	switch(strtolower($_FILES[$control]['type']))
+	// 	{
+	// 		case 'image/jpeg':
+	// 		$image = imagecreatefromjpeg($_FILES[$control]['tmp_name']);
+	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
+	// 		break;
+	// 		case 'image/png':
+	// 		$image = imagecreatefrompng($_FILES[$control]['tmp_name']);
+	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
+	// 		break;
+	// 		case 'image/gif':
+	// 		$image = imagecreatefromgif($_FILES[$control]['tmp_name']);
+	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
+	// 		break;
+	// 		default:
+	// 		print('This file type is not allowed');
+	// 		return false;
+	// 	}
+	// 	@unlink($_FILES[$control]['tmp_name']);
+	// 	$old_width      = imagesx($image);
+	// 	$old_height     = imagesy($image);
 
+
+ //    //Create tn version
+	// 	if($sizes=='tn' || $sizes=='all')
+	// 	{
+	// 		$max_width = 100;
+	// 		$max_height = 100;
+	// 		$scale          = min($max_width/$old_width, $max_height/$old_height);
+	// 		if ($old_width > 100 || $old_height > 100)
+	// 		{
+	// 			$new_width      = ceil($scale*$old_width);
+	// 			$new_height     = ceil($scale*$old_height);
+	// 		} else {
+	// 			$new_width = $old_width;
+	// 			$new_height = $old_height;
+	// 		}
+	// 		$new = imagecreatetruecolor($new_width, $new_height);
+	// 		imagecopyresampled($new, $image,0, 0, 0, 0,$new_width, $new_height, $old_width, $old_height);
+	// 		switch(strtolower($_FILES[$control]['type']))
+	// 		{
+	// 			case 'image/jpeg':
+	// 			imagejpeg($new, $path.'tn_'.$imageName, 90);
+	// 			break;
+	// 			case 'image/png':
+	// 			imagealphablending($new, false);
+	// 			imagecopyresampled($new, $image,0, 0, 0, 0,$new_width, $new_height, $old_width, $old_height);
+	// 			imagesavealpha($new, true); 
+	// 			imagepng($new, $path.'tn_'.$imageName, 0);
+	// 			break;
+	// 			case 'image/gif':
+	// 			imagegif($new, $path.'tn_'.$imageName);
+	// 			break;
+	// 			default:
+	// 		}
+	// 	}
+
+	// 	imagedestroy($image);
+	// 	imagedestroy($new);
+	// 	print '<div style="font-family:arial;"><b>'.$imageName.'</b> Uploaded successfully. Size: '.round($_FILES[$control]['size']/1000).'kb</div>';
+	// }
 	public function deleteImage($file) {
 //gets the job done but you might want to add error checking and security
 		$success = unlink(FCPATH . 'uploads/' . $file);

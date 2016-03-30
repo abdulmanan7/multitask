@@ -54,8 +54,8 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label item-name">Land: <span class="text-blood">*</span></label>
-					<select class="form-control" name="country" required="required">
-						<option value="">Select Land</option>
+					<select class="form-control" name="country" required="required" id="landSelect">
+						<option value="">Land auswählen</option>
 						<option value="Deutschland">Deutschland</option>
 						<option value="Dänemark">Dänemark</option>
 						<option value="Italien">Italien</option>
@@ -67,10 +67,11 @@
 						<option value="Schweiz">Schweiz</option>
 						<option value="Spanien">Spanien</option>
 						<option value="Schweden">Schweden</option>
+						<option value="other">Other (define your's)</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label class="control-label item-name">Bauobjektadresse:(falls abweichend)</label>
+					<label class="control-label item-name">Bauobjektadresse: (falls abweichend)</label>
 					<textarea name="adresse" class="form-control" rows="2"></textarea>
 				</div>
 				<div class="form-group">
@@ -227,5 +228,19 @@
 		</div>
 	</div>
 	<?php $this->load->view('template/frontend/footer');?>
+	<script type="text/javascript">
+	$('#landSelect').on('change', function() {
+	 var self = $(this);
+	 if (self.val() == "other") {
+	 	$("<input>",{
+	 		type:"text",
+	 		name:"country",
+	 		value:"",
+	 		required:"required"
+	 	}).appendTo(self.parent('div'));
+	 	self.remove();
+	 } 
+	});
+	</script>
 </body>
 </html>
