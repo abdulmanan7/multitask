@@ -14,7 +14,7 @@ class Reports extends CI_Controller {
 	}
 	public function index() {
 		// $data = $this->get_data();
-		$data["logo"] = base_url('assets/img/logo.jpg');
+		$data["logo"] = base_url('assets/img/small_logo.jpg');
 		$this->load->view('frontend/order_form', $data);
 	}
 	public function save() {
@@ -33,7 +33,7 @@ class Reports extends CI_Controller {
 			"baujahr_alte_heizung" => $this->input->post('baujahr_alte'),
 			"brennstoff" => $this->input->post('question3'),
 			"verbrauch" => $this->input->post('question4'),
-			"einheit" => $this->input->post('question_part2'),
+			"einheit" => $this->input->post('unit'),
 			"leistung_heizung_alt" => $this->input->post('question5'),
 			"wohnflache" => $this->input->post('question6'),
 			"personen" => $this->input->post('question7'),

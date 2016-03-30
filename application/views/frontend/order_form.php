@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="logo">
-							<img width="220" height="75" style="float: right;"  src="<?=$logo?>" />
+							<img style="float: right;"  src="<?=$logo?>" />
 						</div>
 						<div class="heading pull-left">
 							<h4 class="table-head" style="padding-bottom:0;">Ihre persönliche Fotobegehung</h4>
@@ -99,7 +99,14 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Baujahr von Ihrem Haus?</label>
 						<div class="col-sm-6">
-							<input name="baujahr_hous" type="text" class="form-control"></input>
+						<select name="baujahr_hous" class="form-control">
+							<option value="Neubau">Neubau</option>
+							<option value="2016 - 2002">2016 - 2002</option>
+							<option value="2001 - 1995">2001 - 1995</option>
+							<option value="1994 - 1978">1994 - 1978</option>
+							<option value="vor 1978">vor 1978</option>
+							<option value="unbekannt">unbekannt</option>
+						</select>
 						</div>
 					</div>
 				</div>
@@ -107,7 +114,15 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung?</label>
 						<div class="col-sm-6">
-							<input name="baujahr_alte" type="text" class="form-control"></input>
+						<select name="baujahr_alte" class="form-control">
+							<option value="Keine Heizung vorhanden">Keine Heizung vorhanden</option>
+							<option value="1 - 10 Jahre">1 - 10 Jahre</option>
+							<option value="11 - 15 Jahre">11 - 15 Jahre</option>
+							<option value="16 - 20 Jahre">16 - 20 Jahre</option>
+							<option value="20 - 25 Jahre">20 - 25 Jahre</option>
+							<option value="Älter als 25 Jahre">Älter als 25 Jahre</option>
+							<option value="Ist mir unbekannt">Ist mir unbekannt</option>
+						</select>
 						</div>
 					</div>
 				</div>
@@ -115,7 +130,16 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Womit heizen Sie derzeit?</label>
 						<div class="col-sm-6">
-							<input name="question3" type="text" class="form-control"></input>
+						<select name="question3" class="form-control">
+							<option value="überhaupt nicht">überhaupt nicht</option>
+							<option value="Erdgas">Erdgas</option>
+							<option value="Flüssiggas">Flüssiggas</option>
+							<option value="Heizöl">Heizöl</option>
+							<option value="Strom">Strom</option>
+							<option value="Holz">Holz</option>
+							<option value="Kohle / Briketts">Kohle / Briketts</option>
+							<option value="Pellets">Pellets</option>
+						</select>
 						</div>
 					</div>
 				</div>
@@ -123,8 +147,23 @@
 					<div class="row">
 						<label class="control-label col-md-8 col-sm-7">Wie hoch ist durchschnittlich Ihr Heizenergieverbrauch ca. pro Jahr?</label>
 						<div class="col-sm-5 col-md-4">
-							<input style="width: 50%;float: left;" name="question4" type="text" class="form-control"></input>
-							<input style="width: 40%; float: left;margin-left: 21px;" name="question_part2" type="text" class="form-control"></input>
+						<div class="row">
+							
+						<div class="col-xs-6">
+							<input name="question4" type="text" class="form-control"></input>
+							<!-- <input style="width: 50%;float: left;" name="question4" type="text" class="form-control"></input> -->
+						</div>
+						<div class="col-xs-6">
+						<select name="unit" class="form-control">
+							<option value="">(Field Einheit)</option>
+							<option value="Liter">Liter</option>
+							<option value="m³">m³</option>
+							<option value="kWh">kWh</option>
+							<option value="kg">kg</option>
+						</select>
+						<!-- 	<input style="width: 40%; float: left;margin-left: 21px;" name="question_part2" type="text" class="form-control"></input> -->
+						</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -236,6 +275,7 @@
 	 		type:"text",
 	 		name:"country",
 	 		value:"",
+	 		class:"form-control",
 	 		required:"required"
 	 	}).appendTo(self.parent('div'));
 	 	self.remove();
