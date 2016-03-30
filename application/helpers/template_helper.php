@@ -125,7 +125,7 @@ if (!function_exists('load_sub_nav')) {
 			break;
 		case 'welcome':
 			$sub_nav_html = '<div class="sub-nav hidden-sm hidden-xs"><ul>';
-			$sub_nav_html .= '<li><h4 class="selected">Alle Planungsunterlagen</h4></li></ul></div>';
+			$sub_nav_html .= '<li><a href="#" class="heading">Alle Planungsunterlagen</a></li></ul></div>';
 			break;
 
 		default:

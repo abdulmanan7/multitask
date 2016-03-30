@@ -6,6 +6,7 @@
 			margin: 10px 30px;
 			font: 13px/20px normal Helvetica, Arial, sans-serif;
 			color: #4F5155;
+			padding-top: 20px !important;
 		}
 
 		a {
@@ -569,3 +570,6 @@ input[type="color"]:focus,
 #result-box {
 	padding-right: 0px;
 }
+  .text-blood{
+    color:#FF0500;
+  }

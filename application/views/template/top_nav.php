@@ -7,10 +7,16 @@
                 Dashboard
               </a>
             </li>
-            <li <?php echo ($page_title == 'welcome') ? 'class="active"' : ''?>>
-              <a href='<?php echo base_url('welcome/listing');?>'>
+            <li <?php echo ($page_title == 'planung') ? 'class="active"' : ''?>>
+              <a href='<?php echo base_url('planung/listing');?>'>
                 <i class="fa fa-book"></i>
-                Planungsunterlagen
+                PLANUNG
+              </a>
+            </li>
+            <li <?php echo ($page_title == 'angebote') ? 'class="active"' : ''?>>
+              <a href='<?php echo base_url('angebote/listing');?>'>
+                <i class="fa fa-gift"></i>
+                ANGEBOTE
               </a>
             </li>
              <li <?php echo ($page_title == 'Settings') ? 'class="active"' : ''?>>

@@ -82,6 +82,7 @@ class Upload extends CI_Controller {
 				'source_image' => $data['full_path'],
 				'maintain_ratio' => TRUE,
 				'width' => 350,
+				'height' => 200,
 				'new_image' => $data['file_path'] . "pdf/",
 			);
 			$this->image_lib->clear();

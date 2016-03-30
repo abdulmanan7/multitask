@@ -4,7 +4,7 @@
     <title>SOLARvent - <?php echo $page_title;?></title>
     <meta charset="UTF-8" />
     <meta name="author" content="Bootstrap Gallery" />
-    <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.ico');?>">
+    <link rel="shortcut icon" href="<?php //echo base_url('assets/img/favicon.ico');?>">
 
     <link href="<?php echo load_css('bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo load_css('new.css');?>" rel="stylesheet">
@@ -176,97 +176,6 @@ var ajaxHelper = {
       </a>
       <div class="pull-right">
         <ul id="mini-nav" class="clearfix">
-          <li class="list-box hidden-xs">
-            <a href="#" data-toggle="modal" data-target="#modalMd">
-              <span class="text-white">Calculator</span> <i class="fa fa-code"></i>
-            </a>
-            <!-- Modal -->
-            <div class="modal fade lg" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel5" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel5">Calculator </h4>
-                  </div>
-                  <div class="modal-body cover">
-                   <div class="hero-unit" id="calculator-wrapper">
-          <div class="col-xs-6 kill-padding">
-            <div id="calculator-screen" class="uneditable-input"></div>
-          </div>
-          <div class="col-xs-1" style="line-height: 60px;">=</div>
-          <div class="col-xs-5 kill-padding">
-            <div id="calculator-result"  class="uneditable-input">0</div>
-          </div>
-      </div>
-
-        <div class="col-xs-12 well">
-          <div id="calc-board">
-            <div class="col-xs-3">
-              <a href="#" class="btn_cal btn btn-warning" data-constant="SIN" data-key="115">sin</a>
-              <a href="#" class="btn_cal btn btn-warning" data-constant="COS" data-key="99">cos</a>
-              <a href="#" class="btn_cal btn btn-warning" data-constant="MOD" data-key="109">md</a>
-              <a href="#" class="btn_cal btn btn-success" data-constant="BRO" data-key="40">(</a>
-              <a href="#" class="btn_cal btn btn-success" data-constant="BRC" data-key="41">)</a>
-            </div>
-            <div class="col-xs-6">
-            <div class="row">
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="49">1</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="50">2</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="51">3</a></div>
-              </div>
-              <div class="row">
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="52">4</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="53">5</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="54">6</a></div>
-              </div>
-            <!-- </div>
-            <div class="col-xs-2"> -->
-            <div class="row">
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="55">7</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="56">8</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="57">9</a></div>
-              </div>
-              <div class="row">
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="46">.</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-success" data-key="48">0</a></div>
-              <div class="col-xs-4"><a href="#" class="btn_cal btn btn-danger" data-method="reset" data-key="8">C</a></div>
-              </div>
-              <div class="row">
-              <div class="col-xs-12 kill-padding">
-                <a href="#" class="btn_cal btn btn-primary" data-method="calculate" data-key="61">=</a>
-              </div>
-              </div>
-            <!-- </div>
-            <div class="col-xs-2"> -->
-            </div>
-            <div class="col-xs-3">
-              <a href="#" class="btn_cal btn btn-info" data-constant="PROC" data-key="37">%</a>
-              <a href="#" class="btn_cal btn btn-info" data-constant="DIV" data-key="47">/</a>
-              <a href="#" class="btn_cal btn btn-info" data-constant="MULT" data-key="42">x</a>
-              <a href="#" class="btn_cal btn btn-info" data-constant="MIN" data-key="45">-</a>
-              <a href="#" class="btn_cal btn btn-success" data-constant="SUM" data-key="43">+</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 well">
-          <legend>History</legend>
-          <div id="calc-panel">
-            <div id="calc-history">
-              <ol id="calc-history-list"></ol>
-            </div>
-          </div>
-        </div>
-        <hr>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
           <li class="list-box user-profile">
             <a id="drop7" href="#" role="button" class="dropdown-toggle user-avtar" data-toggle="dropdown">
               <img src="<?php echo base_url('assets/img/profile.png')?>" alt="Bluemoon User">

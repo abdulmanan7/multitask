@@ -58,7 +58,7 @@ class Reports extends CI_Controller {
 			$this->send($pdata['email'], $att_id);
 		}
 		//this the the PDF filename that user will get to download
-		redirect('welcome/listing', 'refresh');
+		redirect('planung/listing', 'refresh');
 	}
 	public function get($att_id = '', $save = FALSE) {
 		$data = $this->att_email->get($att_id);
@@ -111,10 +111,10 @@ class Reports extends CI_Controller {
 
 		if ($this->email->send()) {
 			set_flash('Data save and email has been send', 'success');
-			redirect('welcome/listing', 'refresh');
+			redirect('planung/listing', 'refresh');
 		} else {
 			set_flash('Error while sending email', 'error');
-			redirect('welcome/listing', 'refresh');
+			redirect('planung/listing', 'refresh');
 			// show_error($this->email->print_debugger());
 		}
 
@@ -142,5 +142,5 @@ class Reports extends CI_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file reports.php */
+/* Location: ./application/controllers/reports.php */

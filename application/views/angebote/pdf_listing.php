@@ -37,6 +37,7 @@
         groupable: true,
         sortable: true,
         resizable: true,
+        mobile: true,
         filterable: true,
         columnMenu: true,
         toolbar: kendo.template($("#Searchtemplate").html()),
@@ -94,7 +95,7 @@
         template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
         title: "Delete",
-        width:40,
+        width:50,
         template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
@@ -116,73 +117,66 @@
             dataType: "json"
           },
         },
-           schema: { data: "data", total: "total" },
-          pageSize: 10
-        },
-        groupable: true,
-        sortable: true,
-        resizable: true,
-        filterable: true,
-        columnMenu: true,
-        toolbar: kendo.template($("#Searchtemplate").html()),
-        pageable: {
-          refresh: true,
-          pageSizes: [10 ,50 ,100,250],
-          buttonCount: 5
-        },
-        columns: [{hidden: true, field: "att_id",menu:false
-      },{
-        field: "anfragedatum",
-        title: "Anfragedatum",
-        width:100,
-      },{
-        field: "vorname",
-        title: "Vorname",
-        width:70,
-      },{
-        field: "nachname",
-        title: "Nachname",
-        width:70,
-      },{
-        field: "strabe_nr",
-        title: "Straße",
-        width:80,
-      },{
-        field: "PLZ",
-        title:"PLZ",
-        width:50,
-      },{
-        field: "ort",
-        title:"Ort",
-        width:60,
-      },{
-        field: "land",
-        title:"Land",
-        width:80,
-      },{
-        field: "email",
-        title:"eMail",
-        width:125,
-      },{
-        field: "bauobjektadress",
-        title:"Objektadresse",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-        width:140,
-      },{
-        field: "telefon",
-        title:"Telefon",
-        width:70,
+        schema: { data: "data", total: "total" },
+        pageSize: 10
       },
-      {
-        title: "pdf",
-        width:40,
-        template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
-      },{
-        title: "Delete",
-        width:40,
-        template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
-      }
-      ],
+      groupable: true,
+      sortable: true,
+      toolbar: kendo.template($("#Searchtemplate").html()),
+      pageable: {
+        refresh: true,
+        pageSizes: [10 ,50 ,100,250],
+        buttonCount: 5
+      },
+      columns: [{hidden: true, field: "att_id",menu:false
+    },{
+      field: "anfragedatum",
+      title: "Anfragedatum",
+      width:110,
+    },{
+      field: "vorname",
+      title: "Vorname",
+      width:60,
+    },{
+      field: "nachname",
+      title: "Nachname",
+      width:50,
+    },{
+      field: "strabe_nr",
+      title: "Straße",
+      width:50,
+    },{
+      field: "PLZ",
+      title:"PLZ",
+      width:40,
+    },{
+      field: "ort",
+      title:"Ort",
+      width:40,
+    },{
+      field: "land",
+      title:"Land",
+      width:50,
+    },{
+      field: "email",
+      title:"eMail",
+      width:110,
+    },{
+      field: "bauobjektadress",
+      title:"Objektadresse",
+      template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+      width:180,
+    },{
+      field: "telefon",
+      title:"Telefon",
+      width:80,
+    },
+    {
+      title: "Operation",
+      width:80,
+      template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a> || <a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+    }
+    ],
   });
   }, 400 );
 });

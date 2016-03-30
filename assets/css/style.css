@@ -444,3 +444,9 @@ td.status{
   .k-pager-wrap .k-icon{
     /*margin-top: 6px;*/
   }
+  .control-label > span{
+    color: red;
+  }
+  .text-blood{
+    color:#FF0500;
+  }
