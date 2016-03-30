@@ -145,25 +145,22 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-md-8 col-sm-7">Wie hoch ist durchschnittlich Ihr Heizenergieverbrauch ca. pro Jahr?</label>
-						<div class="col-sm-5 col-md-4">
-						<div class="row">
-							
-						<div class="col-xs-6">
-							<input name="question4" type="text" class="form-control"></input>
-							<!-- <input style="width: 50%;float: left;" name="question4" type="text" class="form-control"></input> -->
-						</div>
-						<div class="col-xs-6">
-						<select name="unit" class="form-control">
-							<option value="">(Field Einheit)</option>
-							<option value="Liter">Liter</option>
-							<option value="m³">m³</option>
-							<option value="kWh">kWh</option>
-							<option value="kg">kg</option>
-						</select>
-						<!-- 	<input style="width: 40%; float: left;margin-left: 21px;" name="question_part2" type="text" class="form-control"></input> -->
-						</div>
-						</div>
+						<label class="control-label col-sm-6">Durchschnittlicher Heizenergieverbrauch pro Jahr?</label>
+						<div class="col-sm-6">
+							<div class="row">
+							<div class="col-xs-6">
+									<input name="question4" type="text" class="form-control"></input>
+								</div>
+								<div class="col-xs-6">
+									<select name="unit" class="form-control">
+										<option value="">Einheit</option>
+										<option value="Liter">Liter</option>
+										<option value="m³">m³</option>
+										<option value="kWh">kWh</option>
+										<option value="kg">kg</option>
+									</select>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -193,7 +190,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Wird Ihr Haus wärmegedämmt oder wann ist das ggf. geplant? </label>
+						<label class="control-label col-sm-6">Wird Ihr Haus wärmegedämmt? Wann?</label>
 						<div class="col-sm-6">
 							<input name="question8" type="text" class="form-control"></input>
 						</div>
@@ -201,9 +198,16 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Wie wird der neue gesamte Wärmebedarf nach der Dämmmaßnahme sein:</label>
+						<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme?</label>
 						<div class="col-sm-6">
-							<input name="question9" type="text" class="form-control" style="width: 76%;float: left;"></input><span style="line-height: 2.7; margin-left: 10px;">kWh / Jahr</span>
+							<div class="row">
+								<div class="col-xs-6">
+									<input name="question9" type="text" class="form-control"></input>
+								</div>
+								<div class="col-xs-6 text-right">
+									kWh / Jahr
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -211,6 +215,25 @@
 					<p class="item-name">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</p>
 					<textarea name="description" class="form-control" rows="8"></textarea>
 				</div>
+				<p>
+					Damit wir Ihre Anlage perfekt gemeinsam mit Ihnen planen können, benötigen wir Ihre Fotobegehung von Ihrem Bauvorhaben. Erstellen Sie mit Ihrem Smartphone, Tablet oder alternativ mit einer Digitalkamera folgende Bilder:
+					</p>
+				<ul>
+					<li>
+1) Heizungsraum der bestehenden Anlage: (Heizkessel, Schornsteinanbindung, Rohrleitungen mit Pumpen/Mischer)
+					</li>
+					<li>
+2) Schornstein (Außenansicht Wand mit Putztürchen, Foto damit man ggf. das Innenrohrmaterial erkennen kann - messen Sie bei dieser Gelegenheit den Innendurchmesser und teilen Sie diesen mit)
+					</li>
+					<li>
+						
+3) Brennstofflager (z.B. Heizöltankraum, gibt es Rohrleitungen an der Decke, wo sind ggf. Fenster)
+					</li>
+<li>4) Einbringhindernisse (Wo muss der Kessel, Pufferspeicher ggf. durch bzw. welche Treppen müssen überwunden werden. Teilen Sie uns jeweils das engste Durchgangsmaß mit sowie die Anzahl der Treppenstufen)</li>
+<li>5) Wo soll ggf. eine Solaranlage montiert werden (Flachdach, Schrägdach, gibt es Abschattungen?)</li>
+<li>6) Zeigen Sie uns das Gebäude welches beheizt werden soll von außen (Außenansichten)</li>
+<li>7) Bitte fotografieren Sie Ihre Grundrisse ab (Heizraum, Brennstofflager, für die Solaranlage den Neigungswinkel, Himmelsrichtung, sowie die Dachfläche und den Gebäudeschnitt wg. Schornsteinhöhenermittlung sowie Länge Solarleitung) - alternativ können Sie diese Pläne auch einfach als PDF-Datei hochladen, sofern Ihnen diese bereits vorliegen.</li>
+				</ul>
 			</div>
 			<div class="col-lg-8 question-box effect7 col-lg-offset-2">
 				<!-- The fileinput-button span is used to style the file input field as button -->
