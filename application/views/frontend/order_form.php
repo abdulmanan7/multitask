@@ -201,10 +201,10 @@
 						<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme?</label>
 						<div class="col-sm-6">
 							<div class="row">
-								<div class="col-xs-6">
+								<div class="col-xs-9">
 									<input name="question9" type="text" class="form-control"></input>
 								</div>
-								<div class="col-xs-6 text-right">
+								<div class="col-xs-3 text-right">
 									kWh / Jahr
 								</div>
 							</div>
