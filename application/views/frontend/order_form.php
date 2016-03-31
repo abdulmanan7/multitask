@@ -239,20 +239,20 @@
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<span class="btn btn-success fileinput-button">
 					<i class="glyphicon glyphicon-plus"></i>
-					<span>Add files...</span>
+					<span>Datei hinzufügen</span>
 					<input type="file" name="userfile" multiple>
 				</span>
 				<button type="submit" class="btn btn-primary start">
 					<i class="glyphicon glyphicon-upload"></i>
-					<span>Start upload</span>
+					<span>Upload starten</span>
 				</button>
 				<button type="reset" class="btn btn-warning cancel">
 					<i class="glyphicon glyphicon-ban-circle"></i>
-					<span>Cancel upload</span>
+					<span>Upload abbrechen</span>
 				</button>
 				<button type="button" class="btn btn-danger delete">
 					<i class="glyphicon glyphicon-trash"></i>
-					<span>Delete</span>
+					<span>Löschen</span>
 				</button>
 				<!-- <input type="checkbox" class="toggle"> -->
 				<!-- The global file processing state -->
@@ -272,7 +272,7 @@
 					<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 				</div>
 				<div class="clearfix"></div>
-				<button type="submit" id="submit" class="btn btn-default">Process</button>
+				<button type="submit" id="submit" class="btn btn-default"> Formular jetzt absenden !</button>
 			</div>
 			<!-- The table listing the files available for upload/download -->
 			<!-- The container for the uploaded files -->
