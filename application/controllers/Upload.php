@@ -31,36 +31,36 @@ class Upload extends CI_Controller {
 		$config['upload_path'] = FCPATH . 'uploads/';
 		$config['allowed_types'] = 'jpg|jpeg|png|gif';
 		$config['file_name'] = time();
-		// $config['max_size'] = '30000';
 
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload()) {
-			//$error = array('error' => $this->upload->display_errors());
+			$error = array('error' => $this->upload->display_errors());
+			pr('opps an error occur while uploading try again ');
 			//$this->load->view('upload', $error);
 
 			//Load the list of existing files in the upload directory
-			$existingFiles = get_dir_file_info($config['upload_path']);
-			$foundFiles = array();
-			$f = 0;
-			foreach ($existingFiles as $fileName => $info) {
-				if ($fileName != 'thumbs') {
-					//Skip over thumbs directory
-					//set the data for the json array
-					$foundFiles[$f]['name'] = $fileName;
-					$foundFiles[$f]['size'] = $info['size'];
-					$foundFiles[$f]['url'] = $upload_path_url . $fileName;
-					$foundFiles[$f]['thumbnailUrl'] = $upload_path_url . 'thumbs/' . $fileName;
-					$foundFiles[$f]['deleteUrl'] = base_url() . 'upload/deleteImage/' . $fileName;
-					$foundFiles[$f]['deleteType'] = 'DELETE';
-					$foundFiles[$f]['error'] = null;
+			// $existingFiles = get_dir_file_info($config['upload_path']);
+			// $foundFiles = array();
+			// $f = 0;
+			// foreach ($existingFiles as $fileName => $info) {
+			// 	if ($fileName != 'thumbs') {
+			// 		//Skip over thumbs directory
+			// 		//set the data for the json array
+			// 		$foundFiles[$f]['name'] = $fileName;
+			// 		$foundFiles[$f]['size'] = $info['size'];
+			// 		$foundFiles[$f]['url'] = $upload_path_url . $fileName;
+			// 		$foundFiles[$f]['thumbnailUrl'] = $upload_path_url . 'thumbs/' . $fileName;
+			// 		$foundFiles[$f]['deleteUrl'] = base_url() . 'upload/deleteImage/' . $fileName;
+			// 		$foundFiles[$f]['deleteType'] = 'DELETE';
+			// 		$foundFiles[$f]['error'] = null;
 
-					$f++;
-				}
-			}
-			$files = $this->output
-				->set_content_type('application/json')
-				->set_output(json_encode(array('files' => $foundFiles)));
+			// 		$f++;
+			// 	}
+			// }
+			// $files = $this->output
+			// 	->set_content_type('application/json')
+			// 	->set_output(json_encode(array('files' => $foundFiles)));
 		} else {
 			$data = $this->upload->data();
 			$config = array();
@@ -91,7 +91,7 @@ class Upload extends CI_Controller {
 			$info->name = $data['file_name'];
 			$info->size = $data['file_size'] * 1024;
 			$info->type = $data['file_type'];
-			$info->url = $upload_path_url . $data['file_name'];
+			$info->url = $upload_path_url . 'full_size/' . $data['file_name'];
 			// I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
 			$info->thumbnailUrl = $upload_path_url . 'thumbs/' . $data['file_name'];
 			$info->pdfUrl = $upload_path_url . 'pdf/' . $data['file_name'];
@@ -101,16 +101,16 @@ class Upload extends CI_Controller {
 			if ($data['image_width'] > 1000) {
 				// ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 70);
 				$configer = array(
-				'image_library' => 'gd2',
-				'source_image' => $data['full_path'],
-				'maintain_ratio' => TRUE,
-				'width' => 1000,
-				// 'height' => 200,
-				'new_image' => $this->new_path,
-			);
-			$this->image_lib->clear();
-			$this->image_lib->initialize($configer);
-			$this->image_lib->resize();
+					'image_library' => 'gd2',
+					'source_image' => $data['full_path'],
+					'maintain_ratio' => TRUE,
+					'width' => 1000,
+					// 'height' => 200,
+					'new_image' => $this->new_path,
+				);
+				$this->image_lib->clear();
+				$this->image_lib->initialize($configer);
+				$this->image_lib->resize();
 			} else {
 				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 98);
 			}
@@ -204,15 +204,16 @@ class Upload extends CI_Controller {
 	// }
 	public function deleteImage($file) {
 //gets the job done but you might want to add error checking and security
-		$success = unlink(FCPATH . 'uploads/' . $file);
+		$success = unlink(FCPATH . 'uploads/full_size/' . $file);
 		$success = unlink(FCPATH . 'uploads/thumbs/' . $file);
+		$success = unlink(FCPATH . 'uploads/pdf/' . $file);
 		//info to see if it is doing what it is supposed to
 		$info = new StdClass;
 		$info->sucess = $success;
-		$info->path = base_url() . 'uploads/' . $file;
-		$info->file = is_file(FCPATH . 'uploads/' . $file);
+		$info->path = base_url() . 'uploads/full_size/' . $file;
+		$info->file = is_file(FCPATH . 'uploads/full_size/' . $file);
 
-		if (IS_AJAX) {
+		if ($this->input->is_ajax_request()) {
 			echo json_encode(array($info));
 		} else {
 			//here you will need to decide what you want to show for a successful delete

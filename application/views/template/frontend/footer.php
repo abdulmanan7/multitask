@@ -17,13 +17,11 @@
                 {% if (!i && !o.options.autoUpload) { %}
                 <button class="btn btn-primary start" disabled>
                     <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
                 </button>
                 {% } %}
                 {% if (!i) { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
                 </button>
                 {% } %}
             </td>
@@ -38,6 +36,7 @@
                 <span class="preview">
                     {% if (file.thumbnailUrl) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                    <input type="hidden" name="image[]" value="{%=file.url%}">
                     {% } %}
                 </span>
             </td>
@@ -60,13 +59,11 @@
                 {% if (file.deleteUrl) { %}
                 <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
                 </button>
                 <input type="checkbox" name="delete" value="1" class="toggle">
                 {% } else { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
                 </button>
                 {% } %}
             </td>

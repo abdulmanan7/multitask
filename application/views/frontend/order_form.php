@@ -304,6 +304,18 @@
 	 	self.remove();
 	 }
 	});
+	$('body').on('click', '#submit', function(event) {
+		event.preventDefault();
+		$('preview').each(function(index, el) {
+			var url = $(el).children('a').attr('href');
+			// console.log(url);
+			//  $('<input>',{
+   //                 name:"image[]",
+   //                 type:"hidden",
+   //                 value:url
+   //             }).appendTo('#fileupload');
+		});
+	});
 	</script>
 </body>
 </html>

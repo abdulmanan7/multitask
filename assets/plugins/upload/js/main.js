@@ -15,16 +15,15 @@ $(function () {
         // previewMaxHeight: 100,
         // previewCrop: true
     }).on('fileuploaddone', function (e, data) {
-        console.log(data);
-        $.each(data.result.files, function (index, file) {
-            if (file.url) {
-                $('<input>',{
-                   name:"image[]",
-                   type:"hidden",
-                   value:file.pdfUrl
-               }).appendTo('#fileupload');
-            } 
-        });
+        // $.each(data.result.files, function (index, file) {
+        //     if (file.url) {
+        //        //  $('<input>',{
+        //        //     name:"image[]",
+        //        //     type:"hidden",
+        //        //     value:file.pdfUrl
+        //        // }).appendTo('#fileupload');
+        //     } 
+        // });
     }).prop('disabled', !$.support.fileInput)
     .parent().addClass($.support.fileInput ? undefined : 'disabled');
 });
