@@ -49,20 +49,20 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:90,
+        width:85,
       },{
         field: "vorname",
         title: "Vorname",
-        width:70,
+        width:73,
       },{
         field: "nachname",
         title: "Nachname",
-        width:70,
+        width:73,
       },{
         field: "strabe_nr",
         title: "Straße",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:100,
+        width:96,
       },{
         field: "PLZ",
         title:"PLZ",
@@ -72,7 +72,7 @@
         field: "ort",
         title:"Ort",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:100,
+        width:96,
       },{
         field: "land",
         title:"Land",
@@ -80,7 +80,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:135,
+        width:145,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
@@ -137,20 +137,20 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:90,
+        width:85,
       },{
         field: "vorname",
         title: "Vorname",
-        width:70,
+        width:73,
       },{
         field: "nachname",
         title: "Nachname",
-        width:70,
+        width:73,
       },{
         field: "strabe_nr",
         title: "Straße",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:100,
+        width:96,
       },{
         field: "PLZ",
         title:"PLZ",
@@ -160,7 +160,7 @@
         field: "ort",
         title:"Ort",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:100,
+        width:96,
       },{
         field: "land",
         title:"Land",
@@ -168,7 +168,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:135,
+        width:145,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",

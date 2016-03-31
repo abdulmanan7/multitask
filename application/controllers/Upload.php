@@ -98,12 +98,23 @@ class Upload extends CI_Controller {
 			$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 			$info->deleteType = 'DELETE';
 			$info->error = null;
-			if ($_FILES['userfile']['size'] > 500000) {
-				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 70);
-				unlink($data['full_path']);
+			if ($data['image_width'] > 1000) {
+				// ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 70);
+				$configer = array(
+				'image_library' => 'gd2',
+				'source_image' => $data['full_path'],
+				'maintain_ratio' => TRUE,
+				'width' => 1000,
+				// 'height' => 200,
+				'new_image' => $this->new_path,
+			);
+			$this->image_lib->clear();
+			$this->image_lib->initialize($configer);
+			$this->image_lib->resize();
 			} else {
 				ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 98);
 			}
+			unlink($data['full_path']);
 			$files[] = $info;
 			//this is why we put this in the constants to pass only json data
 			if ($this->input->is_ajax_request()) {
