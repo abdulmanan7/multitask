@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<style type="text/css">
 		::selection { background-color: #E13300; color: white; }
 		::-moz-selection { background-color: #E13300; color: white; }
-#question td.item-head { width: 75%; }
+#question td.item-head { width: 70%; }
 .input-md { width: 40%;}
 .input-xs { width: 20%; }
 .input-sm { width: 30%; }
