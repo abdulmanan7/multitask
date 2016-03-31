@@ -24,7 +24,7 @@
         background:#88B7D4;
       }
       img{
-            width: 100px;
+            width: 120px;
       }
     </style>
     <script>
@@ -77,10 +77,7 @@
                   <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
                   <div class="clearfix"></div>
                 </div>
-                <div class="form-group">
-<a href="<?php echo base_url('signup')?>" class="text-success" style="margin-left:20px;">Register your self</a>
-</div>
-<?php echo form_close();?>
+                  <?php echo form_close();?>
             </div>
           </div>
         </div>

@@ -74,7 +74,7 @@ class Auth extends CI_Controller {
 				'id' => 'identity',
 				'class' => 'form-control',
 				'type' => 'text',
-				'Placeholder' => 'Enter Mobile No',
+				'Placeholder' => '',
 				'value' => $this->form_validation->set_value('identity'),
 			);
 			$this->data['password'] = array(
@@ -82,7 +82,7 @@ class Auth extends CI_Controller {
 				'id' => 'password',
 				'type' => 'password',
 				'class' => 'form-control',
-				'Placeholder' => 'Enter password',
+				'Placeholder' => '',
 				'required' => 'required',
 				'value' => $this->form_validation->set_value('password'),
 			);
