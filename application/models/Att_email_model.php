@@ -21,6 +21,12 @@ class Att_email_model extends CI_Model {
 			$this->db->like('vorname', $term);
 			$this->db->or_like('nachname', $term);
 			$this->db->or_like('email', $term);
+			$this->db->or_like('strabe_nr', $term);
+			$this->db->or_like('PLZ', $term);
+			$this->db->or_like('ort', $term);
+			$this->db->or_like('land', $term);
+			$this->db->or_like('bauobjektadress', $term);
+			$this->db->or_like('telefon', $term);
 		}
 		$this->db->order_by('att_id', 'desc');
 		return $this->db->get()->result_array();
