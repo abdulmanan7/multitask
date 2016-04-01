@@ -19,8 +19,9 @@ class Reports extends CI_Controller {
 	}
 	public function save() {
 		// load the view and saved it into $html variable
+		$vorname = $this->input->post('vorname');
 		$pdata = array(
-			"vorname" => $this->input->post('vorname'),
+			"vorname" => $vorname,
 			"nachname" => $this->input->post('nachname'),
 			"strabe_nr" => $this->input->post('strabe'),
 			"PLZ" => $this->input->post('plz'),
@@ -55,7 +56,7 @@ class Reports extends CI_Controller {
 				$count++;
 				$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 			}
-			$this->send($pdata['email'], $att_id);
+			$this->send($pdata['email'], $att_id, $vorname);
 		}
 		//this the the PDF filename that user will get to download
 		redirect('planung/listing', 'refresh');
@@ -97,9 +98,10 @@ class Reports extends CI_Controller {
 			$pdf->Output($pdfFilePath, "I");
 		}
 	}
-	function send($email, $att_id) {
+	function send($email, $att_id, $vorname) {
 		$this->load->model('settings_model');
 		$comp = $this->settings_model->get();
+		$message = str_replace("{name}", $vorname, $comp['body']);
 		$att_path = $this->get($att_id, true);
 		$this->load->library('email', array('mailtype' => "html"));
 
@@ -109,7 +111,7 @@ class Reports extends CI_Controller {
 
 		$this->email->subject($comp['company_subject']);
 		$this->email->attach($att_path);
-		$this->email->message($comp['body']);
+		$this->email->message($message);
 
 		if ($this->email->send()) {
 			redirect('reports/success/0', 'refresh');
