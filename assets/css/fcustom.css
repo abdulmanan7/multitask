@@ -53,6 +53,7 @@
 			margin: 10px;
 			border: 1px solid #D0D0D0;
 			box-shadow: 0 0 8px #D0D0D0;
+			overflow: hidden;
 		}
 		.btn{
 			display: inline-block;
@@ -572,4 +573,10 @@ input[type="color"]:focus,
 }
   .text-blood{
     color:#FF0500;
+  }
+  .help-modal{
+  	    font-size: 14px;
+  	        line-height: 2.2;
+    color: #595955;
+    padding: 30px;
   }

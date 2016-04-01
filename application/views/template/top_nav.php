@@ -20,7 +20,7 @@
               </a>
             </li>
              <li <?php echo ($page_title == 'Settings') ? 'class="active"' : ''?>>
-              <a href='#'>
+              <a href='<?=base_url("settings")?>'>
                 <i class="fa fa-cogs"></i>Settings</a>
                 <!-- <i class="fa fa-cogs"></i>Einstellungen</a> -->
               <ul>

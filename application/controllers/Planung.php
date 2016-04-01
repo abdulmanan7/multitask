@@ -41,7 +41,7 @@ class Planung extends CI_Controller {
 				header("Content-type: application/json");
 				$total = sizeof($data);
 				if ($total != 0) {
-					$total = $this->att_email->count_all();
+					$total = $this->att_email->count_all($search_option);
 				}
 				$response = array(
 					"pageSize" => $pageSize,

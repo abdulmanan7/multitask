@@ -57,12 +57,12 @@
       },{
         field: "nachname",
         title: "Nachname",
-        width:73,
+        width:78,
       },{
         field: "strabe_nr",
         title: "Straße",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:96,
+        width:95,
       },{
         field: "PLZ",
         title:"PLZ",
@@ -72,7 +72,7 @@
         field: "ort",
         title:"Ort",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:96,
+        width:95,
       },{
         field: "land",
         title:"Land",
@@ -80,7 +80,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:145,
+        width:144,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
@@ -145,12 +145,12 @@
       },{
         field: "nachname",
         title: "Nachname",
-        width:73,
+        width:78,
       },{
         field: "strabe_nr",
         title: "Straße",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:96,
+        width:95,
       },{
         field: "PLZ",
         title:"PLZ",
@@ -160,7 +160,7 @@
         field: "ort",
         title:"Ort",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:96,
+        width:95,
       },{
         field: "land",
         title:"Land",
@@ -168,7 +168,7 @@
       },{
         field: "email",
         title:"eMail",
-        width:145,
+        width:144,
       },{
         field: "bauobjektadress",
         title:"Objektadresse",

@@ -98,26 +98,36 @@ class Reports extends CI_Controller {
 		}
 	}
 	function send($email, $att_id) {
+		$this->load->model('settings_model');
+		$comp = $this->settings_model->get();
 		$att_path = $this->get($att_id, true);
-		$this->load->library('email');
+		$this->load->library('email', array('mailtype' => "html"));
 
-		$this->email->from('unterlagen@fotobegehung.de', 'SOLARvent');
+		$this->email->from($comp['company_email'], $comp['company_title']);
 		$this->email->to($email);
-		$this->email->cc('unterlagen@fotobegehung.de');
+		$this->email->cc($comp['company_email']);
 
-		$this->email->subject('Fotobegehung');
+		$this->email->subject($comp['company_subject']);
 		$this->email->attach($att_path);
-		$this->email->message('you have just submit Fotobegehung at SOLARvent');
+		$this->email->message($comp['body']);
 
 		if ($this->email->send()) {
-			set_flash('Formulardaten gespeichert und eMail mit PDF versendet!', 'success');
-			redirect('planung/listing', 'refresh');
+			redirect('reports/success/0', 'refresh');
 		} else {
-			set_flash('Fehler beim E-Mail zu senden', 'error');
-			redirect('planung/listing', 'refresh');
+			redirect('reports/success/1', 'refresh');
 			// show_error($this->email->print_debugger());
 		}
 
+	}
+	function success($message) {
+
+		$data["logo"] = base_url('assets/img/small_logo.jpg');
+		if ($message == 1) {
+			$data["message"] = set_message("Fehler beim E-Mail zu senden", 'error');
+		} else {
+			$data["message"] = set_message('Formulardaten gespeichert und eMail mit PDF versendet!');
+		}
+		$this->load->view('frontend/success', $data);
 	}
 	function delete($att_id = '') {
 		is_valid_id($att_id);
