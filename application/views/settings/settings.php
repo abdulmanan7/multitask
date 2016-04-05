@@ -8,31 +8,78 @@
             <i class="icon ion-clock text-info"></i> Settings
           </h3>
           <div id="message"></div>
-          <form action="<?=base_url('settings/update/' . $email_tpl['id'])?>" method="POST" role="form">
-            <legend>Company info</legend>
-            <div class="form-group">
-              <label for="com_title">Company title</label>
-              <input type="text" class="form-control" value="<?=$email_tpl['company_title']?>" name="comp_title">
+          <form class="form-horizontal" action="<?=base_url('settings/update/' . $email_tpl['id'])?>" method="POST" role="form">
+            <div class="row">
+              <div class="col-sm-12">
+                <legend>Company info</legend>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="com_title" class="control-label col-sm-3">Company title</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['company_title']?>" name="comp_title">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_attn_name" class="control-label col-sm-3">Attn Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['attn_name']?>" name="attn_name">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_vat_no" class="control-label col-sm-3">VAT #</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['VAT_no']?>" name="vat_no">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_desc" class="control-label col-sm-3">Company Short description</label>
+                      <div class="col-sm-9">
+                        <textarea name="comp_desc" class="form-control" rows="3"><?=$email_tpl['description']?>
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="comp_mail" class="control-label col-sm-3">Company Mail</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_post_code" class="control-label col-sm-3">Post code</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['post_code']?>" name="post_code">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_phone" class="control-label col-sm-3">Phone</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" value="<?=$email_tpl['phone']?>" name="phone">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_address" class="control-label col-sm-3">Address</label>
+                      <div class="col-sm-9">
+                        <textarea name="address" class="form-control" rows="3"><?=$email_tpl['address']?>
+                        </textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="comp_mail">Company Mail</label>
-              <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
-            </div>
-             <div class="form-group">
-              <label for="comp_desc">Company Short description</label>
-              <input type="text" class="form-control" value="<?=$email_tpl['description']?>" name="comp_desc">
-            </div>
-
-          <fieldset>
-            <legend>Email Template</legend>
-            <div class="form-group">
-              <label for="name">Subject *</label>
-              <input type="text" class="form-control" id="sname" value="<?=$email_tpl['subject']?>" name="sname">
-            </div>
-            <div class="form-group">
-              <label for="description">Body</label>
-              <textarea name="ebody" class="form-control wysihtml5" rows="10" ><?=$email_tpl['body']?></textarea>
-          </fieldset>
+            <fieldset>
+              <legend>Email Template</legend>
+              <div class="form-group">
+                <label for="name">Subject *</label>
+                <input type="text" class="form-control" id="sname" value="<?=$email_tpl['subject']?>" name="sname">
+              </div>
+              <div class="form-group">
+                <label for="description">Body</label>
+                <textarea name="ebody" class="form-control wysihtml5" rows="10" ><?=$email_tpl['body']?></textarea>
+              </fieldset>
             </div>
             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
           </form>
@@ -49,4 +96,4 @@
     "link": false,
   });
 </script>
-<!-- Left Sidebar Start -->
+  <!-- Left Sidebar Start -->

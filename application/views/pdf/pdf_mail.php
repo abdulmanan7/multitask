@@ -135,8 +135,8 @@ border-spacing:0.5em;}
 	</tr>
 	<tr class="item-row">
 		<td class="item-head">Wärmebedarf nach der Dämmmaßnahme:</td>
-		<td class="item-name form-control" valign="top"><?=$warmebedarf_neu?></td>
-		<td>kWh / Jahr</td>
+		<td class="item-name form-control"  valign="top"><?=$warmebedarf_neu?></td>
+		<td style="width:82px">kWh / Jahr</td>
 	</tr>
 	<tr class="item-row">
 		<td class="item-head" colspan="3">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</td>
