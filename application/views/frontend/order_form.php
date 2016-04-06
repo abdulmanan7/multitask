@@ -261,7 +261,7 @@
 		</div>
 	</div>
 	<?php $this->load->view('template/frontend/footer');?>
-	<script type="text/javascript" src="<?=base_url('assets/smartWizard/js/jquery.smartWizard-2.0.js')?>"></script>
+	<script type="text/javascript" src="<?=base_url('assets/SmartWizard/js/jquery.smartWizard-2.0.js')?>"></script>
 	<script type="text/javascript">
 		$('#landSelect').on('change', function() {
 			var self = $(this);

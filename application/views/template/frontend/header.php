@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/style.css')?>">
     <?php if ($class == "reports"): ?>
 
-<link href="<?=base_url('assets/smartWizard/styles/smart_wizard.css')?>" rel="stylesheet" type="text/css">
+<link href="<?=base_url('assets/SmartWizard/styles/smart_wizard.css')?>" rel="stylesheet" type="text/css">
     <!-- blueimp Gallery styles -->
     <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
