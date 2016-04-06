@@ -6,7 +6,7 @@
                 <span class="preview"></span>
             </td>
             <td>
-                <p class="name">{%=file.name%}</p>
+                <p class="name rawName">{%=file.name%}</p>
                 <strong class="error text-danger"></strong>
             </td>
             <td>
@@ -70,7 +70,6 @@
         </tr>
         {% } %}
     </script>
-    <script src="<?=base_url('assets/plugins/upload/js/jquery.js')?>"></script>
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')?>"></script> -->
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
     <script src="<?=base_url('assets/plugins/upload/js/vendor/jquery.ui.widget.js')?>"></script>

@@ -29,7 +29,7 @@
 
                 msgBox = $('.msgBox',obj);
                 if(msgBox.length == 0){
-                  msgBox = $('<div class="msgBox"><div class="content"></div><a href="#" class="close">X</a></div>');
+                  msgBox = $('<div class="msgBox"><div class="content col-sm-12"></div><a href="#" class="close">X</a></div>');
                   elmActionBar.append(msgBox);                
                 }
                 
@@ -58,7 +58,7 @@
                 function init(){
                   var allDivs =obj.children('div'); //$("div", obj);                
                   obj.children('ul').addClass("anchor");
-                  allDivs.addClass("content");
+                  allDivs.addClass("content col-sm-12");
                   // Create Elements
                   loader = $('<div>Loading</div>').addClass("loader");
                   elmActionBar = $('<div></div>').addClass("actionBar");

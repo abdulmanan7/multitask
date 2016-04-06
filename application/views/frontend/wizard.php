@@ -1,41 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Smart Wizard 2 - Step Validation Example - a javascript jQuery wizard control plugin</title>
-
-<link href="styles/smart_wizard.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="js/jquery.smartWizard-2.0.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-    	// Smart Wizard
-  		$('#wizard').smartWizard({
-        transitionEffect:'slideleft',
-        onFinish:onFinishCallback,
-        enableFinishButton:true,
-        labelNext:"Nächster",
-        labelPrevious:"früher",
-        labelFinish:"Fertig",
-        // btFinish:false
-      });
-
-      function onFinishCallback(){
-       if(validateAllSteps()){
-        $('form').submit();
-       }
-      }
-		});
-
-</script>
-</head><body>
-
 <table align="center" border="0" cellpadding="0" cellspacing="0">
 <tr><td>
 <form action="#" method="POST">
   <input type='hidden' name="issubmit" value="1">
 <!-- Tabs -->
-  		<div id="wizard" class="swMain">
+  		<div id="wizard" class="swMain col-xs-12">
   			<ul>
   				<li><a href="#step-1">
                 <span class="stepDesc">
@@ -86,48 +54,51 @@
             <p>
               (Heizkessel, Schornsteinanbindung, Rohrleitungen mit Pumpen/Mischer)
             </p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
-  			<div id="step-2">
+        <div id="step-2">
             <h2 class="StepTitle">Schornstein</h2>
 <p>
   (Außenansicht Wand mit Putztürchen, Foto damit man ggf. das Innenrohrmaterial erkennen kann - messen Sie bei dieser Gelegenheit den Innendurchmesser und teilen Sie diesen mit)
 </p>
+            <?php $this->load->view('frontend/uploader');?>
 
         </div>
-  			<div id="step-3">
+        <div id="step-3">
             <h2 class="StepTitle">Brennstoff-Lagerraum </h2>
-            (z.B. Heizöltankraum, gibt es Rohrleitungen an der Decke, wo sind ggf. Fenster)
+            <p>(z.B. Heizöltankraum, gibt es Rohrleitungen an der Decke, wo sind ggf. Fenster)</p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
-  			<div id="step-4">
+        <div id="step-4">
             <h2 class="StepTitle">Einbringhindernisse </h2>
             <p>
               (Wo muss der Kessel, Pufferspeicher ggf. durch bzw. welche Treppen müssen überwunden werden. Teilen Sie uns jeweils das engste Durchgangsmaß mit sowie die Anzahl der Treppenstufen)
             </p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
         <div id="step-5">
             <h2 class="StepTitle">Montageort der Solaranlage</h2>
             <p>
               (Flachdach, Schrägdach, gibt es Abschattungen?)
             </p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
         <div id="step-6">
             <h2 class="StepTitle">Gebäude, welches beheizt werden soll von außen</h2>
             <p>
               (Außenansichten möglichst von allen Seiten)
             </p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
         <div id="step-7">
             <h2 class="StepTitle">Grundrisse von Ihrem Gebäude</h2>
             <p>
               (z.B. Kellergeschoß mit Markierung Heizraum und Brennstofflager; Für die Solaranlage den Neigungswinkel, Himmelsrichtung, sowie die Dachfläche; Gebäudeschnitt wg. Ermittlung der Schornsteinhöhe sowie der Solarleitung. Alternativ können Sie diese Pläne auch einfach als PDF-Datei hochladen, sofern Ihnen diese bereits vorliegen.)
             </p>
+            <?php $this->load->view('frontend/uploader');?>
         </div>
-  		</div>
+      </div>
 <!-- End SmartWizard Content -->
 </form>
-
 </td></tr>
 </table>
-
-</body>
-</html>
