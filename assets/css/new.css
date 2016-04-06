@@ -104,7 +104,7 @@ a {
   color: white !important; }
 
 .info-bg {
-  background: #D19D09 !important;
+  background: #6d880e !important;
   color: white !important; }
 
 .warning-bg {
@@ -192,7 +192,7 @@ iframe.wysihtml5-sandbox {
   color: #f63131 !important; }
 
 .text-info {
-  color: #D19D09 !important; }
+  color: #6d880e !important; }
 
 .text-warning {
   color: #ffb400 !important; }
@@ -416,9 +416,9 @@ blockquote {
     display: none; }
 
 #scrollbar-one .thumb, #scrollbar-two .thumb {
-  background-color: #D19D09; }
+  background-color: #6d880e; }
   #scrollbar-one .thumb .end, #scrollbar-two .thumb .end {
-    background-color: #D19D09; }
+    background-color: #6d880e; }
 
 .noSelect {
   user-select: none;
@@ -783,7 +783,7 @@ ul#mini-nav {
           padding: 0; }
           ul#mini-nav li.list-box.user-profile .account-details ul.settings li {
             text-align: left;
-            background-color: #D19D09;
+            background-color: #6d880e;
             height: 18px;
             line-height: 14px;
             margin-bottom: 2px; }
@@ -894,7 +894,7 @@ ul.server-activity {
         margin-right: 10px; }
       ul.server-activity li p .time {
         text-align: right;
-        color: #D19D09;
+        color: #6d880e;
         float: right;
         line-height: 30px;
         font-weight: 700; }
@@ -936,9 +936,9 @@ ul.project-activity {
       ul.project-activity li.activity-list.danger:after {
         border-color: #f63131; }
     ul.project-activity li.activity-list.info {
-      border-left-color: #D19D09; }
+      border-left-color: #6d880e; }
       ul.project-activity li.activity-list.info:after {
-        border-color: #D19D09; }
+        border-color: #6d880e; }
     ul.project-activity li.activity-list.warning {
       border-left-color: #ffb400; }
       ul.project-activity li.activity-list.warning:after {
@@ -998,14 +998,14 @@ ul.project-activity {
       float: left;
       margin-left: 80px;
       color: white;
-      background: #D19D09; }
+      background: #6d880e; }
       .messages-list li:nth-child(even):before {
         left: -80px;
         background-image: url(../img/user5.png); }
       .messages-list li:nth-child(even):after {
         border-left: 25px solid transparent;
         left: -15px;
-        border-top: 25px solid #D19D09; }
+        border-top: 25px solid #6d880e; }
     .messages-list li:last-child {
       margin-bottom: 0; }
 
@@ -1027,12 +1027,13 @@ ul.appointments {
 
 /* Sub Navigation starts  */
 .sub-nav {
-  background-color: #D19D09;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D19D09), color-stop(85%, #D19D09), to(#1f5a80));
-  background-image: -webkit-linear-gradient(#D19D09, #D19D09 85%, #9E7705);
-  background-image: -moz-linear-gradient(top, #D19D09, #D19D09 85%, #9E7705);
-  background-image: -o-linear-gradient(#D19D09, #D19D09 85%, #9E7705);
-  background-image: linear-gradient(#D19D09, #D19D09 85%, #9E7705);
+  background-color: #6d880e;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6d880e), color-stop(85%, #6d880e), to(#485a09));
+  background-image: -webkit-linear-gradient(to bottom, #6d880e 85%, #485a09 100%);
+  background-image: -moz-linear-gradient(to bottom, #6d880e 85%, #485a09 100%);
+  background-image: -o-linear-gradient(to bottom, #6d880e 85%, #485a09 100%);
+  /*background-image: linear-gradient(#6d880e, #6d880e 85%, #9E7705);*/
+  background-image: linear-gradient(to bottom, #6d880e 85%, #485a09 100%);
   background-repeat: no-repeat;
   -webkit-border-radius: 0 4px 0 0;
   -moz-border-radius: 0 4px 0 0;
@@ -1084,7 +1085,7 @@ ul.appointments {
     padding: 6px 10px;
     color: white;
     font-style: italic;
-    background: #D19D09;
+    background: #6d880e;
     border: 1px solid #F6D531;
     width: 210px;
     -webkit-transition: all 0.5s ease;
@@ -1101,7 +1102,7 @@ ul.appointments {
       border: 0;
       width: 260px;
       border: 1px solid #74b4de;
-      background: #D19D09; }
+      background: #6d880e; }
   .custom-search i {
     padding: 21px 0 0 15px;
     cursor: pointer;
@@ -1133,13 +1134,13 @@ ul.appointments {
   .notice p {
     margin: 0; }
   .notice.blue {
-    border-color: #D19D09; 
-    color: #D19D09; 
+    border-color: #6d880e; 
+    color: #6d880e; 
   }
     .notice.blue:before {
       font-family: "FontAwesome";
       content: "\f14a";
-      background-color: #D19D09; }
+      background-color: #6d880e; }
   .notice.green {
     border-color: #74b749;
     color: #74b749;
@@ -1336,7 +1337,7 @@ ul.appointments {
   .mini-widget-yellow .mini-widget-heading .pull-right {
     color: white; }
 .mini-widget-yellow .mini-widget-body {
-  background: #D19D09; }
+  background: #6d880e; }
   .mini-widget-yellow .mini-widget-body i {
     color: #F6F862; }
   .mini-widget-yellow .mini-widget-body .number {
@@ -1497,7 +1498,7 @@ ul.appointments {
   .metro-nav .nav-block-yellow {
     background: #ffb400; }
   .metro-nav .nav-block-blue {
-    background: #D19D09; }
+    background: #6d880e; }
   .metro-nav .nav-block-red {
     background: #f63131; }
 
@@ -1557,7 +1558,7 @@ ul.appointments {
         border-bottom: 8px solid transparent;
         border-right: 8px solid #ed6d49; }
     .chats li.out .message {
-      border-right: 3px solid #D19D09;
+      border-right: 3px solid #6d880e;
       margin-right: 80px;
       background: whitesmoke;
       text-align: right; }
@@ -1568,9 +1569,9 @@ ul.appointments {
         right: -8px;
         border-top: 8px solid transparent;
         border-bottom: 8px solid transparent;
-        border-left: 8px solid #D19D09; }
+        border-left: 8px solid #6d880e; }
     .chats li.out .name {
-      color: #D19D09; }
+      color: #6d880e; }
     .chats li.out .name, .chats li.out .date-time {
       text-align: right; }
     .chats li .message .body {
@@ -1752,7 +1753,7 @@ ul.appointments {
         background: #e6e6e6;
         cursor: pointer; }
     #beautify_dt .dataTables_paginate .paginate_active {
-      background: #D19D09;
+      background: #6d880e;
       color: white; }
   #beautify_dt .dataTable .sorting {
     cursor: pointer;
@@ -1774,7 +1775,7 @@ ul.appointments {
     padding-bottom: 8px;
     border-bottom: 1px dotted #d9d9d9; }
   .featured-articles-container .heading-blue {
-    color: #D19D09; }
+    color: #6d880e; }
   .featured-articles-container .articles a {
     position: relative;
     border-bottom: 1px dotted #d9d9d9;
@@ -1796,7 +1797,7 @@ ul.appointments {
       border-top: 9px solid #ef8060;
       border-left: 9px solid transparent; }
     .featured-articles-container .articles a .label-bullet-blue {
-      border-top: 9px solid #D19D09; }
+      border-top: 9px solid #6d880e; }
     .featured-articles-container .articles a .date {
       font-size: 10px;
       padding-left: 2px;
@@ -1851,7 +1852,7 @@ ul.appointments {
   .stats li:nth-child(3) p {
     color: #ffb400; }
   .stats li:nth-child(4) p {
-    color: #D19D09; }
+    color: #6d880e; }
   .stats li:nth-child(5) p {
     color: #f63131; }
   .stats li .chart {
@@ -1910,7 +1911,7 @@ ul.appointments {
   .month-income li .green-block {
     background: #74b749; }
   .month-income li .blue-block {
-    background: #D19D09; }
+    background: #6d880e; }
   .month-income li .red-block {
     background: #f63131; }
 
@@ -1937,7 +1938,7 @@ ul.appointments {
     height: 34px; }
   .mini-dashboard .graph-container .info-container {
     padding: 5px 0;
-    color: #D19D09; }
+    color: #6d880e; }
     .mini-dashboard .graph-container .info-container .blocks-container .block {
       position: relative;
       background: #e6e6e6;
@@ -2070,7 +2071,7 @@ ul.appointments {
         float: right;
         text-align: right; }
       .invoice .invoice-head .invoice-info .date {
-        color: #D19D09;
+        color: #6d880e;
         font-size: 11px;
         font-weight: 500; }
   .invoice .invoice-data-container {
@@ -2097,7 +2098,7 @@ ul.appointments {
     line-height: 100%; }
 
 footer {
-  background: #D19D09;
+  background: #6d880e;
   color: white;
   font-weight: normal;
   line-height: 30px;
@@ -2237,15 +2238,15 @@ footer {
     margin-right: 1px;
     border-radius: 3px 3px 0 0; }
     #cssmenu > ul > li.active {
-      background: #D19D09; }
+      background: #6d880e; }
       #cssmenu > ul > li.active a {
         color: white; }
         #cssmenu > ul > li.active a i {
           color: white; }
       #cssmenu > ul > li.active:hover {
-        background: #D19D09; }
+        background: #6d880e; }
     #cssmenu > ul > li:hover {
-      background: #D19D09; }
+      background: #6d880e; }
     #cssmenu > ul > li > a i {
       color: #4d4d4d;
       text-align: center;
@@ -2309,7 +2310,7 @@ footer {
   #cssmenu.align-right ul ul {
     text-align: right; }
   #cssmenu ul ul li {
-    background: #D19D09;
+    background: #6d880e;
     height: 0;
     -webkit-transition: all .25s ease;
     -moz-transition: all .25s ease;
@@ -2384,12 +2385,12 @@ footer {
   #cssmenu {
     width: 100%;
     border-radius: 2px 2px 0 0;
-    background-color: #D19D09;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#D19D09), color-stop(85%, #D19D09), to(#1f5a80));
-    background-image: -webkit-linear-gradient(#D19D09, #D19D09 85%, #1f5a80);
-    background-image: -moz-linear-gradient(top, #D19D09, #D19D09 85%, #1f5a80);
-    background-image: -o-linear-gradient(#D19D09, #D19D09 85%, #1f5a80);
-    background-image: linear-gradient(#D19D09, #D19D09 85%, #1f5a80);
+    background-color: #6d880e;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6d880e), color-stop(85%, #6d880e), to(#1f5a80));
+    background-image: -webkit-linear-gradient(#6d880e, #6d880e 85%, #1f5a80);
+    background-image: -moz-linear-gradient(top, #6d880e, #6d880e 85%, #1f5a80);
+    background-image: -o-linear-gradient(#6d880e, #6d880e 85%, #1f5a80);
+    background-image: linear-gradient(#6d880e, #6d880e 85%, #1f5a80);
     background-repeat: no-repeat; }
     #cssmenu ul {
       width: 100%;

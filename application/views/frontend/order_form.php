@@ -5,7 +5,7 @@
 	<form id="fileupload" action="<?=base_url('reports/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="row fileupload-buttonbar ">
-			<div class="col-lg-10 question-box effect7 col-lg-offset-1">
+			<div class="col-xs-10 question-box effect7 col-xs-offset-1">
 				<p><a data-toggle="modal" href='#mdlhelp'>Help</a></p>
 				<div class="row">
 					<div class="col-md-12">

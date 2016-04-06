@@ -364,7 +364,7 @@ td .saparate{
         font-weight: 800;
     }
     #cssmenu > ul > li a i {
-        color: #D19D09;
+        color: #6d880e;
         font-size: 30px;
     }
     #payment_months li .info-label{
@@ -379,7 +379,7 @@ td .saparate{
         height: 16px;
     }
 .modal-header {
-    background: #D19D09;
+    background: #6d880e;
     color: #fff;
 }
 .modal-footer {
@@ -405,7 +405,7 @@ td.status{
     color: green;
 }
 /*.k-hierarchy-cell{
-    background: #D19D09;
+    background: #6d880e;
 }
 .k-hierarchy-cell a{
     background: #F1F1F1 !important;

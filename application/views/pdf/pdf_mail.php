@@ -155,7 +155,7 @@ border-spacing:0.5em;}
 <?php if ($val != ""): ?>
 	<?php $path = str_replace("/pdf/", "/full_size/", $val)?>
 		<td style="border:2px solid black; text-align:center;" width="340px">
-			<a href="<?=$path?>" target='_blank'><img src="<?=$val?>" style="border-right:5px solid #fff;" /></a>
+			<a href="<?=$path?>" target='_top'><img src="<?=$val?>" style="border-right:5px solid #fff;" /></a>
 		</td>
 <?php endif?>
  <?php endforeach?>

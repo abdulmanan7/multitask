@@ -3,12 +3,8 @@
 
 <!-- Mirrored from iamsrinu.com/bluemoon-admin-theme7/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Sep 2015 06:54:24 GMT -->
 <head>
-    <title>ishcool</title>
+    <title>SOLARvent</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="school managment - Responsive Admin Dashboard" />
-    <meta name="keywords" content="Notifications, Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Wrapbootstrap, Bootstrap, bootstrap.gallery" />
-    <meta name="author" content="Bootstrap Gallery" />
     <link rel="shortcut icon" href="<?php echo ASSETS . '/img/favicon.ico'?>">
 
     <link href="<?php echo ASSETS . "/css/bootstrap.min.css";?>" rel="stylesheet">
@@ -24,15 +20,6 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-40304444-1', 'iamsrinu.com');
-      ga('send', 'pageview');
-
-    </script>
   </head>
 
   <body>

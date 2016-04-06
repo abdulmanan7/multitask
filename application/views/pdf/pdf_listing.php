@@ -49,55 +49,55 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:85,
+        width:"94px",
       },{
         field: "vorname",
         title: "Vorname",
-        width:73,
+        width:"73px",
       },{
         field: "nachname",
         title: "Nachname",
-        width:78,
+        width:"80px",
       },{
         field: "strabe_nr",
         title: "Straße",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:95,
+        width:"95px",
       },{
         field: "PLZ",
         title:"PLZ",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
-        width:90,
+        width:"90px",
       },{
         field: "ort",
         title:"Ort",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:95,
+        width:"95px",
       },{
         field: "land",
         title:"Land",
-        width:80,
+        width:"80px",
       },{
         field: "email",
         title:"eMail",
-        width:144,
+        width:"144px",
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
         template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-        width:100,
+        width:"100px",
       },{
         field: "telefon",
         title:"Telefon",
-        width:70,
+        width:"79px",
       },
       {
         title: "pdf",
-        width:40,
+        width:"40px",
         template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
         title: "Delete",
-        width:40,
+        width:"40px",
         template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
