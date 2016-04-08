@@ -222,26 +222,6 @@
 				<?php $this->load->view('frontend/wizard');?>
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<div class="clearfix"></div>
-				<div class="col-lg-10 preContainer">
-					<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
-				</div>
-				<div class="clearfix"></div>
-				<div class="actionBar">
-
-					<button type="submit" class="btn btn-primary start">
-		<i class="glyphicon glyphicon-upload"></i>
-		<span>Upload starten</span>
-	</button>
-	<button type="reset" class="btn btn-warning cancel">
-		<i class="glyphicon glyphicon-ban-circle"></i>
-		<span>Upload abbrechen</span>
-	</button>
-	<button type="button" class="btn btn-danger delete">
-		<i class="glyphicon glyphicon-trash"></i>
-		<span>Löschen</span>
-	</button>
-				</div>
-				<div class="clearfix"></div>
 				<br>
 				<button type="submit" id="submit" class="btn btn-default"> Formular jetzt absenden !</button>
 			</div>

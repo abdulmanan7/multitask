@@ -15,10 +15,11 @@
 
 <link href="<?=base_url('assets/SmartWizard/styles/smart_wizard.css')?>" rel="stylesheet" type="text/css">
     <!-- blueimp Gallery styles -->
-    <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <!-- <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css"> -->
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
     <link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/jquery.fileupload.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/jquery.fileupload-ui.css')?>">    <link href="<?php echo load_fonts('font-awesome.min.css');?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/jquery.fileupload-ui.css')?>">
+    <link href="<?php echo load_fonts('font-awesome.min.css');?>" rel="stylesheet">
     <!-- CSS adjustments for browsers with JavaScript disabled -->
     <noscript><link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/jquery.fileupload-noscript.css')?>"></noscript>
     <noscript><link rel="stylesheet" href="<?=base_url('assets/plugins/upload/css/jquery.fileupload-ui-noscript.css')?>"></noscript>
@@ -34,16 +35,30 @@
         $('#wizard').smartWizard({
             transitionEffect:'slideleft',
             onFinish:onFinishCallback,
+            onShowStep:onShowStepCallback,
             enableFinishButton:true,
             labelNext:"Nächster",
             labelPrevious:"früher",
-            labelFinish:"Fertig",
+            labelFinish:"Formular jetzt absenden",
             includeFinishButton: false
         // btFinish:false
     });
         function onFinishCallback(){
             if(validateAllSteps()){
                 $('form').submit();
+            }
+        }
+        function onShowStepCallback(obj){
+            currentStep = $(obj.attr('href'));
+            currentStep.addClass('FocusedStep');
+            currentStep.siblings().removeClass('FocusedStep');
+            $('#fileupload').fileupload("option","filesContainer",$(".FocusedStep").children(':last').find("tbody.files"));
+            if (obj.attr('href') == "#step-1") {
+            $('.buttonNext').text('Nächste');
+            $('.buttonPrevious').text("weiter");
+            }else{
+            $('.buttonNext').text('zurück');
+            $('.buttonPrevious').text("weiter");
             }
         }
     });

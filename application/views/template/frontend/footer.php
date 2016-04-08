@@ -82,7 +82,7 @@
     <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
     <script src="<?=base_url('assets/js/bootstrap.min.js')?>"></script>
     <!-- blueimp Gallery script -->
-    <script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+    <!-- <script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> -->
     <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
     <script src="<?=base_url('assets/plugins/upload/js/jquery.iframe-transport.js')?>"></script>
     <!-- The basic File Upload plugin -->

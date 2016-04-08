@@ -5,9 +5,10 @@ $(function () {
     $('#fileupload').fileupload({
         url: "upload/do_upload",
         dataType: 'json',
-        autoUpload: false,
+        autoUpload: true,
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         maxFileSize: 99900000,
+        filesContainer:$(".FocusedStep").children(':last').find("tbody.files")
         // Enable image resizing, except for Android and Opera,
         // which actually support image resizing, but fail to
         // send Blob objects via XHR requests:

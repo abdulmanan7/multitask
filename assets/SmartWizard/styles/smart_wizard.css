@@ -27,7 +27,8 @@ padding: 20px;
   border: 0px solid #CCC;    
   overflow:hidden;
   clear:both;
-  height:300px;
+  height:auto;
+  overflow-y:scroll 
 }
 
 .swMain .stepContainer div.content {
@@ -40,7 +41,6 @@ padding: 20px;
   font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
   color:#5A5655;   
   background-color:#F8F8F8;  
-  height:300px;
   text-align:left;
   overflow:visible;    
   z-index:88; 
@@ -243,13 +243,13 @@ position: relative;
   text-decoration: none;
   text-align: center;
   font: bold 13px Verdana, Arial, Helvetica, sans-serif;
-  width:100px;
+  width:194px;
   color:#FFF;
   outline-style:none;
-  background-color:   #5A5655;
-  border: 1px solid #5A5655;
   -moz-border-radius  : 5px; 
-  -webkit-border-radius: 5px;    
+  -webkit-border-radius: 5px;   
+    background-color: #428bca;
+    border-color: #357ebd; 
 }
 
 /* Form Styles */
