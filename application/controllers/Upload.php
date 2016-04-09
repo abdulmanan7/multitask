@@ -24,18 +24,39 @@ class Upload extends CI_Controller {
 	public function do_upload() {
 		$files = "";
 		$upload_path_url = base_url() . 'uploads/';
+		if ($_FILES['userfile']['type'] == "application/pdf") {
+			$config['upload_path'] = FCPATH . 'uploads/full_size';
+		} else {
+			$config['upload_path'] = FCPATH . 'uploads/';
+		}
 
-		$config['upload_path'] = FCPATH . 'uploads/';
-		$config['allowed_types'] = 'jpg|jpeg|png|gif';
+		$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
 		$config['file_name'] = time();
 
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload()) {
 			$error = array('error' => $this->upload->display_errors());
-			pr('opps an error occur while uploading try again ');
+			pr($error);
 		} else {
 			$data = $this->upload->data();
+			//if pdf file
+			if (!$data['is_image']) {
+				$info = new StdClass;
+				$info->name = $data['file_name'];
+				$info->size = $data['file_size'] * 1024;
+				$info->type = $data['file_type'];
+				$info->url = $upload_path_url . 'full_size/' . $data['file_name'];
+				// I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
+				$info->thumbnailUrl = load_img('PDF-icon.png');
+				$info->pdfUrl = load_img('pdf_thumb.png');
+				$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
+				$info->deleteType = 'DELETE';
+				$info->error = null;
+				$files[] = $info;
+				echo json_encode(array("files" => $files));
+				die;
+			}
 			$config = array();
 			$config['image_library'] = 'gd2';
 			$config['source_image'] = $data['full_path'];
@@ -43,7 +64,7 @@ class Upload extends CI_Controller {
 			$config['new_image'] = $data['file_path'] . 'thumbs/';
 			$config['maintain_ratio'] = TRUE;
 			$config['thumb_marker'] = '';
-			$config['width'] = 75;
+			$config['width'] = 80;
 			$config['height'] = 50;
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
@@ -174,18 +195,21 @@ class Upload extends CI_Controller {
 	// 	imagedestroy($new);
 	// 	print '<div style="font-family:arial;"><b>'.$imageName.'</b> Uploaded successfully. Size: '.round($_FILES[$control]['size']/1000).'kb</div>';
 	// }
-	public function deleteImage($file) {
+	public function deleteImage($file, $pdf = FALSE) {
 //gets the job done but you might want to add error checking and security
+		if ($pdf) {
+
+		}
 		$full_size_path = FCPATH . 'uploads/full_size/' . $file;
 		$thumbs_path = FCPATH . 'uploads/thumbs/' . $file;
 		$pdf_path = FCPATH . 'uploads/pdf/' . $file;
 		if (file_exists($full_size_path)) {
 			$success = unlink($full_size_path);
 		}
-		if ($thumbs_path) {
+		if (file_exists($thumbs_path)) {
 			$success = unlink($thumbs_path);
 		}
-		if ($pdf_path) {
+		if (file_exists($pdf_path)) {
 			$success = unlink($pdf_path);
 		}
 		//info to see if it is doing what it is supposed to

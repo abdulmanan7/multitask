@@ -6,7 +6,7 @@ $(function () {
         url: "upload/do_upload",
         dataType: 'json',
         autoUpload: true,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|pdf)$/i,
         maxFileSize: 99900000,
         filesContainer:$(".FocusedStep").children(':last').find("tbody.files")
         // Enable image resizing, except for Android and Opera,
