@@ -1,7 +1,6 @@
 	<div class="upContainer col-md-12">
 		<div class="dragDrop container">
-			Datei einfach per Drag & Drop in dieses Fenster
-			ziehen, oder den Button „Datei hinzufügen“ drücken.
+			Datei einfach per Drag & Drop in dieses Fenster ziehen, oder alternativ:
 		<span class="btn btn-success fileinput-button" style="padding-left: 20px">
 			<i class="glyphicon glyphicon-plus"></i>
 			<span>Datei hinzufügen</span>

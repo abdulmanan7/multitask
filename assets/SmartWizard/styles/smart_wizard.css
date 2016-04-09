@@ -5,48 +5,48 @@
   
   http://www.techlaboratory.net
   http://tech-laboratory.blogspot.com
-*/
-.swMain {
-  position:relative;
-  display:block;
-  margin:0;
-  padding:0;
-  border: 0px solid #CCC;
-  overflow:visible;
-  /*float:left;*/
-  /*width:920px;*/
-}
-.dragDrop{
-padding: 20px;
-}
-.step-desc{
-  margin:15px 14px 10px;
-}
-.swMain .stepContainer {
-  display:block;
-  position: relative;
-  margin: 0;
-  padding:0;    
-  border: 0px solid #CCC;    
-  overflow:hidden;
-  clear:both;
-  height:auto;
-  overflow-y:scroll 
-}
+  */
+  .swMain {
+    position:relative;
+    display:block;
+    margin:0;
+    padding:0;
+    border: 0px solid #CCC;
+    overflow:visible;
+    /*float:left;*/
+    /*width:920px;*/
+  }
+  .dragDrop{
+    padding: 20px;
+  }
+  .step-desc{
+    margin:15px 14px 10px;
+  }
+  .swMain .stepContainer {
+    display:block;
+    position: relative;
+    margin: 0;
+    padding:0;    
+    border: 0px solid #CCC;    
+    overflow:hidden;
+    clear:both;
+    height:auto;
+    overflow-y:scroll 
+  }
 
-.swMain .stepContainer div.content {
-  display:block;
-  position: absolute;  
-  float:left;
-  margin: 0;
-  padding:5px;    
-  border: 1px solid #CCC; 
-  font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
-  color:#5A5655;   
-  background-color:#F8F8F8;  
-  text-align:left;
-  overflow:visible;    
-  z-index:88; 
+  .swMain .stepContainer div.content {
+    display:block;
+    position: absolute;  
+    float:left;
+    margin: 0;
+    padding:5px;    
+    border: 1px solid #CCC; 
+    font: normal 12px Verdana, Arial, Helvetica, sans-serif; 
+    color:#5A5655;   
+    background-color:#F8F8F8;  
+    text-align:left;
+    overflow:visible;    
+    z-index:88; 
   /*-webkit-border-radius: 5px;
   -moz-border-radius  : 5px;*/
   clear:both;
@@ -160,12 +160,12 @@ padding: 20px;
 }
 
 .swMain ul.anchor li a.done { 
-position: relative;
-    color: #FFF;
-    background: #BDD4A0;
-    border: 1px solid #A4CA73;
-    z-index: 99;
-    border-radius: 0 46px 46px 0;
+  position: relative;
+  color: #FFF;
+  background: #BDD4A0;
+  border: 1px solid #A4CA73;
+  z-index: 99;
+  border-radius: 0 46px 46px 0;
 
 /*  
   position:relative;
@@ -252,8 +252,8 @@ position: relative;
   outline-style:none;
   /*-moz-border-radius  : 5px; */
   /*-webkit-border-radius: 5px;   */
-    background-color: #428bca;
-    border-color: #357ebd; 
+  background-color: #428bca;
+  border-color: #357ebd; 
 }
 
 /* Form Styles */
@@ -320,3 +320,31 @@ position: relative;
   color: #EA8511;
   border: 1px solid #EA8511;  
 }
+@media (max-width: 1280px) {
+  .swMain ul.anchor li a {
+  padding:3px;
+  height:50px;
+  width:100px;
+  -moz-border-radius  : 3px;
+  -webkit-border-radius: 3px;
+  z-index:99;
+}
+.swMain ul.anchor li a .stepDesc {
+    padding: 1px;
+    font: bold 17px Verdana, Arial, Helvetica, sans-serif;
+}
+  }
+@media (max-width: 1132px) {
+  .swMain ul.anchor li a {
+  padding:2px;
+  height:43px;
+  width:82px;
+  -moz-border-radius  : 3px;
+  -webkit-border-radius: 3px;
+  z-index:99;
+}
+.swMain ul.anchor li a .stepDesc {
+    padding: 1px;
+    font: bold 14px Verdana, Arial, Helvetica, sans-serif;
+}
+  }

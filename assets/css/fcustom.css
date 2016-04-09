@@ -612,8 +612,8 @@ input[type="color"]:focus,
     float: right;
   }
   .input-group-addon{
-  	background-color: #A1F785;
-  	color: green
+  	background-color: #5B710C;
+  	color: #F7F7F7
   }
   .files input[type=checkbox]{
   	display: none;

@@ -5,7 +5,7 @@
 	<form id="fileupload" action="<?=base_url('reports/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="row fileupload-buttonbar ">
-			<div class="col-md-10 question-box effect7 col-md-offset-1">
+			<div class="col-sm-10 question-box effect7 col-sm-offset-1">
 				<p><a data-toggle="modal" href='#mdlhelp'>Benötigen Sie Unterstützung?</a></p>
 				<div class="row">
 					<div class="col-md-12">
@@ -122,7 +122,7 @@
 						<label class="control-label col-sm-6">Baujahr von Ihrem Haus?</label>
 						<div class="col-sm-6">
 							<select required="required" name="baujahr_hous" class="form-control">
-								<option value="Neubau">Neubau</option>
+								<option value="">Neubau</option>
 								<option value="2016 - 2002">2016 - 2002</option>
 								<option value="2001 - 1995">2001 - 1995</option>
 								<option value="1994 - 1978">1994 - 1978</option>
@@ -137,7 +137,7 @@
 						<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung?</label>
 						<div class="col-sm-6">
 							<select required="required" name="baujahr_alte" class="form-control">
-								<option value="Keine Heizung vorhanden">Keine Heizung vorhanden</option>
+								<option value="">Keine Heizung vorhanden</option>
 								<option value="1 - 10 Jahre">1 - 10 Jahre</option>
 								<option value="11 - 15 Jahre">11 - 15 Jahre</option>
 								<option value="16 - 20 Jahre">16 - 20 Jahre</option>
@@ -153,7 +153,7 @@
 						<label class="control-label col-sm-6">Womit heizen Sie derzeit?</label>
 						<div class="col-sm-6">
 							<select required="required" name="question3" class="form-control">
-								<option value="überhaupt nicht">überhaupt nicht</option>
+								<option value="">überhaupt nicht</option>
 								<option value="Erdgas">Erdgas</option>
 								<option value="Flüssiggas">Flüssiggas</option>
 								<option value="Heizöl">Heizöl</option>
@@ -238,19 +238,18 @@
 					<textarea name="description" class="form-control" rows="8"></textarea>
 				</div>
 			</div>
-			<div class="col-lg-10 question-box effect7 col-lg-offset-1">
+			<div class="col-sm-10 question-box effect7 col-sm-offset-1">
 				<?php $this->load->view('frontend/wizard');?>
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<div class="clearfix"></div>
 				<br>
-				<!-- <button type="submit" id="submit" class="btn btn-default"> Formular jetzt absenden !</button> -->
 			</div>
 			<!-- The table listing the files available for upload/download -->
 			<!-- The container for the uploaded files -->
 		</form>
 		<!-- The blueimp Gallery widget -->
 		<div class="clearfix"></div>
-		<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
+		<!-- <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
 			<div class="slides"></div>
 			<h3 class="title"></h3>
 			<a class="prev">‹</a>
@@ -258,7 +257,7 @@
 			<a class="close">×</a>
 			<a class="play-pause"></a>
 			<ol class="indicator"></ol>
-		</div>
+		</div> -->
 	</div>
 	<?php $this->load->view('template/frontend/footer');?>
 	<script type="text/javascript" src="<?=base_url('assets/SmartWizard/js/jquery.smartWizard-2.0.js')?>"></script>
