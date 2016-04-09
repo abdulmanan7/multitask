@@ -607,3 +607,18 @@ input[type="color"]:focus,
     color: #595955;
     padding: 30px;
   }
+  #submit{
+  	margin: 5px 3px 0 3px;
+    float: right;
+  }
+  .input-group-addon{
+  	background-color: #A1F785;
+  	color: green
+  }
+  .files input[type=checkbox]{
+  	display: none;
+  }
+  .modal-header {
+    background: green;
+    color: #fff;
+}

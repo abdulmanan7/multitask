@@ -9,16 +9,13 @@ class Upload extends CI_Controller {
 	private $new_path;
 	public function __construct() {
 		parent::__construct();
-		if (!$this->ion_auth->logged_in()) {
-			redirect('auth/login');
-		} else {
-			$this->comp_id = $this->session->userdata('company_id');
-			$this->comp_id = $this->session->userdata('user_id');
-			$this->load->helper(array('form', 'url', 'file'));
-			$this->uploadDir = FCPATH . 'uploads/';
-			$this->new_path = FCPATH . 'uploads/full_size/';
 
-		}
+		$this->comp_id = $this->session->userdata('company_id');
+		$this->comp_id = $this->session->userdata('user_id');
+		$this->load->helper(array('form', 'url', 'file'));
+		$this->uploadDir = FCPATH . 'uploads/';
+		$this->new_path = FCPATH . 'uploads/full_size/';
+
 	}
 
 	public function index() {

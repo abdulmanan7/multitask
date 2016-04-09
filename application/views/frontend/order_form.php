@@ -5,8 +5,8 @@
 	<form id="fileupload" action="<?=base_url('reports/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="row fileupload-buttonbar ">
-			<div class="col-xs-10 question-box effect7 col-xs-offset-1">
-				<p><a data-toggle="modal" href='#mdlhelp'>Help</a></p>
+			<div class="col-md-10 question-box effect7 col-md-offset-1">
+				<p><a data-toggle="modal" href='#mdlhelp'>Benötigen Sie Unterstützung?</a></p>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="logo">
@@ -31,7 +31,7 @@
 					<label class="control-label item-name">Nachname: <span class="text-blood">*</span></label>
 					<div class="input-group">
 						<div class="input-group-addon">
-							<i class="fa fa-tag"></i>
+							<i class="fa fa-user"></i>
 						</div>
 						<input name="nachname" type="text" class="form-control" required="required"></input>
 					</div><!-- /.input group -->
@@ -40,22 +40,41 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label item-name">Straße + Nr.: <span class="text-blood">*</span></label>
-					<input name="strabe" type="text" class="form-control" required="required"></input>
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-code-fork" style="font-size: 18px;"></i>
+						</div>
+						<input name="strabe" type="text" class="form-control" required="required"></input>
+					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
 						<div class="col-xs-6">
 							<label class="control-label item-name">PLZ: <span class="text-blood">*</span></label>
-							<input name="plz" type="text" class="form-control" required="required"></input>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-tagas" style="font-size: 18px;">P</i>
+								</div>
+								<input name="plz" type="text" class="form-control" required="required"></input>
+							</div>
 						</div>
 						<div class="col-xs-6">
 							<label class="control-label item-name">Ort: <span class="text-blood">*</span></label>
-							<input name="ort" type="text" class="form-control"></input>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-building-o"></i>
+								</div>
+									<input name="ort" type="text" class="form-control"></input>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label item-name">Land: <span class="text-blood">*</span></label>
+					<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-globe"></i>
+								</div>
 					<select class="form-control" name="country" required="required" id="landSelect">
 						<option value="">Land auswählen</option>
 						<option value="Deutschland">Deutschland</option>
@@ -71,6 +90,7 @@
 						<option value="Schweden">Schweden</option>
 						<option value="other">Neues Land hinzufügen</option>
 					</select>
+					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label item-name">Bauobjektadresse: (falls abweichend)</label>
@@ -80,7 +100,7 @@
 					<label class="control-label item-name">Telefon: <span class="text-blood">*</span></label>
 					<div class="input-group">
 						<div class="input-group-addon">
-							<i class="fa fa-tablet"></i>
+							<i class="fa fa-phone" style="font-size: 18px;"></i>
 						</div>
 						<input name="phone" type="text" class="form-control" required="required"></input>
 					</div><!-- /.input group -->
@@ -178,7 +198,7 @@
 					<div class="row">
 						<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm?</label>
 						<div class="col-sm-6">
-							<input name="question6" type="text" class="form-control"></input>
+							<input required="required" name="question6" type="text" class="form-control"></input>
 						</div>
 					</div>
 				</div>
@@ -186,7 +206,7 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Wie viel Personen leben in Ihrem Haus? </label>
 						<div class="col-sm-6">
-							<input name="question7" type="text" class="form-control"></input>
+							<input required="required" name="question7" type="text" class="form-control"></input>
 						</div>
 					</div>
 				</div>
@@ -194,7 +214,7 @@
 					<div class="row">
 						<label class="control-label col-sm-6">Wird Ihr Haus wärmegedämmt? Wann?</label>
 						<div class="col-sm-6">
-							<input name="question8" type="text" class="form-control"></input>
+							<input required="required" name="question8" type="text" class="form-control"></input>
 						</div>
 					</div>
 				</div>
@@ -223,7 +243,7 @@
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<div class="clearfix"></div>
 				<br>
-				<button type="submit" id="submit" class="btn btn-default"> Formular jetzt absenden !</button>
+				<!-- <button type="submit" id="submit" class="btn btn-default"> Formular jetzt absenden !</button> -->
 			</div>
 			<!-- The table listing the files available for upload/download -->
 			<!-- The container for the uploaded files -->
@@ -256,6 +276,6 @@
 				self.remove();
 			}
 		});
-</script>
+	</script>
 </body>
 </html>

@@ -1,17 +1,12 @@
-	<p>
+	<div class="upContainer col-md-12">
+		<div class="dragDrop container">
+			Datei einfach per Drag & Drop in dieses Fenster
+			ziehen, oder den Button „Datei hinzufügen“ drücken.
 		<span class="btn btn-success fileinput-button" style="padding-left: 20px">
 			<i class="glyphicon glyphicon-plus"></i>
 			<span>Datei hinzufügen</span>
 			<input type="file" name="userfile" multiple>
 		</span>
-	</p>
-	<div class="upContainer col-lg-10">
-		<p class="dragDrop">
-			Datei einfach per Drag & Drop in dieses Fenster
-			ziehen, oder den Button „Datei hinzufügen“ drücken.
-		</p>
-	</div>
-		<div class="col-lg-10 preContainer">
 		<span class="fileupload-process"></span>
 		<!-- The global progress state -->
 		<div class="col-lg-5 fileupload-progress fade">
@@ -24,3 +19,4 @@
 		</div>
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
+	</div>

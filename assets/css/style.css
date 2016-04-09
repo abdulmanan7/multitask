@@ -426,7 +426,6 @@ td.status{
     display: none;
   }
   #userSearch {
-    height:40px ;
     width: 270px !important;
   }
   #searchclear {
@@ -436,11 +435,6 @@ td.status{
   #grid .k-grid-content table tbody tr td{
     cursor:pointer;
   }
-  .btn {
-    display: inline-block;
-    padding: 9px 10px;
-     margin-bottom: 0;
-  }
   .k-pager-wrap .k-icon{
     /*margin-top: 6px;*/
   }
@@ -449,4 +443,8 @@ td.status{
   }
   .text-blood{
     color:#FF0500;
+  }
+  .btn-success{
+    background-color: #4A5D09;
+    border-color: #6d880e;
   }

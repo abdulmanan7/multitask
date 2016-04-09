@@ -38,27 +38,41 @@
             onShowStep:onShowStepCallback,
             enableFinishButton:true,
             labelNext:"Nächster",
+            enableAllSteps:true,
             labelPrevious:"früher",
             labelFinish:"Formular jetzt absenden",
-            includeFinishButton: false
-        // btFinish:false
+            includeFinishButton: false,
+        btFinish:false
     });
         function onFinishCallback(){
-            if(validateAllSteps()){
-                $('form').submit();
-            }
+            $('#fileupload').submit();
         }
         function onShowStepCallback(obj){
             currentStep = $(obj.attr('href'));
             currentStep.addClass('FocusedStep');
             currentStep.siblings().removeClass('FocusedStep');
-            $('#fileupload').fileupload("option","filesContainer",$(".FocusedStep").children(':last').find("tbody.files"));
+            $('#fileupload').fileupload("option","filesContainer",$(".FocusedStep").find("tbody.files"));
             if (obj.attr('href') == "#step-1") {
-            $('.buttonNext').text('Nächste');
+            $('.buttonNext').text('Nächste').css('display', 'block');
             $('.buttonPrevious').text("weiter");
+            $('#submit').css('display', 'none');
+            }else if(obj.attr('href') == "#step-7"){
+            $('.buttonNext').css('display',"none");
+            if ($('#submit').length==0) {
+             var finish = $("<button>",{
+                id:"submit",
+                class:"btn btn-success",
+                type:"submit",
+                text:"Formular jetzt absenden !"
+             }).insertAfter(".actionBar .loader");
             }else{
-            $('.buttonNext').text('zurück');
+            $('#submit').css('display', 'block');
+            }
+            }
+            else{
+            $('.buttonNext').text('zurück').css('display', 'block');
             $('.buttonPrevious').text("weiter");
+            $('#submit').css('display', 'none');
             }
         }
     });
