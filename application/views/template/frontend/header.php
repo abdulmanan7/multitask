@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <?php $class = $this->router->fetch_class();?>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=800">
+    <meta name="viewport" content="width=650">
     <title>Herzlich Willkommen !</title>
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>">
@@ -87,4 +87,4 @@
 <link rel="stylesheet" href="<?=base_url('assets/css/fcustom.css')?>">
 </head>
 <body>
-    <div id="container" class="question-box effect7">
+    <!-- <div id="container" class="question-box effect7"> -->

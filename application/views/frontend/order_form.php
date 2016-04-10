@@ -1,19 +1,20 @@
 <?php $this->load->view('template/frontend/header');?>
-<div id="body">
 	<!-- The file upload form used as target for the file upload widget -->
+		<div class="container">
 	<?php $this->load->view('frontend/modals/help');?>
 	<form id="fileupload" action="<?=base_url('reports/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-		<div class="row fileupload-buttonbar ">
-			<div class="col-sm-10 question-box effect7 col-sm-offset-1">
+			<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
 				<p><a data-toggle="modal" href='#mdlhelp'>Benötigen Sie Unterstützung?</a></p>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="logo">
-							<img style="float: right;"  src="<?=$logo?>" />
+					<div class="col-xs-12">
+						<div class="col-md-6 col-xs-12">
+							<div class="heading pull-left">
+								<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
+							</div>
 						</div>
-						<div class="heading pull-left">
-							<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
+						<div class="col-md-6 logo col-xs-12">
+							<img style="float: right;"  src="<?=$logo?>" />
 						</div>
 					</div>
 				</div>
@@ -64,7 +65,7 @@
 								<div class="input-group-addon">
 									<i class="fa fa-building-o"></i>
 								</div>
-									<input name="ort" type="text" class="form-control"></input>
+								<input name="ort" type="text" class="form-control"></input>
 							</div>
 						</div>
 					</div>
@@ -72,24 +73,24 @@
 				<div class="form-group">
 					<label class="control-label item-name">Land: <span class="text-blood">*</span></label>
 					<div class="input-group">
-								<div class="input-group-addon">
-									<i class="fa fa-globe"></i>
-								</div>
-					<select class="form-control" name="country" required="required" id="landSelect">
-						<option value="">Land auswählen</option>
-						<option value="Deutschland">Deutschland</option>
-						<option value="Dänemark">Dänemark</option>
-						<option value="Italien">Italien</option>
-						<option value="Luxemburg">Luxemburg</option>
-						<option value="Niederlande">Niederlande</option>
-						<option value="Norwegen">Norwegen</option>
-						<option value="Polen">Polen</option>
-						<option value="Österreich">Österreich</option>
-						<option value="Schweiz">Schweiz</option>
-						<option value="Spanien">Spanien</option>
-						<option value="Schweden">Schweden</option>
-						<option value="other">Neues Land hinzufügen</option>
-					</select>
+						<div class="input-group-addon">
+							<i class="fa fa-globe"></i>
+						</div>
+						<select class="form-control" name="country" required="required" id="landSelect">
+							<option value="">Land auswählen</option>
+							<option value="Deutschland">Deutschland</option>
+							<option value="Dänemark">Dänemark</option>
+							<option value="Italien">Italien</option>
+							<option value="Luxemburg">Luxemburg</option>
+							<option value="Niederlande">Niederlande</option>
+							<option value="Norwegen">Norwegen</option>
+							<option value="Polen">Polen</option>
+							<option value="Österreich">Österreich</option>
+							<option value="Schweiz">Schweiz</option>
+							<option value="Spanien">Spanien</option>
+							<option value="Schweden">Schweden</option>
+							<option value="other">Neues Land hinzufügen</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-group">
@@ -238,7 +239,7 @@
 					<textarea name="description" class="form-control" rows="8"></textarea>
 				</div>
 			</div>
-			<div class="col-sm-10 question-box effect7 col-sm-offset-1">
+			<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
 				<?php $this->load->view('frontend/wizard');?>
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<div class="clearfix"></div>
@@ -250,33 +251,22 @@
 		</form>
 		<!-- The blueimp Gallery widget -->
 		<div class="clearfix"></div>
-		<!-- <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-			<div class="slides"></div>
-			<h3 class="title"></h3>
-			<a class="prev">‹</a>
-			<a class="next">›</a>
-			<a class="close">×</a>
-			<a class="play-pause"></a>
-			<ol class="indicator"></ol>
-		</div> -->
-
 	</div>
-	<?php $this->load->view('template/frontend/footer');?>
-	<script type="text/javascript" src="<?=base_url('assets/SmartWizard/js/jquery.smartWizard-2.0.js')?>"></script>
-	<script type="text/javascript">
-		$('#landSelect').on('change', function() {
-			var self = $(this);
-			if (self.val() == "other") {
-				$("<input>",{
-					type:"text",
-					name:"country",
-					value:"",
-					class:"form-control",
-					required:"required"
-				}).appendTo(self.parent('div'));
-				self.remove();
-			}
-		});
-	</script>
-</body>
-</html>
+</div>
+<?php $this->load->view('template/frontend/footer');?>
+<script type="text/javascript" src="<?=base_url('assets/SmartWizard/js/jquery.smartWizard-2.0.js')?>"></script>
+<script type="text/javascript">
+	$('#landSelect').on('change', function() {
+		var self = $(this);
+		if (self.val() == "other") {
+			$("<input>",{
+				type:"text",
+				name:"country",
+				value:"",
+				class:"form-control",
+				required:"required"
+			}).appendTo(self.parent('div'));
+			self.remove();
+		}
+	});
+</script>
