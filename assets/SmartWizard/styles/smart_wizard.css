@@ -93,7 +93,7 @@
   float:left;
   list-style: none;
   padding: 0px;  
-  margin: 10px 0;      
+  margin: 20px 0;      
   clear: both;
   border: 0px solid #CCCCCC;    
   background: transparent; /*#EEEEEE */
@@ -103,7 +103,7 @@
   display:block;
   margin: 0;
   padding: 0; 
-  padding-left:3px;
+  padding-left:10px;
   padding-right: 3px;
   border: 0px solid #E0E0E0;      
   float: left;
@@ -347,4 +347,7 @@
     padding: 1px;
     font: bold 14px Verdana, Arial, Helvetica, sans-serif;
 }
-  }
+span.fileinput-button{
+    margin-left: 255px !important;
+}
+}

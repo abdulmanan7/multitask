@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <?php $class = $this->router->fetch_class();?>
     <meta charset="utf-8">
-    <title>Welcome</title>
+    <meta name="viewport" content="width=800">
+    <title>Herzlich Willkommen !</title>
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>">
     <!-- Generic page styles -->
@@ -37,7 +38,7 @@
             onFinish:onFinishCallback,
             onShowStep:onShowStepCallback,
             enableFinishButton:true,
-            labelNext:"Nächster",
+            labelNext:"weiter",
             enableAllSteps:true,
             labelPrevious:"früher",
             labelFinish:"Formular jetzt absenden",
@@ -53,7 +54,7 @@
             currentStep.siblings().removeClass('FocusedStep');
             $('#fileupload').fileupload("option","filesContainer",$(".FocusedStep").find("tbody.files"));
             if (obj.attr('href') == "#step-1") {
-                $('.buttonNext').text('Nächster').css('display', 'block');
+                $('.buttonNext').css('display', 'block');
                 $('.buttonPrevious').css('display', 'none');
                 $('#submit').css('display', 'none');
             }else if(obj.attr('href') == "#step-7"){

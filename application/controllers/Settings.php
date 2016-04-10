@@ -16,12 +16,12 @@ class Settings extends CI_Controller {
 		$pdata = array(
 			'company_title' => $rdata['comp_title'],
 			'company_email' => $rdata['comp_mail'],
-			'description' => $rdata['comp_desc'],
-			'VAT_no' => $rdata['vat_no'],
-			'attn_name' => $rdata['attn_name'],
-			'address' => $rdata['address'],
-			'phone' => $rdata['phone'],
-			'post_code' => $rdata['post_code'],
+			'description' => "desc",
+			'VAT_no' => "demoX",
+			'attn_name' => "Demo name",
+			'address' => "address",
+			'phone' => "asdfsd",
+			'post_code' => "demo code",
 			'subject' => $rdata['sname'],
 			'body' => $rdata['ebody'],
 		);

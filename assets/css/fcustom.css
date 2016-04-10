@@ -100,6 +100,7 @@
 			background-image: none;
 			border: 1px solid transparent;
 			border-radius: 0px;
+
 		}
 		.btn-default{
 			color: #fff;
@@ -612,13 +613,20 @@ input[type="color"]:focus,
     float: right;
   }
   .input-group-addon{
-  	background-color: #5B710C;
+  	background-color: #6D880E;
   	color: #F7F7F7
   }
   .files input[type=checkbox]{
   	display: none;
   }
   .modal-header {
-    background: green;
-    color: #fff;
+    background: #6D880E;
+    color: #f7f7f7;
+}
+strong.error{
+font-weight: 200 !important;
+    font-size: 13px;
+}
+.content{
+	margin-top: 20px;
 }

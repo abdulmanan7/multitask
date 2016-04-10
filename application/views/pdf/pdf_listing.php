@@ -3,12 +3,12 @@
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
     <div class="pull-left">
-      <a data-toggle="modal" href="<?=base_url('reports')?>" type="button" class="btn btn-success pull-right" target="_black">Neu</a>
+      <a data-toggle="modal" href="<?=base_url('reports')?>" type="button" class="btn btn-success pull-right" target="_black">Neue Fotobegehung anlegen</a>
     </div>
     <div id="example" class="srach_clear pull-right" >
       <div class="input-group" style="width:100%;" id="ext-gen3">
         <div class="x-form-field-wrap x-form-field-trigger-wrap x-trigger-wrap-focus" id="ext-gen4">
-          <input autocomplete="off" type="text" id="userSearch" name="userSearch" class="form-control x-form-text x-form-field x-form-focus searching" placeholder="Suche nach Namen,email">
+          <input autocomplete="off" type="text" id="userSearch" name="userSearch" class="form-control x-form-text x-form-field x-form-focus searching" placeholder="Suche nach Name, eMail oder PLZ">
         </div>
       </div>
     </div>
@@ -92,11 +92,11 @@
         width:"79px",
       },
       {
-        title: "pdf",
+        title: "Dokument",
         width:"40px",
         template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
-        title: "Delete",
+        title: "Löschen",
         width:"40px",
         template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
@@ -180,12 +180,12 @@
         width:70,
       },
       {
-        title: "pdf",
-        width:40,
+        title: "Dokument",
+        width:"40px",
         template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
-        title: "Delete",
-        width:40,
+        title: "Löschen",
+        width:"40px",
         template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],

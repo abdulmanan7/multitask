@@ -130,7 +130,7 @@ if (!function_exists('load_sub_nav')) {
 
 		default:
 			$sub_nav_html = '<div class="sub-nav hidden-sm hidden-xs"><ul>';
-			$sub_nav_html .= '<li><a href="#" class="heading">Willkommen</a></li></ul></div>';
+			$sub_nav_html .= '<li><a href="#" class="heading">Herzlich Willkommen !</a></li></ul></div>';
 			break;
 		}
 		echo $sub_nav_html;

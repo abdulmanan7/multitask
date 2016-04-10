@@ -5,13 +5,13 @@
       <div class="overview">
         <div class="featured-articles-container">
           <h3 class="heading">
-            <i class="icon ion-clock text-info"></i> Settings
+            <i class="icon ion-clock text-info"></i> Einstellungen
           </h3>
           <div id="message"></div>
           <form class="form-horizontal" action="<?=base_url('settings/update/' . $email_tpl['id'])?>" method="POST" role="form">
             <div class="row">
               <div class="col-sm-12">
-                <legend>Company info</legend>
+                <legend>Firmendetails</legend>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -20,7 +20,7 @@
                         <input type="text" class="form-control" value="<?=$email_tpl['company_title']?>" name="comp_title">
                       </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="comp_attn_name" class="control-label col-sm-3">Attn Name</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" value="<?=$email_tpl['attn_name']?>" name="attn_name">
@@ -38,7 +38,7 @@
                         <textarea name="comp_desc" class="form-control" rows="3"><?=$email_tpl['description']?>
                         </textarea>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -47,7 +47,7 @@
                         <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
                       </div>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="comp_post_code" class="control-label col-sm-3">Post code</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" value="<?=$email_tpl['post_code']?>" name="post_code">
@@ -65,23 +65,23 @@
                         <textarea name="address" class="form-control" rows="3"><?=$email_tpl['address']?>
                         </textarea>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
             </div>
             <fieldset>
-              <legend>Email Template</legend>
+              <legend>eMail Vorlage</legend>
               <div class="form-group">
-                <label for="name">Subject *</label>
+                <label for="name">Betreff *</label>
                 <input type="text" class="form-control" id="sname" value="<?=$email_tpl['subject']?>" name="sname">
               </div>
               <div class="form-group">
-                <label for="description">Body</label>
+                <label for="description">Textfeld</label>
                 <textarea name="ebody" class="form-control wysihtml5" rows="10" ><?=$email_tpl['body']?></textarea>
               </fieldset>
             </div>
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+            <button type="submit" class="btn btn-success" id="submit">Speichern</button>
           </form>
         </div><!--add new job panel end -->
       </div>

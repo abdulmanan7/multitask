@@ -25,7 +25,7 @@
 $lang['error_csrf'] = 'Dieses Formular hat unsere Sicherheitskontrollen nicht bestanden.';
 
 // Login
-$lang['login_heading'] = 'Einloggen';
+$lang['login_heading'] = 'Login';
 $lang['login_subheading'] = 'Bitte loggen Sie sich ein mit Ihrer/n Email/Benutzernamen und Kennwort unten ein.';
 $lang['login_identity_label'] = 'Benutzername:';
 $lang['login_password_label'] = 'Kennwort:';

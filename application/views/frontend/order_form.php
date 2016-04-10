@@ -119,7 +119,7 @@
 				<p align="left" class="subheading">Erfassung Ihrer Objektdaten:</p>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Baujahr von Ihrem Haus?</label>
+						<label class="control-label col-sm-6">Baujahr von Ihrem Haus? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<select required="required" name="baujahr_hous" class="form-control">
 								<option value="">Neubau</option>
@@ -134,7 +134,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung?</label>
+						<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<select required="required" name="baujahr_alte" class="form-control">
 								<option value="">Keine Heizung vorhanden</option>
@@ -150,7 +150,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Womit heizen Sie derzeit?</label>
+						<label class="control-label col-sm-6">Womit heizen Sie derzeit? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<select required="required" name="question3" class="form-control">
 								<option value="">überhaupt nicht</option>
@@ -167,7 +167,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Durchschnittlicher Heizenergieverbrauch pro Jahr?</label>
+						<label class="control-label col-sm-6">Durchschnittlicher Heizenergieverbrauch pro Jahr? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<div class="row">
 								<div class="col-xs-6">
@@ -188,7 +188,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung?</label>
+						<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 						<div class="col-sm-6">
 							<input name="question5" type="text" class="form-control"></input>
 						</div>
@@ -196,7 +196,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm?</label>
+						<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<input required="required" name="question6" type="text" class="form-control"></input>
 						</div>
@@ -204,7 +204,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Wie viel Personen leben in Ihrem Haus? </label>
+						<label class="control-label col-sm-6">Wie viel Personen leben in Ihrem Haus? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<input required="required" name="question7" type="text" class="form-control"></input>
 						</div>
@@ -212,7 +212,7 @@
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<label class="control-label col-sm-6">Wird Ihr Haus wärmegedämmt? Wann?</label>
+						<label class="control-label col-sm-6">Wird Ihr Haus wärmegedämmt? Wann? <span class="text-blood">*</span></label>
 						<div class="col-sm-6">
 							<input required="required" name="question8" type="text" class="form-control"></input>
 						</div>
@@ -243,6 +243,7 @@
 				<!-- The fileinput-button span is used to style the file input field as button -->
 				<div class="clearfix"></div>
 				<br>
+				<p><a target="_blank" href='<?=base_url("pages/datenschut")?>'>Datenschutzbestimmungen - Fotobegehung</a></p>
 			</div>
 			<!-- The table listing the files available for upload/download -->
 			<!-- The container for the uploaded files -->
@@ -258,6 +259,7 @@
 			<a class="play-pause"></a>
 			<ol class="indicator"></ol>
 		</div> -->
+
 	</div>
 	<?php $this->load->view('template/frontend/footer');?>
 	<script type="text/javascript" src="<?=base_url('assets/SmartWizard/js/jquery.smartWizard-2.0.js')?>"></script>

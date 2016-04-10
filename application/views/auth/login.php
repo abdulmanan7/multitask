@@ -73,8 +73,7 @@
                   </div>
                 </div>
                 <div class="actions">
-                  <?php echo form_submit('submit', lang('login_submit_btn'), 'class="btn btn-warning"');?>
-                  <a href="forgot_password"><?php echo lang('login_forgot_password');?></a>
+                  <?php echo form_submit('submit', lang('login_submit_btn'), 'class="btn btn-success"');?>
                   <div class="clearfix"></div>
                 </div>
                   <?php echo form_close();?>

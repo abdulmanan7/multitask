@@ -30,6 +30,7 @@ function clear_message () {
   $('#message').html('');
   $('#message').empty();
 }
+
 $(document).ready(function() {
     // put all that "wl_alert" code here   
     $('body').on('click', '.system', function(e) {
@@ -40,7 +41,7 @@ $(document).ready(function() {
     $('body').on('click', '.del,.delete', function(event) {
       var row=$(this).parents('tr');
       var loc = $(this).attr('href');
-      alertify.confirm("Are you sure you want to delete?", function (e) {
+      alertify.confirm("Wollen Sie diesen Eintrag wirklich löschen?", function (e) {
         if (e) {
             $.ajax({
               url:loc,
@@ -56,10 +57,11 @@ $(document).ready(function() {
             });
             // document.location.href = loc;
           } else {
-            showMessage("You've just Cancel Delete request!",'error','Cancel');
+            showMessage("Sie haben den Löschvorgang abgebrochen.",'error','HINWEIS:');
             return false;
           }
         });
+      $('#alertify-cancel').text('Abbrechen');
       return false;
     });
 
