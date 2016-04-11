@@ -49,21 +49,28 @@ class Att_email_model extends CI_Model {
 		$images = $this->get_detail($id);
 		$base = base_url();
 		foreach ($images as $key => $val) {
-			$success = unlink(str_replace($base, "", $val['path']));
-			$success = unlink(str_replace($base, "", $val['pdf_path']));
-			$success = unlink(str_replace($base, "", $val['thumb_path']));
+			if (file_exists($val['path'])) {
+				$success = unlink(str_replace($base, "", $val['path']));
+			}if (file_exists($val['pdf_path'])) {
+				$success = unlink(str_replace($base, "", $val['pdf_path']));
+			}
+			if (file_exists($val['thumb_path'])) {
+				$success = unlink(str_replace($base, "", $val['thumb_path']));
+			}
 		}
 		$this->db->where('att_id', $id);
 		$this->db->delete('att_email_detail');
 		return $this->db->affected_rows();
 	}
-	function count_all($term = "") {
+	function count_all($term = "aends") {
 		$this->db->select()->from('email_att');
-		$this->db->like('vorname', $term);
-		$this->db->or_like('nachname', $term);
-		$this->db->or_like('email', $term);
-		$this->db->or_like('PLZ', $term);
-		$this->db->or_like('ort', $term);
+		if ($term != "aends") {
+			$this->db->like('vorname', $term);
+			$this->db->or_like('nachname', $term);
+			$this->db->or_like('email', $term);
+			$this->db->or_like('PLZ', $term);
+			$this->db->or_like('ort', $term);
+		}
 		return $this->db->count_all_results();
 	}
 }

@@ -8,6 +8,7 @@
 				<p><a data-toggle="modal" href='#mdlhelp'>Benötigen Sie Unterstützung?</a></p>
 				<div class="row">
 					<div class="col-xs-12">
+					<div class="row">
 						<div class="col-md-6 col-xs-12">
 							<div class="heading pull-left">
 								<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
@@ -16,6 +17,7 @@
 						<div class="col-md-6 logo col-xs-12">
 							<img style="float: right;"  src="<?=$logo?>" />
 						</div>
+					</div>
 					</div>
 				</div>
 				<p align="left" class="subheading">Erfassung Ihrer Kundendaten</p>
@@ -224,7 +226,7 @@
 						<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme?</label>
 						<div class="col-sm-6">
 							<div class="row">
-								<div class="col-xs-9">
+								<div class="col-xs-9 kill-p-r">
 									<input name="question9" type="text" class="form-control"></input>
 								</div>
 								<div class="col-xs-3 text-right" style="line-height: 2.9">

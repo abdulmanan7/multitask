@@ -30,7 +30,7 @@ class Upload extends CI_Controller {
 			$config['upload_path'] = FCPATH . 'uploads/';
 		}
 
-		$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf';
+		$config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|mov|avi|mp4|wmv|tif|bmp';
 		$config['file_name'] = time();
 
 		$this->load->library('upload', $config);
@@ -48,7 +48,14 @@ class Upload extends CI_Controller {
 				$info->type = $data['file_type'];
 				$info->url = $upload_path_url . 'full_size/' . $data['file_name'];
 				// I set this to original file since I did not create thumbs.  change to thumbnail directory if you do = $upload_path_url .'/thumbs' .$data['file_name']
-				$info->thumbnailUrl = load_img('PDF-icon.png');
+				if ($_FILES['userfile']['type'] == "application/pdf") {
+					$info->thumbnailUrl = load_img('PDF-icon.png');
+					$info->pdfUrl = load_img('pdf_thumb.png');
+				} else {
+					$info->url = $upload_path_url . '/' . $data['file_name'];
+					$info->thumbnailUrl = load_img('media-icon.png');
+					$info->pdfUrl = load_img('media_thumb.png');
+				}
 				$info->pdfUrl = load_img('pdf_thumb.png');
 				$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 				$info->deleteType = 'DELETE';

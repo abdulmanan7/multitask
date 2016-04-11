@@ -153,11 +153,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php if ($val != ""): ?>
 						<?php $path = str_replace("/pdf/", "/full_size/", $val)?>
 						<?php $ext = pathinfo($path, PATHINFO_EXTENSION);?>
-						<?php if ($ext == "pdf"): ?>
+						<?php if ($ext = "pdf"): ?>
 							<?php $val = load_img('pdf_thumb.png')?>
+						<?php elseif ($ext == "mp4" || $ext == "mov" || $ext == "avi" || $ext == "jpg"): ?>
+							<?php $val = load_img('media_thumb.png')?>
 						<?php endif?>
 						<td style="border:2px solid black; text-align:center;" width="340px">
-							<a href="<?=$path?>" target='_top'><img src="<?=$val?>" style="height:200px; border-right:5px solid #fff;" /></a>
+							<a href="<?=$path?>" target='_blank'><img src="<?=$val?>" style="height:200px; border-right:5px solid #fff;" /></a>
 						</td>
 					<?php endif?>
 				<?php endforeach?>

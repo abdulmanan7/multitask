@@ -3455,6 +3455,10 @@ html > body > .ui-pnotify {
     background-color: #6D880E;
     border-color: #6d880e;
   }
+    .btn-success:hover{
+    background-color: #303C06;
+    border-color: #6d880e;
+  }
 .k-grid td  {
   height: auto !important;
   overflow: visible !important;

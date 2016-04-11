@@ -93,8 +93,8 @@
       },
       {
         title: "Dokument",
-        width:"40px",
-        template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        width:"42px",
+        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname##=att_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
         title: "Löschen",
         width:"40px",

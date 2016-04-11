@@ -1,12 +1,11 @@
-	<div class="upContainer col-md-12">
-		<div class="dragDrop container">
-			Schieben Sie einfach per Drag & Drop die gewünschten Bilder bzw. Zeichnungen in dieses Feld. Diese werden dann automatisch hochgeladen.
-		<div class="btn btn-success fileinput-button" style="padding-left: 20px;margin-top: 20px;
-    margin-left: 433px;">
+		<div class="btn btn-success fileinput-button">
 			<i class="glyphicon glyphicon-plus"></i>
 			<span>Dateien manuell auswählen</span>
 			<input type="file" name="userfile" multiple>
 		</div>
+	<div class="upContainer col-md-12">
+		<div class="dragDrop">
+			Schieben Sie einfach per <strong>Drag & Drop</strong> die gewünschten Bilder bzw. Zeichnungen in dieses Feld. Diese werden dann automatisch hochgeladen.
 		<span class="fileupload-process"></span>
 		<!-- The global progress state -->
 		<div class="col-lg-5 fileupload-progress fade">

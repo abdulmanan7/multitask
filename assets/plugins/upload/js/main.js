@@ -6,7 +6,7 @@ $(function () {
         url: "upload/do_upload",
         dataType: 'json',
         autoUpload: true,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|pdf)$/i,
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png|pdf|mp4|wmv|mov|avi|tif|bmp)$/i,
         maxFileSize: 99900000,
         filesContainer:$(".FocusedStep").children(':last').find("tbody.files"),
         // Enable image resizing, except for Android and Opera,
@@ -16,7 +16,7 @@ $(function () {
         // previewMaxHeight: 100,
         // previewCrop: true
         messages: {
-                acceptFileTypes: 'Dieses Dateiformat wird nicht unterstützt, bitte wählen Sie eines der folgenden Formate aus: .jpg, .png, *.pdf',
+                acceptFileTypes: 'Dieses Dateiformat wird nicht unterstützt, bitte wählen Sie eines der folgenden Formate aus: .jpg, .png, .tif, .bmp, .mp4, .mov, .wmv, .avi, *.pdf',
             }
     }).on('fileuploaddone', function (e, data) {
         // $.each(data.result.files, function (index, file) {

@@ -2,8 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Angebote_model extends CI_Model {
+	protected $table = "createdfiles";
 	public function save($object) {
-		$this->db->insert('email_att', $object);
+		$this->db->insert($this->table, $object);
 		return $this->db->insert_id();
 	}
 	public function save_detail($object) {
@@ -16,31 +17,30 @@ class Angebote_model extends CI_Model {
 	function get_all($seach_option) {
 		$term = ($seach_option['term'] == "aends") ? NULL : $seach_option['term'];
 		$this->db->select();
-		$this->db->from('email_att');
+		$this->db->from($this->table);
 		if ($term) {
-			$this->db->like('vorname', $term);
-			$this->db->or_like('nachname', $term);
-			$this->db->or_like('email', $term);
+			$this->db->like('client_name', $term);
+			$this->db->or_like('mail', $term);
 		}
-		$this->db->order_by('att_id', 'desc');
+		$this->db->order_by('id', 'desc');
 		return $this->db->get()->result_array();
 	}
 	function get($id) {
 		$this->db->select();
-		$this->db->from('email_att');
-		$this->db->where('att_id', $id);
+		$this->db->from($this->table);
+		$this->db->where('id', $id);
 		return $this->db->get()->row_array();
 	}
 	function get_detail($id) {
 		$this->db->select();
 		$this->db->from('att_email_detail');
-		$this->db->where('att_id', $id);
+		$this->db->where('id', $id);
 		return $this->db->get()->result_array();
 	}
-	function clear($att_id) {
-		$this->db->where('att_id', $att_id);
-		$this->db->delete('email_att');
-		$this->remove_detail($att_id);
+	function clear($id) {
+		$this->db->where('id', $id);
+		$this->db->delete($this->table);
+		$this->remove_detail($id);
 		return $this->db->affected_rows();
 	}
 	private function remove_detail($id) {
@@ -51,12 +51,16 @@ class Angebote_model extends CI_Model {
 			$success = unlink(str_replace($base, "", $val['pdf_path']));
 			$success = unlink(str_replace($base, "", $val['thumb_path']));
 		}
-		$this->db->where('att_id', $id);
+		$this->db->where('id', $id);
 		$this->db->delete('att_email_detail');
 		return $this->db->affected_rows();
 	}
-	function count_all() {
-		$this->db->select()->from('email_att');
+	function count_all($term = "aends") {
+		$this->db->select()->from($this->table);
+		if ($term != "aends") {
+			$this->db->like('client_name', $term);
+			$this->db->or_like('mail', $term);
+		}
 		return $this->db->count_all_results();
 	}
 }
