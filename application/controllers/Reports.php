@@ -128,7 +128,7 @@ class Reports extends CI_Controller {
 		if ($message == 1) {
 			$data["message"] = set_message("Fehler beim E-Mail zu senden", 'error');
 		} else {
-			$data["message"] = set_message('Formulardaten gespeichert und eMail mit PDF versendet!');
+			$data["message"] = set_message('Vielen Dank für Ihre Übermittlung Ihrer digitalen Fotobegehung. Wir melden uns in Kürze bei Ihnen.');
 		}
 		$this->load->view('frontend/success', $data);
 	}
