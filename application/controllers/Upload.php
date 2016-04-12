@@ -53,7 +53,7 @@ class Upload extends CI_Controller {
 					$info->pdfUrl = load_img('pdf_thumb.png');
 				} else {
 					$info->url = $upload_path_url . '/' . $data['file_name'];
-					$info->thumbnailUrl = load_img('media-icon.png');
+					$info->thumbnailUrl = load_img('media-icon.jpg');
 					$info->pdfUrl = load_img('media_thumb.png');
 				}
 				$info->pdfUrl = load_img('pdf_thumb.png');
