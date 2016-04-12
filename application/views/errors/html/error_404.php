@@ -19,7 +19,18 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-
+<style>
+  .page-not-found .number {
+    font-size: 75px;
+    color: #ed6d49;
+    line-height: 100%;
+}
+.page-not-found .phone {
+    font-size: 30px;
+    color: #ed6d49;
+    line-height: 100%;
+}
+</style>
   </head>
 
   <body>
@@ -34,21 +45,16 @@
           <div class="col-lg-4 col-md-4 col-md-offset-4">
 
             <div class="page-not-found center-align-text">
-              <div class="number">404</div>
-                <h1><?php echo $heading;?></h1>
+              <h1 class="number">Fehler : 404</h1>
+                <h2>
+                <?php //echo $heading;?>
+                Diese Seite existiert leider nicht auf diesem Server
+                </h2>
               <p>
-    <?php echo $message;?>
+    <?php //echo $message;?>
                 <br>
-                Try the search bar below.
+                Für weitere Unterstützung kontaktieren Sie uns bitte telefonisch unter: <span class="phone">+ 49 (0) 53 82 / 70 42 55 0</span>
               </p>
-              <form action="#">
-                <div class="input-group">
-                  <input type="text" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-primary" type="button">Search</button>
-                  </span>
-                </div>
-              </form>
             </div>
 
           </div>

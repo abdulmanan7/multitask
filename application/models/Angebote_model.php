@@ -21,6 +21,7 @@ class Angebote_model extends CI_Model {
 		if ($term) {
 			$this->db->like('client_name', $term);
 			$this->db->or_like('mail', $term);
+			$this->db->or_like('plz', $term);
 		}
 		$this->db->order_by('id', 'desc');
 		return $this->db->get()->result_array();
@@ -60,6 +61,7 @@ class Angebote_model extends CI_Model {
 		if ($term != "aends") {
 			$this->db->like('client_name', $term);
 			$this->db->or_like('mail', $term);
+			$this->db->or_like('plz', $term);
 		}
 		return $this->db->count_all_results();
 	}

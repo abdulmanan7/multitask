@@ -8,7 +8,7 @@
     <div id="example" class="srach_clear pull-right" >
       <div class="input-group" style="width:100%;" id="ext-gen3">
         <div class="x-form-field-wrap x-form-field-trigger-wrap x-trigger-wrap-focus" id="ext-gen4">
-          <input autocomplete="off" type="text" id="userSearch" name="userSearch" class="form-control x-form-text x-form-field x-form-focus searching" placeholder="Suche vorename, eMail">
+          <input autocomplete="off" type="text" id="userSearch" name="userSearch" class="form-control x-form-text x-form-field x-form-focus searching" placeholder="Suche Name, eMail oder PLZ">
         </div>
       </div>
     </div>
@@ -51,8 +51,12 @@
         title: "Anfragedatum",
         width:"94px",
       },{
+        field: "offer_id",
+        title: "Angebotsnr",
+        width:"94px",
+      },{
         field: "client_name",
-        title: "Vorname",
+        title: "Name",
         width:"73px",
       },{
         field: "street",
@@ -78,11 +82,12 @@
         title:"Telefon",
         width:"79px",
       },
-      // {
-      //   title: "Dokument",
-      //   width:"40px",
-      //   template:'<a href="<?=base_url()?>angebote/get/#=id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
-      // },
+      {
+        title: "Dokument",
+        width:"50px",
+        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        attributes:{class:"text-center"}
+      },
       {
         title: "Löschen",
         width:"60px",
@@ -128,8 +133,12 @@
         title: "Anfragedatum",
         width:"94px",
       },{
+        field: "offer_id",
+        title: "Angebotsnr",
+        width:"94px",
+      },{
         field: "client_name",
-        title: "Vorname",
+        title: "Name",
         width:"73px",
       },{
         field: "street",
@@ -155,11 +164,12 @@
         title:"Telefon",
         width:"79px",
       },
-      // {
-      //   title: "Dokument",
-      //   width:"40px",
-      //   template:'<a href="<?=base_url()?>angebote/get/#=id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
-      // },
+      {
+        title: "Dokument",
+        width:"50px",
+        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        attributes:{class:"text-center"}
+      },
       {
         title: "Löschen",
         width:"60px",

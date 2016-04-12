@@ -638,6 +638,10 @@ font-weight: 200 !important;
     margin-bottom: 0; 
     line-height: 2.7;
 }
+.top-head{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
 .kill-p-r{
 	padding-right: 0
 }

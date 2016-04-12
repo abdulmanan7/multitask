@@ -2,7 +2,7 @@
 	exit('No direct script access allowed');
 }
 
-class Reports extends CI_Controller {
+class Fotobegehung extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		// if (!$this->ion_auth->logged_in()) {
@@ -115,9 +115,9 @@ class Reports extends CI_Controller {
 		$this->email->message($message);
 
 		if ($this->email->send()) {
-			redirect('reports/success/0', 'refresh');
+			redirect('fotobegehung/success/0', 'refresh');
 		} else {
-			redirect('reports/success/1', 'refresh');
+			redirect('fotobegehung/success/1', 'refresh');
 			// show_error($this->email->print_debugger());
 		}
 
@@ -142,7 +142,7 @@ class Reports extends CI_Controller {
 				echo json_encode($data);die();
 			}
 			set_flash($message, 'success');
-			redirect('reports', 'refresh');
+			redirect('fotobegehung', 'refresh');
 		}
 		$message = 'record canot be remove !';
 		if ($this->input->is_ajax_request()) {
@@ -151,9 +151,9 @@ class Reports extends CI_Controller {
 			echo json_encode($data);die();
 		}
 		set_flash($message, 'error');
-		redirect('reports', 'refresh');
+		redirect('fotobegehung', 'refresh');
 	}
 }
 
-/* End of file reports.php */
-/* Location: ./application/controllers/reports.php */
+/* End of file fotobegehung.php */
+/* Location: ./application/controllers/fotobegehung.php */

@@ -5,7 +5,9 @@
 		</div>
 	<div class="upContainer col-md-12">
 		<div class="dragDrop">
-			Schieben Sie einfach per <strong>Drag & Drop</strong> die gewünschten Bilder bzw. Zeichnungen in dieses Feld. Diese werden dann automatisch hochgeladen.
+		<p>
+			Schieben Sie einfach per <strong>Drag & Drop</strong> die gewünschten Bilder bzw. Zeichnungen in dieses Feld. <br>Diese werden dann automatisch hochgeladen.
+		</p>
 		<span class="fileupload-process"></span>
 		<!-- The global progress state -->
 		<div class="col-lg-5 fileupload-progress fade">

@@ -15,7 +15,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="com_title" class="control-label col-sm-3">Company title</label>
+                      <label for="com_title" class="control-label col-sm-3">Firmenname</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" value="<?=$email_tpl['company_title']?>" name="comp_title">
                       </div>
@@ -42,8 +42,8 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="comp_mail" class="control-label col-sm-3">Company Mail</label>
-                      <div class="col-sm-9">
+                      <label for="comp_mail" class="control-label col-sm-4">eMail Fotobegehung</label>
+                      <div class="col-sm-8">
                         <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
                       </div>
                     </div>

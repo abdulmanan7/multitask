@@ -6,24 +6,21 @@
 <div class="row">
 <div class="col-xs-12">
 					<div class="row">
-						<div class="col-md-6 col-xs-12">
+						<div class="col-xs-12">
 							<div class="heading pull-left">
 							<h4 class="table-head">Datenschutzbestimmungen - Fotobegehung</h4>
 							</div>
-						</div>
-						<div class="col-md-6 logo col-xs-12">
-							<img style="float: right;"  src="<?=$logo?>" />
 						</div>
 					</div>
 					</div>
 				</div>
 <div class="content">
-<p>Die SOLARvent Biomasse-Heizsysteme GmbH, nachstehen Anbieter genannt, geht mit Ihren persönlichen Daten sehr vertraulich und verantwortungsvoll um. Die nachfolgende Datenschutzerklärung gibt Ihnen einen Überblick, was auf unserem Webservice mit Ihren Daten passiert und welchen Schutz wir Ihnen bieten.
+<p>Die SOLARvent Biomasse-Heizsysteme GmbH, nachstehend Anbieter genannt, geht mit Ihren persönlichen Daten sehr vertraulich und verantwortungsvoll um. Die nachfolgende Datenschutzerklärung gibt Ihnen einen Überblick, was auf unserem Webservice mit Ihren Daten passiert und welchen Schutz wir Ihnen bieten.
 </p>
 <div class="media">
 	<div class="media-body">
 		<h4 class="media-heading">Gegenstand der Datenschutzerklärung</h4>
-		<p>Diese Datenschutzerklärung bezieht sich auf die Daten, die Sie uns durch die Nutzung unserer online Fotobegehung bekannt werden und soll Sie informieren, wie wir mit Ihren Daten umgehen. Wir versichern Ihnen, dass kein Datenaustauch mit Dritten erfolgt.</p>
+		<p>Diese Datenschutzerklärung bezieht sich auf die Daten, die Sie uns durch die Nutzung unserer online Fotobegehung bekannt geben und soll Sie informieren, wie wir mit Ihren Daten umgehen.</p>
 	</div>
 </div>
 
@@ -38,7 +35,7 @@
 	<div class="media-body">
 		<h4 class="media-heading">Ihre persönlichen Daten</h4>
 		<p>
-Zur Planung Ihrer neuen Heizung / Solaranlage benötigen wir Ihre Unterlagen, welche Sie mit dieser online Fotobegehung sehr schnell und einfach erfassen und übertragen können. Sie verschaffen uns hierdurch einen guten Eindruck von Ihrem Bauvorhaben, damit wir Ihnen ein bestmögliches Angebot unterbreiten können.</p>
+Zur Planung Ihrer neuen Pelletheizung / Solaranlage benötigen wir Ihre Unterlagen, welche Sie mit dieser online Fotobegehung sehr schnell und einfach erfassen und übertragen können. Sie verschaffen uns hierdurch einen guten Eindruck von Ihrem Bauvorhaben, damit wir Ihnen ein bestmögliches Angebot unterbreiten können.</p>
 	</div>
 </div>
 
@@ -46,7 +43,7 @@ Zur Planung Ihrer neuen Heizung / Solaranlage benötigen wir Ihre Unterlagen, we
 	<div class="media-body">
 		<h4 class="media-heading">Cookies</h4>
 		<p>
-Cookies sind kleine Dateien die auf Ihrem Endgerät gespeichert werden. Diese sind im Internetverkehr üblich und werden von den meisten Webseiten ebenfalls verwendet. Diese Cookies sind keine Viren und Ihr Endgerät wird auch nicht angegriffen oder ausspioniert. Diese Cookies sind aus technischen Gründen erforderlich. Ohne diese Cookies wird z.B. der Webservice nicht einwandfrei funktionieren können.</p>
+Cookies sind kleine Dateien die auf Ihrem Endgerät gespeichert werden. Diese sind im Internetverkehr üblich und werden von den meisten Webseiten ebenfalls verwendet. Diese Cookies sind keine Viren und Ihr Endgerät wird auch nicht angegriffen oder ausspioniert. Diese Cookies sind aus technischen Gründen erforderlich. Ohne diese Cookies wird z.B. die Fotobegehung nicht einwandfrei funktionieren können.</p>
 	</div>
 </div>
 
@@ -62,9 +59,14 @@ Die Daten werden von uns zum Zweck der Planung und Angebotserstellung gespeicher
 	<div class="media-body">
 		<h4 class="media-heading">Schutz Ihrer Daten</h4>
 		<p>
-Wir geben Ihre Daten nicht an Dritte weiter. Um Ihre Datensicherheit zu gewährleisten, werden sämtliche Daten zwischen Ihrem Endgerät und unserem Webservice über eine 2048 Bit verschlüsselten SSL Verbindung übertragen.
-Änderung dieser Datenschutzerklärung
-Wir behalten uns das Recht vor, diese Datenschutzerklärung zu ändern. Sollte dies erforderlich sein, werden wir Sie rechtzeitig per eMail informieren.</p>
+Wir geben Ihre Daten nicht an Dritte weiter. Um Ihre Datensicherheit zu gewährleisten, werden sämtliche Daten zwischen Ihrem Endgerät und unserem Webservice über eine 2048 Bit verschlüsselten SSL Verbindung übertragen. </p>
+	</div>
+</div>
+<div class="media">
+	<div class="media-body">
+		<h4 class="media-heading">Änderung dieser Datenschutzerklärung </h4>
+		<p>
+Wir behalten uns das Recht vor, diese Datenschutzerklärung zu ändern.</p>
 	</div>
 </div>
 

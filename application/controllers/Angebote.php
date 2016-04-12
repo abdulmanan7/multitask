@@ -97,7 +97,7 @@ class Angebote extends CI_Controller {
 				echo json_encode($data);die();
 			}
 			set_flash($message, 'success');
-			redirect('reports', 'refresh');
+			redirect('fotobegehung', 'refresh');
 		}
 		$message = 'record canot be remove !';
 		if ($this->input->is_ajax_request()) {
@@ -106,6 +106,6 @@ class Angebote extends CI_Controller {
 			echo json_encode($data);die();
 		}
 		set_flash($message, 'error');
-		redirect('reports', 'refresh');
+		redirect('fotobegehung', 'refresh');
 	}
 }

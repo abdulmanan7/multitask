@@ -3,7 +3,7 @@
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
     <div class="pull-left">
-      <a data-toggle="modal" href="<?=base_url('reports')?>" type="button" class="btn btn-success pull-right" target="_black">Neue Fotobegehung anlegen</a>
+      <a data-toggle="modal" href="<?=base_url('fotobegehung')?>" type="button" class="btn btn-success pull-right" target="_black">Neue Fotobegehung anlegen</a>
     </div>
     <div id="example" class="srach_clear pull-right" >
       <div class="input-group" style="width:100%;" id="ext-gen3">
@@ -98,7 +98,7 @@
       },{
         title: "Löschen",
         width:"40px",
-        template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
     });
@@ -182,11 +182,11 @@
       {
         title: "Dokument",
         width:"40px",
-        template:'<a href="<?=base_url()?>reports/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        template:'<a href="<?=base_url()?>fotobegehung/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
       },{
         title: "Löschen",
         width:"40px",
-        template:'<a href="<?=base_url()?>reports/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
   });

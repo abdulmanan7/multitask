@@ -2,12 +2,11 @@
 	<!-- The file upload form used as target for the file upload widget -->
 		<div class="container">
 	<?php $this->load->view('frontend/modals/help');?>
-	<form id="fileupload" action="<?=base_url('reports/save')?>" method="POST" enctype="multipart/form-data">
+	<form id="fileupload" action="<?=base_url('fotobegehung/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 			<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
-				<p><a data-toggle="modal" href='#mdlhelp'>Benötigen Sie Unterstützung?</a></p>
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-12 top-head">
 					<div class="row">
 						<div class="col-md-6 col-xs-12">
 							<div class="heading pull-left">
@@ -20,6 +19,15 @@
 					</div>
 					</div>
 				</div>
+				<span>
+					Wir planen sehr gerne Ihre neue Heizungsanlage. Damit diese möglichst preiswert und zu 100 % Ihren Wünschen entspricht, möchten wir Sie bitten, dass nachfolgende Formular auszufüllen.
+
+Am Ende des Formulars wählen Sie bitte - Schritt für Schritt - die im Datei-Upload-Assistenten angeforderten Bilder, Zeichnungen oder Videos aus, die Sie uns zur Planung zur Verfügung stellen wollen.
+
+Sie können damit Ihre Unterlagen sehr schnell und bequem direkt von Ihrem Smartphone, Tablet oder PC zu uns übertragen. Hierdurch ist es uns möglich, Ihr Objekt digital zu „besichtigen“, ohne dass jemand vor Ort kommen muss. Für Ihre Zuarbeit bedanken wir uns mit einem Extra Rabatt in Höhe von 100 €, welchen wir in Ihrem individuellen Angebot in Abzug bringen werden.
+
+<a data-toggle="modal" href='#mdlhelp'>Bei Fragen stehen wir gerne jederzeit zur Verfügung.</a>
+				</span>
 				<p align="left" class="subheading">Erfassung Ihrer Kundendaten</p>
 				<div class="form-group">
 					<label class="control-label item-name">Vorname: <span class="text-blood">*</span></label>

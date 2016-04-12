@@ -18,7 +18,7 @@
 
 	<p ><?=$message?></p>
 <div class="action">
-	<a type="<?=base_url('reports');?>" class="btn btn-success pull-right">Go Back!</a>
+	<a href="<?=base_url('fotobegehung');?>" class="btn btn-success pull-right">Go Back!</a>
 </div>
 </div>
 </div>

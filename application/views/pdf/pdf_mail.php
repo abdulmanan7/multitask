@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php $ext = pathinfo($path, PATHINFO_EXTENSION);?>
 						<?php if ($ext = "pdf"): ?>
 							<?php $val = load_img('pdf_thumb.png')?>
-						<?php elseif ($ext == "mp4" || $ext == "mov" || $ext == "avi" || $ext == "jpg"): ?>
+						<?php elseif ($ext == "mp4" || $ext == "mov" || $ext == "avi" || $ext == "wmv"): ?>
 							<?php $val = load_img('media_thumb.png')?>
 						<?php endif?>
 						<td style="border:2px solid black; text-align:center;" width="340px">
