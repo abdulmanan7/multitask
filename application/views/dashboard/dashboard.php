@@ -4,7 +4,7 @@
               <div class="mini-widget mini-widget-green">
                 <div class="mini-widget-heading clearfix">
                   <div class="pull-left">Planungsanfragen dieser Woche</div>
-                  <div class="pull-right"><i class="fa fa-angle-up"></i> 12.2<sup>%</sup></div>
+                  <div class="pull-right"><i class="fa fa-angle-up"></i> <?=$fotobegehung?></div>
                 </div>
                 <div class="mini-widget-body clearfix">
                   <div class="pull-left">
@@ -18,7 +18,7 @@
               <div class="mini-widget mini-widget-yellow">
                 <div class="mini-widget-heading clearfix">
                   <div class="pull-left">Herkunft der Anfragen</div>
-                  <div class="pull-right"><i class="fa fa-angle-up"></i> 18.3<sup>%</sup></div>
+                  <div class="pull-right"><i class="fa fa-angle-up"></i> <?=$angebots?></div>
                 </div>
                 <div class="mini-widget-body clearfix">
                   <div class="pull-left">

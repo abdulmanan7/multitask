@@ -32,7 +32,7 @@
     border-color: #d9d9d9;
 }
 .panel-body{
- background-color:#fafafa;
+   background-color:#fafafa;
 }
 #calculator-wrapper .uneditable-input {
     height: 60px;
@@ -155,12 +155,12 @@ form .form-actions {
     font-size: 16px;
 }
 .info-line .reg_no{
-   position: absolute;
-   right: 54px;
-   top: 74px;
-   font-size: 12px;
-   font-weight: 700;
-   color: #B3B3B3;
+ position: absolute;
+ right: 54px;
+ top: 74px;
+ font-size: 12px;
+ font-weight: 700;
+ color: #B3B3B3;
 }
 .saparate{
     background-color: #3089C3;
@@ -181,7 +181,7 @@ td .saparate{
     padding: 4px 12px;
 }
 .xxs{
-   padding: 2px 3px 5px 5px;
+ padding: 2px 3px 5px 5px;
 }
 .panel-xx{
     padding:3px;
@@ -357,90 +357,97 @@ td .saparate{
     }
     .k-detail-row{
         background: #328DC8;
-    }*/
-    #cssmenu > ul > li > a {
-        font-size: 11px;
-        color: #8D8E8B;
-        font-weight: 800;
-    }
-    #cssmenu > ul > li a i {
-        color: #6d880e;
-        font-size: 30px;
-    }
-    #payment_months li .info-label{
-        position: absolute;
-        top: 8px;
-        right: 4px;
-        color: white;
-        font-size: 10px;
-        text-align: center;
-        line-height: 16px;
-        width: 16px;
-        height: 16px;
-    }
-.modal-header {
-    background: #6d880e;
-    color: #fff;
-}
-.modal-footer {
-    background: #F1F1F1;
-    color: #DDD;
-}
-td.avg{
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    color: cornflowerblue;
-}
-td.per{
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    color: #CC5720;
-}
-td.status{
-    text-align: center;
-    font-size: 14px;
-    font-weight: 600;
-    color: green;
-}
+        }*/
+        #cssmenu > ul > li > a {
+            font-size: 11px;
+            color: #8D8E8B;
+            font-weight: 600;
+        }
+        #cssmenu > ul > li a i {
+            color: #6d880e;
+            font-size: 30px;
+        }
+        #payment_months li .info-label{
+            position: absolute;
+            top: 8px;
+            right: 4px;
+            color: white;
+            font-size: 10px;
+            text-align: center;
+            line-height: 16px;
+            width: 16px;
+            height: 16px;
+        }
+        .modal-header {
+            background: #6d880e;
+            color: #fff;
+        }
+        .modal-footer {
+            background: #F1F1F1;
+            color: #DDD;
+        }
+        td.avg{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: cornflowerblue;
+        }
+        td.per{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #CC5720;
+        }
+        td.status{
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: green;
+        }
 /*.k-hierarchy-cell{
     background: #6d880e;
 }
 .k-hierarchy-cell a{
     background: #F1F1F1 !important;
-}*/
-.x-form-field-wrap .form-control{
-    height: 35px;
-    padding: 6px 11px;
-    line-height: 1.6;
-    border-radius: 0px;
-}
-  #grid > .k-grid-header {
-    padding-right: 0px !important;
-  }
-  #grid > .k-grid-content {
-    height: auto !important;
-  }
-  #grid > .k-grouping-header {
-    display: none;
-  }
-  #userSearch {
-    width: 270px !important;
-  }
-  #searchclear {
-    min-height: 34px;
-    padding-top: 2px;
-  }
-  #grid .k-grid-content table tbody tr td{
-    cursor:pointer;
-  }
-  .k-pager-wrap .k-icon{
-    /*margin-top: 6px;*/
-  }
-  .control-label > span{
-    color: red;
-  }
-  .text-blood{
-    color:#FF0500;
-  }
+    }*/
+    .x-form-field-wrap .form-control{
+        height: 35px;
+        padding: 6px 11px;
+        line-height: 1.6;
+        border-radius: 0px;
+    }
+    #grid > .k-grid-header {
+        padding-right: 0px !important;
+    }
+    #grid > .k-grid-content {
+        height: auto !important;
+    }
+    #grid > .k-grouping-header {
+        display: none;
+    }
+    #userSearch {
+        width: 270px !important;
+    }
+    #searchclear {
+        min-height: 34px;
+        padding-top: 2px;
+    }
+    #grid .k-grid-content table tbody tr td{
+        cursor:pointer;
+    }
+    .k-pager-wrap .k-icon{
+        /*margin-top: 6px;*/
+    }
+    .control-label > span{
+        color: red;
+    }
+    .text-blood{
+        color:#FF0500;
+    }
+    #frmSetting label{
+        text-align: left;
+    }
+    .model-fixed{
+        overflow-y: scroll;
+        height: 400px;
+    }

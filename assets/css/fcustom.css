@@ -645,3 +645,7 @@ font-weight: 200 !important;
 .kill-p-r{
 	padding-right: 0
 }
+    .model-fixed{
+        overflow-y: scroll;
+        height: 400px;
+    }
