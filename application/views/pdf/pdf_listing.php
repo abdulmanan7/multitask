@@ -61,17 +61,17 @@
       },{
         field: "strabe_nr",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'><i class='fa fa-map-marker'></i> #=strabe_nr#</a>",
         width:"95px",
       },{
         field: "PLZ",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=PLZ#</a>",
         width:"90px",
       },{
         field: "ort",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=ort#</a>",
         width:"95px",
       },{
         field: "land",
@@ -84,7 +84,7 @@
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#,#=land#'><i class='fa fa-map-marker'></i> #=bauobjektadress#</a>",
         width:"100px",
       },{
         field: "telefon",
@@ -137,47 +137,47 @@
       },{
         field: "anfragedatum",
         title: "Anfragedatum",
-        width:85,
+        width:"94px",
       },{
         field: "vorname",
         title: "Vorname",
-        width:73,
+        width:"73px",
       },{
         field: "nachname",
         title: "Nachname",
-        width:78,
+        width:"80px",
       },{
         field: "strabe_nr",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#'>#=strabe_nr#</a>",
-        width:95,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'><i class='fa fa-map-marker'></i> #=strabe_nr#</a>",
+        width:"95px",
       },{
         field: "PLZ",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=PLZ#'>#=PLZ#</a>",
-        width:90,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=PLZ#</a>",
+        width:"90px",
       },{
         field: "ort",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=ort#'>#=ort#</a>",
-        width:95,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=ort#</a>",
+        width:"95px",
       },{
         field: "land",
         title:"Land",
-        width:80,
+        width:"80px",
       },{
         field: "email",
         title:"eMail",
-        width:144,
+        width:"144px",
       },{
         field: "bauobjektadress",
         title:"Objektadresse",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#'>#=bauobjektadress#</a>",
-        width:100,
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=bauobjektadress#,#=land#'><i class='fa fa-map-marker'></i> #=bauobjektadress#</a>",
+        width:"100px",
       },{
         field: "telefon",
         title:"Telefon",
-        width:70,
+        width:"79px",
       },
       {
         title: "Dokument",

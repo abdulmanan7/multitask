@@ -19,7 +19,7 @@
                 ANGEBOTE
               </a>
             </li>
-             <li <?php echo ($page_title == 'Settings') ? 'class="active"' : ''?>>
+             <li <?php echo ($page_title == 'settings') ? 'class="active"' : ''?>>
               <a href='<?=base_url("settings")?>'>
                 <i class="fa fa-cogs"></i>Settings</a>
                 <!-- <i class="fa fa-cogs"></i>Einstellungen</a> -->

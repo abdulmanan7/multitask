@@ -8,16 +8,22 @@
             <i class="icon ion-clock text-info"></i> Einstellungen
           </h3>
           <div id="message"></div>
-          <form class="form-horizontal" action="<?=base_url('settings/update/' . $email_tpl['id'])?>" method="POST" role="form">
+          <form class="form-horizontal" action="<?=base_url('settings/update/' . $email_tpl['id'])?>" method="POST" role="form" id="frmSetting">
             <div class="row">
               <div class="col-sm-12">
                 <legend>Firmendetails</legend>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="com_title" class="control-label col-sm-3">Firmenname</label>
-                      <div class="col-sm-9">
+                      <label for="com_title" class="control-label col-sm-4">Firmenname</label>
+                      <div class="col-sm-8">
                         <input type="text" class="form-control" value="<?=$email_tpl['company_title']?>" name="comp_title">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="comp_mail" class="control-label col-sm-4">eMail Fotobegehung</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
                       </div>
                     </div>
                     <!-- <div class="form-group">
@@ -41,12 +47,7 @@
                     </div> -->
                   </div>
                   <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="comp_mail" class="control-label col-sm-4">eMail Fotobegehung</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?=$email_tpl['company_email']?>" name="comp_mail">
-                      </div>
-                    </div>
+
                     <!-- <div class="form-group">
                       <label for="comp_post_code" class="control-label col-sm-3">Post code</label>
                       <div class="col-sm-9">

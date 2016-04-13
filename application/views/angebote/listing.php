@@ -47,12 +47,13 @@
         },
         columns: [{hidden: true, field: "id",menu:false
       },{
-        field: "date",
-        title: "Anfragedatum",
-        width:"94px",
-      },{
         field: "offer_id",
         title: "Angebotsnr",
+        width:"94px",
+        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black"><i class="fa fa-share-square-o"></i> #=offer_id#</a>',
+      },{
+        field: "date",
+        title: "Anfragedatum",
         width:"94px",
       },{
         field: "client_name",
@@ -91,7 +92,7 @@
       {
         title: "Löschen",
         width:"60px",
-        template:'<a href="<?=base_url()?>angebote/delete/#=id#" class="text-center btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>angebote/delete/#=id#" class="text-center btn btn-sm btn-danger delw"><i class="fa fa-trash-o"></i></a>',
         attributes:{class:"text-center"}
       }
       ],
@@ -129,12 +130,13 @@
         },
         columns: [{hidden: true, field: "id",menu:false
       },{
-        field: "date",
-        title: "Anfragedatum",
-        width:"94px",
-      },{
         field: "offer_id",
         title: "Angebotsnr",
+        width:"94px",
+        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black"><i class="fa fa-share-square-o"></i> #=offer_id#</a>',
+      },{
+        field: "date",
+        title: "Anfragedatum",
         width:"94px",
       },{
         field: "client_name",
