@@ -73,6 +73,11 @@ class Att_email_model extends CI_Model {
 		}
 		return $this->db->count_all_results();
 	}
+	function check_dups($term = "aends") {
+		$this->db->select()->from('email_att');
+		$this->db->where('email', $term);
+		return $this->db->count_all_results();
+	}
 }
 
 /* End of file Att_email_model.php */
