@@ -3,6 +3,7 @@
 <div class="container">
 	<?php $this->load->view('frontend/modals/help');?>
 	<?php $this->load->view('frontend/modals/datenschutzbestimmungen');?>
+	<?php $this->load->view('frontend/modals/drag_drop_help');?>
 	<form id="fileupload" action="<?=base_url('fotobegehung/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
@@ -11,7 +12,7 @@
 				<div class="col-xs-12 top-head">
 					<div class="row">
 						<div class="col-md-6 col-xs-12">
-						
+
 							<div class="heading pull-left">
 								<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
 							</div>
@@ -282,5 +283,16 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			}).appendTo(self.parent('div'));
 			self.remove();
 		}
+	});
+	jQuery(document).ready(function($) {
+		var helpLink = $('<a>',{
+			class:"drapDropLink",
+			href:"#mdldrag_drop_help",
+			"data-toggle":"modal",
+			text:"Drag Drop"
+		});
+		setTimeout(function() {
+			$('.actionBar').prepend(helpLink);
+		}, 500);
 	});
 </script>

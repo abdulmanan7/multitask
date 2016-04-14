@@ -649,3 +649,6 @@ font-weight: 200 !important;
         overflow-y: scroll;
         height: 400px;
     }
+    .drapDropLink{
+    	margin-left: 12px;
+    }
