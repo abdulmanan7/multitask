@@ -1,4 +1,3 @@
-
 <div id="grid"></div>
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
@@ -48,7 +47,7 @@
         columns: [{hidden: true, field: "id",menu:false
       },{
         field: "offer_id",
-        title: "Angebotsnr",
+        title: "Angebot-Nr",
         width:"94px",
         template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black"><i class="fa fa-share-square-o"></i> #=offer_id#</a>',
       },{
@@ -131,7 +130,7 @@
         columns: [{hidden: true, field: "id",menu:false
       },{
         field: "offer_id",
-        title: "Angebotsnr",
+        title: "Angebot-Nr",
         width:"94px",
         template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black"><i class="fa fa-share-square-o"></i> #=offer_id#</a>',
       },{
