@@ -18,7 +18,7 @@
 						</tr>
 						<tr>
 							<td><strong>Chat</strong> </td>
-							<td><a target="_blank" href="https://tawk.to/aac54cfbcb79cb6ffd8f1372652d063c86099da0/popout/default/?$_tawk_popout=true&$_tawk_sk=5707d14e413caa82a56231fe&$_tawk_tk=fcc7f01aa26a825b05ef65cf17b390eb&v=463">Onlinechat jetzt starten.</a></td>
+							<td><a target="_blank" href="https://tawk.to/aac54cfbcb79cb6ffd8f1372652d063c86099da0/popout/default/?$_tawk_popout=true&$_tawk_sk=5707d14e413caa82a56231fe&$_tawk_tk=fcc7f01aa26a825b05ef65cf17b390eb&v=463">Onlinechat jetzt starten</a></td>
 						</tr>
 						<tr>
 							<td><strong>Support</strong> </td>
