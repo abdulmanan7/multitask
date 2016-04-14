@@ -53,7 +53,7 @@
               <p>
     <?php //echo $message;?>
                 <br>
-                Für weitere Unterstützung kontaktieren Sie uns bitte telefonisch unter: <span class="phone">+ 49 (0) 53 82 / 70 42 55 0</span>
+                Für weitere Unterstützung kontaktieren Sie uns bitte telefonisch unter:<br/><span class="phone">+ 49 (0) 53 82 / 70 42 55 0</span>
               </p>
             </div>
 

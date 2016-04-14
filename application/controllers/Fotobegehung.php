@@ -57,7 +57,8 @@ class Fotobegehung extends CI_Controller {
 				$count++;
 				$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 			}
-			$this->send($pdata['email'], $att_id, $nachname);
+			$this->send($pdata['email'], $att_id, $pdata);
+
 		}
 		//this the the PDF filename that user will get to download
 		redirect('planung/listing', 'refresh');
@@ -99,10 +100,10 @@ class Fotobegehung extends CI_Controller {
 			$pdf->Output($pdfFilePath, "I");
 		}
 	}
-	function send($email, $att_id, $nachname) {
+	function send($email, $att_id, $pdata) {
 		$this->load->model('settings_model');
 		$comp = $this->settings_model->get();
-		$message = str_replace("{name}", $nachname, $comp['body']);
+		$message = str_replace("{name}", $pdata['nachname'], $comp['body']);
 		$att_path = $this->get($att_id, true);
 		$this->load->library('email', array('mailtype' => "html"));
 
@@ -114,12 +115,35 @@ class Fotobegehung extends CI_Controller {
 		$this->email->attach($att_path);
 		$this->email->set_mailtype("html");
 		$this->email->message($message);
-
+		// $this->save_lead($pdata, $att_path);
 		if ($this->email->send()) {
 			redirect('fotobegehung/success/0', 'refresh');
 		} else {
 			redirect('fotobegehung/success/1', 'refresh');
 			// show_error($this->email->print_debugger());
+		}
+
+	}
+	private function save_lead($data, $att_path) {
+		$postData = array(
+			'TITLE' => $data['nachname'],
+			'COMPANY_TITLE' => $data["vorname"],
+			'NAME' => $data["vorname"],
+			'LAST_NAME' => $data["Zafar"],
+			'DESCRIPTION' => $data["beschreibung"],
+			'ADDRESS' => $data["bauobjektadress"],
+			'EMAIL_HOME' => $data["email"],
+			'DETAILS' => $att_path,
+		);
+		$res = $this->bitrix_api->save_lead($postData);
+	}
+	private function check_dups($email) {
+		$status = $this->att_email->check_dups($email);
+		if ($status > 0) {
+			return TRUE;
+		} else {
+			//api called
+			FALSE;
 		}
 
 	}
