@@ -284,15 +284,5 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			self.remove();
 		}
 	});
-	jQuery(document).ready(function($) {
-		var helpLink = $('<a>',{
-			class:"btn drapDropLink",
-			href:"#mdldrag_drop_help",
-			"data-toggle":"modal",
-			text:"Erklärung der Funktion Drag & Drop"
-		});
-		setTimeout(function() {
-			$('.actionBar').prepend(helpLink);
-		}, 500);
-	});
+	
 </script>

@@ -6,7 +6,7 @@
 	<div class="upContainer col-md-12">
 		<div class="dragDrop">
 		<p>
-			Schieben Sie einfach per <strong>Drag & Drop</strong> die gewünschten Bilder bzw. Zeichnungen in dieses Feld. <br>Diese werden dann automatisch hochgeladen.
+			Schieben Sie einfach per <a class="drapDropLink" href="#mdldrag_drop_help" data-toggle="modal"> <strong>Drag & Drop</strong></a> die gewünschten Bilder bzw. Zeichnungen in dieses Feld. <br>Diese werden dann automatisch hochgeladen.
 		</p>
 		<span class="fileupload-process"></span>
 		<!-- The global progress state -->

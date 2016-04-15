@@ -1,4 +1,3 @@
-
 <div id="grid"></div>
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
@@ -94,7 +93,7 @@
       {
         title: "Dokument",
         width:"42px",
-        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname##=att_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname##=att_id#.pdf" target="_black" class="btn btn-sm btn-success pdfLink"><i class="fa fa-download"></i></a>',
       },{
         title: "Löschen",
         width:"40px",
@@ -192,4 +191,16 @@
   });
   }, 400 );
 });
+$(document).on("click", ".pdfLink", function(e)
+{
+ var createUrl = $(this).attr('href');
+ var win = window.open(createUrl, '_blank'); 
+ if(win){
+    //Browser has allowed it to be opened
+    win.focus();
+  }else{
+    //Broswer has blocked it
+    alert('Please allow popups for this site');
+  }
+});//end dbclick
   </script>
