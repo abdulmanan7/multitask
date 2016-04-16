@@ -10,12 +10,10 @@
 					<u>Erklärung der Funktion Drag & Drop</u>
 				</h4>
 				<p class="desc">
-					Mit der linken Maustaste <strong>die gewünschte Datei</strong> von Ihrem Rechner anklicken und die Maustaste gedrückt halten, dann die Datei (z.B. Bild, PDF, Video) mit der Maus auf unser Ablagefeld verschieben und die Maustaste loslassen. Jetzt wird automatisch die Datei auf unseren Server hochgeladen.<br>
+					Mit der linken Maustaste <strong>die gewünschte Datei</strong> von Ihrem Rechner anklicken und die Maustaste gedrückt halten, dann die Datei (z.B. Bild, PDF, Video) mit der Maus auf unser Ablagefeld verschieben und die Maustaste loslassen. <br>Jetzt wird automatisch die Datei auf unseren Server hochgeladen.<br>
 <h4><u>Beispiel:</u></h4>
-Datei auswählen, auf das Feld ziehen und loslassen.<br>
-(PICTURE 1)
+Datei auswählen, auf das Feld ziehen und loslassen.
 				</p>
-				<br>
 					<img src="<?=load_img('dragdrop.jpg')?>" alt="" style="width: 100%">
 			</div>
 			<div class="modal-footer">

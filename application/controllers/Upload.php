@@ -129,79 +129,6 @@ class Upload extends CI_Controller {
 			}
 		}
 	}
-	// function doUpload($control="userfile", $path=NULL, $imageName, $sizes)
-	// {
-	// 	$path = $path?$path:FCPATH.'uploads/full_size/';
-	// 	if( ! isset($_FILES[$control]) || ! is_uploaded_file($_FILES[$control]['tmp_name']))
-	// 	{
-	// 		print('No file was chosen');
-	// 		return FALSE;
-	// 	}
-	// 	if($_FILES[$control]['error'] !== UPLOAD_ERR_OK)
-	// 	{
-	// 		print('Upload failed. Error code: '.$_FILES[$control]['error']);
-	// 		Return FALSE;
-	// 	}
-	// 	switch(strtolower($_FILES[$control]['type']))
-	// 	{
-	// 		case 'image/jpeg':
-	// 		$image = imagecreatefromjpeg($_FILES[$control]['tmp_name']);
-	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
-	// 		break;
-	// 		case 'image/png':
-	// 		$image = imagecreatefrompng($_FILES[$control]['tmp_name']);
-	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
-	// 		break;
-	// 		case 'image/gif':
-	// 		$image = imagecreatefromgif($_FILES[$control]['tmp_name']);
-	// 		move_uploaded_file($_FILES[$control]["tmp_name"],$path.$imageName);
-	// 		break;
-	// 		default:
-	// 		print('This file type is not allowed');
-	// 		return false;
-	// 	}
-	// 	@unlink($_FILES[$control]['tmp_name']);
-	// 	$old_width      = imagesx($image);
-	// 	$old_height     = imagesy($image);
-
-	//    //Create tn version
-	// 	if($sizes=='tn' || $sizes=='all')
-	// 	{
-	// 		$max_width = 100;
-	// 		$max_height = 100;
-	// 		$scale          = min($max_width/$old_width, $max_height/$old_height);
-	// 		if ($old_width > 100 || $old_height > 100)
-	// 		{
-	// 			$new_width      = ceil($scale*$old_width);
-	// 			$new_height     = ceil($scale*$old_height);
-	// 		} else {
-	// 			$new_width = $old_width;
-	// 			$new_height = $old_height;
-	// 		}
-	// 		$new = imagecreatetruecolor($new_width, $new_height);
-	// 		imagecopyresampled($new, $image,0, 0, 0, 0,$new_width, $new_height, $old_width, $old_height);
-	// 		switch(strtolower($_FILES[$control]['type']))
-	// 		{
-	// 			case 'image/jpeg':
-	// 			imagejpeg($new, $path.'tn_'.$imageName, 90);
-	// 			break;
-	// 			case 'image/png':
-	// 			imagealphablending($new, false);
-	// 			imagecopyresampled($new, $image,0, 0, 0, 0,$new_width, $new_height, $old_width, $old_height);
-	// 			imagesavealpha($new, true);
-	// 			imagepng($new, $path.'tn_'.$imageName, 0);
-	// 			break;
-	// 			case 'image/gif':
-	// 			imagegif($new, $path.'tn_'.$imageName);
-	// 			break;
-	// 			default:
-	// 		}
-	// 	}
-
-	// 	imagedestroy($image);
-	// 	imagedestroy($new);
-	// 	print '<div style="font-family:arial;"><b>'.$imageName.'</b> Uploaded successfully. Size: '.round($_FILES[$control]['size']/1000).'kb</div>';
-	// }
 	public function deleteImage($file, $pdf = FALSE) {
 //gets the job done but you might want to add error checking and security
 		if ($pdf) {
@@ -210,6 +137,7 @@ class Upload extends CI_Controller {
 		$full_size_path = FCPATH . 'uploads/full_size/' . $file;
 		$thumbs_path = FCPATH . 'uploads/thumbs/' . $file;
 		$pdf_path = FCPATH . 'uploads/pdf/' . $file;
+		$videoPath = FCPATH . 'uploads/' . $file;
 		if (file_exists($full_size_path)) {
 			$success = unlink($full_size_path);
 		}
@@ -218,6 +146,9 @@ class Upload extends CI_Controller {
 		}
 		if (file_exists($pdf_path)) {
 			$success = unlink($pdf_path);
+		}
+		if (file_exists($videoPath)) {
+			$success = unlink($videoPath);
 		}
 		//info to see if it is doing what it is supposed to
 		$info = new StdClass;

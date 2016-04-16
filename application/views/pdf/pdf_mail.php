@@ -1,4 +1,3 @@
-<?php error_reporting(1);?>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
