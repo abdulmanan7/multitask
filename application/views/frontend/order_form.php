@@ -184,7 +184,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="text" class="numberOnly form-control"></input>
+								<input required="required" name="question4" type="number" class="numberOnly form-control"></input>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
@@ -203,7 +203,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="text" class="numberOnly form-control"></input>
+						<input name="question5" type="number" class="numberOnly form-control"></input>
 					</div>
 				</div>
 			</div>
