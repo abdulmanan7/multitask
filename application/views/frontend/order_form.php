@@ -290,4 +290,12 @@ $('body').on('keypress', '.numberOnly', function(e) {
                return false;
     }
 });
+jQuery(document).ready(function($) {
+	var progressBar = '<span class="fileupload-process"></span>'+
+					'<div class="col-lg-5 fileupload-progress fade">'+
+			'<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">'+
+				'<div class="progress-bar progress-bar-success" style="width:0%;"></div></div>'+
+			'<div class="progress-extended">&nbsp;</div></div>';
+	$('.actionBar').append(progressBar);
+});
 </script>
