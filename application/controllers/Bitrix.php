@@ -8,21 +8,24 @@ class Bitrix extends CI_Controller {
 		$this->load->library('bitrix_api');
 
 	}
-	  function saveLead() {
-    $postData = array(
-      'TITLE' => 'Tufail zafar',
-      'NAME' => "Tufail zafar",
-      'SOURCE_DESCRIPTION' =>"waiting to response great person",
-      'ADDRESS' => "Dowra Road Afridi Abad ",
-      'EMAIL_HOME' => "ahmadNazw@gmail.com",
-      'PHONE_MOBILE' => "122354545",
-      'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-    );
+	function index($value = '') {
+		$this->load->view('bitrixTest');
+	}
+	function saveLead() {
+		$postData = array(
+			'TITLE' => 'Tufail zafar',
+			'NAME' => "Tufail zafar",
+			'SOURCE_DESCRIPTION' => "waiting to response great person",
+			'ADDRESS' => "Dowra Road Afridi Abad ",
+			'EMAIL_HOME' => "ahmadNazw@gmail.com",
+			'PHONE_MOBILE' => "122354545",
+			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
+		);
 
-    //$this->bitrix->save_lead($postDate);
-    $res = $this->bitrix_api->save_lead($postData);
+		//$this->bitrix->save_lead($postDate);
+		$res = $this->bitrix_api->save_lead($postData);
 
-  }
+	}
 	function post() {
 
 // POST processing

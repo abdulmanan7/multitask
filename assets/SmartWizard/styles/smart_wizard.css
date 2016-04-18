@@ -323,6 +323,9 @@
   color: #EA8511;
   border: 1px solid #EA8511;  
 }
+.top-link{
+  text-align: right;
+}
 @media (max-width: 1280px) {
   .swMain ul.anchor li a {
   padding:3px;
@@ -370,18 +373,36 @@ span.fileinput-button{
 }
 .swMain ul.anchor li {
      padding-left: 3px; 
+     padding-right: 3px; 
     }
 .fileinput-button{
     margin: 0;
     margin-left: 17px !important;
 }
 .swMain ul.anchor li a .stepDesc small {
-    font: normal 10px Verdana, Arial, Helvetica, sans-serif;
+    font: normal 15px Verdana, Arial, Helvetica, sans-serif;
 }
-.logo img {
+/*.logo img {
   margin: auto 25%;
+}*/
+.top-link{
+  text-align: left;
+  margin-top: 20px;
 }
-.swMain ul.anchor li {
-  padding-right: 3px;
+body{
+       margin: 0 !important; 
+       font-size: 20px !important;
+}
+.form-control {
+    height: 46px;
+    padding: 1px 9px;
+    font-size: 20px;
+    }
+    .container{
+      width: 100%;
+    }
+.swMain .stepContainer div.content {
+    /*margin-top: 49px;*/
+    font-size: 15px;
 }
 }

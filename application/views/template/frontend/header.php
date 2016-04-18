@@ -6,7 +6,7 @@
 
     <?php $class = $this->router->fetch_class();?>
 
-    <meta name="viewport" content="width=650, initial-scale=1, maximum-scale=1.5">
+    <meta name="viewport" content="width=586, initial-scale=1, maximum-scale=1.5">
     <title>Herzlich Willkommen !</title>
     <!-- Bootstrap styles -->
     <link rel="stylesheet" href="<?=base_url('assets/css/bootstrap.min.css')?>">

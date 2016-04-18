@@ -13,7 +13,7 @@
 						<div class="col-md-6 logo col-xs-12">
 							<img style="float: left;"  src="<?=$logo?>" />
 						</div>
-						<div class="col-md-6 col-xs-12 text-right">
+						<div class="col-md-6 col-xs-12 top-link">
 							<a data-toggle="modal" href='#mdlhelp'>Brauchen Sie Unterstützung?</a>
 						</div>
 					</div>
