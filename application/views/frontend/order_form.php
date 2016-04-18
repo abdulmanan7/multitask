@@ -7,21 +7,20 @@
 	<form id="fileupload" action="<?=base_url('fotobegehung/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
-		<a data-toggle="modal" href='#mdlhelp'>Brauchen Sie Unterstützung?</a>
 			<div class="row">
 				<div class="col-xs-12 top-head">
 					<div class="row">
-						<div class="col-md-6 col-xs-12">
-
-							<div class="heading pull-left">
-								<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
-							</div>
-						</div>
 						<div class="col-md-6 logo col-xs-12">
-							<img style="float: right;"  src="<?=$logo?>" />
+							<img style="float: left;"  src="<?=$logo?>" />
+						</div>
+						<div class="col-md-6 col-xs-12 text-right">
+							<a data-toggle="modal" href='#mdlhelp'>Brauchen Sie Unterstützung?</a>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="heading">
+			<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
 			</div>
 			<span class="top-desc">
 				Wir planen sehr gerne Ihre neue Heizungsanlage. Bitte füllen Sie das Formular aus. Am Ende der Seite haben Sie die Möglichkeit, Schritt für Schritt die für die Planung notwendigen Bilder, Zeichnungen oder auch Videos zur Verfügung zu stellen.<br><br>
@@ -184,7 +183,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="number" class="numberOnly form-control"></input>
+								<input required="required" name="question4" type="number" class="form-control"></input>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
@@ -203,7 +202,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="number" class="numberOnly form-control"></input>
+						<input name="question5" type="number" class="form-control"></input>
 					</div>
 				</div>
 			</div>
@@ -211,7 +210,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question6" type="text" class="form-control"></input>
+						<input required="required" name="question6" type="text" class="form-control numberOnly"></input>
 					</div>
 				</div>
 			</div>
@@ -219,7 +218,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel Personen leben in Ihrem Haus? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question7" type="text" class="form-control"></input>
+						<input required="required" name="question7" type="text" class="form-control numberOnly"></input>
 					</div>
 				</div>
 			</div>
@@ -237,7 +236,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-9 kill-p-r">
-								<input name="question9" type="text" class="form-control"></input>
+								<input name="question9" type="text" class="form-control numberOnly"></input>
 							</div>
 							<div class="col-xs-3 text-right" style="line-height: 2.9">
 								kWh / Jahr
