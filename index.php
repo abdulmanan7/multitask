@@ -53,8 +53,15 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
+//define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
 // define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+if ($_SERVER['SERVER_NAME'] == 'sajidshah.com') {
+	define('ENVIRONMENT',"testing");
+}elseif($_SERVER['SERVER_NAME'] == 'www.solarvent.de'){
+	define('ENVIRONMENT',"production");
+}else{
+	define('ENVIRONMENT',"development");
+}
 
 /*
  *---------------------------------------------------------------
@@ -71,6 +78,9 @@ case 'development':
 	break;
 
 case 'testing':
+error_reporting(-1);
+	ini_set('display_errors', 1);
+	break;
 case 'production':
 	error_reporting(-1);
 	ini_set('display_errors', 1);
