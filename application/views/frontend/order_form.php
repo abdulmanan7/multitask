@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="heading">
-			<h4 class="table-head">Ihre persönliche Fotobegehung</h4>
+			<h4 class="table-head kill-p-b">Ihre persönliche Fotobegehung</h4>
 			</div>
 			<span class="top-desc">
 				Wir planen sehr gerne Ihre neue Heizungsanlage. Bitte füllen Sie das Formular aus. Am Ende der Seite haben Sie die Möglichkeit, Schritt für Schritt die für die Planung notwendigen Bilder, Zeichnungen oder auch Videos zur Verfügung zu stellen.<br><br>

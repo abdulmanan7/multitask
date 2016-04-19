@@ -369,7 +369,7 @@ span.fileinput-button{
 }
 .swMain ul.anchor li a .stepDesc {
     padding: 1px;
-    font: bold 11px Verdana, Arial, Helvetica, sans-serif;
+    font: bold 11px Arial, Helvetica, sans-serif;
 }
 .swMain ul.anchor li {
      padding-left: 3px; 
@@ -380,7 +380,7 @@ span.fileinput-button{
     margin-left: 17px !important;
 }
 .swMain ul.anchor li a .stepDesc small {
-    font: normal 15px Verdana, Arial, Helvetica, sans-serif;
+    font: normal 15px Arial, Helvetica, sans-serif;
 }
 /*.logo img {
   margin: auto 25%;
