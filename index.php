@@ -56,11 +56,11 @@
 //define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
 // define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 if ($_SERVER['SERVER_NAME'] == 'sajidshah.com') {
-	define('ENVIRONMENT',"testing");
-}elseif($_SERVER['SERVER_NAME'] == 'www.solarvent.de'){
-	define('ENVIRONMENT',"production");
-}else{
-	define('ENVIRONMENT',"development");
+	define('ENVIRONMENT', "testing");
+} elseif ($_SERVER['SERVER_NAME'] == 'www.solarvent.de') {
+	define('ENVIRONMENT', "production");
+} else {
+	define('ENVIRONMENT', "development");
 }
 
 /*
@@ -78,12 +78,12 @@ case 'development':
 	break;
 
 case 'testing':
-error_reporting(-1);
+	error_reporting(-1);
 	ini_set('display_errors', 1);
 	break;
 case 'production':
 	error_reporting(-1);
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	if (version_compare(PHP_VERSION, '5.3', '>=')) {
 		error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
 	} else {

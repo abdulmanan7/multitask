@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Angebote_model extends CI_Model {
-	protected $table = "createdfiles";
+	protected $table = "createdFiles";
 	public function save($object) {
 		$this->db->insert($this->table, $object);
 		return $this->db->insert_id();

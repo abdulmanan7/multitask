@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller {
 		$data['page_title'] = "Dashboard";
 		$data['sub_page'] = "Dashboard";
 		$data['page'] = "dashboard/dashboard";
-		$data['angebots'] = $this->dashboard->get_total_count('createdfiles');
+		$data['angebots'] = $this->dashboard->get_total_count('createdFiles');
 		$data['fotobegehung'] = $this->dashboard->get_total_count('email_att');
 		$this->load->view('template', $data);
 	}
