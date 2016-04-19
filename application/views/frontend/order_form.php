@@ -139,7 +139,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Baujahr von Ihrem Haus? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_hous" class="form-control">
-							<option value="">Neubau</option>
+							<option>Baujahr Haus?</option>
 							<option value="2016 - 2002">2016 - 2002</option>
 							<option value="2001 - 1995">2001 - 1995</option>
 							<option value="1994 - 1978">1994 - 1978</option>
@@ -154,7 +154,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_alte" class="form-control">
-							<option value="">Keine Heizung vorhanden</option>
+							<option>Baujahr Ihrer Heizung?</option>
 							<option value="1 - 10 Jahre">1 - 10 Jahre</option>
 							<option value="11 - 15 Jahre">11 - 15 Jahre</option>
 							<option value="16 - 20 Jahre">16 - 20 Jahre</option>
@@ -170,7 +170,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Womit heizen Sie derzeit? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="question3" class="form-control">
-							<option value="">überhaupt nicht</option>
+							<option >Womit heizen Sie derzeit?</option>
 							<option value="Erdgas">Erdgas</option>
 							<option value="Flüssiggas">Flüssiggas</option>
 							<option value="Heizöl">Heizöl</option>
@@ -188,11 +188,11 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="number" class="form-control" placeholder="Es sind nur Zahlen erlaubt"></input>
+								<input required="required" name="question4" type="number" class="form-control" ></input>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
-									<option value="">Einheit</option>
+									<option>Einheit?</option>
 									<option value="Liter">Liter</option>
 									<option value="m³">m³</option>
 									<option value="kWh">kWh</option>
@@ -207,7 +207,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="number" class="form-control" placeholder="Es sind nur Zahlen erlaubt"></input>
+						<input name="question5" type="number" class="form-control" ></input>
 					</div>
 				</div>
 			</div>
@@ -215,7 +215,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question6" type="number" class="form-control numberOnly" placeholder="Es sind nur Zahlen erlaubt"></input>
+						<input required="required" name="question6" type="number" class="form-control numberOnly" ></input>
 					</div>
 				</div>
 			</div>
@@ -239,7 +239,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme (kWh / Jahr)?</label>
 					<div class="col-sm-6">
-								<input name="question9" type="number" class="form-control numberOnly" placeholder="Es sind nur Zahlen erlaubt"></input>
+								<input name="question9" type="number" class="form-control numberOnly" ></input>
 					</div>
 				</div>
 			</div>
@@ -282,8 +282,10 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		}
 	});
 $('body').on('keypress', '.numberOnly', function(e) {
+	var self = $(this);
 	 if (e.which != 8 && e.which != 46 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
+        self.parent().appendTo('<p class="error">Es sind nur Zahlen erlaubt</p>');
                return false;
     }
 });
