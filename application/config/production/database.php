@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn' => '',
 	'hostname' => 'localhost',
-	'username' => 'shah_admin_minin',
-	'password' => 'F0KSQG=D!C%A',
-	'database' => 'shah_minic',
+	'username' => 'soltwydk2',
+	'password' => 'eyqyl4zu',
+	'database' => 'usrdb_soltwydk2',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

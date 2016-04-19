@@ -55,9 +55,9 @@
  */
 //define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
 // define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-if ($_SERVER['HTTP_HOST'] == 'sajidshah.com') {
+if ($_SERVER['SERVER_NAME'] == 'sajidshah.com') {
 	define('ENVIRONMENT',"testing");
-}else if($_SERVER['HTTP_HOST'] == 'www.solarvent.de'){
+}elseif($_SERVER['SERVER_NAME'] == 'www.solarvent.de'){
 	define('ENVIRONMENT',"production");
 }else{
 	define('ENVIRONMENT',"development");
