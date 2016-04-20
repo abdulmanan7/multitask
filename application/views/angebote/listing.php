@@ -83,12 +83,6 @@
         width:"79px",
       },
       {
-        title: "Dokument",
-        width:"50px",
-        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
-        attributes:{class:"text-center"}
-      },
-      {
         title: "Löschen",
         width:"60px",
         template:'<a href="<?=base_url()?>angebote/delete/#=id#" class="text-center btn btn-sm btn-danger delw"><i class="fa fa-trash-o"></i></a>',
@@ -164,12 +158,6 @@
         field: "phone",
         title:"Telefon",
         width:"79px",
-      },
-      {
-        title: "Dokument",
-        width:"50px",
-        template:'<a href="https://www.solarvent.de/kalkulator-angebot/offers/#=offer_id#.pdf" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
-        attributes:{class:"text-center"}
       },
       {
         title: "Löschen",

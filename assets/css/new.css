@@ -2310,7 +2310,7 @@ footer {
   #cssmenu.align-right ul ul {
     text-align: right; }
   #cssmenu ul ul li {
-    background: #6d880e;
+    background: #4A5D09;
     height: 0;
     -webkit-transition: all .25s ease;
     -moz-transition: all .25s ease;
@@ -2325,7 +2325,7 @@ footer {
   #cssmenu li:hover > ul > li {
     height: 35px; }
     #cssmenu li:hover > ul > li:hover {
-      background: #2877aa; }
+      background: #6D880E; }
   #cssmenu ul ul ul {
     margin-left: 100%;
     top: 0; }
