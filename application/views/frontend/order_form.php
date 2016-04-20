@@ -188,7 +188,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="number" class="form-control" placeholder="Es sind nur Zahlen erlaubt"></input>
+								<input required="required" name="question4" type="number" class="form-control numberOnly"></input>
+								<p class="error"></p>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
@@ -207,7 +208,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="number" class="form-control" placeholder="Es sind nur Zahlen erlaubt"></input>
+						<input name="question5" type="number" class="form-control numberOnly"></input>
+						<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -215,7 +217,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question6" type="number" class="form-control numberOnly" placeholder="Es sind nur Zahlen erlaubt"></input>
+						<input required="required" name="question6" type="number" class="form-control numberOnly"></input>
+						<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -239,7 +242,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme (kWh / Jahr)?</label>
 					<div class="col-sm-6">
-								<input name="question9" type="number" class="form-control numberOnly" placeholder="Es sind nur Zahlen erlaubt"></input>
+								<input name="question9" type="number" class="form-control numberOnly"></input>
+								<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -282,9 +286,15 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		}
 	});
 $('body').on('keypress', '.numberOnly', function(e) {
+	var self = $(this).parent();
 	 if (e.which != 8 && e.which != 46 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
-               return false;
+        // $(this).next('p').html('Error');
+        var msg = self.find(".error").html("Es sind nur Zahlen erlaubt").show('1000');
+        setTimeout(function() {
+        	msg.fadeOut('slow');
+        }, 2000);
+        return false;
     }
 });
 jQuery(document).ready(function($) {

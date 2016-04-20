@@ -94,7 +94,7 @@ class Fotobegehung extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		if ($save) {
-			$savePath = FCPATH . "/uploads/docs/Dominic_Umscheid" . $data['vorname'] . "_" . $data['vorname'] . $att_id . ".pdf";
+			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . "_" . $data['vorname']."_" . $att_id . ".pdf";
 			$pdf->Output($savePath, "F");
 			return $savePath;
 		} else {

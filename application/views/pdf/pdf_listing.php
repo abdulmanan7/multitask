@@ -93,7 +93,7 @@
       {
         title: "Dokument",
         width:"42px",
-        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname##=att_id#.pdf" target="_black" class="btn btn-sm btn-success pdfLink"><i class="fa fa-download"></i></a>',
+        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname#_#=nachname#_#=att_id#.pdf" target="_black" class="btn btn-sm btn-success pdfLink"><i class="fa fa-download"></i></a>',
       },{
         title: "Löschen",
         width:"40px",
@@ -181,7 +181,7 @@
       {
         title: "Dokument",
         width:"40px",
-        template:'<a href="<?=base_url()?>fotobegehung/get/#=att_id#" target="_black" class="btn btn-sm btn-success"><i class="fa fa-download"></i></a>',
+        template:'<a href="<?=base_url('uploads/docs/')?>/#=vorname#_#=nachname#_#=att_id#.pdf" target="_black" class="btn btn-sm btn-success pdfLink"><i class="fa fa-download"></i></a>',
       },{
         title: "Löschen",
         width:"40px",
