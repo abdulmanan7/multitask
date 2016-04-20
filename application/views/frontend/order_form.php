@@ -170,7 +170,11 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Womit heizen Sie derzeit? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="question3" class="form-control">
+<<<<<<< HEAD
 							<option >Womit heizen Sie derzeit?</option>
+=======
+							<option>Womit heizen Sie derzeit?</option>
+>>>>>>> 14ea8db54b18d695317299758e8194355252f3c3
 							<option value="Erdgas">Erdgas</option>
 							<option value="Flüssiggas">Flüssiggas</option>
 							<option value="Heizöl">Heizöl</option>
@@ -188,7 +192,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="number" class="form-control" ></input>
+								<input required="required" name="question4" type="number" class="form-control numberOnly"></input>
+								<p class="error"></p>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
@@ -207,7 +212,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="number" class="form-control" ></input>
+						<input name="question5" type="number" class="form-control numberOnly"></input>
+						<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -215,7 +221,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question6" type="number" class="form-control numberOnly" ></input>
+						<input required="required" name="question6" type="number" class="form-control numberOnly"></input>
+						<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -239,7 +246,8 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme (kWh / Jahr)?</label>
 					<div class="col-sm-6">
-								<input name="question9" type="number" class="form-control numberOnly" ></input>
+								<input name="question9" type="number" class="form-control numberOnly"></input>
+								<p class="error"></p>
 					</div>
 				</div>
 			</div>
@@ -282,11 +290,15 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		}
 	});
 $('body').on('keypress', '.numberOnly', function(e) {
-	var self = $(this);
+	var self = $(this).parent();
 	 if (e.which != 8 && e.which != 46 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
-        self.parent().appendTo('<p class="error">Es sind nur Zahlen erlaubt</p>');
-               return false;
+        // $(this).next('p').html('Error');
+        var msg = self.find(".error").html("Es sind nur Zahlen erlaubt").show('1000');
+        setTimeout(function() {
+        	msg.fadeOut('slow');
+        }, 2000);
+        return false;
     }
 });
 jQuery(document).ready(function($) {

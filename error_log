@@ -1,0 +1,25 @@
+[27-Mar-2016 04:05:41 America/Chicago] PHP Fatal error:  Call to undefined method CI_Email::atteach() in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Reports.php on line 109
+[12-Apr-2016 05:41:08 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/models/Angebote_model.php on line 38
+[13-Apr-2016 06:58:25 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/models/Angebote_model.php on line 39
+[14-Apr-2016 05:02:00 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 30
+[14-Apr-2016 05:03:32 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 30
+[14-Apr-2016 05:05:01 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 30
+[14-Apr-2016 05:05:53 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 30
+[14-Apr-2016 05:32:35 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 05:40:38 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 05:48:12 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 05:48:34 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 05:56:36 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 05:57:56 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 31
+[14-Apr-2016 06:04:42 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 23
+[14-Apr-2016 06:05:36 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 23
+[14-Apr-2016 06:06:09 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 23
+[14-Apr-2016 06:09:12 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 24
+[14-Apr-2016 06:10:11 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 24
+[14-Apr-2016 06:10:39 America/Chicago] PHP Fatal error:  Cannot redeclare class Bitrix in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/libraries/Bitrix_lib.php on line 5
+[14-Apr-2016 06:12:36 America/Chicago] PHP Fatal error:  Cannot redeclare class Bitrix in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/libraries/Bitrix_lib.php on line 5
+[14-Apr-2016 06:13:28 America/Chicago] PHP Fatal error:  Cannot redeclare class Bitrix in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/libraries/Bitrix_lib.php on line 5
+[15-Apr-2016 06:09:54 America/Chicago] PHP Fatal error:  Call to a member function save_lead() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Fotobegehung.php on line 138
+[15-Apr-2016 06:12:32 America/Chicago] PHP Fatal error:  Call to a member function insert() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/libraries/Bitrix_api.php on line 108
+[16-Apr-2016 14:58:25 America/Chicago] PHP Warning:  POST Content-Length of 69852787 bytes exceeds the limit of 67108864 bytes in Unknown on line 0
+[19-Apr-2016 07:04:02 America/Chicago] PHP Fatal error:  Call to undefined function pr() in /home3/shah/public_html/proof/abdulmanan/mail_pdf/index.php on line 59

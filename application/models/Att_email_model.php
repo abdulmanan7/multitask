@@ -50,12 +50,12 @@ class Att_email_model extends CI_Model {
 		$base = base_url();
 		foreach ($images as $key => $val) {
 			if (file_exists($val['path'])) {
-				$success = unlink(str_replace($base, "", $val['path']));
+				$success = unlink(str_replace($base, FCPATH, $val['path']));
 			}if (file_exists($val['pdf_path'])) {
-				$success = unlink(str_replace($base, "", $val['pdf_path']));
+				$success = unlink(str_replace($base, FCPATH, $val['pdf_path']));
 			}
 			if (file_exists($val['thumb_path'])) {
-				$success = unlink(str_replace($base, "", $val['thumb_path']));
+				$success = unlink(str_replace($base, FCPATH, $val['thumb_path']));
 			}
 		}
 		$this->db->where('att_id', $id);
