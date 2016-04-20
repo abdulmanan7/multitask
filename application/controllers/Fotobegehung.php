@@ -67,7 +67,7 @@ class Fotobegehung extends CI_Controller {
 		$data = $this->att_email->get($att_id);
 		$images = $this->att_email->get_detail($att_id);
 		$count = 0;
-		$tr = array('0' => '');
+		$tr="";
 		$index = 0;
 		foreach ($images as $key => $val) {
 			if (count($tr[$index]) == 2) {
@@ -94,7 +94,7 @@ class Fotobegehung extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		if ($save) {
-			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . "_" . $data['vorname']."_" . $att_id . ".pdf";
+			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . "_" . $data['nachname']."_" . $att_id . ".pdf";
 			$pdf->Output($savePath, "F");
 			return $savePath;
 		} else {
