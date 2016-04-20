@@ -360,8 +360,8 @@ span.fileinput-button{
 @media (max-width: 650px) {
   .swMain ul.anchor li a {
   padding:2px;
-  height:43px;
-  width:64px;
+  height:48px;
+  width:84px;
   padding-left: 0px;
   -moz-border-radius  : 3px;
   -webkit-border-radius: 3px;
@@ -372,7 +372,7 @@ span.fileinput-button{
     font: bold 11px Arial, Helvetica, sans-serif;
 }
 .swMain ul.anchor li {
-     padding-left: 3px; 
+     padding-left: 5px; 
      padding-right: 3px; 
     }
 .fileinput-button{

@@ -5,10 +5,10 @@ class Ajax extends CI_Controller {
 	protected $comp_id;
 	public function __construct() {
 		parent::__construct();
-		$this->comp_id = $this->session->userdata('user_id');
-		$this->load->model('settings/shift_model', 'shiftdb');
 	}
 	public function index() {
+		// $this->load->library('bitrix');
+		// $this->bitrix->get();
 
 	}
 	public function get_fee_for_update($fee_id = '') {
