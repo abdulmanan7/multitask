@@ -139,7 +139,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Baujahr von Ihrem Haus? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_hous" class="form-control">
-							<option>Baujahr Haus?</option>
+							<option>Baujahr von Ihrem Haus?</option>
 							<option value="2016 - 2002">2016 - 2002</option>
 							<option value="2001 - 1995">2001 - 1995</option>
 							<option value="1994 - 1978">1994 - 1978</option>
@@ -188,12 +188,12 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-6">
-								<input required="required" name="question4" type="number" class="form-control numberOnly"></input>
+								<input required="required" name="question4" type="text" class="form-control numberOnly"></input>
 								<p class="error"></p>
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
-									<option>Einheit?</option>
+									<option>Welche Einheit?</option>
 									<option value="Liter">Liter</option>
 									<option value="m³">m³</option>
 									<option value="kWh">kWh</option>
@@ -208,7 +208,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
-						<input name="question5" type="number" class="form-control numberOnly"></input>
+						<input name="question5" type="text" class="form-control numberOnly"></input>
 						<p class="error"></p>
 					</div>
 				</div>
@@ -217,7 +217,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6"><u>Beheizte Wohnfläche</u> in qm? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<input required="required" name="question6" type="number" class="form-control numberOnly"></input>
+						<input required="required" name="question6" type="text" class="form-control numberOnly"></input>
 						<p class="error"></p>
 					</div>
 				</div>
@@ -242,7 +242,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme (kWh / Jahr)?</label>
 					<div class="col-sm-6">
-								<input name="question9" type="number" class="form-control numberOnly"></input>
+								<input name="question9" type="text" class="form-control numberOnly"></input>
 								<p class="error"></p>
 					</div>
 				</div>

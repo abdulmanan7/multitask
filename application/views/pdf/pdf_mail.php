@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</head>
 	<table class="mar50" cellspacing="3">
 		<tr>
-			<td  colspan="2" class="table-head" style="padding-bottom:0;"><h4>Unterlagen Ihrer „Digitalen Ortsbegehung“</h4></td>
+			<td  colspan="2" class="table-head" style="padding-bottom:0;"><h4>Unterlagen Ihrer digitalen Fotobegehung</h4></td>
 		</tr>
 		<tr>
 			<td align="left" class="subheading">Erfassung Ihrer Kundendaten </td>
@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td class="item-name form-control" colspan="2"><?=$brennstoff?></td>
 		</tr>
 		<tr class="item-row">
-			<td class="item-head">Wie hoch ist durchschnittlich Ihr Heizenergieverbrauch ca. pro Jahr?</td>
+			<td class="item-head">Wie hoch ist Ihr durchschnittlicher Verbrauch / Jahr?</td>
 			<td class="item-name form-control"><?=$verbrauch?></td>
 			<td class="item-name form-control"><?=$einheit?></td>
 		</tr>
@@ -133,15 +133,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td class="item-name form-control" colspan="2"><?=$warmedammung?></td>
 		</tr>
 		<tr class="item-row">
-			<td class="item-head">Wärmebedarf nach der Dämmmaßnahme:</td>
-			<td class="item-name form-control"  valign="top"><?=$warmebedarf_neu?></td>
-			<td style="width:82px">kWh / Jahr</td>
+			<td class="item-head">Wärmebedarf nach der Dämmmaßnahme (kWh/Jahr)::</td>
+			<td class="item-name form-control" colspan="2"><?=$warmebedarf_neu?></td>
 		</tr>
 		<tr class="item-row">
 			<td class="item-head" colspan="3">Haben Sie schon eine Vorstellung, was Sie benötigen, dann ist hier der richtige Platz für Ihre Beschreibung. Wir freuen uns über Ihre zusätzlichen Informationen. Vielen Dank</td>
 		</tr>
 		<tr class="item-row">
-			<td class="item-name form-control" height="100" valign="top" colspan="3"><?=$beschreibung?></td>
+			<td class="item-name form-control" height="200" valign="top" colspan="3"><?=$beschreibung?></td>
 		</tr>
 	</table>
 	<pagebreak />
