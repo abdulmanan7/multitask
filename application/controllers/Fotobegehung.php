@@ -112,7 +112,7 @@ class Fotobegehung extends CI_Controller {
 		$this->email->to($email);
 		$this->email->cc($comp['company_email']);
 
-		$this->email->subject($comp['company_subject']);
+		$this->email->subject($comp['subject']);
 		$this->email->attach($att_path);
 		$this->email->set_mailtype("html");
 		$this->email->message($message);
