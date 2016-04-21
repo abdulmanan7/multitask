@@ -42,12 +42,12 @@ if (isset($_REQUEST["code"])) {
 	$path = "/oauth/token/";
 
 	$query_data = query("GET", PROTOCOL . "://" . $domain . $path, $params);
-
 	if (isset($query_data["access_token"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
 
-		redirect_bitrix(PATH);
+	pr($query_data);
+		redirect("bitrix");
 		die();
 	} else {
 		$error = "error occure! " . print_r($query_data, 1);
@@ -72,7 +72,7 @@ if (isset($_REQUEST["code"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
 
-		redirect_bitrix(PATH);
+		redirect("bitrix");
 		die();
 	} else {
 		$error = "error occure! " . print_r($query_data);
@@ -108,19 +108,19 @@ if (!isset($_SESSION["query_data"])) {
 	if (time() > $_SESSION["query_data"]["ts"] + $_SESSION["query_data"]["expires_in"]) {
 		echo "<b>expire</b>";
 	} else {
-		echo "expire date" . ($_SESSION["query_data"]["ts"] + $_SESSION["query_data"]["expires_in"] - time()) . "";
+		echo "expire date : " . ($_SESSION["query_data"]["ts"] + $_SESSION["query_data"]["expires_in"] - time()) . "";
 	}
 	?>
 
 <ul>
-	<li><a href="<?=PATH?>?test=user.current">Current user</a>
-	<li><a href="<?=PATH?>?test=user.update">User update</a>
-	<li><a href="<?=PATH?>?test=log.blogpost.add">log blogpost</a>
-	<li><a href="<?=PATH?>?test=event.bind">event bind</a>
+	<!-- // <li><a href="<?=PATH?>?test=user.current">Current user</a> -->
+	<li><a href="<?=PATH?>?test=crm.lead.list">Get Leads</a>
+	<!-- // <li><a href="<?=PATH?>?test=log.blogpost.add">log blogpost</a> -->
+	<!-- // <li><a href="<?=PATH?>?test=event.bind">event bind</a> -->
 </ul>
 
-<a href="<?=PATH?>?refresh=1">Refresh</a><br />
-<a href="<?=PATH?>?clear=1">Clear</a><br />
+<!-- // <a href="<?=PATH?>?refresh=1">Refresh</a><br /> -->
+<!-- // <a href="<?=PATH?>?clear=1">Clear</a><br /> -->
 
 <?php
 $test = isset($_REQUEST["test"]) ? $_REQUEST["test"] : "";
@@ -133,25 +133,10 @@ $test = isset($_REQUEST["test"]) ? $_REQUEST["test"] : "";
 
 		break;
 
-	case 'user.update': // test batch&files
+	case 'crm.lead.list': // test batch&files
 
-		$fileContent = file_get_contents(dirname(__FILE__) . "/images/MM35_PG189a.jpg");
-
-		$batch = array(
-			'user' => 'user.current',
-			'user_update' => 'user.update?'
-			. http_build_query(array(
-				'ID' => '$result[user][ID]',
-				'PERSONAL_PHOTO' => array(
-					'avatar.jpg',
-					base64_encode($fileContent),
-				),
-			)),
-		);
-
-		$data = call($_SESSION["query_data"]["domain"], "batch", array(
+		$data = call($_SESSION["query_data"]["domain"], "crm.lead.list", array(
 			"auth" => $_SESSION["query_data"]["access_token"],
-			"cmd" => $batch,
 		));
 
 		break;

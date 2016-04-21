@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 /**
  * client_id Apps
  */
@@ -12,7 +10,7 @@ define('CLIENT_SECRET', 'a04cc260b5c612c48c19bf1b1ed5cc4e');
 /**
  * relative path Apps on server
  */
-define('PATH', '/oauth/authorize/');
+define('PATH', 'http://sajidshah.com/proof/abdulmanan/mail_pdf/bitrix');
 /**
  * full address to Apps
  */
@@ -20,12 +18,17 @@ define('REDIRECT_URI', 'http://codeme.bitrix24.com' . PATH);
 /**
  * scope Apps
  */
-define('SCOPE', 'crm,log,user');
+define('SCOPE', 'crm');
 
 /**
  * protocol by which we work. should be https
  */
 define('PROTOCOL', "https");
+
+// custom
+define('DOMAIN', "codeme.bitrix24.com");
+define('CODE', "ho7av0pww7i60a7uwpiifckrf6lq2swb");
+define('MEMEBER_ID', "c0728b02e02abde3190db0e96a5096ae");
 
 /**
  * Produced redirect the user to the specified address
