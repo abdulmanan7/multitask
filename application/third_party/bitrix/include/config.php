@@ -32,6 +32,7 @@ define('DOMAIN', "solarvent.bitrix24.de");
 define('CODE', "ho7av0pww7i60a7uwpiifckrf6lq2swb");
 // define('MEMEBER_ID', "c0728b02e02abde3190db0e96a5096ae");
 define('MEMEBER_ID', "fa755ef17cf2097971587481b32702b7");
+define('REFRESH_TOKEN', "tmsx5qvk2w6kqjz9p3ih33ei70v0muar");
 
 /**
  * Produced redirect the user to the specified address
