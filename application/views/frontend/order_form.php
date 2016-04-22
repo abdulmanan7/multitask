@@ -151,10 +151,10 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="control-label col-sm-6">Baujahr Ihrer aktuellen Heizung? <span class="text-blood">*</span></label>
+					<label class="control-label col-sm-6">Wie alt ist Ihre Heizung? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_alte" class="form-control">
-							<option>Baujahr Ihrer Heizung?</option>
+							<option>Wie alt ist Ihre Heizung?</option>
 							<option value="1 - 10 Jahre">1 - 10 Jahre</option>
 							<option value="11 - 15 Jahre">11 - 15 Jahre</option>
 							<option value="16 - 20 Jahre">16 - 20 Jahre</option>

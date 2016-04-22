@@ -852,7 +852,7 @@ class Ion_auth_model extends CI_Model {
 			'password' => $password,
 			'email' => $email,
 			'ip_address' => $ip_address,
-			'api_key' => $this->_generate_key(),
+			// 'api_key' => $this->_generate_key(),
 			'created_on' => time(),
 			'active' => ($manual_activation === false ? 1 : 0),
 		);

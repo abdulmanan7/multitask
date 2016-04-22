@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td class="item-name form-control" colspan="2"><?=$baujahr_hous?></td>
 		</tr>
 		<tr class="item-row">
-			<td class="item-head">Baujahr Ihrer aktuellen Heizung? </td>
+			<td class="item-head"> Wie alt ist Ihre Heizung? </td>
 			<td class="item-name form-control" colspan="2"><?=$baujahr_alte_heizung?></td>
 		</tr>
 		<tr class="item-row">
