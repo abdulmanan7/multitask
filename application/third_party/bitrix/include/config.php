@@ -2,15 +2,17 @@
 /**
  * client_id Apps
  */
-define('CLIENT_ID', 'local.5714c7a65679d7.55404378');
+define('CLIENT_ID', 'local.571a7f6ff11954.35288017');
+// define('CLIENT_ID', 'local.5714c7a65679d7.55404378');
 /**
  * client_secret Apps
  */
-define('CLIENT_SECRET', 'a04cc260b5c612c48c19bf1b1ed5cc4e');
+// define('CLIENT_SECRET', 'a04cc260b5c612c48c19bf1b1ed5cc4e');
+define('CLIENT_SECRET', 'b84c0178f2ea88b2d7d18fcbebf18b4c');
 /**
  * relative path Apps on server
  */
-define('PATH', 'http://sajidshah.com/proof/abdulmanan/mail_pdf/bitrix');
+define('PATH', 'https://www.solarvent.de/application/uploader/bitrix');
 /**
  * full address to Apps
  */
@@ -26,9 +28,10 @@ define('SCOPE', 'crm');
 define('PROTOCOL', "https");
 
 // custom
-define('DOMAIN', "codeme.bitrix24.com");
+define('DOMAIN', "solarvent.bitrix24.de");
 define('CODE', "ho7av0pww7i60a7uwpiifckrf6lq2swb");
-define('MEMEBER_ID', "c0728b02e02abde3190db0e96a5096ae");
+// define('MEMEBER_ID', "c0728b02e02abde3190db0e96a5096ae");
+define('MEMEBER_ID', "fa755ef17cf2097971587481b32702b7");
 
 /**
  * Produced redirect the user to the specified address

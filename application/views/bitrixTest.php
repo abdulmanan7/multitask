@@ -9,21 +9,18 @@ if (isset($_REQUEST["clear"]) || $_SERVER["REQUEST_METHOD"] == "POST") {
 	unset($_SESSION["query_data"]);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 /******************* get code *************************************/
-	if (!empty($_POST["portal"])) {
-		$domain = $_POST["portal"];
-		$params = array(
-			"response_type" => "code",
-			"client_id" => CLIENT_ID,
-			"redirect_uri" => REDIRECT_URI,
-		);
-		$path = "/oauth/authorize/";
+if (!isset($query_data["access_token"])) {
+	$params = array(
+		"response_type" => "code",
+		"client_id" => CLIENT_ID,
+		"redirect_uri" => REDIRECT_URI,
+	);
+	$path = "/oauth/authorize/";
 
-		redirect_bitrix(PROTOCOL . "://" . $domain . $path . "?" . http_build_query($params));
-	}
-/******************** /get code ***********************************/
+	redirect_bitrix(PROTOCOL . "://" . DOMAIN . $path . "?" . http_build_query($params));
 }
+/******************** /get code ***********************************/
 
 if (isset($_REQUEST["code"])) {
 /****************** get access_token ******************************/
@@ -46,7 +43,7 @@ if (isset($_REQUEST["code"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
 
-	pr($query_data);
+		pr($query_data);
 		redirect("bitrix");
 		die();
 	} else {
