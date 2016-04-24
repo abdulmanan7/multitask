@@ -16,7 +16,7 @@ define('PATH', 'https://www.solarvent.de/application/uploader/bitrix');
 /**
  * full address to Apps
  */
-define('REDIRECT_URI', 'http://codeme.bitrix24.com' . PATH);
+define('REDIRECT_URI', 'https://solarvent.bitrix24.de');
 /**
  * scope Apps
  */

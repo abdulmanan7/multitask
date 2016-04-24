@@ -7,16 +7,14 @@ $error = "";
 // clear auth session
 
 /******************* get code *************************************/
-if (!isset($_SESSION["query_data"])) {
-	$params = array(
-		"response_type" => "code",
-		"client_id" => CLIENT_ID,
-		"redirect_uri" => REDIRECT_URI,
-	);
-	$path = "/oauth/authorize/";
+$params = array(
+	"response_type" => "code",
+	"client_id" => CLIENT_ID,
+	"redirect_uri" => REDIRECT_URI,
+);
+$path = "/oauth/authorize/";
 
-	redirect_bitrix(PROTOCOL . "://" . DOMAIN . $path . "?" . http_build_query($params));
-}
+redirect_bitrix(PROTOCOL . "://" . DOMAIN . $path . "?" . http_build_query($params));
 /******************** /get code ***********************************/
 
 if (isset($_REQUEST["code"])) {
@@ -39,10 +37,8 @@ if (isset($_REQUEST["code"])) {
 	if (isset($query_data["access_token"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
-
-		// pr($query_data);
-		// redirect("bitrix");
-		// die();
+		pr($query_data);
+		redirect_bitrix('bitrix');
 	} else {
 		$error = "error occure! " . print_r($query_data, 1);
 	}
@@ -69,7 +65,11 @@ if (isset($_REQUEST["code"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
 		$refresh_code = $this->bitrix->save_refresh_code($query_data['refresh_token']);
-		redirect("bitrix");
+		// redirect("bitrix");
+		$options['accessToken'] = $query_data["access_token"];
+		$this->load->library('bitrix', $options);
+		$res = $this->bitrix->save_lead($lead_data);
+		pr($res);
 	} else {
 		$error = "error occure! " . print_r($query_data);
 	}
@@ -82,44 +82,3 @@ if (isset($_REQUEST["code"])) {
 }
 // require_once dirname(__FILE__) . "/include/header.php";
 ?>
-
-<ul>
-	<li><a href="<?=PATH?>?test=crm.lead.list">Get Leads</a>
-</ul>
-
-<?php
-$test = isset($_REQUEST["test"]) ? $_REQUEST["test"] : "";
-switch ($test) {
-case 'crm.lead.list': // test batch&files
-
-	$data = call($_SESSION["query_data"]["domain"], "crm.lead.list", array(
-		"auth" => $_SESSION["query_data"]["access_token"],
-	));
-
-	break;
-
-case 'event.bind': // bind event handler
-
-	$data = call($_SESSION["query_data"]["domain"], "event.bind", array(
-		"auth" => $_SESSION["query_data"]["access_token"],
-		"EVENT" => "ONCRMLEADADD",
-		"HANDLER" => REDIRECT_URI . "event.php",
-	));
-
-	break;
-
-default:
-
-	$data = $_SESSION["query_data"];
-
-	break;
-}
-
-echo '<pre>';
-var_export($data);
-echo '</pre>';
-
-/******************************************************************/
-?>
-	</body>
-</html>

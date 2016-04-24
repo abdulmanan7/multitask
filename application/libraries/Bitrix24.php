@@ -7,11 +7,16 @@ date_default_timezone_set('UTC');
 // 	include $class_name . '.php';
 // });
 
-class Bitrix {
+class Bitrix24 {
 	protected $ci;
 	protected $accessToken;
 	protected $domain = "solarvent.bitrix24.de";
-
+	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
+	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
+	protected $REDIRECT_URI = "http://codeme.bitrix24.com/";
+	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $SCOPE = "crm";
+	protected $PROTOCOL = "https";
 	public function __construct($props = array()) {
 		$this->ci = &get_instance();
 		if (count($props) > 0) {
@@ -28,13 +33,13 @@ class Bitrix {
 		$res = $this->ci->utility->get_refresh_code();
 		return $res;
 	}
-	function save_refresh_code() {
+	function save_refresh_code($refresh_code) {
 		$this->ci->load->model('utilities_model', 'utility');
-		$refresh_code = $this->ci->utility->save_refresh_code();
+		$refresh_code = $this->ci->utility->save_refresh_code($refresh_code);
 		return $refresh_code;
 	}
 	function save_lead($lead_data) {
-
+		pr(get_all_leads());
 	}
 	function get_all_leads($select = array()) {
 		$fullResult = $this->call(
@@ -45,7 +50,32 @@ class Bitrix {
 		);
 		return $fullResult;
 	}
+	function get_access_token($refresh_code) {
 
+		$params = array(
+			"grant_type" => "refresh_token",
+			"client_id" => $this->CLIENT_ID,
+			"client_secret" => $this->CLIENT_SECRET,
+			"redirect_uri" => $this->PATH,
+			"scope" => $this->SCOPE,
+			"refresh_token" => $refresh_code,
+		);
+
+		$path = "/oauth/token/";
+
+		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+		pr($query_data);
+		if (isset($query_data["access_token"])) {
+			$_SESSION["query_data"] = $query_data;
+			$_SESSION["query_data"]["ts"] = time();
+			$refresh_code = $this->save_refresh_code($query_data['refresh_token']);
+			// redirect("bitrix");
+			$options['accessToken'] = $query_data["access_token"];
+			$res = $this->save_lead($lead_data);
+		} else {
+			$error = "error occure! " . print_r($query_data);
+		}
+	}
 	/**
 	 * Add a new lead to CRM
 	 * @param array $fields array of fields

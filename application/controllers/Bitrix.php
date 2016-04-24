@@ -5,11 +5,21 @@ class Bitrix extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->library('bitrix_api');
+		// $this->load->library('bitrix_api');
+		$data2 = array('accessToken' => '');
+		$this->load->library('bitrix24', $data2);
 
 	}
 	function index($value = '') {
-		$this->load->view('bitrixTest');
+		$cache_data = $this->bitrix24->get_refresh_code();
+		$data['refresh_code'] = $cache_data['refresh_code'];
+		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
+		$this->load->view('bitrixTest', $data);
+		if (date("Y-m-d") > $key_expiry) {
+		} else {
+			$res = $this->bitrix24->get_access_token($cache_data['refresh_code']);
+			pr($res);
+		}
 	}
 	function saveLead() {
 		$postData = array(
