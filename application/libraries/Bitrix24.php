@@ -13,7 +13,7 @@ class Bitrix24 {
 	protected $domain = "solarvent.bitrix24.de";
 	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
 	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
-	protected $REDIRECT_URI = "http://codeme.bitrix24.com/";
+	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
@@ -64,7 +64,7 @@ class Bitrix24 {
 		$path = "/oauth/token/";
 
 		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
-		pr($query_data);
+		// pr($query_data);
 		if (isset($query_data["access_token"])) {
 			$_SESSION["query_data"] = $query_data;
 			$_SESSION["query_data"]["ts"] = time();

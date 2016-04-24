@@ -37,6 +37,7 @@ if (isset($_REQUEST["code"])) {
 	if (isset($query_data["access_token"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
+		$refresh_code = $this->bitrix24->save_refresh_code($query_data['refresh_token']);
 		pr($query_data);
 		redirect_bitrix('bitrix');
 	} else {
