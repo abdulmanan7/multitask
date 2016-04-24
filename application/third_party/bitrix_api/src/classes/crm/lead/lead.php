@@ -2,16 +2,14 @@
 namespace Bitrix24\CRM;
 use Bitrix24\Bitrix24Entity;
 
-class Lead extends Bitrix24Entity
-{
+class Lead extends Bitrix24Entity {
 	/**
 	 * Get lead item by ID.
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_get.php
 	 * @param integer $leadId - lead id
 	 * @return array
 	 */
-	public function get($leadId)
-	{
+	public function get($leadId) {
 		$fullResult = $this->client->call(
 			'crm.lead.get',
 			array('id' => $leadId)
@@ -28,15 +26,14 @@ class Lead extends Bitrix24Entity
 	 * @param integer $start - entity number to start from (usually returned in 'next' field of previous 'crm.lead.list' API call)
 	 * @return array
 	 */
-	public function getList($order = array(), $filter = array(), $select = array(), $start = 0)
-	{
+	public function getList($order = array(), $filter = array(), $select = array(), $start = 0) {
 		$fullResult = $this->client->call(
 			'crm.lead.list',
 			array(
 				'order' => $order,
-				'filter'=> $filter,
-				'select'=> $select,
-				'start'	=> $start
+				'filter' => $filter,
+				'select' => $select,
+				'start' => $start,
 			)
 		);
 		return $fullResult;
@@ -45,19 +42,18 @@ class Lead extends Bitrix24Entity
 	/**
 	 * Add a new lead to CRM
 	 * @param array $fields array of fields
-     * @param array $params Set of parameters. REGISTER_SONET_EVENT - performs registration of a change event in a lead in the Activity Stream.
-     * The lead's Responsible person will also receive notification.
+	 * @param array $params Set of parameters. REGISTER_SONET_EVENT - performs registration of a change event in a lead in the Activity Stream.
+	 * The lead's Responsible person will also receive notification.
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php
 	 * @return array
 	 */
-	public function add($fields = array(), $params = array())
-	{
+	public function add($fields = array(), $params = array()) {
 		$fullResult = $this->client->call(
 			'crm.lead.add',
 			array(
-                'fields' => $fields,
-                'params' => $params
-            )
+				'fields' => $fields,
+				'params' => $params,
+			)
 		);
 		return $fullResult;
 	}
@@ -67,8 +63,7 @@ class Lead extends Bitrix24Entity
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_fields.php
 	 * @return array
 	 */
-	public function fields()
-	{
+	public function fields() {
 		$fullResult = $this->client->call(
 			'crm.lead.fields'
 		);
@@ -84,14 +79,13 @@ class Lead extends Bitrix24Entity
 	 * The lead's Responsible person will also receive notification.
 	 * @return array
 	 */
-	public function update($leadId, $fields = array(), $params = array())
-	{
+	public function update($leadId, $fields = array(), $params = array()) {
 		$fullResult = $this->client->call(
 			'crm.lead.update',
 			array(
 				'id' => $leadId,
 				'fields' => $fields,
-				'params' => $params
+				'params' => $params,
 			)
 		);
 		return $fullResult;
@@ -102,8 +96,7 @@ class Lead extends Bitrix24Entity
 	 * @param integer $leadId
 	 * @return array
 	 */
-	public function delete($leadId)
-	{
+	public function delete($leadId) {
 		$fullResult = $this->client->call(
 			'crm.lead.delete',
 			array('id' => $leadId)

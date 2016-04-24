@@ -3,7 +3,7 @@
 
 <!-- Mirrored from iamsrinu.com/bluemoon-admin-theme7/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 Sep 2015 06:54:23 GMT -->
 <head>
-	<title>Group - SOLARvent</title>
+	<title>Users - SOLARvent</title>
 	<meta charset="UTF-8" />
 
 	<link href="<?php echo find_url('assets', 'css/bootstrap.min.css');?>" rel="stylesheet">
@@ -39,4 +39,4 @@
   			<div class="row">
   				<div class="col-lg-4 col-md-4 col-md-offset-4">
   					<div class="sign-in-container">
-  						<div id="infoMessage"><?= isset($message)?$message:"";?></div>
+  						<?=isset($message) ? $message : "";?>

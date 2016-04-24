@@ -4,8 +4,6 @@
 <p><?php echo lang('create_user_subheading');?></p>
 <div class="row">
 <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-<div id="infoMessage"><?php echo $message;?></div>
-
 <?php echo form_open("auth/create_user");?>
 
       <div class="form-group">
@@ -44,7 +42,7 @@
       </div>
 
 
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'),"class='btn btn-success'");?></p>
+      <p><?php echo form_submit('submit', lang('create_user_submit_btn'), "class='btn btn-success'");?></p>
 
 <?php echo form_close();?>
 </div>

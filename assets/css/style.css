@@ -32,7 +32,7 @@
     border-color: #d9d9d9;
 }
 .panel-body{
-   background-color:#fafafa;
+ background-color:#fafafa;
 }
 #calculator-wrapper .uneditable-input {
     height: 60px;
@@ -155,12 +155,12 @@ form .form-actions {
     font-size: 16px;
 }
 .info-line .reg_no{
- position: absolute;
- right: 54px;
- top: 74px;
- font-size: 12px;
- font-weight: 700;
- color: #B3B3B3;
+   position: absolute;
+   right: 54px;
+   top: 74px;
+   font-size: 12px;
+   font-weight: 700;
+   color: #B3B3B3;
 }
 .saparate{
     background-color: #3089C3;
@@ -181,7 +181,7 @@ td .saparate{
     padding: 4px 12px;
 }
 .xxs{
- padding: 2px 3px 5px 5px;
+   padding: 2px 3px 5px 5px;
 }
 .panel-xx{
     padding:3px;
@@ -451,3 +451,11 @@ td .saparate{
         overflow-y: scroll;
         height: 400px;
     }
+/*    #message_box{
+        padding: 10px;
+        background: #E4FD8D;
+        color: #4C4949;
+    }
+    #message_box p{
+        margin: 0;
+    }*/

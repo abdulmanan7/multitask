@@ -578,7 +578,7 @@ class Auth extends CI_Controller {
 		$this->data['phone'] = array(
 			'name' => 'phone',
 			'id' => 'phone',
-			'class'=> 'form-control',
+			'class' => 'form-control',
 			'type' => 'text',
 			'value' => $this->form_validation->set_value('phone', $user->phone),
 		);
@@ -594,10 +594,10 @@ class Auth extends CI_Controller {
 			'type' => 'password',
 			'class' => 'form-control',
 		);
-			$this->data['page_title'] = "Users";
-			$this->data['sub_page'] = "update user";
-			$this->data['page'] = "auth/edit_user";
-			$this->_render_page('template', $this->data);
+		$this->data['page_title'] = "Users";
+		$this->data['sub_page'] = "update user";
+		$this->data['page'] = "auth/edit_user";
+		$this->_render_page('template', $this->data);
 		// $this->_render_page('auth/edit_user', $this->data);
 	}
 
@@ -701,7 +701,24 @@ class Auth extends CI_Controller {
 
 		$this->_render_page('auth/edit_group', $this->data);
 	}
+	function delete($user_id) {
+		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+			//redirect them to the home page because they must be an administrator to view this
+			if ($this->input->is_ajax_request()) {
+				echo json_encode(array('status' => 0));
+			} else {
+				return show_error('You must be an administrator to view this page.');
+			}
+		} else {
+			$affected_rows = $this->ion_auth->delete_user($user_id);
+			if ($this->input->is_ajax_request()) {
+				echo json_encode(array('status' => $affected_rows));
+			} else {
+				return $affected_rows;
+			}
 
+		}
+	}
 	function _get_csrf_nonce() {
 		$this->load->helper('string');
 		$key = random_string('alnum', 8);
