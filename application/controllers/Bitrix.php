@@ -14,10 +14,15 @@ class Bitrix extends CI_Controller {
 		$cache_data = $this->bitrix24->get_refresh_code();
 		$data['refresh_code'] = $cache_data['refresh_code'];
 		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
-		$this->load->view('bitrixTest', $data);
 		if (date("Y-m-d") > $key_expiry) {
+			$this->load->view('bitrixTest', $data);
 		} else {
 			$res = $this->bitrix24->get_access_token($cache_data['refresh_code']);
+			if (isset($res['access_token'])) {
+
+			} else {
+				$this->load->view('bitrixTest', $data);
+			}
 			pr($res);
 		}
 	}

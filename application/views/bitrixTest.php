@@ -46,8 +46,8 @@ if (isset($_REQUEST["code"])) {
 // } elseif (isset($_REQUEST["refresh"])) {
 } elseif (time() > $_SESSION["query_data"]["ts"] + $_SESSION["query_data"]["expires_in"]) {
 /******************** refresh auth ********************************/
-	$this->load->library('bitrix');
-	$refresh_code = $this->bitrix->get_refresh_code();
+	$this->load->library('bitrix24');
+	$refresh_code = $this->bitrix24->get_refresh_code();
 	$params = array(
 		"grant_type" => "refresh_token",
 		"client_id" => CLIENT_ID,
@@ -64,11 +64,11 @@ if (isset($_REQUEST["code"])) {
 	if (isset($query_data["access_token"])) {
 		$_SESSION["query_data"] = $query_data;
 		$_SESSION["query_data"]["ts"] = time();
-		$refresh_code = $this->bitrix->save_refresh_code($query_data['refresh_token']);
+		$refresh_code = $this->bitrix24->save_refresh_code($query_data['refresh_token']);
 		// redirect("bitrix");
 		$options['accessToken'] = $query_data["access_token"];
 		$this->load->library('bitrix', $options);
-		$res = $this->bitrix->save_lead($lead_data);
+		$res = $this->bitrix24->save_lead($lead_data);
 		pr($res);
 	} else {
 		$error = "error occure! " . print_r($query_data);
@@ -77,7 +77,7 @@ if (isset($_REQUEST["code"])) {
 } else {
 	$options['accessToken'] = $query_data["access_token"];
 	$this->load->library('bitrix', $options);
-	$res = $this->bitrix->save_lead($lead_data);
+	$res = $this->bitrix24->save_lead($lead_data);
 	pr($res);
 }
 // require_once dirname(__FILE__) . "/include/header.php";
