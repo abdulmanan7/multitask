@@ -3,11 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bitrix extends CI_Controller {
 	protected $accessToken;
+	protected $rawRequest;
+
 	protected $domain = "solarvent.bitrix24.de";
 	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
 	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
 	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
 	public function __construct() {
@@ -22,24 +25,39 @@ class Bitrix extends CI_Controller {
 		$cache_data = $this->utility->get_refresh_code();
 		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
 		if (date("Y-m-d") > $key_expiry) {
-			// $this->get_code();
 			$requestedCode =$this->input->get('code');
-			if(isset($requestedCode)){
+			if(isset($requestedCode) && strlen($requestedCode) > 5){
+				$authResponse = $this->get_access_token($requestedCode);
+				//$refResponse = $this->refresh_token($authResponse['refresh_token']);
+				// pr($authResponse);
+			}else{
+				$this->get_code();
+			}
+			// $this->load->view('bitrixTest', $data);
+		} else {
+		$requestedCode =$this->input->get('code');
+		if(isset($requestedCode)){
 				$authResponse = $this->get_access_token($requestedCode);
 				//$refResponse = $this->refresh_token($authResponse['refresh_token']);
 				pr($authResponse);
 			}
-			// $this->load->view('bitrixTest', $data);
-		} else {
 			$data['refresh_code'] = $cache_data['refresh_code'];
 			$res = $this->refresh_token($cache_data['refresh_code']);
-			pr($res);
 			if (isset($res['access_token'])) {
-
-			} else {
-				$this->load->view('bitrixTest', $data);
+			$leads = $this->get_all_leads();
+			$allEmails = array();
+			foreach ($leads['result'] as $key => $email) {
+				$allEmails['res']=$email['EMAIL'];
 			}
-			pr($res);
+			// $Emails = array();
+			// foreach ($allEmails as $key => $em) {
+			// 	$allEmails['res']=$email['EMAIL'];
+			// }
+			pr($leads);
+			// pr($allEmails);
+			} else {
+				$this->get_code();
+			}
 		}
 	}
 	function get_code(){
@@ -72,9 +90,10 @@ class Bitrix extends CI_Controller {
 		if (isset($query_data["access_token"])) {
 			$_SESSION["query_data"] = $query_data;
 			$_SESSION["query_data"]["ts"] = time();
-			$refresh_code = $this->save_refresh_code($query_data['refresh_token']);
+			$refresh_code = $this->utility->save_refresh_code($query_data['refresh_token']);
 			// redirect("bitrix");
 			$options['accessToken'] = $query_data["access_token"];
+			$this->accessToken = $query_data["access_token"];
 			// $res = $this->save_lead($lead_data);
 			return $query_data;
 		} else {
@@ -84,7 +103,7 @@ class Bitrix extends CI_Controller {
 	}
 	function get_access_token($code)
 	{
-		$domain = $this->DOMAIN;
+		$domain = $this->domain;
 		$member_id = $this->MEMBER_ID;
 
 		$params = array(
@@ -108,6 +127,17 @@ class Bitrix extends CI_Controller {
 		} else {
 			$error = "error occure! " . print_r($query_data, 1);
 		}
+	}
+	function get_all_leads($select = array()) {
+		$fullResult = $this->call(
+			'crm.lead.list',
+			array(
+				'auth' => $this->accessToken,
+				//'filter' => array("EMAIL_HOME"=>"ahmadNazw@gmail.com"),
+				'select'=>array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID","EMAIL")
+			)
+		);
+		return $fullResult;
 	}
 	function saveLead() {
 		$postData = array(
@@ -230,8 +260,51 @@ class Bitrix extends CI_Controller {
  */
 function call($method, $params) {
 	$params["auth"] = $this->accessToken;
-	return query("POST", PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
+	$url =$this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+	return $this->executeRequest($url,$params);
+	// return $this->query("POST", $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
 }
+protected function executeRequest($url, array $additionalParameters = array())
+	{
+		$additionalParameters['auth'] = $this->accessToken;
+		$retryableErrorCodes = array(
+			CURLE_COULDNT_RESOLVE_HOST,
+			CURLE_COULDNT_CONNECT,
+			CURLE_HTTP_NOT_FOUND,
+			CURLE_READ_ERROR,
+			CURLE_OPERATION_TIMEOUTED,
+			CURLE_HTTP_POST_ERROR,
+			CURLE_SSL_CONNECT_ERROR,
+		);
+
+		$curlOptions = array(
+			CURLOPT_RETURNTRANSFER => true,
+			CURLINFO_HEADER_OUT => true,
+			CURLOPT_VERBOSE => true,
+			CURLOPT_CONNECTTIMEOUT => 5,
+			CURLOPT_TIMEOUT        => 5,
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
+			CURLOPT_URL => $url
+		);
+
+		$this->rawRequest = $curlOptions;
+		$curl = curl_init();
+		curl_setopt_array($curl, $curlOptions);
+
+		$curlResult = false;
+		$retriesCnt = 1;
+		while($retriesCnt--){
+			$curlResult = curl_exec($curl);
+			// handling network I/O errors
+			$this->requestInfo = curl_getinfo($curl);
+			curl_close($curl);
+			break;
+		}
+		// handling json_decode errors
+		$jsonResult = json_decode($curlResult, true);
+		return $jsonResult;
+	}
 }
 /* End of file test.php */
 /* Location: ./application/controllers/test.php */

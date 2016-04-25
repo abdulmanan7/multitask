@@ -28,3 +28,6 @@
 [25-Apr-2016 07:09:24 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
 [25-Apr-2016 07:11:59 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
 [25-Apr-2016 02:33:51 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 26
+[25-Apr-2016 09:34:08 UTC] PHP Fatal error:  Call to undefined method Bitrix::save_refresh_code() in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 76
+[25-Apr-2016 09:53:46 UTC] PHP Fatal error:  Call to undefined function query() in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 249
+[25-Apr-2016 10:15:17 UTC] PHP Fatal error:  Undefined class constant 'VERSION' in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 274
