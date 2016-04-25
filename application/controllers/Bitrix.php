@@ -142,25 +142,29 @@ class Bitrix extends CI_Controller {
 		$fullResult = $this->call(
 			'crm.lead.add',
 			$params = array(
-				// 'TITLE' => "Precise tech",
-				// 'COMPANY_TITLE' => "Techology manage",
-				// 'NAME' => "Immad khan",
-				// 'LAST_NAME' => "khan",
-				// 'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-				// 'ADDRESS' => "Dowra Road Afridi Abad ",
-				// 'EMAIL_HOME' => "smadNawaxz@gmail.com",
-				// 'PHONE_MOBILE' => "65822231",
-				"TITLE" => "FatJoint LLC",
-				"NAME" => "Paul",
-				"SECOND_NAME" => "A.",
-				"LAST_NAME" => "Nibot",
-				"STATUS_ID" => "NEW",
-				"OPENED" => "Y",
-				"ASSIGNED_BY_ID" => 1,
-				"CURRENCY_ID" => "USD",
-				"OPPORTUNITY" => 12500,
-				"PHONE" => array("VALUE" => "abc@yahoo.com", "VALUE_TYPE" => "WORK"),
-			)
+				'TITLE' => 'Jan Doe',
+				'NAME' => 'Jan',
+				'SECOND_NAME' => "Janay",
+				'LAST_NAME' => 'Doe',
+				'SOURCE_ID' => '1',
+				'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
+				'STATUS_ID' => 'JUNK',
+				'COMMENTS' => 'mypdf.pdf',
+				'CURRENCY_ID' => 'EUR',
+				'HAS_PHONE' => 'Y',
+				'HAS_EMAIL' => 'Y',
+				'ASSIGNED_BY_ID' => '6',
+				'CREATED_BY_ID' => '1',
+				'MODIFY_BY_ID' => '6',
+				'OPENED' => 'Y',
+				'ADDRESS' => 'Neschwitzer Straße 59',
+				'ADDRESS_CITY' => 'Kamenz',
+				'ADDRESS_POSTAL_CODE' => '01917',
+				'ADDRESS_COUNTRY' => 'Deutschland',
+				'ADDRESS_COUNTRY_CODE' => NULL,
+				'PHONE'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "WORK") 
+				'EMAIL'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "HOME") 
+				)
 		);
 		return $fullResult;
 	}
