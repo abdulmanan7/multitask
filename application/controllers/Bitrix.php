@@ -133,7 +133,7 @@ class Bitrix extends CI_Controller {
 			'crm.lead.list',
 			array(
 				'auth' => $this->accessToken,
-				//'filter' => array("EMAIL_HOME"=>"ahmadNazw@gmail.com"),
+				'filter' => array("EMAIL"=>"neumann@cgws.de"),
 				'select'=>array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID","EMAIL")
 			)
 		);
