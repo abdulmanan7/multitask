@@ -132,7 +132,7 @@ class Bitrix extends CI_Controller {
 			'crm.lead.list',
 			array(
 				'auth' => $this->accessToken,
-				'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
+				// 'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
 				'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
 			)
 		);
@@ -295,8 +295,8 @@ class Bitrix extends CI_Controller {
 	function call($method, $params) {
 		$params["auth"] = $this->accessToken;
 		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
-		return $this->executeRequest($url, $params);
-		// return $this->query("POST", $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
+		// return $this->executeRequest($url, $params);
+		return $this->query("POST", $url, $params);
 	}
 	protected function executeRequest($url, array $additionalParameters = array()) {
 		$additionalParameters['auth'] = $this->accessToken;
