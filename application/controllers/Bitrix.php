@@ -162,9 +162,9 @@ class Bitrix extends CI_Controller {
 				'ADDRESS_POSTAL_CODE' => '01917',
 				'ADDRESS_COUNTRY' => 'Deutschland',
 				'ADDRESS_COUNTRY_CODE' => NULL,
-				'PHONE'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "WORK") 
-				'EMAIL'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "HOME") 
-				)
+				'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
+				'EMAIL' => array("VALUE" => "555888", "VALUE_TYPE" => "HOME"),
+			)
 		);
 		return $fullResult;
 	}
