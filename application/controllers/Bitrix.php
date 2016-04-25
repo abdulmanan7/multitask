@@ -24,7 +24,7 @@ class Bitrix extends CI_Controller {
 		if (date("Y-m-d") > $key_expiry) {
 			// $this->get_code();
 			$requestedCode =$this->input->get('code');
-			if(isset($requestedCode){
+			if(isset($requestedCode)){
 				$authResponse = $this->get_access_token($requestedCode);
 				//$refResponse = $this->refresh_token($authResponse['refresh_token']);
 				pr($authResponse);
