@@ -7,6 +7,7 @@ $error = "";
 // clear auth session
 
 /******************* get code *************************************/
+if (!isset($_REQUEST["code"])) {
 $params = array(
 	"response_type" => "code",
 	"client_id" => CLIENT_ID,
@@ -16,7 +17,7 @@ $path = "/oauth/authorize/";
 
 redirect_bitrix(PROTOCOL . "://" . DOMAIN . $path . "?" . http_build_query($params));
 /******************** /get code ***********************************/
-
+}
 if (isset($_REQUEST["code"])) {
 /****************** get access_token ******************************/
 	$code = $_REQUEST["code"];
