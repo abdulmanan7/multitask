@@ -38,7 +38,7 @@ class Bitrix extends CI_Controller {
 	function get_access_token($refresh_code) {
 
 		$params = array(
-			"grant_type" => "authorization_code",
+			"grant_type" => "refresh_token",
 			"client_id" => $this->CLIENT_ID,
 			"client_secret" => $this->CLIENT_SECRET,
 			"redirect_uri" => $this->PATH,
