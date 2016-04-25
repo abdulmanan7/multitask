@@ -134,7 +134,7 @@ class Bitrix extends CI_Controller {
 			array(
 				'auth' => $this->accessToken,
 				'filter' => array("EMAIL"=>"neumann@cgws.de"),
-				'select'=>array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID","EMAIL")
+				'select'=>array("ID","NAME", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID","EMAIL")
 			)
 		);
 		return $fullResult;
