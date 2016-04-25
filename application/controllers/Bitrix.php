@@ -97,7 +97,7 @@ class Bitrix extends CI_Controller {
 			);
 		$path = "/oauth/token/";
 
-		$query_data = query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
+		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
 		if (isset($query_data["access_token"])) {
 			$_SESSION["query_data"] = $query_data;
 			$_SESSION["query_data"]["ts"] = time();
