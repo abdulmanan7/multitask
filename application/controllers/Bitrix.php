@@ -2,22 +2,31 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bitrix extends CI_Controller {
-
+	protected $accessToken;
+	protected $domain = "solarvent.bitrix24.de";
+	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
+	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
+	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $SCOPE = "crm";
+	protected $PROTOCOL = "https";
 	public function __construct() {
 		parent::__construct();
 		// $this->load->library('bitrix_api');
-		$data2 = array('accessToken' => '');
-		$this->load->library('bitrix24', $data2);
+		// $data2 = array('accessToken' => '');
+		// $this->load->library('bitrix24', $data2);
+		$this->load->model('utilities_model','utility');
 
 	}
 	function index($value = '') {
-		$cache_data = $this->bitrix24->get_refresh_code();
+		$cache_data = $this->utility->get_refresh_code();
 		$data['refresh_code'] = $cache_data['refresh_code'];
 		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
 		if (date("Y-m-d") > $key_expiry) {
 			$this->load->view('bitrixTest', $data);
 		} else {
-			$res = $this->bitrix24->get_access_token($cache_data['refresh_code']);
+			$res = $this->get_access_token($cache_data['refresh_code']);
+			pr($res);
 			if (isset($res['access_token'])) {
 
 			} else {
@@ -25,6 +34,34 @@ class Bitrix extends CI_Controller {
 			}
 			pr($res);
 		}
+	}
+	function get_access_token($refresh_code) {
+
+		$params = array(
+			"grant_type" => "authorization_code",
+			"client_id" => $this->CLIENT_ID,
+			"client_secret" => $this->CLIENT_SECRET,
+			"redirect_uri" => $this->PATH,
+			"scope" => $this->SCOPE,
+			"refresh_token" => $refresh_code,
+			);
+
+		$path = "/oauth/token/";
+
+		// pr($params);
+		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+		if (isset($query_data["access_token"])) {
+			$_SESSION["query_data"] = $query_data;
+			$_SESSION["query_data"]["ts"] = time();
+			$refresh_code = $this->save_refresh_code($query_data['refresh_token']);
+			// redirect("bitrix");
+			$options['accessToken'] = $query_data["access_token"];
+			// $res = $this->save_lead($lead_data);
+			return $query_data;
+		} else {
+			$error = "error occure! " . print_r($query_data);
+		}
+		return false;
 	}
 	function saveLead() {
 		$postData = array(
@@ -35,7 +72,7 @@ class Bitrix extends CI_Controller {
 			'EMAIL_HOME' => "ahmadNazw@gmail.com",
 			'PHONE_MOBILE' => "122354545",
 			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-		);
+			);
 
 		//$this->bitrix->save_lead($postDate);
 		$res = $this->bitrix_api->save_lead($postData);
@@ -56,7 +93,7 @@ class Bitrix extends CI_Controller {
 				'COMMENTS' => $leadData['COMMENTS'],
 				'ADDRESS' => "Dowra Road Afridi Abad ",
 				'EMAIL_HOME' => "ahmadNazw@gmail.com",
-			);
+				);
 			//$this->load->library('bitrix');
 			//$this->bitrix->save_lead($postDate);
 			//$this->bitrix->save_lead($postDate);
@@ -115,6 +152,40 @@ class Bitrix extends CI_Controller {
 		}
 
 	}
+	function query($method, $url, $data = null) {
+		$query_data = "";
+		$curlOptions = array(
+			CURLOPT_RETURNTRANSFER => true,
+			);
+
+		if ($method == "POST") {
+			$curlOptions[CURLOPT_POST] = true;
+			$curlOptions[CURLOPT_POSTFIELDS] = http_build_query($data);
+		} elseif (!empty($data)) {
+			$url .= strpos($url, "?") > 0 ? "&" : "?";
+			$url .= http_build_query($data);
+		}
+
+		$curl = curl_init($url);
+		curl_setopt_array($curl, $curlOptions);
+		$result = curl_exec($curl);
+
+		return json_decode($result, 1);
+	}
+
+/**
+ * Calling REST.
+ *
+ * @param string $domain portal
+ * @param string $method called method
+ * @param array $params the parameters of the method call
+ *
+ * @return array
+ */
+function call($method, $params) {
+	$params["auth"] = $this->accessToken;
+	return query("POST", PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
+}
 }
 /* End of file test.php */
 /* Location: ./application/controllers/test.php */
