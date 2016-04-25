@@ -20,12 +20,18 @@ class Bitrix extends CI_Controller {
 	}
 	function index($value = '') {
 		$cache_data = $this->utility->get_refresh_code();
-		$data['refresh_code'] = $cache_data['refresh_code'];
 		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
 		if (date("Y-m-d") > $key_expiry) {
-			$this->load->view('bitrixTest', $data);
+			$this->get_code();
+			if(isset($_REQUEST["code"])){
+				$authResponse = $this->get_access_token($_REQUEST["code"]);
+				$refResponse = $this->refresh_token($authResponse['refresh_token']);
+				pr($refResponse);
+			}
+			// $this->load->view('bitrixTest', $data);
 		} else {
-			$res = $this->get_access_token($cache_data['refresh_code']);
+			$data['refresh_code'] = $cache_data['refresh_code'];
+			$res = $this->refresh_token($cache_data['refresh_code']);
 			pr($res);
 			if (isset($res['access_token'])) {
 
@@ -35,7 +41,19 @@ class Bitrix extends CI_Controller {
 			pr($res);
 		}
 	}
-	function get_access_token($refresh_code) {
+	function get_code(){
+	// clear auth session
+		/******************* get code *************************************/
+		$params = array(
+			"response_type" => "code",
+			"client_id" => $this->CLIENT_ID,
+			"redirect_uri" => $this->REDIRECT_URI,
+			);
+		$path = "/oauth/authorize/";
+		redirect($this->PROTOCOL . "://" . $this->domain . $path . "?" . http_build_query($params));
+		/******************** /get code ***********************************/
+	}
+	function refresh_token($refresh_code) {
 
 		$params = array(
 			"grant_type" => "refresh_token",
@@ -62,6 +80,33 @@ class Bitrix extends CI_Controller {
 			$error = "error occure! " . print_r($query_data);
 		}
 		return false;
+	}
+	function get_access_token($code)
+	{
+		$domain = $this->DOMAIN;
+		$member_id = $this->MEMBER_ID;
+
+		$params = array(
+			"grant_type" => "authorization_code",
+			"client_id" => $this->CLIENT_ID,
+			"client_secret" => $this->CLIENT_SECRET,
+			"redirect_uri" => $this->REDIRECT_URI,
+			"scope" => $this->SCOPE,
+			"code" => $code,
+			);
+		$path = "/oauth/token/";
+
+		$query_data = query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
+		if (isset($query_data["access_token"])) {
+			$_SESSION["query_data"] = $query_data;
+			$_SESSION["query_data"]["ts"] = time();
+			$refresh_code = $this->utility->save_refresh_code($query_data['refresh_token']);
+			return $query_data;
+			// pr($query_data);
+			// redirect_bitrix('bitrix');
+		} else {
+			$error = "error occure! " . print_r($query_data, 1);
+		}
 	}
 	function saveLead() {
 		$postData = array(

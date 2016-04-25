@@ -23,3 +23,8 @@
 [15-Apr-2016 06:12:32 America/Chicago] PHP Fatal error:  Call to a member function insert() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/libraries/Bitrix_api.php on line 108
 [16-Apr-2016 14:58:25 America/Chicago] PHP Warning:  POST Content-Length of 69852787 bytes exceeds the limit of 67108864 bytes in Unknown on line 0
 [19-Apr-2016 07:04:02 America/Chicago] PHP Fatal error:  Call to undefined function pr() in /home3/shah/public_html/proof/abdulmanan/mail_pdf/index.php on line 59
+[25-Apr-2016 07:07:59 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
+[25-Apr-2016 07:08:45 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
+[25-Apr-2016 07:09:24 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
+[25-Apr-2016 07:11:59 UTC] PHP Fatal error:  Call to a member function get_refresh_code() on a non-object in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/views/bitrixTest.php on line 41
+[25-Apr-2016 02:33:51 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home3/shah/public_html/proof/abdulmanan/mail_pdf/application/controllers/Bitrix.php on line 26
