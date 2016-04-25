@@ -19,6 +19,30 @@ class Bitrix extends CI_Controller {
 		// $data2 = array('accessToken' => '');
 		// $this->load->library('bitrix24', $data2);
 		$this->load->model('utilities_model', 'utility');
+		pr(http_build_query($params = array(
+			'TITLE' => 'Jan Doe',
+			'NAME' => 'Jan',
+			'SECOND_NAME' => "Janay",
+			'LAST_NAME' => 'Doe',
+			'SOURCE_ID' => '1',
+			'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
+			'STATUS_ID' => 'JUNK',
+			'COMMENTS' => 'mypdf.pdf',
+			'CURRENCY_ID' => 'EUR',
+			'HAS_PHONE' => 'Y',
+			'HAS_EMAIL' => 'Y',
+			'ASSIGNED_BY_ID' => '6',
+			'CREATED_BY_ID' => '1',
+			'MODIFY_BY_ID' => '6',
+			'OPENED' => 'Y',
+			'ADDRESS' => 'Neschwitzer Straße 59',
+			'ADDRESS_CITY' => 'Kamenz',
+			'ADDRESS_POSTAL_CODE' => '01917',
+			'ADDRESS_COUNTRY' => 'Deutschland',
+			'ADDRESS_COUNTRY_CODE' => NULL,
+			'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
+			'EMAIL' => array("VALUE" => "555888", "VALUE_TYPE" => "HOME"),
+		)));
 
 	}
 	function index() {
