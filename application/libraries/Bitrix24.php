@@ -39,7 +39,7 @@ class Bitrix24 {
 		return $refresh_code;
 	}
 	function save_lead($lead_data) {
-		pr(get_all_leads());
+		return get_all_leads();
 	}
 	function get_all_leads($select = array()) {
 		$fullResult = $this->call(
@@ -72,9 +72,11 @@ class Bitrix24 {
 			// redirect("bitrix");
 			$options['accessToken'] = $query_data["access_token"];
 			$res = $this->save_lead($lead_data);
+			return $res;
 		} else {
 			$error = "error occure! " . print_r($query_data);
 		}
+		return false;
 	}
 	/**
 	 * Add a new lead to CRM
