@@ -39,45 +39,73 @@ class Bitrix24 {
 		return $refresh_code;
 	}
 	function save_lead($lead_data) {
-		return get_all_leads();
-	}
-	function get_all_leads($select = array()) {
 		$fullResult = $this->call(
-			'crm.lead.list',
-			array(
-				'select' => array("EMAIL", "TITLE"),
-			)
-		);
+			'crm.lead.add',
+			$params = array(
+				'TITLE' => 'Enrico Müller',
+				'NAME' => 'Enrico',
+				'SECOND_NAME' => NULL,
+				'LAST_NAME' => 'Müller',
+				'SOURCE_ID' => '1',
+				'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
+				'STATUS_ID' => 'JUNK',
+				'COMMENTS' => 'AK10008-02-16',
+				'CURRENCY_ID' => 'EUR',
+				'HAS_PHONE' => 'Y',
+				'HAS_EMAIL' => 'Y',
+				'ASSIGNED_BY_ID' => '6',
+				'CREATED_BY_ID' => '1',
+				'MODIFY_BY_ID' => '6',
+				'OPENED' => 'Y',
+				'ADDRESS' => 'Neschwitzer Straße 59',
+				'ADDRESS_CITY' => 'Kamenz',
+				'ADDRESS_POSTAL_CODE' => '01917',
+				'ADDRESS_COUNTRY' => 'Deutschland',
+				'ADDRESS_COUNTRY_CODE' => NULL,
+				'PHONE'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "WORK") 
+				'EMAIL'=> array("VALUE"=> "555888", "VALUE_TYPE"=> "HOME") 
+				)
+			);
 		return $fullResult;
 	}
-	function get_access_token($refresh_code) {
+}
+function get_all_leads($select = array()) {
+	$fullResult = $this->call(
+		'crm.lead.list',
+		array(
+			'select' => array("EMAIL", "TITLE"),
+			)
+		);
+	return $fullResult;
+}
+function get_access_token($refresh_code) {
 
-		$params = array(
-			"grant_type" => "refresh_token",
-			"client_id" => $this->CLIENT_ID,
-			"client_secret" => $this->CLIENT_SECRET,
-			"redirect_uri" => $this->PATH,
-			"scope" => $this->SCOPE,
-			"refresh_token" => $refresh_code,
+	$params = array(
+		"grant_type" => "refresh_token",
+		"client_id" => $this->CLIENT_ID,
+		"client_secret" => $this->CLIENT_SECRET,
+		"redirect_uri" => $this->PATH,
+		"scope" => $this->SCOPE,
+		"refresh_token" => $refresh_code,
 		);
 
-		$path = "/oauth/token/";
+	$path = "/oauth/token/";
 
-		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+	$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
 		// pr($query_data);
-		if (isset($query_data["access_token"])) {
-			$_SESSION["query_data"] = $query_data;
-			$_SESSION["query_data"]["ts"] = time();
-			$refresh_code = $this->save_refresh_code($query_data['refresh_token']);
+	if (isset($query_data["access_token"])) {
+		$_SESSION["query_data"] = $query_data;
+		$_SESSION["query_data"]["ts"] = time();
+		$refresh_code = $this->save_refresh_code($query_data['refresh_token']);
 			// redirect("bitrix");
-			$options['accessToken'] = $query_data["access_token"];
-			$res = $this->save_lead($lead_data);
-			return $res;
-		} else {
-			$error = "error occure! " . print_r($query_data);
-		}
-		return false;
+		$options['accessToken'] = $query_data["access_token"];
+		$res = $this->save_lead($lead_data);
+		return $res;
+	} else {
+		$error = "error occure! " . print_r($query_data);
 	}
+	return false;
+}
 	/**
 	 * Add a new lead to CRM
 	 * @param array $fields array of fields
@@ -92,8 +120,8 @@ class Bitrix24 {
 			array(
 				'fields' => $fields,
 				'params' => $params,
-			)
-		);
+				)
+			);
 		return $fullResult;
 	}
 
@@ -105,7 +133,7 @@ class Bitrix24 {
 	public function fields() {
 		$fullResult = $this->call(
 			'crm.lead.fields'
-		);
+			);
 		return $fullResult;
 	}
 	/**
@@ -125,7 +153,7 @@ class Bitrix24 {
 
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
-		);
+			);
 
 		if ($method == "POST") {
 			$curlOptions[CURLOPT_POST] = true;
@@ -151,10 +179,10 @@ class Bitrix24 {
  *
  * @return array
  */
-	function call($method, $params) {
-		$params["auth"] = $this->accessToken;
-		return query("POST", PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
-	}
+function call($method, $params) {
+	$params["auth"] = $this->accessToken;
+	return query("POST", PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
+}
 	/**
 	 * Get access token
 	 *

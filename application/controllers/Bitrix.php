@@ -5,12 +5,12 @@ class Bitrix extends CI_Controller {
 	protected $accessToken;
 	protected $rawRequest;
 
-	protected $domain = "codeme.bitrix24.com";
-	protected $CLIENT_ID = "local.5714c7a65679d7.55404378";
-	protected $CLIENT_SECRET = "a04cc260b5c612c48c19bf1b1ed5cc4e";
-	protected $REDIRECT_URI = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	protected $PATH = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	protected $MEMBER_ID = "c0728b02e02abde3190db0e96a5096ae";
+	protected $domain = "solarvent.bitrix24.de";
+	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
+	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
+	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
 	public function __construct() {
@@ -18,24 +18,24 @@ class Bitrix extends CI_Controller {
 		// $this->load->library('bitrix_api');
 		// $data2 = array('accessToken' => '');
 		// $this->load->library('bitrix24', $data2);
-		$this->load->model('utilities_model','utility');
+		$this->load->model('utilities_model', 'utility');
 
 	}
-	function index($value = '') {
+	function index() {
 		$cache_data = $this->utility->get_refresh_code();
 		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
 		if (date("Y-m-d") > $key_expiry) {
-			$requestedCode =$this->input->get('code');
-			if(isset($requestedCode) && strlen($requestedCode) > 5){
+			$requestedCode = $this->input->get('code');
+			if (isset($requestedCode) && strlen($requestedCode) > 5) {
 				$authResponse = $this->get_access_token($requestedCode);
 				// $this->save_lead();
-			}else{
+			} else {
 				$this->get_code();
 			}
 			// $this->load->view('bitrixTest', $data);
 		} else {
-			$requestedCode =$this->input->get('code');
-			if(isset($requestedCode)){
+			$requestedCode = $this->input->get('code');
+			if (isset($requestedCode)) {
 				$authResponse = $this->get_access_token($requestedCode);
 				//$refResponse = $this->refresh_token($authResponse['refresh_token']);
 				pr($authResponse);
@@ -47,28 +47,28 @@ class Bitrix extends CI_Controller {
 				$leads = $this->get_all_leads();
 				$allEmails = array();
 				foreach ($leads['result'] as $key => $email) {
-					$allEmails['res']=$email['EMAIL'];
+					$allEmails['res'] = $email['EMAIL'];
 				}
-			// $Emails = array();
-			// foreach ($allEmails as $key => $em) {
-			// 	$allEmails['res']=$email['EMAIL'];
-			// }
-				pr($addStatus,1);
+				// $Emails = array();
+				// foreach ($allEmails as $key => $em) {
+				// 	$allEmails['res']=$email['EMAIL'];
+				// }
+				pr($addStatus, 1);
 				pr($leads);
-			// pr($allEmails);
+				// pr($allEmails);
 			} else {
 				$this->get_code();
 			}
 		}
 	}
-	function get_code(){
-	// clear auth session
+	function get_code() {
+		// clear auth session
 		/******************* get code *************************************/
 		$params = array(
 			"response_type" => "code",
 			"client_id" => $this->CLIENT_ID,
 			"redirect_uri" => $this->REDIRECT_URI,
-			);
+		);
 		$path = "/oauth/authorize/";
 		redirect($this->PROTOCOL . "://" . $this->domain . $path . "?" . http_build_query($params));
 		/******************** /get code ***********************************/
@@ -82,7 +82,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->PATH,
 			"scope" => $this->SCOPE,
 			"refresh_token" => $refresh_code,
-			);
+		);
 
 		$path = "/oauth/token/";
 
@@ -91,7 +91,7 @@ class Bitrix extends CI_Controller {
 		if (isset($query_data["access_token"])) {
 			//**************  save refresh code for next login
 			$refresh_code = $this->utility->save_refresh_code($query_data['refresh_token']);
-			
+
 			//**************  assign the new recived refresh code to member
 			$this->accessToken = $query_data["access_token"];
 			// $res = $this->save_lead($lead_data);
@@ -101,8 +101,7 @@ class Bitrix extends CI_Controller {
 		}
 		return false;
 	}
-	function get_access_token($code)
-	{
+	function get_access_token($code) {
 		$domain = $this->domain;
 		$member_id = $this->MEMBER_ID;
 
@@ -113,7 +112,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->REDIRECT_URI,
 			"scope" => $this->SCOPE,
 			"code" => $code,
-			);
+		);
 		$path = "/oauth/token/";
 
 		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
@@ -133,10 +132,10 @@ class Bitrix extends CI_Controller {
 			'crm.lead.list',
 			array(
 				'auth' => $this->accessToken,
-				'filter' => array("EMAIL"=>"smadNawaxz@gmail.com"),
-				'select'=>array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID","EMAIL")
-				)
-			);
+				'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
+				'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
+			)
+		);
 		return $fullResult;
 	}
 	private function add($params = array()) {
@@ -151,25 +150,25 @@ class Bitrix extends CI_Controller {
 				// 'ADDRESS' => "Dowra Road Afridi Abad ",
 				// 'EMAIL_HOME' => "smadNawaxz@gmail.com",
 				// 'PHONE_MOBILE' => "65822231",
-				 	"TITLE"=> "FatJoint LLC", 
-                    "NAME"=> "Paul", 
-                    "SECOND_NAME"=> "A.", 
-                    "LAST_NAME"=> "Nibot", 
-                    "STATUS_ID"=> "NEW", 
-                    "OPENED"=> "Y", 
-                    "ASSIGNED_BY_ID"=> 1, 
-                    "CURRENCY_ID"=> "USD", 
-                    "OPPORTUNITY"=> 12500,
-                    "PHONE"=> array("VALUE"=> "555888", "VALUE_TYPE"=> "WORK") 
-				)
-			);
+				"TITLE" => "FatJoint LLC",
+				"NAME" => "Paul",
+				"SECOND_NAME" => "A.",
+				"LAST_NAME" => "Nibot",
+				"STATUS_ID" => "NEW",
+				"OPENED" => "Y",
+				"ASSIGNED_BY_ID" => 1,
+				"CURRENCY_ID" => "USD",
+				"OPPORTUNITY" => 12500,
+				"PHONE" => array("VALUE" => "abc@yahoo.com", "VALUE_TYPE" => "WORK"),
+			)
+		);
 		return $fullResult;
 	}
-	private function save_lead($NewData){
+	private function save_lead($NewData) {
 
 		$user_email = $NewData['mail'];
 		$leadRecord = $this->get_all_leads($user_email);
-		if ($leadRecord['total']>0) {
+		if ($leadRecord['total'] > 0) {
 			//inset lead here
 			$this->add($NewData);
 		}
@@ -183,7 +182,7 @@ class Bitrix extends CI_Controller {
 			'EMAIL_HOME' => "ahmadNazw@gmail.com",
 			'PHONE_MOBILE' => "122354545",
 			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-			);
+		);
 
 		//$this->bitrix->save_lead($postDate);
 		$res = $this->bitrix_api->save_lead($postData);
@@ -204,7 +203,7 @@ class Bitrix extends CI_Controller {
 				'COMMENTS' => $leadData['COMMENTS'],
 				'ADDRESS' => "Dowra Road Afridi Abad ",
 				'EMAIL_HOME' => "ahmadNazw@gmail.com",
-				);
+			);
 			//$this->load->library('bitrix');
 			//$this->bitrix->save_lead($postDate);
 			//$this->bitrix->save_lead($postDate);
@@ -267,7 +266,7 @@ class Bitrix extends CI_Controller {
 		$query_data = "";
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
-			);
+		);
 
 		if ($method == "POST") {
 			$curlOptions[CURLOPT_POST] = true;
@@ -293,53 +292,52 @@ class Bitrix extends CI_Controller {
  *
  * @return array
  */
-function call($method, $params) {
-	$params["auth"] = $this->accessToken;
-	$url =$this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
-	return $this->executeRequest($url,$params);
-	// return $this->query("POST", $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
-}
-protected function executeRequest($url, array $additionalParameters = array())
-{
-	$additionalParameters['auth'] = $this->accessToken;
-	$retryableErrorCodes = array(
-		CURLE_COULDNT_RESOLVE_HOST,
-		CURLE_COULDNT_CONNECT,
-		CURLE_HTTP_NOT_FOUND,
-		CURLE_READ_ERROR,
-		CURLE_OPERATION_TIMEOUTED,
-		CURLE_HTTP_POST_ERROR,
-		CURLE_SSL_CONNECT_ERROR,
-		);
-
-	$curlOptions = array(
-		CURLOPT_RETURNTRANSFER => true,
-		CURLINFO_HEADER_OUT => true,
-		CURLOPT_VERBOSE => true,
-		CURLOPT_CONNECTTIMEOUT => 5,
-		CURLOPT_TIMEOUT        => 5,
-		CURLOPT_POST => true,
-		CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
-		CURLOPT_URL => $url
-		);
-
-	$this->rawRequest = $curlOptions;
-	$curl = curl_init();
-	curl_setopt_array($curl, $curlOptions);
-
-	$curlResult = false;
-	$retriesCnt = 1;
-	while($retriesCnt--){
-		$curlResult = curl_exec($curl);
-			// handling network I/O errors
-		$this->requestInfo = curl_getinfo($curl);
-		curl_close($curl);
-		break;
+	function call($method, $params) {
+		$params["auth"] = $this->accessToken;
+		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+		return $this->executeRequest($url, $params);
+		// return $this->query("POST", $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method, $params);
 	}
+	protected function executeRequest($url, array $additionalParameters = array()) {
+		$additionalParameters['auth'] = $this->accessToken;
+		$retryableErrorCodes = array(
+			CURLE_COULDNT_RESOLVE_HOST,
+			CURLE_COULDNT_CONNECT,
+			CURLE_HTTP_NOT_FOUND,
+			CURLE_READ_ERROR,
+			CURLE_OPERATION_TIMEOUTED,
+			CURLE_HTTP_POST_ERROR,
+			CURLE_SSL_CONNECT_ERROR,
+		);
+
+		$curlOptions = array(
+			CURLOPT_RETURNTRANSFER => true,
+			CURLINFO_HEADER_OUT => true,
+			CURLOPT_VERBOSE => true,
+			CURLOPT_CONNECTTIMEOUT => 5,
+			CURLOPT_TIMEOUT => 5,
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
+			CURLOPT_URL => $url,
+		);
+
+		$this->rawRequest = $curlOptions;
+		$curl = curl_init();
+		curl_setopt_array($curl, $curlOptions);
+
+		$curlResult = false;
+		$retriesCnt = 1;
+		while ($retriesCnt--) {
+			$curlResult = curl_exec($curl);
+			// handling network I/O errors
+			$this->requestInfo = curl_getinfo($curl);
+			curl_close($curl);
+			break;
+		}
 		// handling json_decode errors
-	$jsonResult = json_decode($curlResult, true);
-	return $jsonResult;
-}
+		$jsonResult = json_decode($curlResult, true);
+		return $jsonResult;
+	}
 }
 /* End of file test.php */
 /* Location: ./application/controllers/test.php */
