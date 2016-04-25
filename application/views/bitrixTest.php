@@ -1,7 +1,7 @@
 <?php
 // require "include/config.php";
 require APPPATH . '/third_party/bitrix/include/config.php';
-
+$this->load->library('bitrix24');
 $error = "";
 
 // clear auth session
@@ -68,7 +68,7 @@ if (isset($_REQUEST["code"])) {
 		$refresh_code = $this->bitrix24->save_refresh_code($query_data['refresh_token']);
 		// redirect("bitrix");
 		$options['accessToken'] = $query_data["access_token"];
-		$this->load->library('bitrix', $options);
+		
 		$res = $this->bitrix24->save_lead($lead_data);
 		pr($res);
 	} else {
@@ -76,8 +76,7 @@ if (isset($_REQUEST["code"])) {
 	}
 /********************* /refresh auth ******************************/
 } else {
-	$options['accessToken'] = $query_data["access_token"];
-	$this->load->library('bitrix', $options);
+	
 	$res = $this->bitrix24->save_lead($lead_data);
 	pr($res);
 }
