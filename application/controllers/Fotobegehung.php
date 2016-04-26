@@ -102,28 +102,8 @@ class Fotobegehung extends CI_Controller {
 		}
 	}
 	function send($email, $att_id, $pdata) {
-		$this->load->model('settings_model');
-		$comp = $this->settings_model->get();
-		$message = str_replace("{name}", $pdata['nachname'], $comp['body']);
-		$att_path = $this->get($att_id, true);
-		$this->load->library('email', array('mailtype' => "html"));
-
-		$this->email->from($comp['company_email'], $comp['company_title']);
-		$this->email->to($email);
-		$this->email->cc($comp['company_email']);
-
-		$this->email->subject($comp['subject']);
-		$this->email->attach($att_path);
-		$this->email->set_mailtype("html");
-		$this->email->message($message);
-		$this->save_lead($pdata, $att_id);
-		if ($this->email->send()) {
-			redirect('fotobegehung/success/0', 'refresh');
-		} else {
-			redirect('fotobegehung/success/1', 'refresh');
-			// show_error($this->email->print_debugger());
-		}
-
+	return $this->save_lead($pdata, $att_id);
+		
 	}
 	private function save_lead($data, $att_id) {
 			$postData = array(
