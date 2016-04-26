@@ -61,17 +61,17 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=plz#,#=ort#,#=land#'>#=city#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=city#</a>",
         width:"95px",
       },{
         field: "mail",
@@ -138,17 +138,17 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=plz#,#=ort#,#=land#'>#=city#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=city#</a>",
         width:"95px",
       },{
         field: "mail",
