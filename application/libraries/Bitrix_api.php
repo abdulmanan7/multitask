@@ -103,8 +103,14 @@ class Bitrix_api {
 		$leadRecord = $this->get_all_leads($user_email);
 		if (!isset($leadRecord['total'])) {
 			//inset lead here
-			pr($this->add($NewData));
+			$res = $this->add($NewData);
+			if (isset($res['result'])) {
+				return true;
+			} else {
+				return false;
+			}
 		}
+		return true;
 	}
 	function get_all_leads($term) {
 		$fullResult = $this->call(
