@@ -5,7 +5,6 @@ class Bitrix extends CI_Controller {
 	protected $accessToken;
 	protected $rawRequest;
 
-	
 	protected $domain = "solarvent.bitrix24.de";
 	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
 	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
@@ -15,12 +14,12 @@ class Bitrix extends CI_Controller {
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
 	public function __construct() {
+
 		parent::__construct();
 		// $this->load->library('bitrix_api');
 		// $data2 = array('accessToken' => '');
 		// $this->load->library('bitrix24', $data2);
 		$this->load->model('utilities_model', 'utility');
-		
 
 	}
 	function index() {
@@ -70,7 +69,7 @@ class Bitrix extends CI_Controller {
 			"response_type" => "code",
 			"client_id" => $this->CLIENT_ID,
 			"redirect_uri" => $this->REDIRECT_URI,
-			);
+		);
 		$path = "/oauth/authorize/";
 		redirect($this->PROTOCOL . "://" . $this->domain . $path . "?" . http_build_query($params));
 		/******************** /get code ***********************************/
@@ -84,7 +83,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->PATH,
 			"scope" => $this->SCOPE,
 			"refresh_token" => $refresh_code,
-			);
+		);
 
 		$path = "/oauth/token/";
 
@@ -114,7 +113,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->REDIRECT_URI,
 			"scope" => $this->SCOPE,
 			"code" => $code,
-			);
+		);
 		$path = "/oauth/token/";
 
 		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
@@ -136,8 +135,8 @@ class Bitrix extends CI_Controller {
 				'auth' => $this->accessToken,
 				// 'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
 				//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-				)
-			);
+			)
+		);
 		return $fullResult;
 	}
 	private function add($params = array()) {
@@ -148,8 +147,8 @@ class Bitrix extends CI_Controller {
 			// 	'params' => array("Jan Doe","NEW","Zamarod",1,1)
 			// 	)
 			array(
-				"auth"=>$this->accessToken,
-				"fields"=>array(
+				"auth" => $this->accessToken,
+				"fields" => array(
 					'TITLE' => 'Precise',
 					'NAME' => 'Jan',
 					'SECOND_NAME' => "Janay",
@@ -172,9 +171,9 @@ class Bitrix extends CI_Controller {
 					'ADDRESS_COUNTRY_CODE' => NULL,
 					'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
 					'EMAIL' => array("VALUE" => "jan@jan.com", "VALUE_TYPE" => "HOME"),
-					)
-				)
-			);
+				),
+			)
+		);
 		return $fullResult;
 	}
 	private function save_lead($NewData) {
@@ -195,7 +194,7 @@ class Bitrix extends CI_Controller {
 			'EMAIL_HOME' => "ahmadNazw@gmail.com",
 			'PHONE_MOBILE' => "122354545",
 			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-			);
+		);
 
 		//$this->bitrix->save_lead($postDate);
 		$res = $this->bitrix_api->save_lead($postData);
@@ -216,7 +215,7 @@ class Bitrix extends CI_Controller {
 				'COMMENTS' => $leadData['COMMENTS'],
 				'ADDRESS' => "Dowra Road Afridi Abad ",
 				'EMAIL_HOME' => "ahmadNazw@gmail.com",
-				);
+			);
 			//$this->load->library('bitrix');
 			//$this->bitrix->save_lead($postDate);
 			//$this->bitrix->save_lead($postDate);
@@ -279,9 +278,9 @@ class Bitrix extends CI_Controller {
 		$query_data = "";
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
-			);
+		);
 		if ($method == "POST") {
-			$postParams =  http_build_query($data);
+			$postParams = http_build_query($data);
 			$curlOptions[CURLOPT_POST] = true;
 			$curlOptions[CURLOPT_POSTFIELDS] = $postParams;
 			// pr($postParams);
@@ -306,52 +305,52 @@ class Bitrix extends CI_Controller {
  *
  * @return array
  */
-function call($method, $params) {
-	// $params["auth"] = $this->accessToken;
-	$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+	function call($method, $params) {
+		// $params["auth"] = $this->accessToken;
+		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
 		// return $this->executeRequest($url, $params);
-	return $this->query("POST", $url, $params);
-}
-protected function executeRequest($url, array $additionalParameters = array()) {
-	$additionalParameters['auth'] = $this->accessToken;
-	$retryableErrorCodes = array(
-		CURLE_COULDNT_RESOLVE_HOST,
-		CURLE_COULDNT_CONNECT,
-		CURLE_HTTP_NOT_FOUND,
-		CURLE_READ_ERROR,
-		CURLE_OPERATION_TIMEOUTED,
-		CURLE_HTTP_POST_ERROR,
-		CURLE_SSL_CONNECT_ERROR,
-		);
-
-	$curlOptions = array(
-		CURLOPT_RETURNTRANSFER => true,
-		CURLINFO_HEADER_OUT => true,
-		CURLOPT_VERBOSE => true,
-		CURLOPT_CONNECTTIMEOUT => 5,
-		CURLOPT_TIMEOUT => 5,
-		CURLOPT_POST => true,
-		CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
-		CURLOPT_URL => $url,
-		);
-
-	$this->rawRequest = $curlOptions;
-	$curl = curl_init();
-	curl_setopt_array($curl, $curlOptions);
-
-	$curlResult = false;
-	$retriesCnt = 1;
-	while ($retriesCnt--) {
-		$curlResult = curl_exec($curl);
-			// handling network I/O errors
-		$this->requestInfo = curl_getinfo($curl);
-		curl_close($curl);
-		break;
+		return $this->query("POST", $url, $params);
 	}
+	protected function executeRequest($url, array $additionalParameters = array()) {
+		$additionalParameters['auth'] = $this->accessToken;
+		$retryableErrorCodes = array(
+			CURLE_COULDNT_RESOLVE_HOST,
+			CURLE_COULDNT_CONNECT,
+			CURLE_HTTP_NOT_FOUND,
+			CURLE_READ_ERROR,
+			CURLE_OPERATION_TIMEOUTED,
+			CURLE_HTTP_POST_ERROR,
+			CURLE_SSL_CONNECT_ERROR,
+		);
+
+		$curlOptions = array(
+			CURLOPT_RETURNTRANSFER => true,
+			CURLINFO_HEADER_OUT => true,
+			CURLOPT_VERBOSE => true,
+			CURLOPT_CONNECTTIMEOUT => 5,
+			CURLOPT_TIMEOUT => 5,
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
+			CURLOPT_URL => $url,
+		);
+
+		$this->rawRequest = $curlOptions;
+		$curl = curl_init();
+		curl_setopt_array($curl, $curlOptions);
+
+		$curlResult = false;
+		$retriesCnt = 1;
+		while ($retriesCnt--) {
+			$curlResult = curl_exec($curl);
+			// handling network I/O errors
+			$this->requestInfo = curl_getinfo($curl);
+			curl_close($curl);
+			break;
+		}
 		// handling json_decode errors
-	$jsonResult = json_decode($curlResult, true);
-	return $jsonResult;
-}
+		$jsonResult = json_decode($curlResult, true);
+		return $jsonResult;
+	}
 }
 /* End of file Bitrix.php */
 /* Location: ./application/controllers/Bitrix.php */

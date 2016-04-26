@@ -9,7 +9,6 @@ class Fotobegehung extends CI_Controller {
 		// redirect('auth/login');
 		// } else {
 		$this->load->model('att_email_model', "att_email");
-
 		// }
 	}
 	public function index() {
@@ -45,17 +44,20 @@ class Fotobegehung extends CI_Controller {
 		$att_id = $this->att_email->save($pdata);
 		if ($att_id > 0) {
 			$data = $this->input->post();
-			$images = $data['image'];
-			$count = 0;
-			$tr = '';
-			$index = 0;
-			foreach ($images as $key => $val) {
-				if (count($tr[$index]) == 2) {
-					$index++;
+			if (isset($data['image'])) {
+
+				$images = $data['image'];
+				$count = 0;
+				$tr = '';
+				$index = 0;
+				foreach ($images as $key => $val) {
+					if (count($tr[$index]) == 2) {
+						$index++;
+					}
+					$tr[$index][] = $val;
+					$count++;
+					$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 				}
-				$tr[$index][] = $val;
-				$count++;
-				$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
 			}
 			$this->send($pdata['email'], $att_id, $pdata);
 
@@ -67,7 +69,7 @@ class Fotobegehung extends CI_Controller {
 		$data = $this->att_email->get($att_id);
 		$images = $this->att_email->get_detail($att_id);
 		$count = 0;
-		$tr="";
+		$tr = "";
 		$index = 0;
 		foreach ($images as $key => $val) {
 			if (count($tr[$index]) == 2) {
@@ -94,7 +96,7 @@ class Fotobegehung extends CI_Controller {
 		$pdf = $m_pdf;
 		$pdf->WriteHTML($html);
 		if ($save) {
-			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . "_" . $data['nachname']."_" . $att_id . ".pdf";
+			$savePath = FCPATH . "/uploads/docs/" . $data['vorname'] . "_" . $data['nachname'] . "_" . $att_id . ".pdf";
 			$pdf->Output($savePath, "F");
 			return $savePath;
 		} else {
@@ -102,21 +104,14 @@ class Fotobegehung extends CI_Controller {
 		}
 	}
 	function send($email, $att_id, $pdata) {
-	return $this->save_lead($pdata, $att_id);
-		
+		return $this->save_lead($pdata, $att_id);
+
 	}
-	private function save_lead($data, $att_id) {
-			$postData = array(
-				'TITLE' => $data['nachname'],
-				'NAME' => $data["vorname"],
-				'SOURCE_DESCRIPTION' => $data["beschreibung"],
-				'ADDRESS' => $data["bauobjektadress"],
-				'EMAIL_HOME' => $data["email"],
-				'PHONE_MOBILE' => $data["telefon"],
-				'COMMENTS' => base_url('uploads/docs/') . $data["vorname"] . ".pdf",
-			);
-			$this->load->library('bitrix_api');
-			$res = $this->bitrix_api->add_lead($data,$att_id);
+	function save_lead($params, $att_id) {
+		$att_name = base_url('uploads/docs/' . $params['vorname'] . "_" . $params['nachname'] . "_" . $att_id . ".pdf");
+		$params['att_link'] = $att_name;
+		$this->load->library('bitrix_api');
+		$res = $this->bitrix_api->add_lead($params);
 		return true;
 	}
 
