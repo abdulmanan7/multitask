@@ -77,7 +77,7 @@ class Bitrix_api {
 						'NAME' => $params['nachname'],
 						'SECOND_NAME' => $params['nachname'],
 						'LAST_NAME' => $params['nachname'],
-						'SOURCE_ID' => 'Fotobegehung',
+						'SOURCE_ID' => 'NEW',
 						'SOURCE_DESCRIPTION' => $params['beschreibung'],
 						'STATUS_ID' => 'NEW',
 						'COMMENTS' => '<a href="' . $link . '" targer="_blank">Fotobegehung.pdf</a>',
