@@ -116,7 +116,7 @@ class Fotobegehung extends CI_Controller {
 		$this->email->attach($att_path);
 		$this->email->set_mailtype("html");
 		$this->email->message($message);
-		$this->save_lead($pdata, $att_path);
+		$this->save_lead($pdata, $att_id);
 		if ($this->email->send()) {
 			redirect('fotobegehung/success/0', 'refresh');
 		} else {
@@ -125,8 +125,7 @@ class Fotobegehung extends CI_Controller {
 		}
 
 	}
-	private function save_lead($data, $att_path) {
-		if (!$this->check_dups($data["email"])) {
+	private function save_lead($data, $att_id) {
 			$postData = array(
 				'TITLE' => $data['nachname'],
 				'NAME' => $data["vorname"],
@@ -137,8 +136,7 @@ class Fotobegehung extends CI_Controller {
 				'COMMENTS' => base_url('uploads/docs/') . $data["vorname"] . ".pdf",
 			);
 			$this->load->library('bitrix_api');
-			$res = $this->bitrix_api->save_lead($postData);
-		}
+			$res = $this->bitrix_api->add_lead($data,$att_id);
 		return true;
 	}
 

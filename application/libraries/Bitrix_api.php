@@ -12,6 +12,17 @@ class Bitrix_api
   protected $CRM_PORT   = "443";
   protected $CRM_PATH       = "/crm/configs/import/lead.php";
 
+//******* rest api setting **********//
+  protected $accessToken;
+  protected $rawRequest;
+  protected $domain = "solarvent.bitrix24.de";
+  protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
+  protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
+  protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
+  protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+  protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
+  protected $SCOPE = "crm";
+  protected $PROTOCOL = "https";
   public function __construct($props = array())
   {
     $this->ci =& get_instance();
@@ -19,28 +30,99 @@ class Bitrix_api
     {
       $this->initialize($props);
     }
+    $this->ci->load->model('utilities_model', 'utility');
   }
   function initialize($config = array()){
     foreach ($config as $key => $val) {
       $this->$key=$val;
     }
   }
+  function refresh_token($refresh_code=NULL) {
+    $cache_data = $this->ci->utility->get_refresh_code();
+    $refresh_code = ($refresh_code)?$refresh_code:$cache_data['refresh_code'];
+    $params = array(
+      "grant_type" => "refresh_token",
+      "client_id" => $this->CLIENT_ID,
+      "client_secret" => $this->CLIENT_SECRET,
+      "redirect_uri" => $this->PATH,
+      "scope" => $this->SCOPE,
+      "refresh_token" => $refresh_code,
+      );
+
+    $path = "/oauth/token/";
+
+    // pr($params);
+    $query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+    if (isset($query_data["access_token"])) {
+      //**************  save refresh code for next login
+      $refresh_code = $this->ci->utility->save_refresh_code($query_data['refresh_token']);
+
+      //**************  assign the new recived refresh code to member
+      $this->accessToken = $query_data["access_token"];
+      // $res = $this->save_lead($lead_data);
+      return $query_data;
+    } else {
+      $error = "error occure! " . print_r($query_data);
+    }
+    return false;
+  }
+  private function add($params = array(),$att_id) {
+    $att = '<a href="'.base_url('uploads/docs/'.$params['vorname']."_".$params['nachname']."_".$att_id.".pdf").'">';
+    $res = $this->refresh_token();
+    if (isset($res['access_token'])) {
+    $fullResult = $this->call(
+      'crm.lead.add',
+      array(
+        "auth"=>$this->accessToken,
+        "fields"=>array(
+          'TITLE' => $params['vorname'],
+          'NAME' => $params['nachname'],
+          'SECOND_NAME' => $params['nachname'],
+          'LAST_NAME' => $params['nachname'],
+          'SOURCE_ID' => 'NEW',
+          'SOURCE_DESCRIPTION' => $params['beschreibung'],
+          'STATUS_ID' => 'NEW',
+          'COMMENTS' => $att,
+          'CURRENCY_ID' => 'EUR',
+          'HAS_PHONE' => 'Y',
+          'HAS_EMAIL' => 'Y',
+          'ASSIGNED_BY_ID' => '1',
+          'CREATED_BY_ID' => '1',
+          'MODIFY_BY_ID' => '1',
+          'OPENED' => 'Y',
+          'ADDRESS' => $params['bauobjektadress'],
+          'ADDRESS_CITY' => $params['ort'],
+          'ADDRESS_POSTAL_CODE' => $params['PLZ'],
+          'ADDRESS_COUNTRY' => $params['land'],
+          'PHONE_WORK' => $params['telefon'],
+          'EMAIL_HOME' => $params['email'],
+          )
+        )
+      );
+    return $fullResult;
+    }
+  }
+  function add_lead($NewData) {
+
+    $user_email = $NewData['mail'];
+    $leadRecord = $this->get_all_leads($user_email);
+    if ($leadRecord['total'] > 0) {
+      //inset lead here
+      $this->add($NewData);
+    }
+  }
+  function get_all_leads($term) {
+    $fullResult = $this->call(
+      'crm.lead.list',
+      array(
+        'auth' => $this->accessToken,
+        'filter' => array("EMAIL" => $term),
+        //'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
+        )
+      );
+    return $fullResult;
+  }
   function save_lead($leadData){
-// POST processing
-      // $leadData = $_POST['DATA'];
-
-  // get lead data from the form
-      // $leadData = array(
-      //  'TITLE' => $leadData['TITLE'],
-      //  'COMPANY_TITLE' => $leadData['COMPANY_TITLE'],
-      //  'NAME' => $leadData['NAME'],
-      //  'LAST_NAME' => $leadData['LAST_NAME'],
-      //  'COMMENTS' => $leadData['COMMENTS'],
-      //  'ADDRESS' => "Dowra Road Afridi Abad ",
-      //  'EMAIL_HOME' =>"ahmadNazw@gmail.com",
-      //  );
-
-      // append authorization data
     if ($this->CRM_AUTH)
     {
       $leadData['AUTH']   = $this->CRM_AUTH;
@@ -96,18 +178,55 @@ class Bitrix_api
   function save_log($params='')
   {
     if (isset($params->ID) && $params->ID > 0) {
-    $data = array(
-      'id' => $params->ID,
-      'status_code' => $params->error,
-      'status_message' => $params->error_message,
-      'auth' => $params->AUTH,
-      'vorname' => $leadData['TITLE'],
-      'email' => $leadData['EMAIL_HOME']
+      $data = array(
+        'id' => $params->ID,
+        'status_code' => $params->error,
+        'status_message' => $params->error_message,
+        'auth' => $params->AUTH,
+        'vorname' => $leadData['TITLE'],
+        'email' => $leadData['EMAIL_HOME']
 
-      );
-    $this->ci->db->insert('bitrix_log',$data);
+        );
+      $this->ci->db->insert('bitrix_log',$data);
     }
   }
+  function query($method, $url, $data = null) {
+    $query_data = "";
+    $curlOptions = array(
+      CURLOPT_RETURNTRANSFER => true,
+      );
+    if ($method == "POST") {
+      $postParams =  http_build_query($data);
+      $curlOptions[CURLOPT_POST] = true;
+      $curlOptions[CURLOPT_POSTFIELDS] = $postParams;
+      // pr($postParams);
+    } elseif (!empty($data)) {
+      $url .= strpos($url, "?") > 0 ? "&" : "?";
+      $url .= http_build_query($data);
+    }
+
+    $curl = curl_init($url);
+    curl_setopt_array($curl, $curlOptions);
+    $result = curl_exec($curl);
+
+    return json_decode($result, 1);
+  }
+
+/**
+ * Calling REST.
+ *
+ * @param string $domain portal
+ * @param string $method called method
+ * @param array $params the parameters of the method call
+ *
+ * @return array
+ */
+function call($method, $params) {
+  // $params["auth"] = $this->accessToken;
+  $url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+    // return $this->executeRequest($url, $params);
+  return $this->query("POST", $url, $params);
+}
 }
 /* End of file bitrix.php */
 /* Location: ./application/libraries/bitrix.php */

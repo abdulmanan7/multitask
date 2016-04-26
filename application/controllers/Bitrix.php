@@ -5,12 +5,12 @@ class Bitrix extends CI_Controller {
 	protected $accessToken;
 	protected $rawRequest;
 
-	protected $domain = "solarvent.bitrix24.de";
-	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
-	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
-	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
-	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
-	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
+	protected $domain = "codeme.bitrix24.com";
+	protected $CLIENT_ID = "local.5714c7a65679d7.55404378";
+	protected $CLIENT_SECRET = "a04cc260b5c612c48c19bf1b1ed5cc4e";
+	protected $REDIRECT_URI = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
+	protected $PATH = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
+	protected $MEMBER_ID = "c0728b02e02abde3190db0e96a5096ae";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
 	public function __construct() {
@@ -19,30 +19,7 @@ class Bitrix extends CI_Controller {
 		// $data2 = array('accessToken' => '');
 		// $this->load->library('bitrix24', $data2);
 		$this->load->model('utilities_model', 'utility');
-		pr(http_build_query($params = array(
-			'TITLE' => 'Jan Doe',
-			'NAME' => 'Jan',
-			'SECOND_NAME' => "Janay",
-			'LAST_NAME' => 'Doe',
-			'SOURCE_ID' => '1',
-			'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
-			'STATUS_ID' => 'JUNK',
-			'COMMENTS' => 'mypdf.pdf',
-			'CURRENCY_ID' => 'EUR',
-			'HAS_PHONE' => 'Y',
-			'HAS_EMAIL' => 'Y',
-			'ASSIGNED_BY_ID' => '6',
-			'CREATED_BY_ID' => '1',
-			'MODIFY_BY_ID' => '6',
-			'OPENED' => 'Y',
-			'ADDRESS' => 'Neschwitzer Straße 59',
-			'ADDRESS_CITY' => 'Kamenz',
-			'ADDRESS_POSTAL_CODE' => '01917',
-			'ADDRESS_COUNTRY' => 'Deutschland',
-			'ADDRESS_COUNTRY_CODE' => NULL,
-			'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
-			'EMAIL' => array("VALUE" => "555888", "VALUE_TYPE" => "HOME"),
-		)));
+		
 
 	}
 	function index() {
@@ -69,10 +46,10 @@ class Bitrix extends CI_Controller {
 			if (isset($res['access_token'])) {
 				$addStatus = $this->add();
 				$leads = $this->get_all_leads();
-				$allEmails = array();
-				foreach ($leads['result'] as $key => $email) {
-					$allEmails['res'] = $email['EMAIL'];
-				}
+				// $allEmails = array();
+				// foreach ($leads['result'] as $key => $email) {
+				// 	$allEmails['res'] = $email['EMAIL'];
+				// }
 				// $Emails = array();
 				// foreach ($allEmails as $key => $em) {
 				// 	$allEmails['res']=$email['EMAIL'];
@@ -92,7 +69,7 @@ class Bitrix extends CI_Controller {
 			"response_type" => "code",
 			"client_id" => $this->CLIENT_ID,
 			"redirect_uri" => $this->REDIRECT_URI,
-		);
+			);
 		$path = "/oauth/authorize/";
 		redirect($this->PROTOCOL . "://" . $this->domain . $path . "?" . http_build_query($params));
 		/******************** /get code ***********************************/
@@ -106,7 +83,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->PATH,
 			"scope" => $this->SCOPE,
 			"refresh_token" => $refresh_code,
-		);
+			);
 
 		$path = "/oauth/token/";
 
@@ -136,7 +113,7 @@ class Bitrix extends CI_Controller {
 			"redirect_uri" => $this->REDIRECT_URI,
 			"scope" => $this->SCOPE,
 			"code" => $code,
-		);
+			);
 		$path = "/oauth/token/";
 
 		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $domain . $path, $params);
@@ -157,39 +134,46 @@ class Bitrix extends CI_Controller {
 			array(
 				'auth' => $this->accessToken,
 				// 'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
-				'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-			)
-		);
+				//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
+				)
+			);
 		return $fullResult;
 	}
 	private function add($params = array()) {
 		$fullResult = $this->call(
 			'crm.lead.add',
-			$params = array(
-				'TITLE' => 'Jan Doe',
-				'NAME' => 'Jan',
-				'SECOND_NAME' => "Janay",
-				'LAST_NAME' => 'Doe',
-				'SOURCE_ID' => '1',
-				'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
-				'STATUS_ID' => 'JUNK',
-				'COMMENTS' => 'mypdf.pdf',
-				'CURRENCY_ID' => 'EUR',
-				'HAS_PHONE' => 'Y',
-				'HAS_EMAIL' => 'Y',
-				'ASSIGNED_BY_ID' => '6',
-				'CREATED_BY_ID' => '1',
-				'MODIFY_BY_ID' => '6',
-				'OPENED' => 'Y',
-				'ADDRESS' => 'Neschwitzer Straße 59',
-				'ADDRESS_CITY' => 'Kamenz',
-				'ADDRESS_POSTAL_CODE' => '01917',
-				'ADDRESS_COUNTRY' => 'Deutschland',
-				'ADDRESS_COUNTRY_CODE' => NULL,
-				'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
-				'EMAIL' => array("VALUE" => "555888", "VALUE_TYPE" => "HOME"),
-			)
-		);
+			// array(
+			// 	'fields' => array("TITLE","STATUS_ID","NAME","ASSIGNED_BY_ID","CREATED_BY_ID"),
+			// 	'params' => array("Jan Doe","NEW","Zamarod",1,1)
+			// 	)
+			array(
+				"auth"=>$this->accessToken,
+				"fields"=>array(
+					'TITLE' => 'Precise',
+					'NAME' => 'Jan',
+					'SECOND_NAME' => "Janay",
+					'LAST_NAME' => 'Doe',
+					'SOURCE_ID' => 'NEW',
+					'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
+					'STATUS_ID' => 'JUNK',
+					'COMMENTS' => '<a href="http://sajidshah.com/proof/abdulmanan/mail_pdf">mypdf.pdf</a>',
+					'CURRENCY_ID' => 'EUR',
+					'HAS_PHONE' => 'Y',
+					'HAS_EMAIL' => 'Y',
+					'ASSIGNED_BY_ID' => '1',
+					'CREATED_BY_ID' => '1',
+					'MODIFY_BY_ID' => '1',
+					'OPENED' => 'Y',
+					'ADDRESS' => 'Neschwitzer Straße 59',
+					'ADDRESS_CITY' => 'Kamenz',
+					'ADDRESS_POSTAL_CODE' => '01917',
+					'ADDRESS_COUNTRY' => 'Deutschland',
+					'ADDRESS_COUNTRY_CODE' => NULL,
+					'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
+					'EMAIL' => array("VALUE" => "jan@jan.com", "VALUE_TYPE" => "HOME"),
+					)
+				)
+			);
 		return $fullResult;
 	}
 	private function save_lead($NewData) {
@@ -210,7 +194,7 @@ class Bitrix extends CI_Controller {
 			'EMAIL_HOME' => "ahmadNazw@gmail.com",
 			'PHONE_MOBILE' => "122354545",
 			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-		);
+			);
 
 		//$this->bitrix->save_lead($postDate);
 		$res = $this->bitrix_api->save_lead($postData);
@@ -231,7 +215,7 @@ class Bitrix extends CI_Controller {
 				'COMMENTS' => $leadData['COMMENTS'],
 				'ADDRESS' => "Dowra Road Afridi Abad ",
 				'EMAIL_HOME' => "ahmadNazw@gmail.com",
-			);
+				);
 			//$this->load->library('bitrix');
 			//$this->bitrix->save_lead($postDate);
 			//$this->bitrix->save_lead($postDate);
@@ -294,11 +278,12 @@ class Bitrix extends CI_Controller {
 		$query_data = "";
 		$curlOptions = array(
 			CURLOPT_RETURNTRANSFER => true,
-		);
-
+			);
 		if ($method == "POST") {
+			$postParams =  http_build_query($data);
 			$curlOptions[CURLOPT_POST] = true;
-			$curlOptions[CURLOPT_POSTFIELDS] = http_build_query($data);
+			$curlOptions[CURLOPT_POSTFIELDS] = $postParams;
+			// pr($postParams);
 		} elseif (!empty($data)) {
 			$url .= strpos($url, "?") > 0 ? "&" : "?";
 			$url .= http_build_query($data);
@@ -320,52 +305,52 @@ class Bitrix extends CI_Controller {
  *
  * @return array
  */
-	function call($method, $params) {
-		$params["auth"] = $this->accessToken;
-		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+function call($method, $params) {
+	// $params["auth"] = $this->accessToken;
+	$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
 		// return $this->executeRequest($url, $params);
-		return $this->query("POST", $url, $params);
-	}
-	protected function executeRequest($url, array $additionalParameters = array()) {
-		$additionalParameters['auth'] = $this->accessToken;
-		$retryableErrorCodes = array(
-			CURLE_COULDNT_RESOLVE_HOST,
-			CURLE_COULDNT_CONNECT,
-			CURLE_HTTP_NOT_FOUND,
-			CURLE_READ_ERROR,
-			CURLE_OPERATION_TIMEOUTED,
-			CURLE_HTTP_POST_ERROR,
-			CURLE_SSL_CONNECT_ERROR,
-		);
-
-		$curlOptions = array(
-			CURLOPT_RETURNTRANSFER => true,
-			CURLINFO_HEADER_OUT => true,
-			CURLOPT_VERBOSE => true,
-			CURLOPT_CONNECTTIMEOUT => 5,
-			CURLOPT_TIMEOUT => 5,
-			CURLOPT_POST => true,
-			CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
-			CURLOPT_URL => $url,
-		);
-
-		$this->rawRequest = $curlOptions;
-		$curl = curl_init();
-		curl_setopt_array($curl, $curlOptions);
-
-		$curlResult = false;
-		$retriesCnt = 1;
-		while ($retriesCnt--) {
-			$curlResult = curl_exec($curl);
-			// handling network I/O errors
-			$this->requestInfo = curl_getinfo($curl);
-			curl_close($curl);
-			break;
-		}
-		// handling json_decode errors
-		$jsonResult = json_decode($curlResult, true);
-		return $jsonResult;
-	}
+	return $this->query("POST", $url, $params);
 }
-/* End of file test.php */
-/* Location: ./application/controllers/test.php */
+protected function executeRequest($url, array $additionalParameters = array()) {
+	$additionalParameters['auth'] = $this->accessToken;
+	$retryableErrorCodes = array(
+		CURLE_COULDNT_RESOLVE_HOST,
+		CURLE_COULDNT_CONNECT,
+		CURLE_HTTP_NOT_FOUND,
+		CURLE_READ_ERROR,
+		CURLE_OPERATION_TIMEOUTED,
+		CURLE_HTTP_POST_ERROR,
+		CURLE_SSL_CONNECT_ERROR,
+		);
+
+	$curlOptions = array(
+		CURLOPT_RETURNTRANSFER => true,
+		CURLINFO_HEADER_OUT => true,
+		CURLOPT_VERBOSE => true,
+		CURLOPT_CONNECTTIMEOUT => 5,
+		CURLOPT_TIMEOUT => 5,
+		CURLOPT_POST => true,
+		CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
+		CURLOPT_URL => $url,
+		);
+
+	$this->rawRequest = $curlOptions;
+	$curl = curl_init();
+	curl_setopt_array($curl, $curlOptions);
+
+	$curlResult = false;
+	$retriesCnt = 1;
+	while ($retriesCnt--) {
+		$curlResult = curl_exec($curl);
+			// handling network I/O errors
+		$this->requestInfo = curl_getinfo($curl);
+		curl_close($curl);
+		break;
+	}
+		// handling json_decode errors
+	$jsonResult = json_decode($curlResult, true);
+	return $jsonResult;
+}
+}
+/* End of file Bitrix.php */
+/* Location: ./application/controllers/Bitrix.php */
