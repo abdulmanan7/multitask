@@ -61,17 +61,17 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=plz#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=city#'>#=city#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=plz#,#=ort#,#=land#'>#=city#</a>",
         width:"95px",
       },{
         field: "mail",
@@ -121,7 +121,7 @@
           pageSizes: [10 ,50 ,100,250],
           buttonCount: 5
         },
-        columns: [{hidden: true, field: "id",menu:false
+           columns: [{hidden: true, field: "id",menu:false
       },{
         field: "offer_id",
         title: "Angebot-Nr",
@@ -138,17 +138,17 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=plz#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=PLZ#,#=ort#,#=land#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
         title:"Ort",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=city#'>#=city#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=strabe_nr#,#=plz#,#=ort#,#=land#'>#=city#</a>",
         width:"95px",
       },{
         field: "mail",
@@ -162,7 +162,7 @@
       {
         title: "Löschen",
         width:"60px",
-        template:'<a href="<?=base_url()?>angebote/delete/#=id#" class="btn btn-sm btn-danger text-center del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>angebote/delete/#=id#" class="text-center btn btn-sm btn-danger delw"><i class="fa fa-trash-o"></i></a>',
         attributes:{class:"text-center"}
       }
       ],

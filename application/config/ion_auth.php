@@ -87,7 +87,7 @@ $config['salt_prefix'] = version_compare(PHP_VERSION, '5.3.7', '<') ? '$2a$' : '
  */
 $config['site_title'] = "solarVENT.de"; // Site Title, example.com
 $config['admin_email'] = "admin@solarvent.de"; // Admin Email, admin@example.com
-$config['default_group'] = 'members'; // Default group, use name
+$config['default_group'] = 'admin'; // Default group, use name
 $config['admin_group'] = 'admin'; // Default administrators group, use name
 $config['identity'] = 'email'; // A database column which is used to login with
 $config['min_password_length'] = 8; // Minimum Required Length of Password
