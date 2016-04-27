@@ -169,7 +169,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 				<div class="row">
 					<label class="control-label col-sm-6">Womit heizen Sie derzeit? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
-						<select required="required" name="question3" class="form-control">
+						<select required="required" id="womit" name="question3" class="form-control">
 							<option>Womit heizen Sie derzeit?</option>
 							<option value="Erdgas">Erdgas</option>
 							<option value="Flüssiggas">Flüssiggas</option>
@@ -192,10 +192,11 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 								<p class="error"></p>
 							</div>
 							<div class="col-xs-6">
-								<select required="required" name="unit" class="form-control">
+								<select required="required" name="unit" id="unit" class="form-control">
 									<option value="">Welche Einheit?</option>
 									<option value="Liter">Liter</option>
 									<option value="m³">m³</option>
+									<option value="rm">rm</option>
 									<option value="kWh">kWh</option>
 									<option value="kg">kg</option>
 								</select>
@@ -304,5 +305,28 @@ jQuery(document).ready(function($) {
 				'<div class="progress-bar progress-bar-success" style="width:0%;"></div></div>'+
 			'<div class="progress-extended">&nbsp;</div></div>';
 	$('.actionBar').append(progressBar);
+});
+
+$('body').on('change', '#womit', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+	var self = $(this);
+	if (self.val()=="Erdgas" || self.val()=="Flüssiggas") {
+		$('#unit').val('m³');
+	}
+	else if (self.val()=="Strom") {
+		$('#unit').val('kWh');
+	}
+	else if (self.val()=="Heizöl") {
+		$('#unit').val('Liter');
+	}
+	else if (self.val()=="Kohle" || self.val()=="Pellets") {
+		$('#unit').val('kg');
+	}
+	else if (self.val()=="Holz") {
+		$('#unit').val('rm');
+	}else{
+		$('#unit').val('');
+	}
 });
 </script>
