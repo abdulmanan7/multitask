@@ -129,12 +129,39 @@ class Bitrix extends CI_Controller {
 		}
 	}
 	function get_all_leads($select = array()) {
+		$cache_data = $this->utility->get_refresh_code();
+		$refresh_code = $cache_data['refresh_code'];
+		$res = $this->refresh_token($refresh_code);
 		$fullResult = $this->call(
 			'crm.lead.list',
 			array(
 				'auth' => $this->accessToken,
 				// 'filter' => array("EMAIL" => "smadNawaxz@gmail.com"),
 				//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
+			)
+		);
+		return $fullResult;
+	}
+	function get_lead_fields($select = array()) {
+		$cache_data = $this->utility->get_refresh_code();
+		$refresh_code = $cache_data['refresh_code'];
+		$res = $this->refresh_token($refresh_code);
+		$fullResult = $this->call(
+			'crm.lead.fields',
+			array(
+				'auth' => $this->accessToken,
+			)
+		);
+		return $fullResult;
+	}
+	function get_user_fields($select = array()) {
+		$cache_data = $this->utility->get_refresh_code();
+		$refresh_code = $cache_data['refresh_code'];
+		$res = $this->refresh_token($refresh_code);
+		$fullResult = $this->call(
+			'crm.lead.userfield.list',
+			array(
+				'auth' => $this->accessToken,
 			)
 		);
 		return $fullResult;
