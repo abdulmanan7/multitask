@@ -152,7 +152,7 @@ class Bitrix extends CI_Controller {
 				'auth' => $this->accessToken,
 			)
 		);
-		return $fullResult;
+		pr($fullResult);
 	}
 	function get_user_fields($select = array()) {
 		$cache_data = $this->utility->get_refresh_code();
@@ -164,7 +164,7 @@ class Bitrix extends CI_Controller {
 				'auth' => $this->accessToken,
 			)
 		);
-		return $fullResult;
+		pr($fullResult);
 	}
 	private function add($params = array()) {
 		$fullResult = $this->call(
