@@ -171,7 +171,6 @@ class Bitrix extends CI_Controller {
 					'SECOND_NAME' => "Janay",
 					'LAST_NAME' => 'Doe',
 					'SOURCE_ID' => 'NEW',
-					'SOURCE_DESCRIPTION' => 'iQ 3.0 Pelletheizung + Solaranlage',
 					'STATUS_ID' => 'JUNK',
 					'COMMENTS' => '<a href="http://sajidshah.com/proof/abdulmanan/mail_pdf">mypdf.pdf</a>',
 					'CURRENCY_ID' => 'EUR',
