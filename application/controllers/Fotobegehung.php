@@ -71,14 +71,18 @@ class Fotobegehung extends CI_Controller {
 		$count = 0;
 		$tr = "";
 		$index = 0;
-		foreach ($images as $key => $val) {
-			if (count($tr[$index]) == 2) {
-				$index++;
+		if (!is_array_empty($images)) {
+			foreach ($images as $key => $val) {
+				if (count($tr[$index]) == 2) {
+					$index++;
+				}
+				$tr[$index][] = $val['pdf_path'];
+				$count++;
 			}
-			$tr[$index][] = $val['pdf_path'];
-			$count++;
+			$data['images'] = $tr;
+		} else {
+			$data['images'] = NULL;
 		}
-		$data['images'] = $tr;
 		// pr($data);
 		$html = $this->load->view('pdf/pdf_mail', $data, true);
 
@@ -104,7 +108,7 @@ class Fotobegehung extends CI_Controller {
 		}
 	}
 	function send($email, $att_id, $pdata) {
-	$this->load->model('settings_model');
+		$this->load->model('settings_model');
 		$comp = $this->settings_model->get();
 		$message = str_replace("{name}", $pdata['nachname'], $comp['body']);
 		$att_path = $this->get($att_id, true);
