@@ -3,15 +3,14 @@
 <head>
     <title>SOLARvent - <?php echo $page_title;?></title>
     <meta charset="UTF-8" />
-    <meta name="author" content="Bootstrap Gallery" />
-    <link rel="shortcut icon" href="<?php //echo base_url('assets/img/favicon.ico');?>">
+    <meta name="author" content="abdulmanan" />
+    <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.ico');?>">
 
     <link href="<?php echo load_css('bootstrap.min.css');?>" rel="stylesheet">
     <link href="<?php echo load_css('new.css');?>" rel="stylesheet">
-    <link href="<?php echo load_css('charts-graphs.css');?>" rel="stylesheet">
 
    <!-- Datepicker CSS -->
-    <link rel="stylesheet" type="text/css" href="<?php echo load_css('datepicker.css')?>">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php //echo load_css('datepicker.css')?>"> -->
     <link rel="stylesheet" type="text/css" href="<?php echo load_css('alertify.core.css')?>">
 
     <link href="<?php echo load_fonts('font-awesome.min.css');?>" rel="stylesheet">
@@ -30,11 +29,9 @@
       ga('send', 'pageview');
 
     </script> -->
-    <link rel="stylesheet" href="<?php echo load_css('print.css');?>" media="print">
 
     <link href="<?php echo load_plugin('kendo/kendo.default.min.css');?>" rel="stylesheet">
     <link href="<?php echo load_plugin('kendo/kendo.common.min.css');?>" rel="stylesheet">
-    <!-- <link href="<?php echo load_plugin('kendo/kendo.custom.css');?>" rel="stylesheet"> -->
   <link href="<?php echo load_css('style.css')?>" rel="stylesheet">
   <script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
   <script type="text/javascript" src="<?php echo load_plugin('kendo/kendo.all.min.js')?>"></script>

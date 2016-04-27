@@ -70,73 +70,9 @@ pageable: {
 
  });
  });
-                            //Data Tables
-                          //   $('.dtable').dataTable({
-                          //     "sPaginationType": "full_numbers",
-                          //     'iDisplayLength': 10
-                          //   });
-                          //   var records=$('.paginate_active').html();
-                          //   if (parseInt(records)<10 || records=="undefined") {
-                          //     $('.paginate_active').css('display', 'none');
-                          //     $('#data-table_filter').css('display', 'none');
-                          //   };
-                          // });
           </script>
     <?php endif?>
 <script type="text/javascript">
-// jQuery(document).ready(function($) {
-//   ajaxHelper.init({
-//     url:"<?php echo base_url('ajax/add_fee');?>",
-//   });
-// });
- // Ext.onReady(function(){
- //    var searchData = new Ext.data.JsonStore({
- //    paramsAsHash: true,
- //    // root: "data",
- //    url: "<?php echo base_url('studnets/search');?>",
- //    idProperty: "student_id",
- //    totalProperty: "totalCount",
- //    //paramOrder: ["start", "limit", "query", "cus_id"],
- //    fields: ["first_name","last_name","course","section"]
- //    });
-
- //    var pref = new Ext.form.ComboBox({
- //      store: searchData,
- //      displayField: "first_name",
- //      valueField: "student_id",
- //      typeAhead: false,
- //      name: "first_name",
- //      fieldLabel: "Studnet ID #",
- //      loadingText: "Searching...",
- //      allowSearchMinChars: 3,
- //      selectOnFocus: false,
- //      forceSelection: false,
- //      validateOnBlur: false,
- //      anchor: "100%",
- //      pageSize: 7,
- //      minChars: 3,
- //      width:260,
- //      itemSelector: "div.search-item",
- //      hideTrigger: true,
-
- //       tpl: new Ext.XTemplate('<tpl for="."><div class="search-item">',  "<B>Name #: </B>{first_name} {last_name} <B> Course # : </B> {course}<br/>", "<B>section : </B>{section}<br/></tpl>"),
- //      applyTo: 'gSearch', //input field ID
- //      onSelect: function(fields){
- //      // override default onSelect to do redirect
- //          // if(fields.data.UNIT_PREFERRED_NUMBER == 'null' || fields.data.UNIT_PREFERRED_NUMBER == null)
- //          //  $("#gSearch").val(fields.data.RTMI_NUMBER);
- //          // else
- //          //  $("#gSearch").val(fields.data.UNIT_PREFERRED_NUMBER);
- //          // $("#rtmi_number").val(fields.data.RTMI_NUMBER);
- //          // $("#masagr_id").val(fields.data.MASAGR_ID);
- //          // $("#agrsta_id").val(fields.data.AGRSTA_ID);
- //          // update_rtmi();
- //          // this.collapse();
- //        }
- //    });
-
- //  widths();
- //  });
  jQuery(document).ready(function($) {
    $('#loader').css('display','hide');
    $('#ajaxLoader').css('display','none');
