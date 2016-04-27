@@ -64,8 +64,11 @@ class Bitrix extends CI_Controller {
 		redirect($this->PROTOCOL . "://" . $this->domain . $path . "?" . http_build_query($params));
 		/******************** /get code ***********************************/
 	}
-	function refresh_token($refresh_code) {
-
+	function refresh_token($refresh_code = NULL) {
+		if (!$refresh_code && strlen($refresh_code) < 10) {
+			$cache_data = $this->utility->get_refresh_code();
+			$refresh_code = $cache_data['refresh_code'];
+		}
 		$params = array(
 			"grant_type" => "refresh_token",
 			"client_id" => $this->CLIENT_ID,
@@ -155,140 +158,6 @@ class Bitrix extends CI_Controller {
 			)
 		);
 		pr($fullResult);
-	}
-	private function add($params = array()) {
-		$fullResult = $this->call(
-			'crm.lead.add',
-			// array(
-			// 	'fields' => array("TITLE","STATUS_ID","NAME","ASSIGNED_BY_ID","CREATED_BY_ID"),
-			// 	'params' => array("Jan Doe","NEW","Zamarod",1,1)
-			// 	)
-			array(
-				"auth" => $this->accessToken,
-				"fields" => array(
-					'TITLE' => 'Precise',
-					'NAME' => 'Jan',
-					'SECOND_NAME' => "Janay",
-					'LAST_NAME' => 'Doe',
-					'SOURCE_ID' => 'NEW',
-					'STATUS_ID' => 'JUNK',
-					'COMMENTS' => '<a href="http://sajidshah.com/proof/abdulmanan/mail_pdf">mypdf.pdf</a>',
-					'CURRENCY_ID' => 'EUR',
-					'HAS_PHONE' => 'Y',
-					'HAS_EMAIL' => 'Y',
-					'ASSIGNED_BY_ID' => '1',
-					'CREATED_BY_ID' => '1',
-					'MODIFY_BY_ID' => '1',
-					'OPENED' => 'Y',
-					'ADDRESS' => 'Neschwitzer Straße 59',
-					'ADDRESS_CITY' => 'Kamenz',
-					'ADDRESS_POSTAL_CODE' => '01917',
-					'ADDRESS_COUNTRY' => 'Deutschland',
-					'ADDRESS_COUNTRY_CODE' => NULL,
-					'PHONE' => array("VALUE" => "555888", "VALUE_TYPE" => "WORK"),
-					'EMAIL' => array("VALUE" => "jan@jan.com", "VALUE_TYPE" => "HOME"),
-				),
-			)
-		);
-		return $fullResult;
-	}
-	private function save_lead($NewData) {
-
-		$user_email = $NewData['mail'];
-		$leadRecord = $this->get_all_leads($user_email);
-		if ($leadRecord['total'] > 0) {
-			//inset lead here
-			$this->add($NewData);
-		}
-	}
-	function saveLead() {
-		$postData = array(
-			'TITLE' => 'Tufail zafar',
-			'NAME' => "Tufail zafar",
-			'SOURCE_DESCRIPTION' => "waiting to response great person",
-			'ADDRESS' => "Dowra Road Afridi Abad ",
-			'EMAIL_HOME' => "ahmadNazw@gmail.com",
-			'PHONE_MOBILE' => "122354545",
-			'COMMENTS' => "http://sajidshah.com/proof/abdulmanan/mail_pdf/fotobegehung",
-		);
-
-		//$this->bitrix->save_lead($postDate);
-		$res = $this->bitrix_api->save_lead($postData);
-
-	}
-	function post() {
-
-// POST processing
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$leadData = $_POST['DATA'];
-
-			// get lead data from the form
-			$postData = array(
-				'TITLE' => $leadData['TITLE'],
-				'COMPANY_TITLE' => $leadData['COMPANY_TITLE'],
-				'NAME' => $leadData['NAME'],
-				'LAST_NAME' => $leadData['LAST_NAME'],
-				'COMMENTS' => $leadData['COMMENTS'],
-				'ADDRESS' => "Dowra Road Afridi Abad ",
-				'EMAIL_HOME' => "ahmadNazw@gmail.com",
-			);
-			//$this->load->library('bitrix');
-			//$this->bitrix->save_lead($postDate);
-			//$this->bitrix->save_lead($postDate);
-			//die;
-			// append authorization data
-			if (defined('CRM_AUTH')) {
-				$postData['AUTH'] = CRM_AUTH;
-			} else {
-				$postData['LOGIN'] = CRM_LOGIN;
-				$postData['PASSWORD'] = CRM_PASSWORD;
-			}
-
-			// open socket to CRM
-			$fp = fsockopen("ssl://" . CRM_HOST, CRM_PORT, $errno, $errstr, 30);
-			if ($fp) {
-				// prepare POST data
-				$strPostData = '';
-				foreach ($postData as $key => $value) {
-					$strPostData .= ($strPostData == '' ? '' : '&') . $key . '=' . urlencode($value);
-				}
-
-				// prepare POST headers
-				$str = "POST " . CRM_PATH . " HTTP/1.0\r\n";
-				$str .= "Host: " . CRM_HOST . "\r\n";
-				$str .= "Content-Type: application/x-www-form-urlencoded\r\n";
-				$str .= "Content-Length: " . strlen($strPostData) . "\r\n";
-				$str .= "Connection: close\r\n\r\n";
-
-				$str .= $strPostData;
-
-				// send POST to CRM
-				fwrite($fp, $str);
-
-				// get CRM headers
-				$result = '';
-				while (!feof($fp)) {
-					$result .= fgets($fp, 128);
-				}
-				fclose($fp);
-
-				// cut response headers
-				$response = explode("\r\n\r\n", $result);
-
-				$output = '<pre>' . print_r($response[1], 1) . '</pre>';
-				$out = str_replace("'", '"', $response[1]);
-				//{'error':'201','ID':'6','error_message':'Lead has been added.','AUTH':'65498b98c545a3c3f49a9624654f2401'}
-				//'<pre>'.print_r($response).'</pre>';
-				////'<pre>'.print_r($result).'</pre>';
-				//'<pre>'.print_r($out).'</pre>';
-				pr(json_decode($out));
-			} else {
-				echo 'Connection Failed! ' . $errstr . ' (' . $errno . ')';
-			}
-		} else {
-			$output = '';
-		}
-
 	}
 	function query($method, $url, $data = null) {
 		$query_data = "";
