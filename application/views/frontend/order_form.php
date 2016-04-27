@@ -193,7 +193,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 							</div>
 							<div class="col-xs-6">
 								<select required="required" name="unit" class="form-control">
-									<option>Welche Einheit?</option>
+									<option value="">Welche Einheit?</option>
 									<option value="Liter">Liter</option>
 									<option value="m³">m³</option>
 									<option value="kWh">kWh</option>
