@@ -90,7 +90,7 @@ class Bitrix_api {
             'DATE_MODIFY' => $today,
             'UF_CRM_1457464089' => $today,
             'UF_CRM_1461700550' => $params['bauobjektadress'],
-            'ADDRESS' => $params['strabe_nr']." ,"$params['PLZ'] ." ,"$params['ort']." ,".$params['land'],
+            'ADDRESS' => $params['strabe_nr']." ,".$params['PLZ'] ." ,".$params['ort']." ,".$params['land'],
             'ADDRESS_CITY' => $params['ort'],
             'ADDRESS_POSTAL_CODE' => $params['PLZ'],
             'ADDRESS_COUNTRY' => $params['land'],
