@@ -45,18 +45,8 @@ class Bitrix extends CI_Controller {
 			$res = $this->refresh_token($cache_data['refresh_code']);
 			if (isset($res['access_token'])) {
 				//$addStatus = $this->add();
-				//$leads = $this->get_all_leads();
-				// $allEmails = array();
-				// foreach ($leads['result'] as $key => $email) {
-				// 	$allEmails['res'] = $email['EMAIL'];
-				// }
-				// $Emails = array();
-				// foreach ($allEmails as $key => $em) {
-				// 	$allEmails['res']=$email['EMAIL'];
-				// }
-				pr($addStatus, 1);
+				$leads = $this->get_all_leads();
 				pr($leads);
-				// pr($allEmails);
 			} else {
 				$this->get_code();
 			}
