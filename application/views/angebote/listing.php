@@ -61,12 +61,12 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
@@ -138,12 +138,12 @@
       },{
         field: "street",
         title: "Straße",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=street#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=street#</a>",
         width:"95px",
       },{
         field: "plz",
         title:"PLZ",
-        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=PLZ#,#=ort#'>#=plz#</a>",
+        template:"<a target='_blank' href='http://maps.google.com/?q=#=street#,#=plz#,#=ort#'>#=plz#</a>",
         width:"90px",
       },{
         field: "city",
