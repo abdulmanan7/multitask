@@ -44,7 +44,7 @@ class Bitrix_api {
       "redirect_uri" => $this->PATH,
       "scope" => $this->SCOPE,
       "refresh_token" => $refresh_code,
-    );
+      );
 
     $path = "/oauth/token/";
 
@@ -66,7 +66,7 @@ class Bitrix_api {
   private function add($params = array()) {
     $link = $params['att_link'];
     $link_name = $params['vorname'] . "_" . $params['nachname'] . "_" . $att_id . ".pdf";
-    $today = date("d.m.Y")
+    $today = date("d.m.Y");
     $res = $this->refresh_token();
     if (isset($res['access_token'])) {
       $fullResult = $this->call(
@@ -96,9 +96,9 @@ class Bitrix_api {
             'ADDRESS_COUNTRY' => $params['land'],
             'PHONE' => array('0' => array("VALUE" => $params['telefon'], "VALUE_TYPE" => "WORK")),
             'EMAIL' => array('0' => array("VALUE" => $params['email'], "VALUE_TYPE" => "HOME")),
-          ),
-        )
-      );
+            ),
+          )
+        );
       return $fullResult;
     }
   }
@@ -124,9 +124,33 @@ class Bitrix_api {
         'auth' => $this->accessToken,
         'filter' => array("EMAIL" => $term),
         //'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-      )
-    );
+        )
+      );
     return $fullResult;
+  }
+  function get_lead_fields($select = array()) {
+    $res = $this->refresh_token();
+    if (isset($res['access_token'])) {
+      $fullResult = $this->call(
+        'crm.lead.fields',
+        array(
+          'auth' => $this->accessToken,
+          )
+        );
+      return $fullResult;
+    }
+  }
+  function get_user_fields($select = array()) {
+    $res = $this->refresh_token();
+    if (isset($res['access_token'])) {
+      $fullResult = $this->call(
+        'crm.lead.userfield.list',
+        array(
+          'auth' => $this->accessToken,
+          )
+        );
+      return $fullResult;
+    }
   }
   function save_lead($leadData) {
     if ($this->CRM_AUTH) {
@@ -185,7 +209,7 @@ class Bitrix_api {
         'vorname' => $leadData['TITLE'],
         'email' => $leadData['EMAIL_HOME'],
 
-      );
+        );
       $this->ci->db->insert('bitrix_log', $data);
     }
   }
@@ -193,7 +217,7 @@ class Bitrix_api {
     $query_data = "";
     $curlOptions = array(
       CURLOPT_RETURNTRANSFER => true,
-    );
+      );
     if ($method == "POST") {
       $postParams = http_build_query($data);
       $curlOptions[CURLOPT_POST] = true;
@@ -220,12 +244,12 @@ class Bitrix_api {
  *
  * @return array
  */
-  function call($method, $params) {
+function call($method, $params) {
     // $params["auth"] = $this->accessToken;
-    $url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
+  $url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
     // return $this->executeRequest($url, $params);
-    return $this->query("POST", $url, $params);
-  }
+  return $this->query("POST", $url, $params);
+}
 }
 /* End of file bitrix.php */
 /* Location: ./application/libraries/bitrix.php */
