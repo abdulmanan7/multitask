@@ -17,7 +17,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			font-weight: bold;
 		}
 		.form-control{
-			background-color: #FFFFAB;
 			padding: 4px 6px;
 			border: 1px solid #656565;
 		}
@@ -143,7 +142,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td class="item-name form-control" height="200" valign="top" colspan="3"><?=$beschreibung?></td>
 		</tr>
 	</table>
-	<?php if ($images != NULL): ?>
 	<pagebreak />
 	<table cellpadding ="5" cellpadding="10">
 		<?php foreach ($images as $image): ?>
@@ -167,5 +165,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 		<?php endforeach?>
 	</table>
-	<?php endif?>
 	</html>

@@ -320,7 +320,7 @@ $('body').on('change', '#womit', function(event) {
 	else if (self.val()=="Heizöl") {
 		$('#unit').val('Liter');
 	}
-	else if (self.val()=="Kohle" || self.val()=="Pellets") {
+	else if (self.val()=="Kohle / Briketts" || self.val()=="Pellets") {
 		$('#unit').val('kg');
 	}
 	else if (self.val()=="Holz") {
