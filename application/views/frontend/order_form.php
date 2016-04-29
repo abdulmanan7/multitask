@@ -139,7 +139,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Baujahr von Ihrem Haus? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_hous" class="form-control">
-							<option>Baujahr von Ihrem Haus?</option>
+							<option value="">Baujahr von Ihrem Haus?</option>
 							<option value="2016 - 2002">2016 - 2002</option>
 							<option value="2001 - 1995">2001 - 1995</option>
 							<option value="1994 - 1978">1994 - 1978</option>
@@ -154,7 +154,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Wie alt ist Ihre Heizung? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" name="baujahr_alte" class="form-control">
-							<option>Wie alt ist Ihre Heizung?</option>
+							<option value="">Wie alt ist Ihre Heizung?</option>
 							<option value="1 - 10 Jahre">1 - 10 Jahre</option>
 							<option value="11 - 15 Jahre">11 - 15 Jahre</option>
 							<option value="16 - 20 Jahre">16 - 20 Jahre</option>
@@ -170,7 +170,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 					<label class="control-label col-sm-6">Womit heizen Sie derzeit? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<select required="required" id="womit" name="question3" class="form-control">
-							<option>Womit heizen Sie derzeit?</option>
+							<option value="">Womit heizen Sie derzeit?</option>
 							<option value="Erdgas">Erdgas</option>
 							<option value="Flüssiggas">Flüssiggas</option>
 							<option value="Heizöl">Heizöl</option>
