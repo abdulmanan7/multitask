@@ -37,7 +37,8 @@ class Upload extends CI_Controller {
 
 		if (!$this->upload->do_upload()) {
 			$error = array('error' => $this->upload->display_errors());
-			pr($error);
+			echo json_encode($error);
+			die;
 		} else {
 			$data = $this->upload->data();
 			//if pdf file
