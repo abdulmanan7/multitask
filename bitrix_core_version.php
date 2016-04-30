@@ -83,23 +83,19 @@
     return false;
   }
   private function add($params) {
-    $link = $params['att_link'];
-    $link_name = $params['vorname'] . "_" . $params['nachname'] . "_" . $att_id . ".pdf";
-    $today = date("d.m.Y");
+    $link = $params->offerNr;
     $res = $this->refresh_token();
     if (isset($res['access_token'])) {
       $fullResult = $this->call(
         'crm.lead.add',
         array(
-          "auth" => $this->accessToken,
+         "auth" => $this->accessToken,
           "fields" => array(
             'TITLE' => $params->fullName,
             'NAME' => $params->fullName,
-            // 'LAST_NAME' => $params['nachname'],
-            'SOURCE_ID' => 'NEW',
-            'SOURCE_DESCRIPTION' => $params['beschreibung'],
+            'SOURCE_ID' => '3',
             'STATUS_ID' => 'NEW',
-            'COMMENTS' => '<a href="' . $link . '" targer="_blank">Fotobegehung.pdf</a>',
+            'COMMENTS' => '<a href="' . $link . '" target="_blank">'.$link.'</a>',
             'CURRENCY_ID' => 'EUR',
             'ASSIGNED_BY_ID' => '1',
             'CREATED_BY_ID' => '1',
@@ -107,11 +103,10 @@
             'DATE_MODIFY' => $today,
             'DATE_MODIFY' => $today,
             'UF_CRM_1457464089' => $today,
-            'UF_CRM_1461700550' => $params['bauobjektadress'],
-            'ADDRESS' => $params->location,
+            'UF_CRM_1461700550' => $params->location,
+            'ADDRESS' => $params->street,
             'ADDRESS_CITY' => $params->city,
             'ADDRESS_POSTAL_CODE' => $params->plz,
-            // 'ADDRESS_COUNTRY' => $params['land'],
             'PHONE' => array('0' => array("VALUE" => $params->phone, "VALUE_TYPE" => "WORK")),
             'EMAIL' => array('0' => array("VALUE" => $params->mail, "VALUE_TYPE" => "HOME")),
             ),
@@ -122,7 +117,7 @@
   }
   function add_lead($NewData) {
 
-    $user_email = $NewData['email'];
+    $user_email = $NewData->mail;
     $leadRecord = $this->get_all_leads($user_email);
     if (!isset($leadRecord['total'])) {
       //inset lead here
@@ -209,13 +204,5 @@ function call($method, $params) {
 }
 }
 $bitrix = new Bitrix_api;
-//how to call
-function save_lead()
-{
-	$bitrix = new Bitrix_api;
-	$res = $bitrix->save_code_to_local('akshdfkhaskdhf');
-	print_r($res);
-	die;
-}
 /* End of file bitrix_api.php */
-/* Location: ./bitrix.php */
+/* Location: ./bitrix_api.php */
