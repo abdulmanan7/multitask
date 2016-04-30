@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bitrix extends CI_Controller {
 	protected $accessToken;
-	protected $rawRequest;
-
 	protected $domain = "solarvent.bitrix24.de";
 	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
 	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
@@ -16,9 +14,6 @@ class Bitrix extends CI_Controller {
 	public function __construct() {
 
 		parent::__construct();
-		// $this->load->library('bitrix_api');
-		// $data2 = array('accessToken' => '');
-		// $this->load->library('bitrix24', $data2);
 		$this->load->model('utilities_model', 'utility');
 
 	}
@@ -29,24 +24,20 @@ class Bitrix extends CI_Controller {
 			$requestedCode = $this->input->get('code');
 			if (isset($requestedCode) && strlen($requestedCode) > 5) {
 				$authResponse = $this->get_access_token($requestedCode);
-				// $this->save_lead();
+				pr("Code Refresh Successfully time extended to 30 days");
 			} else {
 				$this->get_code();
 			}
-			// $this->load->view('bitrixTest', $data);
 		} else {
 			$requestedCode = $this->input->get('code');
 			if (isset($requestedCode)) {
 				$authResponse = $this->get_access_token($requestedCode);
-				//$refResponse = $this->refresh_token($authResponse['refresh_token']);
-				pr($authResponse);
+				pr("Code Refresh Successfully time extended to 30 days");
 			}
 			$data['refresh_code'] = $cache_data['refresh_code'];
 			$res = $this->refresh_token($cache_data['refresh_code']);
 			if (isset($res['access_token'])) {
-				//$addStatus = $this->add();
-				$leads = $this->get_all_leads();
-				pr($leads);
+				pr("Code Refresh Successfully time extended to 30 days");
 			} else {
 				$this->get_code();
 			}
@@ -92,6 +83,34 @@ class Bitrix extends CI_Controller {
 			return $query_data;
 		} else {
 			$error = "error occure! " . print_r($query_data);
+		}
+		return false;
+	}
+	function refresh_code($refresh_code = NULL) {
+		$cache_data = $this->utility->get_refresh_code();
+		$refresh_code = $cache_data['refresh_code'];
+		$params = array(
+			"grant_type" => "refresh_token",
+			"client_id" => $this->CLIENT_ID,
+			"client_secret" => $this->CLIENT_SECRET,
+			"redirect_uri" => $this->PATH,
+			"scope" => $this->SCOPE,
+			"refresh_token" => $refresh_code,
+		);
+
+		$path = "/oauth/token/";
+		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+		if (isset($query_data["access_token"])) {
+			//**************  save refresh code for next login
+			$refresh_code = $this->utility->save_refresh_code($query_data['refresh_token']);
+
+			//**************  assign the new recived refresh code to member
+			$this->accessToken = $query_data["access_token"];
+			// $res = $this->save_lead($lead_data);
+			pr("Code Refresh Successfully time extended to 30 days");
+
+		} else {
+			$this->get_code();
 		}
 		return false;
 	}
@@ -195,46 +214,6 @@ class Bitrix extends CI_Controller {
 		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
 		// return $this->executeRequest($url, $params);
 		return $this->query("POST", $url, $params);
-	}
-	protected function executeRequest($url, array $additionalParameters = array()) {
-		$additionalParameters['auth'] = $this->accessToken;
-		$retryableErrorCodes = array(
-			CURLE_COULDNT_RESOLVE_HOST,
-			CURLE_COULDNT_CONNECT,
-			CURLE_HTTP_NOT_FOUND,
-			CURLE_READ_ERROR,
-			CURLE_OPERATION_TIMEOUTED,
-			CURLE_HTTP_POST_ERROR,
-			CURLE_SSL_CONNECT_ERROR,
-		);
-
-		$curlOptions = array(
-			CURLOPT_RETURNTRANSFER => true,
-			CURLINFO_HEADER_OUT => true,
-			CURLOPT_VERBOSE => true,
-			CURLOPT_CONNECTTIMEOUT => 5,
-			CURLOPT_TIMEOUT => 5,
-			CURLOPT_POST => true,
-			CURLOPT_POSTFIELDS => http_build_query($additionalParameters),
-			CURLOPT_URL => $url,
-		);
-
-		$this->rawRequest = $curlOptions;
-		$curl = curl_init();
-		curl_setopt_array($curl, $curlOptions);
-
-		$curlResult = false;
-		$retriesCnt = 1;
-		while ($retriesCnt--) {
-			$curlResult = curl_exec($curl);
-			// handling network I/O errors
-			$this->requestInfo = curl_getinfo($curl);
-			curl_close($curl);
-			break;
-		}
-		// handling json_decode errors
-		$jsonResult = json_decode($curlResult, true);
-		return $jsonResult;
 	}
 }
 /* End of file Bitrix.php */
