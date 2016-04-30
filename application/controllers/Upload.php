@@ -3,7 +3,8 @@
 if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
-
+ini_set('post_max_size', '128M');
+ini_set('upload_max_filesize', '128M');
 class Upload extends CI_Controller {
 	private $uploadDir;
 	private $new_path;
