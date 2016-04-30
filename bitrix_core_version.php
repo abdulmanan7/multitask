@@ -23,6 +23,7 @@
   protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
   protected $SCOPE = "crm";
   protected $PROTOCOL = "https";
+  protected $atteachment_folder = "https://www.solarvent.de/kalkulator-angebot/offers";
   public function __construct($props = array()) {
     if (count($props) > 0) {
       $this->initialize($props);
@@ -83,7 +84,8 @@
     return false;
   }
   private function add($params) {
-    $link = $params->offerNr;
+    $link = $this->atteachment_folder."/".$params->offerNr.".pdf";
+    $linkName = $params->offerNr;
     $res = $this->refresh_token();
     if (isset($res['access_token'])) {
       $fullResult = $this->call(
@@ -93,9 +95,9 @@
           "fields" => array(
             'TITLE' => $params->fullName,
             'NAME' => $params->fullName,
-            'SOURCE_ID' => '3',
+            'SOURCE_ID' => '1',
             'STATUS_ID' => 'NEW',
-            'COMMENTS' => '<a href="' . $link . '" target="_blank">'.$link.'</a>',
+            'COMMENTS' => '<a href="' . $link . '" target="_blank">'.$linkName.'</a>',
             'CURRENCY_ID' => 'EUR',
             'ASSIGNED_BY_ID' => '1',
             'CREATED_BY_ID' => '1',
@@ -205,4 +207,4 @@ function call($method, $params) {
 }
 $bitrix = new Bitrix_api;
 /* End of file bitrix_api.php */
-/* Location: ./bitrix_api.php */
+/* Location: ./bitrix.php */
