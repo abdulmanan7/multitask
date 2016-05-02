@@ -3,14 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bitrix_api {
 	protected $ci;
-	protected $CRM_AUTH = FALSE;
-	protected $AUTH = FALSE;
-	protected $CRM_LOGIN = "abdul.manan.afridi@gmail.com";
-	protected $CRM_PASSWORD = "coray848@";
-	protected $CRM_HOST = "codeme2016.bitrix24.com";
-	protected $CRM_PORT = "443";
-	protected $CRM_PATH = "/crm/configs/import/lead.php";
-
 //******* rest api setting **********//
 	protected $accessToken;
 	protected $rawRequest;
@@ -105,7 +97,7 @@ class Bitrix_api {
 
 		$user_email = $NewData['email'];
 		$leadRecord = $this->get_all_leads($user_email);
-		if (!isset($leadRecord['total'])) {
+		if (isset($leadRecord['total']) && $leadRecord['total'] == 0) {
 			//inset lead here
 			$res = $this->add($NewData);
 			if (isset($res['result'])) {
@@ -149,53 +141,6 @@ class Bitrix_api {
 				)
 			);
 			return $fullResult;
-		}
-	}
-	function save_lead($leadData) {
-		if ($this->CRM_AUTH) {
-			$leadData['AUTH'] = $this->CRM_AUTH;
-		} else {
-			$leadData['LOGIN'] = $this->CRM_LOGIN;
-			$leadData['PASSWORD'] = $this->CRM_PASSWORD;
-		}
-
-		// open socket to CRM
-		$fp = fsockopen("ssl://" . $this->CRM_HOST, $this->CRM_PORT, $errno, $errstr, 30);
-		if ($fp) {
-			// prepare POST data
-			$strPostData = '';
-			foreach ($leadData as $key => $value) {
-				$strPostData .= ($strPostData == '' ? '' : '&') . $key . '=' . urlencode($value);
-			}
-
-			// prepare POST headers
-			$str = "POST " . $this->CRM_PATH . " HTTP/1.0\r\n";
-			$str .= "Host: " . $this->CRM_HOST . "\r\n";
-			$str .= "Content-Type: application/x-www-form-urlencoded\r\n";
-			$str .= "Content-Length: " . strlen($strPostData) . "\r\n";
-			$str .= "Connection: close\r\n\r\n";
-
-			$str .= $strPostData;
-
-			// send POST to CRM
-			fwrite($fp, $str);
-
-			// get CRM headers
-			$result = '';
-			while (!feof($fp)) {
-				$result .= fgets($fp, 128);
-			}
-			fclose($fp);
-
-			// cut response headers
-			$response = explode("\r\n\r\n", $result);
-
-			//$output = '<pre>'.print_r($response[1], 1).'</pre>';
-			//{'error':'201','ID':'6','error_message':'Lead has been added.','AUTH':'65498b98c545a3c3f49a9624654f2401'}
-			$out = str_replace("'", '"', $response[1]);
-			$this->save_log(json_decode($out), $leadData);
-		} else {
-			echo 'Connection Failed! ' . $errstr . ' (' . $errno . ')';
 		}
 	}
 	function save_log($params = '') {
