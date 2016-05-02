@@ -85,7 +85,7 @@ class Bitrix_api {
 						'ASSIGNED_BY_ID' => '1',
 						'CREATED_BY_ID' => '1',
 						'MODIFY_BY_ID' => '1',
-						'DATE_MODIFY' => $today,
+						'DATE_CREATE' => $today,
 						'DATE_MODIFY' => $today,
 						'UF_CRM_1457464089' => $today,
 						'UF_CRM_1461700550' => $params['bauobjektadress'],
