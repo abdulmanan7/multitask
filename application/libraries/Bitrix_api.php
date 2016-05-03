@@ -109,15 +109,18 @@ class Bitrix_api {
 		return true;
 	}
 	function get_all_leads($term) {
-		$fullResult = $this->call(
-			'crm.lead.list',
-			array(
-				'auth' => $this->accessToken,
-				'filter' => array("EMAIL" => $term),
-				//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-			)
-		);
-		return $fullResult;
+		$res = $this->refresh_token();
+		if (isset($res['access_token'])) {
+			$fullResult = $this->call(
+				'crm.lead.list',
+				array(
+					'auth' => $this->accessToken,
+					'filter' => array("EMAIL" => $term),
+					//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
+				)
+			);
+			return $fullResult;
+		}
 	}
 	function get_lead_fields($select = array()) {
 		$res = $this->refresh_token();
