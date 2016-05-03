@@ -56,10 +56,10 @@ date_default_timezone_set('UTC');
  */
 //define('ENVIRONMENT', ($_SERVER['HTTP_HOST'] == 'sajidshah.com') ? 'production' : 'development');
 // define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
-if ($_SERVER['SERVER_NAME'] == 'sajidshah.com') {
-	define('ENVIRONMENT', "testing");
-} elseif ($_SERVER['SERVER_NAME'] == 'www.solarvent.de') {
+if ($_SERVER['SERVER_NAME'] == 'www.fotobegehung.de') {
 	define('ENVIRONMENT', "production");
+} elseif ($_SERVER['SERVER_NAME'] == 'www.solarvent.de') {
+	define('ENVIRONMENT', "testing");
 } else {
 	define('ENVIRONMENT', "development");
 }
