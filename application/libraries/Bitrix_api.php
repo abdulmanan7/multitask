@@ -116,7 +116,7 @@ class Bitrix_api {
 			$old_link = $leadRecord['result'][0]['COMMENTS'];
 			$new_link = '<br><a href="' . $NewData['att_link'] . '" target="_blank">Fotobegehung.pdf</a>';
 			$updataData['COMMENTS'] = $old_link . $new_link;
-			$updataData['ID'] = $leadRecord['ID'];
+			$updataData['ID'] = $leadRecord['result'][0]['ID'];
 			$res = $this->update($updataData);
 		}
 		if (isset($res['result'])) {
