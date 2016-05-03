@@ -57,7 +57,6 @@ class Bitrix_api {
 	}
 	private function add($params = array()) {
 		$link = $params['att_link'];
-		$link_name = $params['vorname'] . "_" . $params['nachname'] . "_" . $att_id . ".pdf";
 		$today = date("d.m.Y");
 		$res = $this->refresh_token();
 		if (isset($res['access_token'])) {
@@ -93,20 +92,38 @@ class Bitrix_api {
 			return $fullResult;
 		}
 	}
+	public function update($pdata) {
+		$fullResult = $this->call(
+			'crm.lead.update',
+			array(
+				"auth" => $this->accessToken,
+				'id' => $pdata['ID'],
+				"fields" => array(
+					'SOURCE_ID' => '4',
+					'COMMENTS' => $pdata['COMMENTS'],
+				),
+			)
+		);
+		return $fullResult;
+	}
 	function add_lead($NewData) {
-
 		$user_email = $NewData['email'];
 		$leadRecord = $this->get_all_leads($user_email);
 		if (isset($leadRecord['total']) && $leadRecord['total'] == 0) {
 			//inset lead here
 			$res = $this->add($NewData);
-			if (isset($res['result'])) {
-				return true;
-			} else {
-				return false;
-			}
+		} else {
+			$old_link = $leadRecord['result'][0]['COMMENTS'];
+			$new_link = '<br><a href="' . $NewData['att_link'] . '" target="_blank">Fotobegehung.pdf</a>';
+			$updataData['COMMENTS'] = $old_link . $new_link;
+			$updataData['ID'] = $leadRecord['ID'];
+			$res = $this->update($updataData);
 		}
-		return true;
+		if (isset($res['result'])) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	function get_all_leads($term) {
 		$res = $this->refresh_token();
@@ -192,9 +209,7 @@ class Bitrix_api {
  * @return array
  */
 	function call($method, $params) {
-		// $params["auth"] = $this->accessToken;
 		$url = $this->PROTOCOL . "://" . $this->domain . "/rest/" . $method;
-		// return $this->executeRequest($url, $params);
 		return $this->query("POST", $url, $params);
 	}
 }
