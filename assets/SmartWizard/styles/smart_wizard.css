@@ -361,7 +361,7 @@ span.fileinput-button{
   .swMain ul.anchor li a {
   padding:2px;
   height:48px;
-  width:84px;
+  width:100%;
   padding-left: 0px;
   -moz-border-radius  : 3px;
   -webkit-border-radius: 3px;
@@ -374,7 +374,8 @@ span.fileinput-button{
 .swMain ul.anchor li {
      padding-left: 5px; 
      padding-right: 3px; 
-     margin-top: 10px
+     margin-top: 10px;
+     width:100%;
     }
 .fileinput-button{
     margin: 0;

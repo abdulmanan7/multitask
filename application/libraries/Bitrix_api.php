@@ -93,6 +93,7 @@ class Bitrix_api {
 		}
 	}
 	public function update($pdata) {
+		$today = date("d.m.Y");
 		$fullResult = $this->call(
 			'crm.lead.update',
 			array(
@@ -100,6 +101,8 @@ class Bitrix_api {
 				'id' => $pdata['ID'],
 				"fields" => array(
 					'SOURCE_ID' => '4',
+					'DATE_MODIFY' => $today,
+					'UF_CRM_1457464089' => $today,
 					'COMMENTS' => $pdata['COMMENTS'],
 				),
 			)

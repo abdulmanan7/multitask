@@ -10,7 +10,6 @@ class Pages extends CI_Controller {
 		$data["logo"] = base_url('assets/img/small_logo.jpg');
 		$this->load->view('frontend/pages/datenschut', $data);
 	}
-
 }
 
 /* End of file Pages.php */
