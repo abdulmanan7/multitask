@@ -5,6 +5,7 @@ class Bitrix_api {
 	protected $ci;
 //******* rest api setting **********//
 	protected $accessToken;
+	protected $today;
 	protected $rawRequest;
 	protected $domain = "solarvent.bitrix24.de";
 	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
@@ -20,6 +21,7 @@ class Bitrix_api {
 			$this->initialize($props);
 		}
 		$this->ci->load->model('utilities_model', 'utility');
+		$this->today = date("d.m.Y");
 	}
 	function initialize($config = array()) {
 		foreach ($config as $key => $val) {
@@ -89,6 +91,7 @@ class Bitrix_api {
 					),
 				)
 			);
+			$this->add_activity($fullResult);
 			return $fullResult;
 		}
 	}
@@ -107,8 +110,38 @@ class Bitrix_api {
 				),
 			)
 		);
+		$this->add_activity($pdata);
 		return $fullResult;
 	}
+	/**
+	 * Add a new activity to CRM
+	 * @param array $fields - array of fields
+	 * @link http://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_add.php
+	 * @return array
+	 */
+	public function add_activity($params) {
+		$fullResult = $this->call(
+			'crm.activity.add',
+			array(
+				"auth" => $this->accessToken,
+				"fields" => array(
+					'RESPONSIBLE_ID' => '1',
+					'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
+					'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
+					'OWNER_ID' => $params->ID,
+					'PRIORITY' => '1',
+					'CREATED' => $this->today,
+					'LAST_UPDATED' => $this->today,
+					'DEADLINE' => date("d.m.Y", strtotime("+1 days")),
+					"SE_TAG" => array(
+						"crm", "Fotobegehung",
+					),
+				),
+			)
+		);
+		return $fullResult;
+	}
+
 	function add_lead($NewData) {
 		$user_email = $NewData['email'];
 		$leadRecord = $this->get_all_leads($user_email);
