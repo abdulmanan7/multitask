@@ -18,7 +18,7 @@
 
 	<p ><?=$message?></p>
 <div class="action">
-	<a href="<?=base_url('fotobegehung');?>" class="btn btn-success pull-right">Go Back!</a>
+	<a href="https://www.solarvent.de" class="btn btn-success pull-right">weiter</a>
 </div>
 </div>
 </div>

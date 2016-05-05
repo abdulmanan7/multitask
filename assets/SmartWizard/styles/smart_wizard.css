@@ -407,4 +407,8 @@ body{
     /*margin-top: 49px;*/
     font-size: 15px;
 }
+.question-box {
+    border-radius: 6px;
+    padding: 20px !important;
+}
 }

@@ -535,14 +535,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
             </a></li>
 
   			</ul>
-
-
-
-
-
-
-
-      <div class="stepContainer" style="height: 389px;"><div id="step-1" class="content col-sm-12 FocusedStep" style="display: block; left: 0px;">
+      <div id="step-1">
             <h2 class="StepTitle">Heizungsraum der bestehenden Anlage</h2>
             <p class="step-desc">
               Heizkessel, Schornsteinanbindung, Rohrleitungen mit Pumpen/Mischer
@@ -561,7 +554,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div><div id="step-2" class="content col-sm-12" style="display: none;">
+	</div>        </div><div id="step-2">
             <h2 class="StepTitle">Schornstein</h2>
 <p class="step-desc">
   Außenansicht Wand mit Putztürchen, Foto damit man ggf. das Innenrohrmaterial erkennen kann - messen Sie bei dieser Gelegenheit den Innendurchmesser und teilen Sie diesen mit
@@ -581,7 +574,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
 	</div>
-        </div><div id="step-3" class="content col-sm-12" style="display: none;">
+        </div><div id="step-3">
             <h2 class="StepTitle">Brennstoff-Lagerraum </h2>
             <p class="step-desc">z.B. Heizöltankraum, gibt es Rohrleitungen an der Decke, wo sind ggf. Fenster</p>
             	<div class="dropZon col-md-12">
@@ -598,7 +591,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div><div id="step-4" class="content col-sm-12" style="display: none;">
+	</div>        </div><div id="step-4">
             <h2 class="StepTitle">Einbringhindernisse </h2>
             <p class="step-desc">
               Wo muss der Kessel, Pufferspeicher ggf. durch bzw. welche Treppen müssen überwunden werden. Teilen Sie uns jeweils das engste Durchgangsmaß mit sowie die Anzahl der Treppenstufen
@@ -617,7 +610,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div><div id="step-5" class="content col-sm-12" style="display: none;">
+	</div>        </div><div id="step-5">
             <h2 class="StepTitle">Montageort der Solaranlage</h2>
             <p class="step-desc">
               Flachdach, Schrägdach, gibt es Abschattungen?
@@ -636,7 +629,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div><div id="step-6" class="content col-sm-12" style="display: none;">
+	</div>        </div><div id="step-6">
             <h2 class="StepTitle">Gebäude, welches beheizt werden soll von außen</h2>
             <p class="step-desc">
               Außenansichten möglichst von allen Seiten
@@ -655,7 +648,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div><div id="step-7" class="content col-sm-12" style="display: none;">
+	</div>        </div><div id="step-7">
             <h2 class="StepTitle">Grundrisse von Ihrem Gebäude</h2>
             <p class="step-desc">
               z.B. Kellergeschoß mit Markierung Heizraum und Brennstofflager; Für die Solaranlage den Neigungswinkel, Himmelsrichtung, sowie die Dachfläche; Gebäudeschnitt wg. Ermittlung der Schornsteinhöhe sowie der Solarleitung. Alternativ können Sie diese Pläne auch einfach als PDF-Datei hochladen, sofern Ihnen diese bereits vorliegen.
@@ -674,7 +667,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		<div class="dragDrop">
 			<table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
 		</div>
-	</div>        </div></div><div class="actionBar"><div class="loader">Loading</div><a href="#" class="buttonNext" style="display: block;">weiter</a><a href="#" class="buttonPrevious buttonDisabled" style="display: none;">früher</a><span class="fileupload-process"></span><div class="col-xs-5  fileupload-progress fade"><div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div><div class="progress-extended">&nbsp;</div></div></div></div>
+	</div>        </div></div>
 <!-- End SmartWizard Content -->			<!-- The fileinput-button span is used to style the file input field as button -->
 			<div class="clearfix"></div>
 			<br>
@@ -852,4 +845,4 @@ $('body').on('change', '#womit', function(event) {
 <script src="assets/plugins/upload/js/cors/jquery.xdr-transport.js"></script>
 <![endif]-->
 
-<div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1366</span> x <span class="tooltipHeight" id="winHeight">728</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1366</span> x <span class="tooltipHeight" id="vpHeight">150</span></div></body></html>
+</body></html>

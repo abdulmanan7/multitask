@@ -17,6 +17,10 @@ class Fotobegehung extends CI_Controller {
 		$data["logo"] = base_url('assets/img/small_logo.jpg');
 		$this->load->view('frontend/order_form', $data);
 	}
+	public function test() {
+		// $data = $this->get_data();
+		$this->load->view('foto');
+	}
 	public function save() {
 		// load the view and saved it into $html variable
 		$vorname = $this->input->post('vorname');
@@ -154,7 +158,7 @@ class Fotobegehung extends CI_Controller {
 
 		$data["logo"] = base_url('assets/img/small_logo.jpg');
 		if ($message == 1) {
-			$data["message"] = set_message("Fehler beim E-Mail zu senden", 'error');
+			$data["message"] = set_message("Fehler beim senden der eMail. Bitte prüfen Sie Ihre eMail-Adresse.", 'error');
 		} else {
 			$data["message"] = set_message('Vielen Dank für Ihre Übermittlung Ihrer digitalen Fotobegehung. Wir melden uns in Kürze bei Ihnen.');
 		}
