@@ -161,6 +161,26 @@ class Bitrix extends CI_Controller {
 		}
 		return $fullResult;
 	}
+	public function get_activity_field() {
+		$res = $this->refresh_token($refresh_code);
+		$fullResult = $this->call(
+			'crm.activity.fields',
+			array(
+				'auth' => $this->accessToken,
+			)
+		);
+		pr($fullResult);
+	}
+	public function get_activities() {
+		$res = $this->refresh_token($refresh_code);
+		$fullResult = $this->call(
+			'crm.activity.list',
+			array(
+				'auth' => $this->accessToken,
+			)
+		);
+		pr($fullResult);
+	}
 	function get_lead_fields($select = array()) {
 		$cache_data = $this->utility->get_refresh_code();
 		$refresh_code = $cache_data['refresh_code'];
