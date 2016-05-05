@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
  */
 $route['bitrix/refresh_code.php'] = 'bitrix/refresh_code';
-$route['default_controller'] = 'planung';
+$route['fotobegehung.htm'] = 'fotobegehung';
+$route['fotobegehung.htm'] = 'fotobegehung/index';
+$route['default_controller'] = 'fotobegehung';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
