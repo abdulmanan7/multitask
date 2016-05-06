@@ -120,6 +120,8 @@ class Bitrix_api {
 	 * @return array
 	 */
 	public function add_activity($params) {
+		$date = new DateTime('+1 day');
+		$DEADLINE = $date->format('d.m.Y H:i:s');
 		$fullResult = $this->call(
 			'crm.activity.add',
 			array(
@@ -128,11 +130,13 @@ class Bitrix_api {
 					'RESPONSIBLE_ID' => '1',
 					'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
 					'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-					'OWNER_ID' => $params->ID,
+					'OWNER_ID' => $params['ID'],
+					'OWNER_TYPE_ID' => "1",
 					'PRIORITY' => '1',
 					'CREATED' => $this->today,
 					'LAST_UPDATED' => $this->today,
-					'DEADLINE' => date("d.m.Y", strtotime("+1 days")),
+					'START_TIME' => $this->today,
+					'DEADLINE' => $DEADLINE,
 					"SE_TAG" => array(
 						"crm", "Fotobegehung",
 					),
