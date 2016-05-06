@@ -393,12 +393,12 @@ span.fileinput-button{
 }
 body{
        margin: 0 !important; 
-       font-size: 16px !important;
+       font-size: 14px !important;
 }
 .form-control {
     height: 46px;
     padding: 1px 9px;
-    font-size: 20px;
+    font-size: 14px;
     }
     .container{
       width: 100%;
@@ -409,6 +409,6 @@ body{
 }
 .question-box {
     border-radius: 6px;
-    padding: 20px !important;
+    padding: 16px !important;
 }
 }
