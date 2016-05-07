@@ -4,6 +4,7 @@
 	<?php $this->load->view('frontend/modals/help');?>
 	<?php $this->load->view('frontend/modals/datenschutzbestimmungen');?>
 	<?php $this->load->view('frontend/modals/drag_drop_help');?>
+	<?php $this->load->view('frontend/modals/imprint');?>
 	<form id="fileupload" action="<?=base_url('fotobegehung/save')?>" method="POST" enctype="multipart/form-data">
 		<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 		<div class="col-xs-12 question-box effect7 col-md-10 col-md-offset-1">
@@ -260,6 +261,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			<p>
 			<a data-toggle="modal" href='#datenschutzbestimmungen'>Datenschutzbestimmungen - Fotobegehung
 				</a>
+				<a data-toggle="modal" href="#impressum" class="pull-right">-impressum</a>
 			</p>
 		</div>
 	</form>

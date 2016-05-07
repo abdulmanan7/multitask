@@ -19,7 +19,7 @@ class Fotobegehung extends CI_Controller {
 	}
 	public function test() {
 		// $data = $this->get_data();
-		$this->load->view('foto');
+		$this->load->view('fotobegehung');
 	}
 	public function save() {
 		// load the view and saved it into $html variable
