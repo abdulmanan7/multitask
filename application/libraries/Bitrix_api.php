@@ -140,6 +140,7 @@ class Bitrix_api {
 					'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
 					'OWNER_ID' => $params->ID,
 					'OWNER_TYPE_ID' => "1",
+					'TYPE_ID' => "2",
 					'PRIORITY' => '1',
 					'CREATED' => $this->today,
 					'LAST_UPDATED' => $this->today,
