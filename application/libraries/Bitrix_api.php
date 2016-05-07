@@ -7,22 +7,22 @@ class Bitrix_api {
 	protected $accessToken;
 	protected $today;
 	protected $rawRequest;
-	// protected $domain = "solarvent.bitrix24.de";
-	// protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
-	// protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
-	// protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
-	// protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
-	// protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
-	// protected $SCOPE = "crm";
-	// protected $PROTOCOL = "https";
-		protected $domain = "codeme.bitrix24.com";
-	protected $CLIENT_ID = "local.5714c7a65679d7.55404378";
-	protected $CLIENT_SECRET = "a04cc260b5c612c48c19bf1b1ed5cc4e";
-	protected $REDIRECT_URI = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	protected $PATH = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	protected $MEMBER_ID = "c0728b02e02abde3190db0e96a5096ae";
+	protected $domain = "solarvent.bitrix24.de";
+	protected $CLIENT_ID = "local.571a7f6ff11954.35288017";
+	protected $CLIENT_SECRET = "b84c0178f2ea88b2d7d18fcbebf18b4c";
+	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
+	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
+	// 	protected $domain = "codeme.bitrix24.com";
+	// protected $CLIENT_ID = "local.5714c7a65679d7.55404378";
+	// protected $CLIENT_SECRET = "a04cc260b5c612c48c19bf1b1ed5cc4e";
+	// protected $REDIRECT_URI = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
+	// protected $PATH = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
+	// protected $MEMBER_ID = "c0728b02e02abde3190db0e96a5096ae";
+	// protected $SCOPE = "crm";
+	// protected $PROTOCOL = "https";
 	public function __construct($props = array()) {
 		$this->ci = &get_instance();
 		if (count($props) > 0) {
