@@ -23,10 +23,9 @@
 			<h4 class="table-head kill-p-b">Ihre persönliche Fotobegehung</h4>
 			</div>
 			<span class="top-desc">
-				Wir planen sehr gerne Ihre neue Heizungsanlage. Bitte füllen Sie das Formular aus. Am Ende der Seite haben Sie die Möglichkeit, Schritt für Schritt die für die Planung notwendigen Bilder, Zeichnungen oder auch Videos zur Verfügung zu stellen.<br><br>
-Sie können damit Ihre Unterlagen sehr schnell und bequem direkt von Ihrem Smartphone, Tablet oder PC zu uns übertragen. Hierdurch ist es uns möglich, Ihr Objekt virtuell zu „besichtigen“, ohne dass jemand vor Ort kommen muss.<br><br>
+				Wir planen sehr gerne Ihre neue Heizungsanlage. Bitte füllen Sie das Formular aus. Am Ende der Seite haben Sie die Möglichkeit, Schritt für Schritt die für die Planung notwendigen Bilder, Zeichnungen oder auch Videos zur Verfügung zu stellen.<br>
+Sie können damit Ihre Unterlagen sehr schnell und bequem direkt von Ihrem Smartphone, Tablet oder PC zu uns übertragen. Hierdurch ist es uns möglich, Ihr Objekt virtuell zu „besichtigen“, ohne dass jemand vor Ort kommen muss.<br>
 Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf Ihre neue SOLARvent Pelletheizung.</strong><br>
-
 				<a data-toggle="modal" href='#mdlhelp'>Bei Fragen stehen wir gerne jederzeit zur Verfügung.</a>
 			</span>
 			<p align="left" class="subheading">Erfassung Ihrer Kundendaten</p>

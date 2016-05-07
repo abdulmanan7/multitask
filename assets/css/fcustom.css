@@ -116,7 +116,7 @@
 			font-weight:bold;
   }
   .table-head{
-   font-size: 26px;
+   font-size: 21px;
 }
 
 * { margin: 0; padding: 0; }
@@ -149,7 +149,7 @@ table{ border: none }
 	text-decoration: underline;
 	font-weight: bold;
 	font-size: 14px;
-	padding: 20px 0 0;
+	padding: 5px 0 0;
 }
 .content {
 	/*width: 845px;*/

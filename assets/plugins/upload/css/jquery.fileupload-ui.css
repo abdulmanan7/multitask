@@ -45,7 +45,6 @@
   .files .name {
     width: 80px;
     word-wrap: break-word;
-    display: none;
   }.files .size {
     display: none;
   }
