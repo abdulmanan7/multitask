@@ -358,6 +358,11 @@ span.fileinput-button{
 }
 }
 @media (max-width: 650px) {
+  .table-head{
+    display: none;
+  }.question-box{
+    overflow: hidden;
+  }
   .swMain ul.anchor li a {
   padding:2px;
   height:48px;

@@ -105,23 +105,23 @@ if (!function_exists('set_message')) {
 		switch ($type) {
 		case "error":
 			return '<div class="alert alert-danger"><i class="fa fa-times-circle fa-lg"></i>
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . $msg . '</div>';
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' . $msg . '</div>';
 			break;
 		case "success":
 			return '<div class="alert alert-success"><i class="fa fa-check-circle fa-lg"></i>
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . $msg . '</div>';
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' . $msg . '</div>';
 			break;
 		case "warning":
 			return '<div class="alert alert-warning"><i class="fa fa-warning fa-lg"></i>
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . $msg . '</div>';
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' . $msg . '</div>';
 			break;
 		case "info":
 			return '<div class="alert alert-info"><i class="fa fa fa-exclamation-circle fa-lg"></i>
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . $msg . '</div>';
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' . $msg . '</div>';
 			break;
 		default:
 			return '<div class="alert-notify"><i class="icon-foursquare"></i>
-											<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . $msg . '</div>';
+											<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>' . $msg . '</div>';
 
 		}
 	}
@@ -137,56 +137,6 @@ if (!function_exists('pr')) {
 		echo "</pre>";
 	}
 }
-if (!function_exists('get_field')) {
-	function get_field($field, $data = array()) {
-		switch ($field) {
-		case "email":
-			return array(
-				'name' => 'u_email',
-				'type' => 'text',
-				'maxlength' => '50',
-				'class' => 'form-control',
-				'value' => set_value('e_email'),
-				'placeholder' => "Enter your Email Address",
-			);
-
-			break;
-		case "password":
-			return array(
-				'name' => 'u_pwd',
-				'type' => 'password',
-				'maxlength' => '50',
-				'class' => 'form-control',
-				'id' => 'pwd',
-				'placeholder' => "Enter your Password",
-			);
-			break;
-		case "custom":
-			if (count($data)) {
-				$placeholder = (isset($data['placeholder'])) ? $data['placeholder'] : 'Enter you text here';
-				$length = (isset($data['length'])) ? $data['length'] : '50';
-				$id = (isset($data['id'])) ? $data['id'] : '';
-				return array(
-					'name' => $data['fieldName'],
-					'type' => 'text',
-					'maxlength' => $length,
-					'id' => $id,
-					'class' => 'form-control',
-					'placeholder' => $placeholder,
-				);
-			}
-			break;
-		default:
-			return array(
-				'name' => 'textfiled',
-				'type' => 'text',
-				'maxlength' => '50',
-				'class' => 'form-control',
-				'placeholder' => "Enter your text",
-			);
-		}
-	}
-}
 if (!function_exists('get_domain')) {
 	function get_domain() {
 		$CI = &get_instance();
@@ -198,53 +148,14 @@ if (!function_exists('add_url')) {
 		return anchor(base_url($url), 'add product', "class='btn btn-success btn-xs'");
 	}
 }
-// if (!function_exists('get_cur_dec')) {
-// 	function get_cur_dec() {
-// 		$CI = &get_instance();
-// 		$CI->load->model('currency_model');
-// 		$dec_point = $CI->currency_model->get_default_currency('decimal_place');
-// 		round($dec_point);
-// 		return $dec_point;
-// 	}
-// }
+
 if (!function_exists('floatFormat')) {
 	function floatFormat($val, $dec = NULL) {
 		$dec = (!$dec) ? get_cur_dec() : $dec;
 		return number_format((float) $val, $dec, '.', ',');
 	}
 }
-if (!function_exists('format_price')) {
-	function format_price($val, $curency_id = NULL, $left_only = FALSE) {
-		$CI = &get_instance();
-		$CI->load->model('currency_model');
-		if ($curency_id) {
-			$Result = $CI->currency_model->getcurrency($curency_id);
-			$dec_place = round($Result['decimal_place']);
-			$value = number_format((float) $val, $dec_place, '.', ',');
-			if ($left_only) {
-				return $Result['symbol_left'] . " " . $value;
-			}
-			return $Result['symbol_left'] . " " . $value . " " . $Result['symbol_right'];
-		} else {
-			$Result = $CI->currency_model->get_default_currency();
-			$dec_place = round($Result['decimal_place']);
-			$value = number_format((float) $val, $dec_place, '.', ',');
-			if ($left_only) {
-				return $Result['symbol_left'] . " " . $value;
-			}
-			return $Result['symbol_left'] . " " . $value . " " . $Result['symbol_right'];
-		}
-	}
-}
-// if (!function_exists('validateProduct')) {
-// 	function validateProduct($product_id, $stock_entry = FALSE, $company_id = NULL) {
-// 		if ($product_id == '0') {return FALSE;}
-// 		$CI = &get_instance();
-// 		$CI->load->model('products_model');
-// 		$Result = $CI->products_model->validate_product($product_id);
-// 		return $Result;
-// 	}
-// }
+
 if (!function_exists('clean_dir')) {
 	function clean_dir($path) {
 		$files = glob($path); // get all file names
@@ -257,24 +168,7 @@ if (!function_exists('clean_dir')) {
 		}
 	}
 }
-// if (!function_exists('toArray')) {
-// 	function toArray($obj) {
-// 		if (is_object($obj)) {
-// 			$obj = (array) $obj;
-// 		}
 
-// 		if (is_array($obj)) {
-// 			$new = array();
-// 			foreach ($obj as $key => $val) {
-// 				$new[$key] = toArray($val);
-// 			}
-// 		} else {
-// 			$new = $obj;
-// 		}
-
-// 		return $new;
-// 	}
-// }
 if (!function_exists('esc')) {
 	function esc($val, $arr = FALSE) {
 		if (is_array($val)) {
@@ -355,26 +249,3 @@ if (!function_exists('is_valid_id')) {
 		return (bool) TRUE;
 	}
 }
-// if (!function_exists("request_uri")) {
-// 	function request_uri() {
-
-// 		$protocol = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-// 		$base_url = $protocol . "://" . $_SERVER['HTTP_HOST'];
-// 		$complete_url = $base_url . $_SERVER["REQUEST_URI"];
-
-// 		return $complete_url;
-
-// 	}
-// }
-// if (!function_exists("check_subscription")) {
-// 	function check_subscription($pakage_id, $controller) {
-// 		$ci = &get_instance();
-// 		$ci->load->library('subscriber');
-// 		$paid = $ci->subscriber->paid_subscriber($pakage_id);
-// 		if (!$paid) {
-// 			set_flash('you are using free version ,you cannot use <b>' . $controller . '</b> subscribe below for full version.', 'warning');
-// 			redirect('customer_care/not_authorize', 'refresh');
-// 		}
-
-// 	}
-// }
