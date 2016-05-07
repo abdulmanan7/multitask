@@ -146,9 +146,9 @@ class Bitrix_api {
 					'LAST_UPDATED' => $this->today,
 					'START_TIME' => $this->today,
 					'DEADLINE' => $DEADLINE,
-					"TAG" => array(
-						"crm", "Fotobegehung",
-					),
+					// "TAG" => array(
+					// 	"crm", "Fotobegehung",
+					// ),
 				),
 			)
 		);
