@@ -136,17 +136,17 @@ class Bitrix_api {
 				"auth" => $this->accessToken,
 				"fields" => array(
 					'RESPONSIBLE_ID' => '1',
-					'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
 					'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
 					'OWNER_ID' => $params->ID,
 					'OWNER_TYPE_ID' => "1",
 					'TYPE_ID' => "2",
 					'PRIORITY' => '1',
+					'COMPLETED' => 'N',
 					'CREATED' => $this->today,
 					'LAST_UPDATED' => $this->today,
 					'START_TIME' => $this->today,
 					'DEADLINE' => $DEADLINE,
-					"SE_TAG" => array(
+					"TAG" => array(
 						"crm", "Fotobegehung",
 					),
 				),

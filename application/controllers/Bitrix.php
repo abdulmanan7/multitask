@@ -140,17 +140,17 @@ class Bitrix extends CI_Controller {
 			$error = "error occure! " . print_r($query_data, 1);
 		}
 	}
-	function get_all_leads($term) {
+	function get_all_leads($term = null) {
 		$cache_data = $this->utility->get_refresh_code();
 		$refresh_code = $cache_data['refresh_code'];
 		$res = $this->refresh_token($refresh_code);
+		$post_data = array('auth' => $this->accessToken);
+		if ($term) {
+			$post_data['EMAIL']=$term;
+		}
 		$fullResult = $this->call(
 			'crm.lead.list',
-			array(
-				'auth' => $this->accessToken,
-				'filter' => array("EMAIL" => $term),
-				//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-			)
+			$post_data
 		);
 		if ($fullResult['total']) {
 			echo "not empty";
