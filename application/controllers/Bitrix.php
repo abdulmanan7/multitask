@@ -181,6 +181,17 @@ class Bitrix extends CI_Controller {
 		);
 		pr($fullResult);
 	}
+	public function get_enum($type="activitytype") {
+		$method = 'crm.enum.'.$type;
+		$res = $this->refresh_token($refresh_code);
+		$fullResult = $this->call(
+			$method,
+			array(
+				'auth' => $this->accessToken,
+			)
+		);
+		pr($fullResult);
+	}
 	function get_lead_fields($select = array()) {
 		$cache_data = $this->utility->get_refresh_code();
 		$refresh_code = $cache_data['refresh_code'];
