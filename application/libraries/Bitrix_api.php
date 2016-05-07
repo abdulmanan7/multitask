@@ -99,7 +99,7 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($fullResult);
+			$this->add_activity($fullResult,$params['telefon']);
 			return $fullResult;
 		}
 	}
@@ -127,7 +127,8 @@ class Bitrix_api {
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_add.php
 	 * @return array
 	 */
-	public function add_activity($params) {
+	public function add_activity($params,$phone=NULL) {
+		$phone = $phone?$phone:$params['telefon'];
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
 		$fullResult = $this->call(
@@ -141,11 +142,11 @@ class Bitrix_api {
 					'OWNER_TYPE_ID' => "1",
 					'TYPE_ID' => "2",
 					'PRIORITY' => '1',
-					'COMPLETED' => 'N',
 					'CREATED' => $this->today,
 					'LAST_UPDATED' => $this->today,
 					'START_TIME' => $this->today,
 					'DEADLINE' => $DEADLINE,
+					"COMMUNICATIONS"=> array('VALUE'=>$phone),
 					// "TAG" => array(
 					// 	"crm", "Fotobegehung",
 					// ),
