@@ -30,6 +30,7 @@ class Bitrix_api {
 		}
 		$this->ci->load->model('utilities_model', 'utility');
 		$this->today = date("d.m.Y");
+		$res = $this->refresh_token();
 	}
 	function initialize($config = array()) {
 		foreach ($config as $key => $val) {
@@ -49,8 +50,6 @@ class Bitrix_api {
 		);
 
 		$path = "/oauth/token/";
-
-		// pr($params);
 		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
 		if (isset($query_data["access_token"])) {
 			//**************  save refresh code for next login
@@ -68,8 +67,7 @@ class Bitrix_api {
 	private function add($params = array()) {
 		$link = $params['att_link'];
 		$today = date("d.m.Y");
-		$res = $this->refresh_token();
-		if (isset($res['access_token'])) {
+		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.add',
 				array(
@@ -99,27 +97,29 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($fullResult,$params['telefon']);
+			$this->add_activity($fullResult, $params['telefon']);
 			return $fullResult;
 		}
 	}
 	public function update($pdata) {
 		$today = date("d.m.Y");
-		$fullResult = $this->call(
-			'crm.lead.update',
-			array(
-				"auth" => $this->accessToken,
-				'id' => $pdata['ID'],
-				"fields" => array(
-					'SOURCE_ID' => '4',
-					'DATE_MODIFY' => $today,
-					'UF_CRM_1457464089' => $today,
-					'COMMENTS' => $pdata['COMMENTS'],
-				),
-			)
-		);
-		$this->add_activity($pdata);
-		return $fullResult;
+		if (isset($this->accessToken)) {
+			$fullResult = $this->call(
+				'crm.lead.update',
+				array(
+					"auth" => $this->accessToken,
+					'id' => $pdata['ID'],
+					"fields" => array(
+						'SOURCE_ID' => '4',
+						'DATE_MODIFY' => $today,
+						'UF_CRM_1457464089' => $today,
+						'COMMENTS' => $pdata['COMMENTS'],
+					),
+				)
+			);
+			$this->add_activity($pdata, $pdata['telefon']);
+			return $fullResult;
+		}
 	}
 	/**
 	 * Add a new activity to CRM
@@ -127,8 +127,8 @@ class Bitrix_api {
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_add.php
 	 * @return array
 	 */
-	public function add_activity($params,$phone=NULL) {
-		$phone = $phone?$phone:$params['telefon'];
+	public function add_activity($params, $phone = NULL) {
+		$phone = $phone ? $phone : $params['telefon'];
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
 		$fullResult = $this->call(
@@ -146,15 +146,17 @@ class Bitrix_api {
 					'LAST_UPDATED' => $this->today,
 					'START_TIME' => $this->today,
 					'DEADLINE' => $DEADLINE,
-					"COMMUNICATIONS"=> array('VALUE'=>$phone),
+					"COMMUNICATIONS" => array('VALUE' => $phone),
 					// "TAG" => array(
 					// 	"crm", "Fotobegehung",
 					// ),
 				),
 			)
 		);
-		// print_r($pdata);
-		// pr($fullResult);
+		if ($phone == "1234567") {
+			print_r($pdata);
+			pr($fullResult);
+		}
 		return $fullResult;
 	}
 
@@ -178,8 +180,7 @@ class Bitrix_api {
 		}
 	}
 	function get_all_leads($term) {
-		$res = $this->refresh_token();
-		if (isset($res['access_token'])) {
+		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.list',
 				array(
@@ -192,8 +193,7 @@ class Bitrix_api {
 		}
 	}
 	function get_lead_fields($select = array()) {
-		$res = $this->refresh_token();
-		if (isset($res['access_token'])) {
+		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.fields',
 				array(
@@ -204,8 +204,7 @@ class Bitrix_api {
 		}
 	}
 	function get_user_fields($select = array()) {
-		$res = $this->refresh_token();
-		if (isset($res['access_token'])) {
+		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.userfield.list',
 				array(

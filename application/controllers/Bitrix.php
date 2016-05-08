@@ -141,12 +141,10 @@ class Bitrix extends CI_Controller {
 		}
 	}
 	function get_all_leads($term = null) {
-		$cache_data = $this->utility->get_refresh_code();
-		$refresh_code = $cache_data['refresh_code'];
-		$res = $this->refresh_token($refresh_code);
+		$res = $this->refresh_token();
 		$post_data = array('auth' => $this->accessToken);
 		if ($term) {
-			$post_data['EMAIL']=$term;
+			$post_data['EMAIL'] = $term;
 		}
 		$fullResult = $this->call(
 			'crm.lead.list',
@@ -162,7 +160,7 @@ class Bitrix extends CI_Controller {
 		return $fullResult;
 	}
 	public function get_activity_field() {
-		$res = $this->refresh_token($refresh_code);
+		$res = $this->refresh_token();
 		$fullResult = $this->call(
 			'crm.activity.fields',
 			array(
@@ -172,7 +170,7 @@ class Bitrix extends CI_Controller {
 		pr($fullResult);
 	}
 	public function get_activities() {
-		$res = $this->refresh_token($refresh_code);
+		$res = $this->refresh_token();
 		$fullResult = $this->call(
 			'crm.activity.list',
 			array(
@@ -181,9 +179,9 @@ class Bitrix extends CI_Controller {
 		);
 		pr($fullResult);
 	}
-	public function get_enum($type="activitytype") {
-		$method = 'crm.enum.'.$type;
-		$res = $this->refresh_token($refresh_code);
+	public function get_enum($type = "activitytype") {
+		$method = 'crm.enum.' . $type;
+		$res = $this->refresh_token();
 		$fullResult = $this->call(
 			$method,
 			array(
@@ -193,9 +191,7 @@ class Bitrix extends CI_Controller {
 		pr($fullResult);
 	}
 	function get_lead_fields($select = array()) {
-		$cache_data = $this->utility->get_refresh_code();
-		$refresh_code = $cache_data['refresh_code'];
-		$res = $this->refresh_token($refresh_code);
+		$res = $this->refresh_token();
 		$fullResult = $this->call(
 			'crm.lead.fields',
 			array(
@@ -204,12 +200,10 @@ class Bitrix extends CI_Controller {
 		);
 		pr($fullResult);
 	}
-	function get_user_fields($select = array()) {
-		$cache_data = $this->utility->get_refresh_code();
-		$refresh_code = $cache_data['refresh_code'];
+	function get_fields($method) {
 		$res = $this->refresh_token($refresh_code);
 		$fullResult = $this->call(
-			'crm.lead.userfield.list',
+			$method,
 			array(
 				'auth' => $this->accessToken,
 			)
