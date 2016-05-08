@@ -127,6 +127,7 @@ class Fotobegehung extends CI_Controller {
 		$this->email->attach($att_path);
 		$this->email->set_mailtype("html");
 		$this->email->message($message);
+		//save lead before email is send
 		$this->save_lead($pdata, $att_id);
 		if ($this->email->send()) {
 			redirect('fotobegehung/success/0', 'refresh');
