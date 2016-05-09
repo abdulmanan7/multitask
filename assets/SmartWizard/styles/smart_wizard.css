@@ -416,4 +416,8 @@ body{
     border-radius: 6px;
     padding: 16px !important;
 }
+.progress {
+    height: 14px !important;
+    margin-bottom: 0px !important;
+}
 }
