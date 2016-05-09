@@ -677,9 +677,11 @@ font-weight: 200 !important;
 @media (max-width: 650px) {
   .table-head{
     display: none;
-    margin-bottom: 5px;
   }.question-box{
     overflow: hidden;
+  }
+  .top-head{
+    margin-bottom: 5px;
   }
   .subheading{
   	margin-bottom: 0
