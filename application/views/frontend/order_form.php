@@ -261,7 +261,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			<p>
 			<a data-toggle="modal" href='#datenschutzbestimmungen'>Datenschutzbestimmungen - Fotobegehung
 				</a>
-				<a data-toggle="modal" href="#impressum" class="pull-right">-impressum</a>
+				<a data-toggle="modal" href="#impressum" class="pull-right">Impressum</a>
 			</p>
 		</div>
 	</form>

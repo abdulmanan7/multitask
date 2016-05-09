@@ -243,7 +243,7 @@ Datei auswählen, auf das Feld ziehen und loslassen.
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Imprint</h4>
+            <h4 class="modal-title" id="myModalLabel">Impressum</h4>
           </div>
           <div class="modal-body">
 
@@ -702,7 +702,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			<p>
 			<a data-toggle="modal" href="#datenschutzbestimmungen">Datenschutzbestimmungen - Fotobegehung
 				</a>
-			<a data-toggle="modal" href="#impressum" class="pull-right">-impressum</a>
+			<a data-toggle="modal" href="#impressum" class="pull-right impressum">Impressum</a>
 			</p>
 		</div>
 	</form>
