@@ -684,4 +684,7 @@ font-weight: 200 !important;
   .subheading{
   	margin-bottom: 0
   }
+  .form-group{
+  	margin-bottom: 0
+  }
 }
