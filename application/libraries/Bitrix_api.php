@@ -166,7 +166,7 @@ class Bitrix_api {
 			$new_link = '<br><a href="' . $NewData['att_link'] . '" target="_blank">Fotobegehung.pdf</a>';
 			$updataData['COMMENTS'] = $old_link . $new_link;
 			$updataData['ID'] = $leadRecord['result'][0]['ID'];
-			$updataData['SOURCE_ID'] = $leadRecord['result'][0]['SOURCE_ID']=="3":"3":"4";
+			$updataData['SOURCE_ID'] = $leadRecord['result'][0]['SOURCE_ID'] == "3" ? "3" : "4";
 			$res = $this->update_lead($updataData, $NewData['telefon']);
 		}
 		if (isset($res['result'])) {
