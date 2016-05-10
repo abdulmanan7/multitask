@@ -117,7 +117,7 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($pdata, $phone);
+			$this->add_activity($pdata['ID'], $phone);
 			return $fullResult;
 		}
 	}
@@ -127,8 +127,8 @@ class Bitrix_api {
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_add.php
 	 * @return array
 	 */
-	private function add_activity($params, $phone = NULL) {
-		$phone = $phone ? $phone : $params['telefon'];
+	private function add_activity($lead_id, $phone = NULL) {
+		pr($lead_id);
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
 		$post_data = array(
@@ -136,7 +136,7 @@ class Bitrix_api {
 			"fields" => array(
 				'RESPONSIBLE_ID' => '1',
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-				'OWNER_ID' => $params['ID'],
+				'OWNER_ID' => $lead_id,
 				'OWNER_TYPE_ID' => "1",
 				'TYPE_ID' => "3",
 				'PRIORITY' => '1',
