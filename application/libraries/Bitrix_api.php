@@ -133,17 +133,32 @@ class Bitrix_api {
 		$post_data = array(
 			"auth" => $this->accessToken,
 			"fields" => array(
-				'RESPONSIBLE_ID' => '1',
+				"OWNER_ID" => $lead_id,
+				"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
+				"TYPE_ID" => 4, // see crm.enum.activitytype
+				"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-				'OWNER_ID' => $lead_id,
-				'OWNER_TYPE_ID' => "1",
-				'TYPE_ID' => "3",
-				'PRIORITY' => '1',
-				'CREATED' => $this->today,
-				'LAST_UPDATED' => $this->today,
-				'START_TIME' => $this->today,
-				'END_TIME' => $this->today,
+				"START_TIME" => $this->today,
+				"END_TIME" => $this->today,
+				"COMPLETED" => "N",
+				"PRIORITY" => 3, // see crm.enum.activitypriority
+				"RESPONSIBLE_ID" => 1,
 				'DEADLINE' => $DEADLINE,
+				"AUTHOR_ID" => 8,
+
+				// "OWNER_ID" => $lead_id,
+				// "OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
+				// "TYPE_ID" => 3, // see crm.enum.activitytype
+				// "COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
+				// 'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
+				// "START_TIME" => $this->today,
+				// "END_TIME" => $this->today,
+				// "COMPLETED" => "N",
+				// "PRIORITY" => 3, // see crm.enum.activitypriority
+				// "RESPONSIBLE_ID" => 1,
+				// "DESCRIPTION" => "Important call",
+				// "DESCRIPTION_TYPE" => 3, // see crm.enum.contenttype
+				// "DIRECTION" => 2, // see crm.enum.activitydirection
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);

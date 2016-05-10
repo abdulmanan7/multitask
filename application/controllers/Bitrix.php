@@ -201,7 +201,7 @@ class Bitrix extends CI_Controller {
 		pr($fullResult);
 	}
 	function get_fields($method) {
-		$res = $this->refresh_token($refresh_code);
+		$res = $this->refresh_token();
 		$fullResult = $this->call(
 			$method,
 			array(
