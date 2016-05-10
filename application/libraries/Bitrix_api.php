@@ -110,7 +110,7 @@ class Bitrix_api {
 					"auth" => $this->accessToken,
 					'id' => $pdata['ID'],
 					"fields" => array(
-						'SOURCE_ID' => '4',
+						'SOURCE_ID' => $params['SOURCE_ID'],
 						'DATE_MODIFY' => $today,
 						'UF_CRM_1457464089' => $today,
 						'COMMENTS' => $pdata['COMMENTS'],
@@ -138,8 +138,6 @@ class Bitrix_api {
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
 				'OWNER_ID' => $params['ID'],
 				'OWNER_TYPE_ID' => "1",
-				'AUTHOR_ID' => "1",
-				'EDITOR_ID' => "1",
 				'TYPE_ID' => "3",
 				'PRIORITY' => '1',
 				'CREATED' => $this->today,
@@ -168,6 +166,7 @@ class Bitrix_api {
 			$new_link = '<br><a href="' . $NewData['att_link'] . '" target="_blank">Fotobegehung.pdf</a>';
 			$updataData['COMMENTS'] = $old_link . $new_link;
 			$updataData['ID'] = $leadRecord['result'][0]['ID'];
+			$updataData['SOURCE_ID'] = $leadRecord['result'][0]['SOURCE_ID']=="3":"3":"4";
 			$res = $this->update_lead($updataData, $NewData['telefon']);
 		}
 		if (isset($res['result'])) {
