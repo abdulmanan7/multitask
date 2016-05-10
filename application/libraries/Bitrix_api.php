@@ -142,6 +142,7 @@ class Bitrix_api {
 				'CREATED' => $this->today,
 				'LAST_UPDATED' => $this->today,
 				'START_TIME' => $this->today,
+				'END_TIME' => $this->today,
 				'DEADLINE' => $DEADLINE,
 			),
 		);
