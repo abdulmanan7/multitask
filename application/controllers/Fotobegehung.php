@@ -53,7 +53,7 @@ class Fotobegehung extends CI_Controller {
 
 				$images = $data['image'];
 				$count = 0;
-				$tr = '';
+				$tr = array();
 				$index = 0;
 				foreach ($images as $key => $val) {
 					if (count($tr[$index]) == 2) {
@@ -74,7 +74,7 @@ class Fotobegehung extends CI_Controller {
 		$data = $this->att_email->get($att_id);
 		$images = $this->att_email->get_detail($att_id);
 		$count = 0;
-		$tr = "";
+		$tr = array();
 		$index = 0;
 		if (!is_array_empty($images)) {
 			foreach ($images as $key => $val) {

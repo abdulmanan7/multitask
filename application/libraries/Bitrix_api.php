@@ -101,7 +101,7 @@ class Bitrix_api {
 			return $fullResult;
 		}
 	}
-	public function update($pdata) {
+	private function update_lead($pdata, $phone = NULL) {
 		$today = date("d.m.Y");
 		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
@@ -117,7 +117,7 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($pdata, $pdata['telefon']);
+			$this->add_activity($pdata, $phone);
 			return $fullResult;
 		}
 	}
@@ -127,38 +127,37 @@ class Bitrix_api {
 	 * @link http://dev.1c-bitrix.ru/rest_help/crm/rest_activity/crm_activity_add.php
 	 * @return array
 	 */
-	public function add_activity($params, $phone = NULL) {
+	private function add_activity($params, $phone = NULL) {
 		$phone = $phone ? $phone : $params['telefon'];
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
-		$fullResult = $this->call(
-			'crm.activity.add',
-			array(
-				"auth" => $this->accessToken,
-				"fields" => array(
-					'RESPONSIBLE_ID' => '1',
-					'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-					'OWNER_ID' => $params->ID,
-					'OWNER_TYPE_ID' => "1",
-					'AUTHOR_ID' => "1",
-					'EDITOR_ID' => "1",
-					'TYPE_ID' => "3",
-					'PRIORITY' => '1',
-					'CREATED' => $this->today,
-					'LAST_UPDATED' => $this->today,
-					'START_TIME' => $this->today,
-					'DEADLINE' => $DEADLINE,
-				),
-			)
+		$post_data = array(
+			"auth" => $this->accessToken,
+			"fields" => array(
+				'RESPONSIBLE_ID' => '1',
+				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
+				'OWNER_ID' => $params->ID,
+				'OWNER_TYPE_ID' => "1",
+				'AUTHOR_ID' => "1",
+				'EDITOR_ID' => "1",
+				'TYPE_ID' => "3",
+				'PRIORITY' => '1',
+				'CREATED' => $this->today,
+				'LAST_UPDATED' => $this->today,
+				'START_TIME' => $this->today,
+				'DEADLINE' => $DEADLINE,
+			),
 		);
+		$fullResult = $this->call('crm.activity.add', $post_data);
 		if ($phone == "1234567") {
-			print_r($pdata);
+			print_r($post_data);
+			print_r($params);
 			pr($fullResult);
 		}
 		return $fullResult;
 	}
 
-	function add_lead($NewData) {
+	public function add_lead($NewData) {
 		$user_email = $NewData['email'];
 		$leadRecord = $this->get_all_leads($user_email);
 		if (isset($leadRecord['total']) && $leadRecord['total'] == 0) {
@@ -169,7 +168,7 @@ class Bitrix_api {
 			$new_link = '<br><a href="' . $NewData['att_link'] . '" target="_blank">Fotobegehung.pdf</a>';
 			$updataData['COMMENTS'] = $old_link . $new_link;
 			$updataData['ID'] = $leadRecord['result'][0]['ID'];
-			$res = $this->update($updataData);
+			$res = $this->update_lead($updataData, $NewData['telefon']);
 		}
 		if (isset($res['result'])) {
 			return true;
@@ -185,28 +184,6 @@ class Bitrix_api {
 					'auth' => $this->accessToken,
 					'filter' => array("EMAIL" => $term),
 					//'select' => array("ID", "TITLE", "STATUS_ID", "OPPORTUNITY", "CURRENCY_ID", "EMAIL"),
-				)
-			);
-			return $fullResult;
-		}
-	}
-	function get_lead_fields($select = array()) {
-		if (isset($this->accessToken)) {
-			$fullResult = $this->call(
-				'crm.lead.fields',
-				array(
-					'auth' => $this->accessToken,
-				)
-			);
-			return $fullResult;
-		}
-	}
-	function get_user_fields($select = array()) {
-		if (isset($this->accessToken)) {
-			$fullResult = $this->call(
-				'crm.lead.userfield.list',
-				array(
-					'auth' => $this->accessToken,
 				)
 			);
 			return $fullResult;
@@ -235,7 +212,6 @@ class Bitrix_api {
 			$postParams = http_build_query($data);
 			$curlOptions[CURLOPT_POST] = true;
 			$curlOptions[CURLOPT_POSTFIELDS] = $postParams;
-			// pr($postParams);
 		} elseif (!empty($data)) {
 			$url .= strpos($url, "?") > 0 ? "&" : "?";
 			$url .= http_build_query($data);
