@@ -97,7 +97,7 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($fullResult, $params['telefon']);
+			$this->add_activity($fullResult['total'], $params['telefon']);
 			return $fullResult;
 		}
 	}
@@ -128,7 +128,6 @@ class Bitrix_api {
 	 * @return array
 	 */
 	private function add_activity($lead_id, $phone = NULL) {
-		pr($lead_id);
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
 		$post_data = array(
