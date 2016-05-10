@@ -420,4 +420,8 @@ body{
     height: 14px !important;
     margin-bottom: 0px !important;
 }
+.impressum{
+  float: left !important;
 }
+}
+/*small device media query end*/

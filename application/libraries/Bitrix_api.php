@@ -136,7 +136,7 @@ class Bitrix_api {
 			"fields" => array(
 				'RESPONSIBLE_ID' => '1',
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-				'OWNER_ID' => $params->ID,
+				'OWNER_ID' => $params['ID'],
 				'OWNER_TYPE_ID' => "1",
 				'AUTHOR_ID' => "1",
 				'EDITOR_ID' => "1",
@@ -150,8 +150,8 @@ class Bitrix_api {
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);
 		if ($phone == "1234567") {
-			print_r($post_data);
-			print_r($params);
+			pr($post_data, 1);
+			pr($params, 1);
 			pr($fullResult);
 		}
 		return $fullResult;
