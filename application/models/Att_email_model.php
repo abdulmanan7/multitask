@@ -8,8 +8,11 @@ class Att_email_model extends CI_Model {
 	}
 	public function save_detail($object) {
 		$object['pdf_path'] = $object['path'];
+		$split = explode("/", $val);
+		$fileName = $split[count($split) - 1];
 		$object['thumb_path'] = str_replace("/pdf/", "/thumbs/", $object['path']);
 		$object['path'] = str_replace("/pdf/", "/", $object['path']);
+		$object['file_name'] = $file_name;
 		$this->db->insert('att_email_detail', $object);
 		return $this->db->insert_id();
 	}
@@ -48,14 +51,23 @@ class Att_email_model extends CI_Model {
 	private function remove_detail($id) {
 		$images = $this->get_detail($id);
 		$base = base_url();
+		$upload_folder = FCPATH . "uploads/";
 		foreach ($images as $key => $val) {
-			if (file_exists($val['path'])) {
-				$success = unlink(str_replace($base, FCPATH, $val['path']));
-			}if (file_exists($val['pdf_path'])) {
-				$success = unlink(str_replace($base, FCPATH, $val['pdf_path']));
+			$split = explode("/", $val['path']);
+			$fileName = $split[count($split) - 1];
+			$full_size_path = $upload_folder . "full_size/" . $file_name;
+			$pdf_path = $upload_folder . "pdf/" . $file_name;
+			$thumb_path = $upload_folder . "thumbs/" . $file_name;
+			if (file_exists($full_size_path)) {
+				$success = unlink($full_size_path);
+			}if (file_exists($pdf_path)) {
+				$success = unlink($pdf_path);
 			}
-			if (file_exists($val['thumb_path'])) {
-				$success = unlink(str_replace($base, FCPATH, $val['thumb_path']));
+			if (file_exists($thumb_path)) {
+				$success = unlink($thumb_path);
+			}
+			if (file_exists($upload_folder . $file_name)) {
+				$success = unlink($upload_folder . $file_name);
 			}
 		}
 		$this->db->where('att_id', $id);
