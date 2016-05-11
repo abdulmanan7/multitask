@@ -136,7 +136,7 @@ class Bitrix_api {
 				"OWNER_ID" => $lead_id,
 				"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
 				"TYPE_ID" => 4, // see crm.enum.activitytype
-				"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
+				"COMMUNICATIONS" => array("0" => array("TYPE" => "CALL", "VALUE" => $phone)),
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
 				"START_TIME" => $this->today,
 				"END_TIME" => $this->today,
