@@ -15,14 +15,6 @@ class Bitrix_api {
 	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
 	protected $SCOPE = "crm";
 	protected $PROTOCOL = "https";
-	// 	protected $domain = "codeme.bitrix24.com";
-	// protected $CLIENT_ID = "local.5714c7a65679d7.55404378";
-	// protected $CLIENT_SECRET = "a04cc260b5c612c48c19bf1b1ed5cc4e";
-	// protected $REDIRECT_URI = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	// protected $PATH = "https://sajidshah/proof/abdulmanan/mail_pdf/bitrix";
-	// protected $MEMBER_ID = "c0728b02e02abde3190db0e96a5096ae";
-	// protected $SCOPE = "crm";
-	// protected $PROTOCOL = "https";
 	public function __construct($props = array()) {
 		$this->ci = &get_instance();
 		if (count($props) > 0) {
@@ -66,7 +58,6 @@ class Bitrix_api {
 	}
 	private function add($params = array()) {
 		$link = $params['att_link'];
-		$today = date("d.m.Y");
 		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.add',
@@ -84,9 +75,9 @@ class Bitrix_api {
 						'ASSIGNED_BY_ID' => '1',
 						'CREATED_BY_ID' => '1',
 						'MODIFY_BY_ID' => '1',
-						'DATE_CREATE' => $today,
-						'DATE_MODIFY' => $today,
-						'UF_CRM_1457464089' => $today,
+						'DATE_CREATE' => $this->today,
+						'DATE_MODIFY' => $this->today,
+						'UF_CRM_1457464089' => $this->today,
 						'UF_CRM_1461700550' => $params['bauobjektadress'],
 						'ADDRESS' => $params['strabe_nr'] . " " . $params['PLZ'] . " " . $params['ort'] . " " . $params['land'],
 						'ADDRESS_CITY' => $params['ort'],
@@ -97,12 +88,11 @@ class Bitrix_api {
 					),
 				)
 			);
-			$this->add_activity($fullResult['total'], $params['telefon']);
+			$this->add_activity($fullResult['result'], $params['telefon']);
 			return $fullResult;
 		}
 	}
 	private function update_lead($pdata, $phone = NULL) {
-		$today = date("d.m.Y");
 		if (isset($this->accessToken)) {
 			$fullResult = $this->call(
 				'crm.lead.update',
@@ -110,9 +100,9 @@ class Bitrix_api {
 					"auth" => $this->accessToken,
 					'id' => $pdata['ID'],
 					"fields" => array(
-						'SOURCE_ID' => $params['SOURCE_ID'],
-						'DATE_MODIFY' => $today,
-						'UF_CRM_1457464089' => $today,
+						'SOURCE_ID' => $pdata['SOURCE_ID'],
+						'DATE_MODIFY' => $this->today,
+						'UF_CRM_1457464089' => $this->today,
 						'COMMENTS' => $pdata['COMMENTS'],
 					),
 				)
@@ -136,40 +126,28 @@ class Bitrix_api {
 				"OWNER_ID" => $lead_id,
 				"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
 				"TYPE_ID" => 4, // see crm.enum.activitytype
-				//"COMMUNICATIONS" => array("0" => array("TYPE" => "CALL", "VALUE" => $phone)),
+				"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
 				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
 				"START_TIME" => $this->today,
-				//"END_TIME" => $this->today,
+				"END_TIME" => $this->today,
 				"COMPLETED" => "N",
 				"PRIORITY" => 3, // see crm.enum.activitypriority
 				"RESPONSIBLE_ID" => 1,
 				'DEADLINE' => $DEADLINE,
 				"AUTHOR_ID" => 8,
-
-				// "OWNER_ID" => $lead_id,
-				// "OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
-				// "TYPE_ID" => 3, // see crm.enum.activitytype
-				// "COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
-				// 'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-				// "START_TIME" => $this->today,
-				// "END_TIME" => $this->today,
-				// "COMPLETED" => "N",
-				// "PRIORITY" => 3, // see crm.enum.activitypriority
-				// "RESPONSIBLE_ID" => 1,
-				// "DESCRIPTION" => "Important call",
-				// "DESCRIPTION_TYPE" => 3, // see crm.enum.contenttype
-				// "DIRECTION" => 2, // see crm.enum.activitydirection
+				"NOTIFY_TYPE" => 0,
+				"NOTIFY_VALUE" => 0,
+				"DIRECTION" => 2,
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);
-		if ($phone == "1234567") {
-			pr($post_data, 1);
-			pr($params, 1);
-			pr($fullResult);
-		}
+		// if ($phone == "1234567") {
+		// 	pr($post_data, 1);
+		// 	pr($params, 1);
+		// 	pr($fullResult);
+		// }
 		return $fullResult;
 	}
-
 	public function add_lead($NewData) {
 		$user_email = $NewData['email'];
 		$leadRecord = $this->get_all_leads($user_email);
