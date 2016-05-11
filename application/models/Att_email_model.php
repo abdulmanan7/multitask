@@ -50,29 +50,33 @@ class Att_email_model extends CI_Model {
 	}
 	private function remove_detail($id) {
 		$images = $this->get_detail($id);
-		$base = base_url();
-		$upload_folder = FCPATH . "uploads/";
-		foreach ($images as $key => $val) {
-			$split = explode("/", $val['path']);
-			$fileName = $split[count($split) - 1];
-			$full_size_path = $upload_folder . "full_size/" . $file_name;
-			$pdf_path = $upload_folder . "pdf/" . $file_name;
-			$thumb_path = $upload_folder . "thumbs/" . $file_name;
-			if (file_exists($full_size_path)) {
-				$success = unlink($full_size_path);
-			}if (file_exists($pdf_path)) {
-				$success = unlink($pdf_path);
+		if (!is_array_empty($images)) {
+
+			$upload_folder = FCPATH . "uploads/";
+			foreach ($images as $key => $val) {
+				$split = explode("/", $val['path']);
+				$file_name = $split[count($split) - 1];
+				$full_size_path = $upload_folder . "full_size/" . $file_name;
+				$pdf_path = $upload_folder . "pdf/" . $file_name;
+				$thumb_path = $upload_folder . "thumbs/" . $file_name;
+				if (file_exists($full_size_path)) {
+					$success = unlink($full_size_path);
+				}if (file_exists($pdf_path)) {
+					$success = unlink($pdf_path);
+				}
+				if (file_exists($thumb_path)) {
+					$success = unlink($thumb_path);
+				}
+				if (file_exists($upload_folder . $file_name)) {
+					$success = unlink($upload_folder . $file_name);
+				}
 			}
-			if (file_exists($thumb_path)) {
-				$success = unlink($thumb_path);
-			}
-			if (file_exists($upload_folder . $file_name)) {
-				$success = unlink($upload_folder . $file_name);
-			}
+			$this->db->where('att_id', $id);
+			$this->db->delete('att_email_detail');
+			return $this->db->affected_rows();
+		} else {
+			return TRUE;
 		}
-		$this->db->where('att_id', $id);
-		$this->db->delete('att_email_detail');
-		return $this->db->affected_rows();
 	}
 	function count_all($term = "aends") {
 		$this->db->select()->from('email_att');
