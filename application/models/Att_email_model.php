@@ -12,7 +12,7 @@ class Att_email_model extends CI_Model {
 		$fileName = $split[count($split) - 1];
 		$object['thumb_path'] = str_replace("/pdf/", "/thumbs/", $object['path']);
 		$object['path'] = str_replace("/pdf/", "/", $object['path']);
-		$object['file_name'] = $file_name;
+		$object['file_name'] = $fileName;
 		$this->db->insert('att_email_detail', $object);
 		return $this->db->insert_id();
 	}
