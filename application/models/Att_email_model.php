@@ -8,7 +8,7 @@ class Att_email_model extends CI_Model {
 	}
 	public function save_detail($object) {
 		$object['pdf_path'] = $object['path'];
-		$split = explode("/", $val);
+		$split = explode("/", $object['path']);
 		$fileName = $split[count($split) - 1];
 		$object['thumb_path'] = str_replace("/pdf/", "/thumbs/", $object['path']);
 		$object['path'] = str_replace("/pdf/", "/", $object['path']);
