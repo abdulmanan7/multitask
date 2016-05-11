@@ -42,8 +42,8 @@ class Att_email_model extends CI_Model {
 	function clear($att_id) {
 		$this->db->where('att_id', $att_id);
 		$this->db->delete('email_att');
-		$this->remove_detail($att_id);
-		return $this->db->affected_rows();
+		$this->db->affected_rows();
+		return $this->remove_detail($att_id);
 	}
 	private function remove_detail($id) {
 		$images = $this->get_detail($id);
