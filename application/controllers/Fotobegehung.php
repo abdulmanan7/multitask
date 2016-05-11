@@ -165,9 +165,9 @@ class Fotobegehung extends CI_Controller {
 		}
 		$this->load->view('frontend/success', $data);
 	}
-	function delete($att_id = '') {
+	function delete($att_id = '', $pdf_name = NULL) {
 		is_valid_id($att_id);
-		if ($this->att_email->clear($att_id) > 0) {
+		if ($this->att_email->clear($att_id, $pdf_name) > 0) {
 			$message = 'Record has been removed';
 			if ($this->input->is_ajax_request()) {
 				$data['message'] = $message;

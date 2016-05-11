@@ -97,7 +97,7 @@
       },{
         title: "Löschen",
         width:"40px",
-        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#/#=vorname#_#=nachname#_#=att_id#.pdf" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
     });
@@ -185,7 +185,7 @@
       },{
         title: "Löschen",
         width:"40px",
-        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
+        template:'<a href="<?=base_url()?>fotobegehung/delete/#=att_id#/#=vorname#_#=nachname#_#=att_id#.pdf" class="btn btn-sm btn-danger del"><i class="fa fa-trash-o"></i></a>',
       }
       ],
   });
@@ -194,7 +194,7 @@
 $(document).on("click", ".pdfLink", function(e)
 {
  var createUrl = $(this).attr('href');
- var win = window.open(createUrl, '_blank'); 
+ var win = window.open(createUrl, '_blank');
  if(win){
     //Browser has allowed it to be opened
     win.focus();

@@ -42,9 +42,12 @@ class Att_email_model extends CI_Model {
 		$this->db->where('att_id', $id);
 		return $this->db->get()->result_array();
 	}
-	function clear($att_id) {
+	function clear($att_id, $pdf_name) {
 		$this->db->where('att_id', $att_id);
 		$this->db->delete('email_att');
+		if (file_exists(FCPATH . "uploads/docs/" . $pdf_name)) {
+			unlink(FCPATH . "uploads/docs/" . $pdf_name);
+		}
 		$this->db->affected_rows();
 		return $this->remove_detail($att_id);
 	}
@@ -54,8 +57,7 @@ class Att_email_model extends CI_Model {
 
 			$upload_folder = FCPATH . "uploads/";
 			foreach ($images as $key => $val) {
-				$split = explode("/", $val['path']);
-				$file_name = $split[count($split) - 1];
+				$file_name = $val['file_name'];
 				$full_size_path = $upload_folder . "full_size/" . $file_name;
 				$pdf_path = $upload_folder . "pdf/" . $file_name;
 				$thumb_path = $upload_folder . "thumbs/" . $file_name;
