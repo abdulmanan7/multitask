@@ -37,6 +37,7 @@
                     {% if (file.thumbnailUrl) { %}
                     <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
                     <input type="hidden" name="image[]" value="{%=file.url%}">
+                    <input type="hidden" name="orig_name[]" value="{%=file.orig_name%}">
                     {% } %}
                 </span>
             </td>

@@ -144,10 +144,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</table>
 	<?php if ($images != NULL): ?>
 	<pagebreak />
-	<table cellpadding ="5" cellpadding="10">
+	<table cellpadding ="5" cellpadding="10" style="margin-top:20px;">
 		<?php foreach ($images as $image): ?>
 			<tr>
-				<?php foreach ($image as $val): ?>
+				<?php foreach ($image as $key => $val): ?>
 					<?php if ($val != ""): ?>
 						<?php $split = explode("/", $val);
 $fileName = $split[count($split) - 1];?>
@@ -160,8 +160,9 @@ $fileName = $split[count($split) - 1];?>
 						<?php else: ?>
 							<?php $val = $val;?>
 						<?php endif?>
-						<td style="border:2px solid black; text-align:center;" width="340px">
-							<a href="<?=$path?>" target='_blank'><img src="<?=$val?>" style="height:200px; border-right:5px solid #fff;" /><?=$fileName?></a>
+						<td style="border:2px solid black; text-align:center;width:340px;">
+							<a href="<?=$path?>" target='_blank'><img src="<?=$val?>" style="height:200px; border-right:5px solid #fff;max-width:340px" /></a>
+							<p><?=$orig_names[$key]?></p>
 						</td>
 					<?php endif?>
 				<?php endforeach?>

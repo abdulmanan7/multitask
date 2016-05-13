@@ -62,6 +62,7 @@ class Upload extends CI_Controller {
 				$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 				$info->deleteType = 'DELETE';
 				$info->error = null;
+				$info->orig_name = $_FILES['userfile']['name'];
 				$files[] = $info;
 				echo json_encode(array("files" => $files));
 				die;
@@ -101,6 +102,7 @@ class Upload extends CI_Controller {
 			$info->deleteUrl = base_url() . 'upload/deleteImage/' . $data['file_name'];
 			$info->deleteType = 'DELETE';
 			$info->error = null;
+			$info->orig_name = $_FILES['userfile']['name'];
 			if ($data['image_width'] > 1000) {
 				// ImageJPEG(ImageCreateFromString(file_get_contents($data['full_path'])), $this->new_path . $data['file_name'], 70);
 				$configer = array(

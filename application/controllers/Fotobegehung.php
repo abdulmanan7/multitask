@@ -52,16 +52,27 @@ class Fotobegehung extends CI_Controller {
 			if (isset($data['image'])) {
 
 				$images = $data['image'];
-				$count = 0;
-				$tr = array();
-				$index = 0;
+				// $count = 0;
+				// $tr = array();
+				// $index = 0;
 				foreach ($images as $key => $val) {
-					if (count($tr[$index]) == 2) {
-						$index++;
+					// if (count($tr[$index]) == 2) {
+					// 	$index++;
+					// }
+					// $tr[$index][] = $val;
+					// $count++;
+					$ori_file_name = $data['orig_name'][$key];
+					$extension = substr($ori_file_name, -4);
+					if (strlen($ori_file_name) > 20) {
+						$ori_file_name = substr($ori_file_name, 0, 20) . $extension;
 					}
-					$tr[$index][] = $val;
-					$count++;
-					$att_detail_id = $this->att_email->save_detail(array('att_id' => $att_id, 'path' => $val));
+
+					$image_data = array(
+						'att_id' => $att_id,
+						'path' => $val,
+						'orig_name' => $ori_file_name,
+					);
+					$att_detail_id = $this->att_email->save_detail($image_data);
 				}
 			}
 			$this->send($pdata['email'], $att_id, $pdata);
@@ -82,6 +93,7 @@ class Fotobegehung extends CI_Controller {
 					$index++;
 				}
 				$tr[$index][] = $val['pdf_path'];
+				$data['orig_names'][] = $val['orig_name'];
 				$count++;
 			}
 			$data['images'] = $tr;
@@ -97,7 +109,7 @@ class Fotobegehung extends CI_Controller {
 		include_once APPPATH . '/third_party/mpdf/mpdf.php';
 		$m_pdf = new mPDF();
 		$m_pdf->setAutoTopMargin = "stretch";
-		$m_pdf->SetHTMLHeader('<div style="padding-left:500px;text-align: right; width:200px"><img src=' . base_url('assets/img/logo.jpg') . '></div>');
+		$m_pdf->SetHTMLHeader('<div style="padding-left:500px;text-align: right; width:200px;margin-bottom:30px;"><img src=' . base_url('assets/img/logo.jpg') . '></div>');
 		$today = date("d.m.Y");
 		$m_pdf->SetHTMLFooter('<p style="text-align:center;color:gray">Digitale Fotobegehung vom ' . $today . ' - Seite {PAGENO} von {nb}
   </p>');

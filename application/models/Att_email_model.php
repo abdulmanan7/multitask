@@ -45,11 +45,13 @@ class Att_email_model extends CI_Model {
 	function clear($att_id, $pdf_name) {
 		$this->db->where('att_id', $att_id);
 		$this->db->delete('email_att');
-		if (file_exists(FCPATH . "uploads/docs/" . $pdf_name)) {
-			unlink(FCPATH . "uploads/docs/" . $pdf_name);
+		if ($this->db->affected_rows() > 0) {
+			if (file_exists(FCPATH . "uploads/docs/" . urldecode($pdf_name))) {
+				unlink(FCPATH . "uploads/docs/" . urldecode($pdf_name));
+			}
+			return $this->remove_detail($att_id);
 		}
-		$this->db->affected_rows();
-		return $this->remove_detail($att_id);
+		return false;
 	}
 	private function remove_detail($id) {
 		$images = $this->get_detail($id);
