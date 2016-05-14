@@ -13,7 +13,7 @@ class Bitrix_api {
 	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
-	protected $SCOPE = "crm,task";
+	protected $SCOPE = array("crm", "task");
 	protected $PROTOCOL = "https";
 	public function __construct($props = array()) {
 		$this->ci = &get_instance();
