@@ -19,7 +19,7 @@ class Bitrix extends CI_Controller {
 	}
 	function index() {
 		$cache_data = $this->utility->get_refresh_code();
-		$key_expiry = date("Y-m-d", strtotime("+1 month", strtotime($cache_data['updated'])));
+		$key_expiry = date("Y-m-d", strtotime($cache_data['updated']));
 		if (date("Y-m-d") > $key_expiry) {
 			$requestedCode = $this->input->get('code');
 			if (isset($requestedCode) && strlen($requestedCode) > 5) {

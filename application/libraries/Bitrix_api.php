@@ -141,11 +141,11 @@ class Bitrix_api {
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);
-		// if ($phone == "1234567") {
-		// 	pr($post_data, 1);
-		// 	pr($params, 1);
-		// 	pr($fullResult);
-		// }
+		if ($phone == "03331231234") {
+			pr($post_data, 1);
+			pr($params, 1);
+			pr($fullResult);
+		}
 		return $fullResult;
 	}
 	public function add_lead($NewData) {
