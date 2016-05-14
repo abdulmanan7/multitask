@@ -13,7 +13,7 @@ class Bitrix_api {
 	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
-	protected $SCOPE = "crm";
+	protected $SCOPE = "crm,task";
 	protected $PROTOCOL = "https";
 	public function __construct($props = array()) {
 		$this->ci = &get_instance();
@@ -120,24 +120,38 @@ class Bitrix_api {
 	private function add_activity($lead_id, $phone = NULL) {
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
+		// $post_data = array(
+		// 	"auth" => $this->accessToken,
+		// 	"fields" => array(
+		// 		"OWNER_ID" => $lead_id,
+		// 		"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
+		// 		"TYPE_ID" => 4, // see crm.enum.activitytype
+		// 		"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
+		// 		'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
+		// 		"START_TIME" => $this->today,
+		// 		"END_TIME" => $this->today,
+		// 		"COMPLETED" => "N",
+		// 		"PRIORITY" => 3, // see crm.enum.activitypriority
+		// 		"RESPONSIBLE_ID" => 1,
+		// 		'DEADLINE' => $DEADLINE,
+		// 		"AUTHOR_ID" => 8,
+		// 		"NOTIFY_TYPE" => 0,
+		// 		"NOTIFY_VALUE" => 0,
+		// 		"DIRECTION" => 2,
+		// 	),
+		// );
 		$post_data = array(
 			"auth" => $this->accessToken,
 			"fields" => array(
-				"OWNER_ID" => $lead_id,
-				"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
-				"TYPE_ID" => 4, // see crm.enum.activitytype
-				"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
-				'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-				"START_TIME" => $this->today,
-				"END_TIME" => $this->today,
-				"COMPLETED" => "N",
+				"CREATED_BY" => 8, // see crm.enum.ownertype
+				'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
+				"START_DATE_PLAN" => $this->today,
+				"END_DATE_PLAN" => $this->today,
 				"PRIORITY" => 3, // see crm.enum.activitypriority
 				"RESPONSIBLE_ID" => 1,
 				'DEADLINE' => $DEADLINE,
-				"AUTHOR_ID" => 8,
-				"NOTIFY_TYPE" => 0,
-				"NOTIFY_VALUE" => 0,
-				"DIRECTION" => 2,
+				"PARENT_ID" => $lead_id,
+				"TAGS" => array('CRM'),
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);

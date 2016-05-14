@@ -9,7 +9,7 @@ class Bitrix extends CI_Controller {
 	protected $REDIRECT_URI = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $PATH = "https://www.solarvent.de/application/uploader/bitrix";
 	protected $MEMBER_ID = "fa755ef17cf2097971587481b32702b7";
-	protected $SCOPE = "crm";
+	protected $SCOPE = "crm,task";
 	protected $PROTOCOL = "https";
 	public function __construct() {
 
@@ -209,6 +209,16 @@ class Bitrix extends CI_Controller {
 			)
 		);
 		pr($fullResult);
+	}
+	public function findByComm($arValues, $entityType = "LEAD") {
+		$result = $this->call('crm.duplicate.findbycomm',
+			array(
+				'type' => "EMAIL",
+				'values' => $arValues,
+				'entity_type' => $entityType,
+			)
+		);
+		return $result;
 	}
 	function query($method, $url, $data = null) {
 		$query_data = "";

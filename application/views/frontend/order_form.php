@@ -184,7 +184,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="control-label col-sm-6">Durchschnittlicher Heizenergieverbrauch pro Jahr? <span class="text-blood">*</span></label>
+					<label class="control-label col-sm-6">Durchschnittlicher Jahresverbrauch? <span class="text-blood">*</span></label>
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-12 col-md-6">
@@ -207,7 +207,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="control-label col-sm-6">Wie viel kW-Leistung hat Ihre aktuelle Heizung? </label>
+					<label class="control-label col-sm-6">Wie viel kW hat Ihre aktuelle Heizung? </label>
 					<div class="col-sm-6">
 						<input name="question5" type="text" class="form-control numberOnly" />
 						<p class="error"></p>
@@ -241,7 +241,7 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme (kWh / Jahr)?</label>
+					<label class="control-label col-sm-6">Wärmebedarf nach der Dämmmaßnahme?</label>
 					<div class="col-sm-6">
 								<input name="question9" type="text" class="form-control numberOnly" />
 								<p class="error"></p>
