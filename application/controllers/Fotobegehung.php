@@ -6,11 +6,7 @@ ini_set('upload_max_filesize', '128M');
 class Fotobegehung extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
-		// if (!$this->ion_auth->logged_in()) {
-		// redirect('auth/login');
-		// } else {
 		$this->load->model('att_email_model', "att_email");
-		// }
 	}
 	public function index() {
 		// $data = $this->get_data();

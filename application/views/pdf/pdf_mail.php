@@ -144,7 +144,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</table>
 	<?php if ($images != NULL): ?>
 	<pagebreak />
-	<table cellpadding ="5" cellpadding="10" style="margin-top:20px;">
+	<br>
+	<table cellpadding ="5" cellpadding="10">
 		<?php foreach ($images as $image): ?>
 			<tr>
 				<?php foreach ($image as $key => $val): ?>
