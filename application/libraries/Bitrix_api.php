@@ -147,11 +147,13 @@ class Bitrix_api {
 				'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
 				"START_DATE_PLAN" => $this->today,
 				"END_DATE_PLAN" => $this->today,
-				"PRIORITY" => 3, // see crm.enum.activitypriority
+				"PRIORITY" => 2, // see crm.enum.activitypriority
 				"RESPONSIBLE_ID" => 1,
+				"STATUS" => 2,
+				"DURATION_TYPE" => 'days',
 				'DEADLINE' => $DEADLINE,
-				"PARENT_ID" => $lead_id,
-				"TAGS" => array('CRM'),
+				"UF_CRM_TASK" => $lead_id,
+				"TAGS" => 'CRM',
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);
