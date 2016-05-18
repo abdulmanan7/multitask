@@ -2,7 +2,7 @@
 <script type="text/x-kendo-template" id="Searchtemplate">
   <div class="toolbar">
     <div class="pull-left">
-      <a data-toggle="modal" href="<?=base_url('fotobegehung')?>" type="button" class="btn btn-success pull-right" target="_black">Neue Fotobegehung anlegen</a>
+      <a data-toggle="modal" href="<?=base_url('solarvent.de/fotobegehung.php')?>" type="button" class="btn btn-success pull-right" target="_black">Neue Fotobegehung anlegen</a>
     </div>
     <div id="example" class="srach_clear pull-right" >
       <div class="input-group" style="width:100%;" id="ext-gen3">

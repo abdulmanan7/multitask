@@ -143,17 +143,17 @@ class Bitrix_api {
 		$post_data = array(
 			"auth" => $this->accessToken,
 			"fields" => array(
-				"CREATED_BY" => 8, // see crm.enum.ownertype
+				"CREATED_BY" => 1, // see crm.enum.ownertype
 				'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
-				"START_DATE_PLAN" => $this->today,
-				"END_DATE_PLAN" => $this->today,
+				// "START_DATE_PLAN" => $this->today,
+				// "END_DATE_PLAN" => $this->today,
 				"PRIORITY" => 2, // see crm.enum.activitypriority
 				"RESPONSIBLE_ID" => 1,
 				"STATUS" => 2,
 				"DURATION_TYPE" => 'days',
 				'DEADLINE' => $DEADLINE,
-				"UF_CRM_TASK" => $lead_id,
-				"TAGS" => 'CRM',
+				"UF_CRM_TASK" => array("LEADS", $lead_id),
+				"TAGS" => array('CRM'),
 			),
 		);
 		$fullResult = $this->call('crm.activity.add', $post_data);

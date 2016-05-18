@@ -68,6 +68,7 @@ class Fotobegehung extends CI_Controller {
 						'path' => $val,
 						'orig_name' => $ori_file_name,
 					);
+
 					$att_detail_id = $this->att_email->save_detail($image_data);
 				}
 			}
