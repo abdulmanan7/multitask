@@ -1,4 +1,10 @@
 <?php $this->load->view('template/frontend/header');?>
+<div id="loader" class="fade in">
+      <p class="img"><img src="<?php echo load_img('loader.gif');?>"></p>
+    </div>
+    <div id="ajaxLoader" class="fade in" style="display: none;">
+      <p class="img"><img src="<?php echo load_img('ajax-loader.gif');?>"></p>
+    </div>
 <!-- The file upload form used as target for the file upload widget -->
 <div class="container">
 	<?php $this->load->view('frontend/modals/help');?>
@@ -266,4 +272,12 @@ Für Ihre Zuarbeit bedanken wir uns mit einem <strong>150 € Extra Rabatt auf I
 		</div>
 	</form>
 </div>
+<script>
+	$('body').on('click',"#submit",function () {
+		$('#loader').show();
+	});
+	jQuery(document).ready(function($) {
+		$('#loader').hide();
+	});
+</script>
 <?php $this->load->view('template/frontend/footer');?>
