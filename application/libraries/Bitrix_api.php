@@ -143,7 +143,7 @@ class Bitrix_api {
 		$post_data = array(
 			"auth" => $this->accessToken,
 			"fields" => array(
-				"CREATED_BY" => 1, // see crm.enum.ownertype
+				"CREATED_BY" => 8, // see crm.enum.ownertype
 				'TITLE' => 'CRM: Eingang einer neuen Fotobegehung',
 				// "START_DATE_PLAN" => $this->today,
 				// "END_DATE_PLAN" => $this->today,
