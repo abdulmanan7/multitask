@@ -156,12 +156,7 @@ class Bitrix_api {
 				"TAGS" => array('CRM'),
 			),
 		);
-		$fullResult = $this->call('crm.activity.add', $post_data);
-		if ($phone == "03331231234") {
-			pr($post_data, 1);
-			pr($params, 1);
-			pr($fullResult);
-		}
+		$fullResult = $this->call('task.item.add', $post_data);
 		return $fullResult;
 	}
 	public function add_lead($NewData) {
