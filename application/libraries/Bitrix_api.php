@@ -152,7 +152,7 @@ class Bitrix_api {
 				"STATUS" => 2,
 				"DURATION_TYPE" => 'days',
 				'DEADLINE' => $DEADLINE,
-				"UF_CRM_TASK" => array("LEADS", $lead_id),
+				"UF_CRM_TASK" => array("L_" . $lead_id),
 				"TAGS" => array('CRM'),
 			),
 		);
