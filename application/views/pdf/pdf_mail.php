@@ -146,7 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<pagebreak />
 	<br>
 	<table cellpadding ="5" cellpadding="10">
-		<?php foreach ($images as $image): ?>
+		<?php $count = 0;foreach ($images as $image): ?>
 			<tr>
 				<?php foreach ($image as $key => $val): ?>
 					<?php if ($val != ""): ?>
@@ -163,7 +163,8 @@ $fileName = $split[count($split) - 1];?>
 						<?php endif?>
 						<td style="border:2px solid black; text-align:center;width:340px;">
 							<a href="<?=$path?>" target='_blank'><img src="<?=$val?>" style="height:200px; border-right:5px solid #fff;max-width:340px" /></a>
-							<p><?=$orig_names[$key]?></p>
+							<p><?php echo $orig_names[$count];
+$count++;?></p>
 						</td>
 					<?php endif?>
 				<?php endforeach?>
