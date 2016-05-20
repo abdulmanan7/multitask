@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/* Copyright 2015-2016 All Right Reserved
+THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+PARTICULAR PURPOSE.
+This source is subject to the codeME Permissive License
+Further sale of the code or any modification to the code not permitted
 
+|| Author: Abdul Manan developer at codeME
+|| Source: http://pph.me/abdulmanan7
+ */
+ini_set('date.timezone', 'Europe/Berlin');
 class Bitrix_api {
 	protected $ci;
 //******* rest api setting **********//
