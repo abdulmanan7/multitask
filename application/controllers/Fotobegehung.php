@@ -104,20 +104,22 @@ class Fotobegehung extends CI_Controller {
 		$pdfFilePath = "solarVent.pdf";
 
 		include_once APPPATH . '/third_party/mpdf/mpdf.php';
-		$m_pdf = new mPDF('', 'A4', 0, '', '', '', 10, 30);
-		//$mpdf = new mPDF('',    // mode - default ''
-		//'A4',    // format - A4, for example, default ''
-		//0,     // font size - default 0
-		//'',    // default font family
-		//'',    // 15 margin_left
-		//'',    // 15 margin right
-		//25,     // 16 margin top
-		//55,    // margin bottom
-		//'',     // 9 margin header
-		//'',     // 9 margin footer
-		//'L');  // L - landscape, P - portrait
+		// $m_pdf = new mPDF();
+		$mpdf = new mPDF('', // mode - default ''
+			'A4', // format - A4, for example, default ''
+			0, // font size - default 0
+			"Areal", // default font family
+			'15', // 15 margin_left
+			'15', // 15 margin right
+			'16', // 16 margin top
+			'16', // margin bottom
+			'5', // 9 margin header
+			'9', // 9 margin footer
+			'p'); // L - landscape, P - portrait
+		$m_pdf = $mpdf;
 		$m_pdf->setAutoTopMargin = "stretch";
-		$m_pdf->SetHTMLHeader('<div style="padding-left:500px;text-align: right; width:200px;margin-bottom:30px;"><img src=' . base_url('assets/img/logo.jpg') . '></div>');
+		$m_pdf->setAutoBottomMargin = 'stretch';
+		$m_pdf->SetHTMLHeader('<div style="padding-left:500px;"><img src=' . base_url('assets/img/logo.jpg') . '></div>');
 		$today = date("d.m.Y");
 		$m_pdf->SetHTMLFooter('<p style="text-align:center;color:gray">Digitale Fotobegehung vom ' . $today . ' - Seite {PAGENO} von {nb}
   </p>');

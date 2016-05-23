@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			background-color: #DDD;
 		}
 		.mar50{
-			padding-top: 70px;
+			padding-top: 60px;
 		}
 		.text-right{
 			text-align: right;
