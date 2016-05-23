@@ -41,31 +41,38 @@ class Bitrix_api {
 		}
 	}
 	function refresh_token($refresh_code = NULL) {
-		$cache_data = $this->ci->utility->get_refresh_code();
-		$refresh_code = ($refresh_code) ? $refresh_code : $cache_data['refresh_code'];
-		$params = array(
-			"grant_type" => "refresh_token",
-			"client_id" => $this->CLIENT_ID,
-			"client_secret" => $this->CLIENT_SECRET,
-			"redirect_uri" => $this->PATH,
-			"scope" => $this->SCOPE,
-			"refresh_token" => $refresh_code,
-		);
-
-		$path = "/oauth/token/";
-		$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
-		if (isset($query_data["access_token"])) {
-			//**************  save refresh code for next login
-			$refresh_code = $this->ci->utility->save_refresh_code($query_data['refresh_token']);
-
-			//**************  assign the new recived refresh code to member
-			$this->accessToken = $query_data["access_token"];
-			// $res = $this->save_lead($lead_data);
-			return $query_data;
+		if ($this->session->tempdata('access_token')) {
+			$this->accessToken = $this->session->tempdata('access_token');
 		} else {
-			$error = "error occure! " . print_r($query_data);
+			$cache_data = $this->ci->utility->get_refresh_code();
+			$refresh_code = ($refresh_code) ? $refresh_code : $cache_data['refresh_code'];
+			$params = array(
+				"grant_type" => "refresh_token",
+				"client_id" => $this->CLIENT_ID,
+				"client_secret" => $this->CLIENT_SECRET,
+				"redirect_uri" => $this->PATH,
+				"scope" => $this->SCOPE,
+				"refresh_token" => $refresh_code,
+			);
+
+			$path = "/oauth/token/";
+			$query_data = $this->query("GET", $this->PROTOCOL . "://" . $this->domain . $path, $params);
+			if (isset($query_data["access_token"])) {
+				//**************  save refresh code for next login
+				$refresh_code = $this->ci->utility->save_refresh_code($query_data['refresh_token']);
+
+				//**************  assign the new recived refresh code to member
+				$this->accessToken = $query_data["access_token"];
+				$this->session->set_tempdata('access_token', $query_data["access_token"], 3000);
+				// pr($this->session->tempdata('is_token_expire'));
+				// $res = $this->save_lead($lead_data);
+				return $query_data;
+			} else {
+				$error = "error occure! " . print_r($query_data);
+			}
+			return false;
 		}
-		return false;
+		return true;
 	}
 	private function add($params = array()) {
 		$link = $params['att_link'];
@@ -131,26 +138,6 @@ class Bitrix_api {
 	private function add_activity($lead_id, $phone = NULL) {
 		$date = new DateTime('+1 day');
 		$DEADLINE = $date->format('d.m.Y H:i:s');
-		// $post_data = array(
-		// 	"auth" => $this->accessToken,
-		// 	"fields" => array(
-		// 		"OWNER_ID" => $lead_id,
-		// 		"OWNER_TYPE_ID" => 1, // see crm.enum.ownertype
-		// 		"TYPE_ID" => 4, // see crm.enum.activitytype
-		// 		"COMMUNICATIONS" => array("0" => array("VALUE" => $phone)),
-		// 		'SUBJECT' => 'CRM: Eingang einer neuen Fotobegehung',
-		// 		"START_TIME" => $this->today,
-		// 		"END_TIME" => $this->today,
-		// 		"COMPLETED" => "N",
-		// 		"PRIORITY" => 3, // see crm.enum.activitypriority
-		// 		"RESPONSIBLE_ID" => 1,
-		// 		'DEADLINE' => $DEADLINE,
-		// 		"AUTHOR_ID" => 8,
-		// 		"NOTIFY_TYPE" => 0,
-		// 		"NOTIFY_VALUE" => 0,
-		// 		"DIRECTION" => 2,
-		// 	),
-		// );
 		$post_data = array(
 			"auth" => $this->accessToken,
 			"fields" => array(

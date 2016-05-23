@@ -48,15 +48,7 @@ class Fotobegehung extends CI_Controller {
 			if (isset($data['image'])) {
 
 				$images = $data['image'];
-				// $count = 0;
-				// $tr = array();
-				// $index = 0;
 				foreach ($images as $key => $val) {
-					// if (count($tr[$index]) == 2) {
-					// 	$index++;
-					// }
-					// $tr[$index][] = $val;
-					// $count++;
 					$ori_file_name = $data['orig_name'][$key];
 					$extension = substr($ori_file_name, -4);
 					if (strlen($ori_file_name) > 20) {
