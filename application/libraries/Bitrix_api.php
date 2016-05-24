@@ -41,8 +41,8 @@ class Bitrix_api {
 		}
 	}
 	function refresh_token($refresh_code = NULL) {
-		if ($this->session->tempdata('access_token')) {
-			$this->accessToken = $this->session->tempdata('access_token');
+		if ($this->ci->session->tempdata('access_token')) {
+			$this->accessToken = $this->ci->session->tempdata('access_token');
 		} else {
 			$cache_data = $this->ci->utility->get_refresh_code();
 			$refresh_code = ($refresh_code) ? $refresh_code : $cache_data['refresh_code'];
@@ -63,7 +63,7 @@ class Bitrix_api {
 
 				//**************  assign the new recived refresh code to member
 				$this->accessToken = $query_data["access_token"];
-				$this->session->set_tempdata('access_token', $query_data["access_token"], 3000);
+				$this->ci->session->set_tempdata('access_token', $query_data["access_token"], 3000);
 				// pr($this->session->tempdata('is_token_expire'));
 				// $res = $this->save_lead($lead_data);
 				return $query_data;
